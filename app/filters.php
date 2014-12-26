@@ -35,16 +35,12 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest())
-	{
-		if (Request::ajax())
-		{
-			return Response::make('Unauthorized', 401);
-		}
-		else
-		{
-			return Redirect::guest('login');
-		}
+	//if (Auth::guest()) return Redirect::guest('user/login');
+	if(!Auth::check()) {
+		App::abort(401, json_encode(array(
+			'because' => 'not_login',
+			'csrf_token' => csrf_token()
+		)));
 	}
 });
 
@@ -52,6 +48,20 @@ Route::filter('auth', function()
 Route::filter('auth.basic', function()
 {
 	return Auth::basic();
+});
+
+Route::filter('admin', function () {
+	if(! (Auth::check() and Auth::user()->isAdmin())) {
+		App::abort(401, 'not_admin');
+	}
+});
+
+//Use only at user/login when logged in user try to login again.
+//automatically redirect to the proper page.
+Route::filter('not-auth', function() {
+	if(Auth::check()) {
+		App::abort(400, 'logged_in');
+	}
 });
 
 /*
@@ -83,8 +93,9 @@ Route::filter('guest', function()
 
 Route::filter('csrf', function()
 {
-	if (Session::token() !== Input::get('_token'))
-	{
-		throw new Illuminate\Session\TokenMismatchException;
+	$a = Session::token();
+	$b = Input::get('_token');
+	if ($a != $b)	{
+		App::abort(400, 'csrf');
 	}
 });
