@@ -16,12 +16,20 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('hello', function()
+{
+	return "Hello";
+});
 
-Route::resource('user', 'UserController');
+
 Route::get('is-login', 'UserController@isLogin');
 Route::post('login', 'UserController@login');
+// Route::post('signup', 'UserController@store');
+Route::get('logout', 'UserController@logout');
+Route::resource('user', 'UserController');
 
 Route::post('logout', 'UserController@logout');
+
 
 // use for facebook login if you need to ask p'TA later
 //Route::post('facebook', 'UserController@facebook');

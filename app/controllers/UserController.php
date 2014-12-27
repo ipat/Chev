@@ -9,11 +9,11 @@ class UserController extends BaseController {
 			'store'
 			)));
 		$this->beforeFilter('auth', array('only' => array(
-			'index', 'update', 'destroy', 'logout', 'isLogin'
+			'index', 'update', 'destroy'//, 'logout'//, 'isLogin'
 			)));
-		$this->beforeFilter('csrf', array('only' => array(
-			'store', 'update', 'destroy', 'logout'
-			)));
+		// $this->beforeFilter('csrf', array('only' => array(
+		// 	'store', 'update', 'destroy', 'logout'
+		// 	)));
 		$this->beforeFilter('admin', array('only' => array(
 			'index'
 			)));
@@ -95,20 +95,20 @@ class UserController extends BaseController {
 		// passively log the user into the system
 		Auth::login($user);
 
-		$buildCart = new Cart;
-		$buildCart->user_id = $user->id;
-		$buildCart->save();
+		// $buildCart = new Cart;
+		// $buildCart->user_id = $user->id;
+		// $buildCart->save();
 
 		// send email to the newly regiseterd user
 		//Mail::queueOn('emailingQueue','user.mails.welcome', array('firstname'=>$user->name_first), function($message){
 		//	$message->to(Input::get('email'), Input::get('name_first').' '.Input::get('name_last'))->subject('Welcome to the Laravel 4 Auth App!');
 		//});
 
-		$cart = $this->cartToDatabase();
+		// $cart = $this->cartToDatabase();
 		return Response::json(array(
 			'user' => $user->toArray(),
-			'csrf_token' => csrf_token(),
-			'cart' => $cart,
+			// 'csrf_token' => csrf_token(),
+			// 'cart' => $cart,
 			));
 
 	}
@@ -354,11 +354,11 @@ class UserController extends BaseController {
 			App::abort('401', 'cannot_login');
 		}
 
-		$cart = $this->cartToDatabase();
+		// $cart = $this->cartToDatabase();
 		return Response::json(array(
 			'user' => Auth::user()->toArray(),
-			'csrf_token' => csrf_token(),
-			'cart' => $cart,
+			// 'csrf_token' => csrf_token(),
+			// 'cart' => $cart,
 		));
 	}
 
@@ -422,29 +422,29 @@ class UserController extends BaseController {
 	public function logout () {
 		Auth::logout();
 		return Response::json([
-			'csrf_token' => csrf_token()
+			// 'csrf_token' => csrf_token()
 			]);
 	}
 
 	public function isLogin () {
 		// a user's cart
-		$cart = Cart::where('user_id', Auth::user()->id)->first();
-		if($cart) {
-			// existing cart
-			$cart = $cart->toArray();
-		} else {
-      // empty cart
-			$cart = array(
-				'items' => array(),
-				'rewards' => array(),
-				'discount' => 0
-				);
-		}
+		// $cart = Cart::where('user_id', Auth::user()->id)->first();
+		// if($cart) {
+		// 	// existing cart
+		// 	$cart = $cart->toArray();
+		// } else {
+  //     // empty cart
+		// 	$cart = array(
+		// 		'items' => array(),
+		// 		'rewards' => array(),
+		// 		'discount' => 0
+		// 		);
+		// }
 
 		return Response::json(array(
 			'user' => Auth::user()->toArray(),
-			'csrf_token' => csrf_token(),
-			'cart' => $cart
+			// 'csrf_token' => csrf_token(),
+			// 'cart' => $cart
 			));
 	}
 

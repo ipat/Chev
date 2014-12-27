@@ -8,18 +8,20 @@
 		<i class="fa fa-edit feature-icon"></i> 
 	</div>
 	<div class="col-md-6 verticalLine "  style="padding-top:0.8em">
-		<form action="POST">
-			<input class="text-input" type="text" name="mail" placeholder="E-mail">
-			<input class="text-input" type="password" name="password" placeholder="Password">
-			<input class="text-input" type="password" name="confirm-password" placeholder="Confirm Password">
-			<input class="text-input" type="text" name="name" placeholder="Name">
-			<input class="text-input" type="text" name="surname" placeholder="Surname">
+		<div alert-box class="col-md-12 alertBox" s style="display:none;"></div>
+		<form ng-submit="signup()" name="signupform" ng-show="!isLogin"> 
+			<input class="text-input" ng-model="form.email" type="text" name="email" placeholder="E-mail">
+			<input class="text-input" ng-model="form.password" type="password" name="password" placeholder="Password">
+			<input class="text-input" ng-model="form.confirm_password" type="password" name="confirm-password" placeholder="Confirm Password">
+			<input class="text-input" ng-model="form.name_first" type="text" name="name" placeholder="Name">
+			<input class="text-input" ng-model="form.name_last" type="text" name="surname" placeholder="Surname">
+			<input class="text-input" ng-model="form.tel" type="text" name="tel" placeholder="Phone Number">
 			<div>
 				<div class="col-md-6 firstInput">
-					<input class="text-input " type="number" name="age" placeholder="Age" min="1">	
+					<input class="text-input " ng-model="form.age" type="number" name="age" placeholder="Age" min="1">	
 				</div>
 				<div class="col-md-6 lastInput">
-					<select name="gender" id="gender" class="text-input " placeholder="Gender">
+					<select name="gender" id="gender" ng-model="form.gender" class="text-input " placeholder="Gender">
 						<option value="male">Male</option>
 						<option value="female">Female</option>
 					</select>
@@ -28,6 +30,8 @@
 			
 			<button type="submit" class="default-btn midium-size full-width">สมัครสมาชิก</button>
 		</form>
+
+		<h2 class="jumbotron" ng-show="isLogin">ขออภัยคุณได้เข้าสู่ระบบแล้ว <a href="logout">ออกจากระบบ</a> ที่นี่</h2>
 	</div>
 	<div class="clear"></div>
 

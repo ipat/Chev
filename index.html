@@ -58,8 +58,9 @@
             <li><a ng-class="{ active: isActive('/howitwork') }" href="howitwork">How It Work</a></li>
             <li><a ng-class="{ active: isActive('/products') }" href="products">Products</a></li>
             <li><a ng-class="{ active: isActive('/About') }" href="#">About Us</a></li>
-            <li><a ng-class="{ active: isActive('/login') }" href="login">Login</a></li>
-            <li class="left-border right-border cart"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+            <li><a ng-class="{ active: isActive('/login') }" ng-show="!isLogin" href="login">Login</a></li>
+            <li><a ng-class="{ active: isActive('/login') }" ng-show="isLogin" href="login">คุณ {{userInfo.name_first}}</a></li>
+            <li class="left-border right-border cart"><a href="#" ng-click="toggleModal()"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
           </ul>
 
         </div><!--/.navbar-collapse -->
@@ -67,6 +68,51 @@
     </div>
 
     <ng-view></ng-view>
+
+    <!-- Cart Modal for Every page -->
+    <modal title="ตะกร้าสินค้า" visible="showModal">
+      <!-- <form role="form">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" />
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form> -->
+
+      <div ng-show="cart===undefined">
+        ยังไม่มีสินค้าในตะกร้าเลย <a href="products" ng-click="toggleModal()">เติมเต็ม</a> ตะกร้าคุณสิ
+      </div>
+      <div ng-show="cart">
+        <table class="table table-hover" >
+          <thead>
+            <tr>
+              <th>สินค้า</th>
+              <th>จำนวน</th>
+              <th>ราคา</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, value) in cart">
+              <th>{{key}}</th>
+              <th>{{value.amount}} ชิ้น</th>
+              <th>{{value.amount*chevPrice}} บาท</th>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <button class="red-btn col-md-12" ng-click="clearCart()"><i class="glyphicon glyphicon-trash"></i> ล้างตะกร้าสินค้า</button>
+          <!-- <div class="col-md-2"></div> -->
+          <button class="default-btn col-md-12" ng-show="isLogin"><i class="glyphicon glyphicon-arrow-right"></i> เช็คเอาท์สินค้าเลย</button>
+          <button class="default-btn col-md-12" ng-show="!isLogin" ng-click="login()"><i class="glyphicon glyphicon-arrow-right"></i> เข้าสู่ระบบเพื่อเช็คเอาท์</button>
+          <div class="clear"></div>
+        </div>
+      </div>
+      
+    </modal>
 
 
     <div class="container">
@@ -87,7 +133,7 @@
         <script src="public/js/vendor/bootstrap.min.js"></script>
         <script src="public/js/vendor/angular.min.js"></script>
         <script src="public/js/vendor/angular-route.min.js"></script>
-        <script src="public/js/vendor/angular-animate.min.js"></script>
+        <script src="public/js/vendor/angular-resource.min.js"></script>
 
         <script src="public/js/main.js"></script>
         <script src="public/js/app.js"></script>

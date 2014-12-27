@@ -1,4 +1,8 @@
-var chevApp = angular.module('chevApp', ['ngRoute']);
+var chevApp = angular.module('chevApp', ['ngRoute', 'ngResource']);
+
+/*===========================================
+=            Route in AngularJS            =
+===========================================*/
 
 chevApp.config(['$routeProvider', '$locationProvider'	,function($routeProvider, $locationProvider) {
 	$routeProvider.
@@ -17,6 +21,10 @@ chevApp.config(['$routeProvider', '$locationProvider'	,function($routeProvider, 
 		when('/login', {
 			templateUrl: 'public/pages/login.html',
 			controller: 'loginController'
+		}).
+		when('/logout', {
+			templateUrl: 'public/pages/login.html',
+			controller: 'logoutController'
 		}).
 		when('/signup', {
 			templateUrl: 'public/pages/signup.html',
@@ -37,11 +45,44 @@ chevApp.config(['$routeProvider', '$locationProvider'	,function($routeProvider, 
 		// });
 }]);
 
+/*====================================================
+=            Controller for each of pages            =
+====================================================*/
+
 // Controller For NAVBAR
-chevApp.controller('navbarController', function($scope, $location){
+chevApp.controller('navbarController', function($scope, $location, $rootScope, $resource){
 	$scope.isActive = function (viewLocation) { 
         return viewLocation === $location.path();
     };
+    // Set up Chev Price Here
+    $rootScope.chevPrice = 1000;
+
+    $rootScope.toggleModal = function(){
+    	var cart = window.localStorage['ChevCart'];
+    	if(cart !== 'undefined' && cart !== undefined) {
+    		$rootScope.cart = JSON.parse(cart);
+    	} else {
+    		$rootScope.cart = undefined;
+    	}
+		$rootScope.showModal = !$rootScope.showModal;
+
+
+    };
+
+    // Use for clear cart
+    $rootScope.clearCart = function(){
+    	localStorage.clear();
+    	// console.log(window.localStorage['ChevCart']);
+    	$rootScope.showModal = !$rootScope.showModal;
+    };
+
+    // Use for link to login page
+    $rootScope.login = function(){
+    	$location.path('/login');
+    	$rootScope.showModal = !$rootScope.showModal;
+    };
+
+    isLogin($resource, $rootScope);
 });
 
 // Controller for Homepage
@@ -94,14 +135,187 @@ chevApp.controller('howitworkController', function($scope, $rootScope){
 	$rootScope.navbarClass = "text-dark";
 });
 
-chevApp.controller('loginController', function($scope, $rootScope){
+chevApp.controller('loginController', function($scope, $rootScope, $resource){
 	$rootScope.navbarClass = "text-dark";
+	
+	isLogin($resource, $rootScope);
+
+	var Login = $resource('public/login', {}, {'login' : {method:'POST'}});
+	$scope.login = function() {
+		var feedback = Login.login($scope.form, function(val){
+			showMessage($scope, "เข้าสู่ระบบสำเร็จ", "alertSuccess", ".alertBox", 5000);
+			$rootScope.isLogin = true;
+			$rootScope.userInfo = val['user'];
+			console.log(val);
+		}, function(res){
+			showMessage($scope, "เกิดข้อผิดพลาด อาจเกิดจากเมล์หรือรหัสผ่านผิด", "alertFailed", ".alertBox", 20000);
+		});
+		console.log(feedback);
+	}
+
 });
 
-chevApp.controller('signupController', function($scope, $rootScope){
+chevApp.controller('signupController', function($scope, $rootScope, Users){
 	$rootScope.navbarClass = "text-dark";
+	$scope.signup = function() {
+		// var SignUp = $resource('public/user');
+		// var feedback = SignUp.post()
+		console.log($scope.signupform.$valid);
+		if($scope.form.password != $scope.form.confirm_password){
+			showMessage($scope, "รหัสผ่านไม่ตรงกัน", "alertFailed", ".alertBox", 10000);
+		}
+		else {
+			var feedback = Users.store($scope.form, function(){
+				
+			}, function(res){
+				console.log(res);
+			});
+			// console.log(feedback); 
+		}
+		
+
+	}
 });
 
 chevApp.controller('productsController', function($scope, $rootScope){
 	$rootScope.navbarClass = "text-dark";
+	$scope.addToCart = function(){
+		if($scope.amount === undefined)
+			showMessage($scope, "กรุณาระบุจำนวนสินค้า", "alertFailed", ".alertBox");
+		else {
+			var cart = window.localStorage['ChevCart'];
+			if(cart === undefined || cart === 'undefined') {
+				cart = {Chev: {amount:$scope.amount}};
+			} else {
+				cart = JSON.parse(cart);
+				cart["Chev"]["amount"] += $scope.amount;
+			}
+			window.localStorage['ChevCart'] = JSON.stringify(cart);
+			showMessage($scope, "นำสินค้าใส่ตะกร้าเรียบร้อยจำนวน " + $scope.amount + " ชิ้น", "alertSuccess", ".alertBox");			
+			$scope.amount = 1;
+		}	
+	};
 });
+
+
+chevApp.controller('logoutController', function($scope, $rootScope, $location, $resource){
+	var Logout = $resource('public/logout', {},  {'logout': { method: 'GET', isArray:true}});
+
+		// console.log(hello);
+	Logout.logout(function(val){
+		$location.path('/home');
+		$rootScope.isLogin = false;
+		$rootScope.userInfo = null;
+	});
+});
+
+/*========================================
+=            General Function            =
+========================================*/
+
+showMessage = function($scope, message, style, element, time)
+{
+	$scope.alert = {};
+	var alertBox = $scope.alert;
+	alertBox.message = message;
+	alertBox.style = style;
+	time = typeof time !== 'undefined'? time : 1500; 
+	$(element).fadeIn('400', function() {
+		$(element).delay(time).fadeOut('slow');
+	});
+
+};
+
+isLogin = function($resource, $rootScope)
+{
+	var isLogin = $resource('public/is-login', null);	
+	isLogin.get({}, function(val){
+		$rootScope.isLogin = true;
+		$rootScope.userInfo = val['user'];
+	}, function(res){
+		$rootScope.isLogin = false;
+	});
+};
+
+/*=====================================================
+=            Angular Directive (Component)            =
+=====================================================*/
+
+// AlerBox Component
+chevApp.directive('alertBox', function()
+{
+	return {
+		restrict: 'AE',
+		scope: true,
+		template: '<div class="{{alert.style}}">{{alert.message}}</div>',
+
+	};
+});
+
+// Modal Component
+chevApp.directive('modal', function () {
+    return {
+      template: '<div class="modal fade">' + 
+          '<div class="modal-dialog">' + 
+            '<div class="modal-content">' + 
+              '<div class="modal-header">' + 
+                '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' + 
+                '<h4 class="modal-title">{{ title }}</h4>' + 
+              '</div>' + 
+              '<div class="modal-body" ng-transclude></div>' + 
+            '</div>' + 
+          '</div>' + 
+        '</div>',
+      restrict: 'E',
+      transclude: true,
+      replace:true,
+      scope:true,
+      link: function postLink(scope, element, attrs) {
+        scope.title = attrs.title;
+
+        scope.$watch(attrs.visible, function(value){
+          if(value == true)
+            $(element).modal('show');
+          else
+            $(element).modal('hide');
+        });
+
+        $(element).on('shown.bs.modal', function(){
+          scope.$apply(function(){
+            scope.$parent[attrs.visible] = true;
+          });
+        });
+
+        $(element).on('hidden.bs.modal', function(){
+          scope.$apply(function(){
+            scope.$parent[attrs.visible] = false;
+          });
+        });
+      }
+    };
+  });
+
+/*====================================
+=            User Factory            =
+====================================*/
+
+chevApp.factory('User', function($resource){
+	return $resource('public/user/:user_id', 
+		{}, 
+		{
+			show: {method:'GET'},
+		 	update: {method: 'PUT', params:{id: '@user_id'}},
+		 	delete: {method: 'DELETE', params:{id: '@user_id'}}
+		});
+});
+
+chevApp.factory('Users', function($resource){
+	return $resource('public/user', 
+		{}, 
+		{
+			index: {method:'GET'},
+		 	store: {method: 'POST'}
+		});
+});
+
+

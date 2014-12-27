@@ -198,7 +198,7 @@ hr.gradient {
     box-shadow: 0px 0px 8px #2196f3;
     border: 1px solid #007af3; }
 
-.default-btn, .white-btn, .spiner-btn-left, .spiner-btn-right {
+.default-btn, .white-btn, .spiner-btn-left, .spiner-btn-right, .red-btn, .green-btn {
   -webkit-appearance: none;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -217,14 +217,13 @@ hr.gradient {
   cursor: pointer;
   text-shadow: none;
   padding: 0.3em 1em 0.3em; }
-  .default-btn:active, .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active {
+  .default-btn:active, .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active, .red-btn:active, .green-btn:active {
     position: relative;
     top: 0.2em;
     box-shadow: 0px 0.1em 2px #007af3; }
 
 .white-btn, .spiner-btn-left, .spiner-btn-right {
   background-color: whitesmoke;
-  border-bottom: 5px solid #bdbdbd;
   color: #2b2c25 !important;
   border: 1px solid #d7d7d7;
   box-shadow: 0px 0.3em 0px #bdbdbd; }
@@ -232,6 +231,26 @@ hr.gradient {
     position: relative;
     top: 0.2em;
     box-shadow: 0px 0.1em 2px #bdbdbd; }
+
+.red-btn {
+  background-color: #ff3d00;
+  border: 1px solid #ff6433;
+  color: white !important;
+  box-shadow: 0px 0.3em 0px #cc3100; }
+  .red-btn:active {
+    position: relative;
+    top: 0.2em;
+    box-shadow: 0px 0.1em 2px #cc3100; }
+
+.green-btn {
+  background-color: #76ff03;
+  border: 1px solid #92ff36;
+  color: black !important;
+  box-shadow: 0px 0.3em 0px #5ecf00; }
+  .green-btn:active {
+    position: relative;
+    top: 0.2em;
+    box-shadow: 0px 0.1em 2px #5ecf00; }
 
 .spiner-btn-left {
   font-size: 23px;
@@ -340,7 +359,7 @@ hr.gradient {
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
     font-size: 1.2em;
-    color: #e0e1dd !important; }
+    color: white !important; }
   .highlight-nav .navbar-nav a {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -383,6 +402,29 @@ hr.gradient {
   .jumbotext .title {
     font-size: 3.5em;
     margin-top: 70px; }
+
+/*
+===========================================================
+	Style for AlertBox
+===========================================================
+*/
+.alertSuccess, .alertFailed {
+  font-size: 1.5em;
+  line-height: 2em;
+  vertical-align: middle;
+  background-color: #76ff03;
+  border-bottom: 0.3em solid #5ecf00;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 0.2em 1em 0.2em;
+  margin-top: 1em;
+  margin-bottom: 1em; }
+
+.alertFailed {
+  background-color: #ff3d00;
+  border-bottom: 0.3em solid #cc3100;
+  color: white; }
 
 /*
 ===========================================================

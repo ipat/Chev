@@ -2,18 +2,24 @@
          at-view-flip-out-vertical">
 	<div class="jumbotron">
 		<h2 class="biggersize">ยินดีต้อนรับคุณลูกค้า</h2>
-		<h3>ยังไม่มีบัญชีงั้นหรอ <a href="signup">สมัครใหม่เลยสิ</a></h3>
+		<h3 ng-show="!isLogin">ยังไม่มีบัญชีงั้นหรอ <a href="signup">สมัครใหม่เลยสิ</a></h3>
 	</div>
 	<div class="clear"></div>
 	<div class="col-md-6 bottom-space">
 		<i class="fa fa-key feature-icon"></i> 
 	</div>
 	<div class="col-md-6 verticalLine" style="padding-top:0.8em">
-		<form action="POST">
-			<input class="text-input" type="text" name="mail" placeholder="E-mail">
-			<input class="text-input" type="password" name="password" placeholder="Password">
+		<!-- Here is Alert Box -->
+		<div alert-box class="col-md-12 alertBox" style="display:none;"></div>
+
+		
+		<form ng-submit="login()" ng-show="!isLogin">
+			<input class="text-input" ng-model="form.email" type="text" name="mail" placeholder="E-mail">
+			<input class="text-input" ng-model="form.password" type="password" name="password" placeholder="Password">
 			<button type="submit" class="default-btn midium-size full-width">เข้าสู่ระบบ</button>
 		</form>
+		
+		<h2 class="jumbotron" ng-show="isLogin">คุณได้เข้าสู่ระบบแล้ว คุณสามารถ <a href="logout">ออกจากระบบ</a> ที่นี่</h2>
 	</div>
 	<div class="clear"></div>
 
