@@ -216,6 +216,7 @@ hr.gradient {
   box-shadow: 0px 0.3em 0px #007af3;
   cursor: pointer;
   text-shadow: none;
+  text-shadow: 0px 2px 0px #007af3;
   padding: 0.3em 1em 0.3em; }
   .default-btn:active, .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active, .red-btn:active, .green-btn:active {
     position: relative;
@@ -226,7 +227,8 @@ hr.gradient {
   background-color: whitesmoke;
   color: #2b2c25 !important;
   border: 1px solid #d7d7d7;
-  box-shadow: 0px 0.3em 0px #bdbdbd; }
+  box-shadow: 0px 0.3em 0px #bdbdbd;
+  text-shadow: 0px 2px 0px #bdbdbd; }
   .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active {
     position: relative;
     top: 0.2em;
@@ -236,7 +238,8 @@ hr.gradient {
   background-color: #ff3d00;
   border: 1px solid #ff6433;
   color: white !important;
-  box-shadow: 0px 0.3em 0px #cc3100; }
+  box-shadow: 0px 0.3em 0px #cc3100;
+  text-shadow: 0px 2px 0px #cc3100; }
   .red-btn:active {
     position: relative;
     top: 0.2em;
@@ -246,7 +249,8 @@ hr.gradient {
   background-color: #76ff03;
   border: 1px solid #92ff36;
   color: black !important;
-  box-shadow: 0px 0.3em 0px #5ecf00; }
+  box-shadow: 0px 0.3em 0px #5ecf00;
+  text-shadow: 0px 2px 0px #5ecf00; }
   .green-btn:active {
     position: relative;
     top: 0.2em;
@@ -419,12 +423,14 @@ hr.gradient {
   border-radius: 5px;
   padding: 0.2em 1em 0.2em;
   margin-top: 1em;
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  text-shadow: 0px 2px 0px #5ecf00; }
 
 .alertFailed {
   background-color: #ff3d00;
   border-bottom: 0.3em solid #cc3100;
-  color: white; }
+  color: white;
+  text-shadow: 0px 2px 0px #cc3100; }
 
 /*
 ===========================================================

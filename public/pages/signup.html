@@ -8,7 +8,7 @@
 		<i class="fa fa-edit feature-icon"></i> 
 	</div>
 	<div class="col-md-6 verticalLine "  style="padding-top:0.8em">
-		<div alert-box class="col-md-12 alertBox" s style="display:none;"></div>
+		<div alert-box class="col-md-12 alertBox" style="display:none; text-align: left;"></div>
 		<form ng-submit="signup()" name="signupform" ng-show="!isLogin"> 
 			<input class="text-input" ng-model="form.email" type="text" name="email" placeholder="E-mail">
 			<input class="text-input" ng-model="form.password" type="password" name="password" placeholder="Password">
@@ -21,9 +21,7 @@
 					<input class="text-input " ng-model="form.age" type="number" name="age" placeholder="Age" min="1">	
 				</div>
 				<div class="col-md-6 lastInput">
-					<select name="gender" id="gender" ng-model="form.gender" class="text-input " placeholder="Gender">
-						<option value="male">Male</option>
-						<option value="female">Female</option>
+					<select name="gender" id="gender" ng-model="form.gender" class="text-input" ng-options="gender.title for gender in genders" placeholder="Gender">
 					</select>
 				</div>
 			</div>

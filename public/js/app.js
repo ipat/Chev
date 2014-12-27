@@ -146,29 +146,68 @@ chevApp.controller('loginController', function($scope, $rootScope, $resource){
 			showMessage($scope, "เข้าสู่ระบบสำเร็จ", "alertSuccess", ".alertBox", 5000);
 			$rootScope.isLogin = true;
 			$rootScope.userInfo = val['user'];
-			console.log(val);
+			// console.log(val);
 		}, function(res){
 			showMessage($scope, "เกิดข้อผิดพลาด อาจเกิดจากเมล์หรือรหัสผ่านผิด", "alertFailed", ".alertBox", 20000);
 		});
-		console.log(feedback);
+		// console.log(feedback);
 	}
 
 });
 
 chevApp.controller('signupController', function($scope, $rootScope, Users){
 	$rootScope.navbarClass = "text-dark";
+	$scope.genders = [
+		{title: "Male", val: 100},
+		{title: "Female", val: 0}
+	];
+	$scope.form = {};
+	$scope.form.gender = $scope.genders[0];
+
 	$scope.signup = function() {
 		// var SignUp = $resource('public/user');
 		// var feedback = SignUp.post()
-		console.log($scope.signupform.$valid);
 		if($scope.form.password != $scope.form.confirm_password){
 			showMessage($scope, "รหัสผ่านไม่ตรงกัน", "alertFailed", ".alertBox", 10000);
 		}
 		else {
-			var feedback = Users.store($scope.form, function(){
-				
+			var genderTemp = $scope.form.gender;
+			$scope.form.gender = $scope.form.gender['val'];
+			console.log($scope.form.gender);
+			var feedback = Users.store($scope.form, function(val){
+				showMessage($scope, "สมัครสมาชิกเสร็จสิ้น", "alertSuccess", ".alertBox", 10000);
+				$rootScope.isLogin = true;
+				$rootScope.userInfo = val['user'];
 			}, function(res){
-				console.log(res);
+				var errorList = JSON.parse(res['data']['error']['message']);
+				errorList = errorList['messages'];
+
+				var errorMsg = "<u style='text-align:center;'>เกิดข้อผิดพลาด</u> <br /> ";
+				for (var i = 0; i < errorList.length; i++) {
+					if(errorList[i] === "email_missing")
+						errorMsg += "- ไม่ได้เติมอีเมล์ <br />";
+					else if(errorList[i] === "password_missing")
+						errorMsg += "- ไม่ได้เติมรหัสผ่าน <br />";
+					else if(errorList[i] === "tel_missing")
+						errorMsg += "- ไม่ได้เติมเบอร์โทรศัพท์ <br />";
+					else if(errorList[i] === "name_first_missing")
+						errorMsg += "- ไม่ได้เติมชื่อ <br />";
+					else if(errorList[i] === "name_last_missing")
+						errorMsg += "- ไม่ได้เติมนามสกุล <br />";
+					else if(errorList[i] === "password_length")
+						errorMsg += "- ความยาวรหัสผ่านไม่ครบ <br />";
+					else if(errorList[i] === "email_length")
+						errorMsg += "- ความยาวอีเมล์ไม่ครบ <br />";
+					else if(errorList[i] === "email_found")
+						errorMsg += "- อีเมล์นี้ได้ใช้ไปแล้ว <br />";
+					else if(errorList[i] === "tel_length")
+						errorMsg += "- ความยาวเบอร์โทรศัพท์ไม่ครบ <br />";
+					else if(errorList[i] === "tel_length")
+						errorMsg += "- ความยาวเบอร์โทรศัพท์ไม่ครบ <br />";
+
+				};
+				showMessage($scope, errorMsg, "alertFailed", ".alertBox", 10000);
+				$scope.form.gender = genderTemp;
 			});
 			// console.log(feedback); 
 		}
@@ -247,7 +286,7 @@ chevApp.directive('alertBox', function()
 	return {
 		restrict: 'AE',
 		scope: true,
-		template: '<div class="{{alert.style}}">{{alert.message}}</div>',
+		template: '<div class="{{alert.style}}"><span ng-bind-html="alert.message | unsafe"></span></div>',
 
 	};
 });
@@ -294,6 +333,12 @@ chevApp.directive('modal', function () {
       }
     };
   });
+
+chevApp.filter('unsafe', ['$sce', function ($sce) {
+    return function (val) {
+        return $sce.trustAsHtml(val);
+    };
+}]);
 
 /*====================================
 =            User Factory            =

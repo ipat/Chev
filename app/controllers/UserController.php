@@ -36,7 +36,8 @@ class UserController extends BaseController {
 			'password' => Input::get('password'),
 			'tel' => Input::get('tel'),
 			'name_first' => Input::get('name_first'),
-			'name_last' => Input::get('name_last')
+			'name_last' => Input::get('name_last'),
+			'gender' => Input::get('gender')
 			);
 
 		//Define that 'unique_name' validator is explained as in ValidatorLib@isUniqueName.
@@ -90,6 +91,7 @@ class UserController extends BaseController {
 		$user->tel = $input['tel'];
 		$user->name_first = $input['name_first'];
 		$user->name_last = $input['name_last'];
+		$user->gender = $input['gender'];
 		$user->save();
 
 		// passively log the user into the system
