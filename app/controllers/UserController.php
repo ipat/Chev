@@ -267,12 +267,12 @@ class UserController extends BaseController {
 				// saving in-session cart to database
 			$session_cart = Session::get('cart');
 
-			if($session_cart['items']){
+			if($session_cart['products']){
 				$oldCart = Cart::where('user_id',$user_id)->first();
 				if($oldCart){
-					CartItem::where('cart_id',$oldCart->id)->delete();
-					CartReward::where('cart_id',$oldCart->id)->delete();
-					CartDiscount::where('cart_id',$oldCart->id)->delete();
+					CartProduct::where('cart_id',$oldCart->id)->delete();
+					//CartReward::where('cart_id',$oldCart->id)->delete();
+					//CartDiscount::where('cart_id',$oldCart->id)->delete();
 					$oldCart->delete();
 				}
 				$cart = new Cart;
@@ -281,34 +281,18 @@ class UserController extends BaseController {
 
 
 
-				foreach ($session_cart['items'] as $idx=>$item) {
-					$cart_items = new CartItem;
-					$cart_items->cart_id = $cart->id;
-					$cart_items->price = $item['price'];
-					$cart_items->amount = $item['amount'];
-					$cart_items->item_id = $item['item_id'];
-					$cart_items->save();
+				foreach ($session_cart['products'] as $idx=>$product) {
+
+					$cart_products = new CartProduct;
+					$cart_products->cart_id = $cart->id;
+					//$cart_products->allprice = $product['allprice'];
+					$cart_products->setAmount = $product['setAmount'];
+					$cart_products->product_id = $product['product']['product_id'];
+					$cart_products->save();
 				}
 
-				$returnCart=Cart::calReward($cart->toArray());
-				if($returnCart['rewards']){
-
-					foreach($returnCart['rewards'] as $rewardItem){
-						$new_cart_reward = new CartReward;
-						$new_cart_reward->cart_id = $cart->id;
-						$new_cart_reward->item_id = $rewardItem['item_id'];
-						$new_cart_reward->amount = $rewardItem['amount'];
-						$new_cart_reward->price = $rewardItem['price'];
-						$new_cart_reward->save();
-					}
-
-				}
-				if($returnCart['discount']){
-					$new_cart_discount = new CartDiscount;
-					$new_cart_discount->cart_id = $cart->id;
-					$new_cart_discount->discount = $returnCart['discount'];
-					$new_cart_discount->save();
-				}
+				
+				
 			}
 				// here we have to call calculatePromotion() from model Cart for generating rewards and discount
 
@@ -319,9 +303,9 @@ class UserController extends BaseController {
 			}
 			else {
 				$returnCart = array();
-				$returnCart['items'] = array();
-				$returnCart['rewards'] = array();
-				$returnCart['discount'] = intval(0);
+				$returnCart['products'] = array();
+				$returnCart['total'] = intval(0);
+				
 
 			}
 				//return  ($returnCart);
@@ -334,11 +318,12 @@ class UserController extends BaseController {
 			}
 			else {
 				$returnCart = array();
-				$returnCart['items'] = array();
-				$returnCart['rewards'] = array();
-				$returnCart['discount'] = intval(0);
+				$returnCart['products'] = array();
+				$returnCart['total'] = intval(0);
+				
 			}
 		}
+		$returnCart = Cart::calTotal($returnCart);
 		return $returnCart;
 	}
 
@@ -356,7 +341,7 @@ class UserController extends BaseController {
 			App::abort('401', 'cannot_login');
 		}
 
-		// $cart = $this->cartToDatabase();
+		$cart = $this->cartToDatabase();
 		return Response::json(array(
 			'user' => Auth::user()->toArray(),
 			// 'csrf_token' => csrf_token(),

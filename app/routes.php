@@ -27,7 +27,8 @@ Route::post('login', 'UserController@login');
 // Route::post('signup', 'UserController@store');
 Route::get('logout', 'UserController@logout');
 Route::resource('user', 'UserController');
-
+Route::resource('product','ProductController');
+Route::resource('cart','CartController');
 Route::post('logout', 'UserController@logout');
 
 
