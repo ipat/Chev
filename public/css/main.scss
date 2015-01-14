@@ -244,6 +244,10 @@ hr.gradient {
 	border-left: 1px solid #CCC;
 }
 
+.verticalCenter{
+	vertical-align: middle;
+}
+
 .firstInput{
 	padding-left: 0px;
 }
@@ -266,6 +270,18 @@ hr.gradient {
 	width: 100%;
 }
 
+.full-height{
+	height: 100%;
+}
+
+.absolute{
+	position: absolute;
+}
+
+.zeroOpacity{
+	opacity: 0;
+}
+
 
 .text-input{	
 	-webkit-appearance: none;
@@ -285,6 +301,13 @@ hr.gradient {
 		border: 1px solid $webtheme-dark;
 	}
 
+}
+
+.small-input{
+	@extend .text-input;
+
+	font-size: 1em;
+	height: 2.5em;
 }
 
 .default-btn{
@@ -488,6 +511,15 @@ hr.gradient {
     	color: white !important;
     }
   }
+}
+
+.dropdown-area {
+	width: 20em;
+	padding: 0.5em 1em 0.5em;
+	color: black;
+	a {
+		color: $webtheme !important;
+	}
 }
 
 

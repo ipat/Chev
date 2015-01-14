@@ -1,0 +1,69 @@
+<div class="container bottom-space at-view-flip-in-vertical
+         at-view-flip-out-vertical">
+	<div class="jumbotron center">
+		<h2 style="font-size:2.4em">ยินดีต้อนรับครับ คุณ {{userInfo.name_first}}</h2>
+		<!-- <h3>ยังไม่ได้เข้าจ๊ะ <a href="login">เข้าดิฟระ</a></h3> -->
+	</div>
+
+	<!-- <div class="col-md-3">
+		<ul id="userNav">
+			<li><a ng-click="subPage='processPurchase'">Process Purchase</a></li>
+			<li><a ng-click="subPage='purchaseHistory'">Purchase History</a></li>
+			<li><a ng-click="subPage='manageAddresses'">Manage Addresses</a></li>
+			<li><a ng-click="subPage='userDetails'">User Details</a></li>
+		</ul>
+	</div>
+
+	<div class="col-md-9">
+		<ng-include src="pages[subPage]"></ng-include>
+	</div> -->
+	
+
+	<div class="col-md-5">
+		<div class="col-md-10">
+			<h3 >ข้อมูล่วนตัว 	</h3>
+		</div>
+		<div class="col-md-2 full-height">
+			<h4>
+				<a ng-click="editUserInfo()" class="{{userInfoShow}}" ng-hide="userInfoView">Edit</a>
+			</h4>
+		</div>
+		<div class="clear"></div>
+		
+		<hr>
+		<div class="{{userInfoShow}}" ng-hide="userInfoView">			
+			<h4 class="col-md-12">คุณ {{userInfo.name_first}} {{userInfo.name_last}}</h4>
+			<h4 class="col-md-12">เบอร์โทรศัพท์ {{userInfo.tel}}</h4>
+			<div class="clear"></div>
+		</div>
+		<form class="{{userInfoEdit}}" style="" ng-show="userInfoView">
+			<div class="col-md-6">
+				<label for="name_first">ชื่อ</label>
+				<input class="small-input" type="text" ng-model="updateData.name_first" name="name_first">
+			</div>
+			<div class="col-md-6">
+				<label for="name_last">นามสกุล</label>
+				<input class="small-input" type="text" ng-model="updateData.name_last" name="name_last">
+			</div>
+			<div class="clear"></div>
+			<div class="col-md-12">
+				<label for="tel">เบอร์โทรศัพท์</label>
+				<input class="small-input" type="text" ng-model="updateData.tel" name="tel">
+			</div>
+			<div class="clear"></div>
+			<div class="col-md-12">
+				<input class="default-btn col-md-12" type="button" ng-click="updateInfo()" value="เปลี่ยนแปลงข้อมูล">
+			</div>
+			
+			<div class="clear"></div>
+		</form>
+
+		<h3>ที่อยู่ในการจัดส่ง</h3>
+		<hr>
+	</div>
+
+	<div class="col-md-7">
+		
+	</div>
+
+</div>

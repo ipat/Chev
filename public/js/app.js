@@ -1,5 +1,31 @@
 var chevApp = angular.module('chevApp', ['ngRoute', 'ngResource']);
 
+chevApp.run(function($rootScope, $location, $resource){
+
+	var routesThatRequireAuth = ['/user'];
+
+	var routeDirty = function(route) {
+		return _.find(routesThatRequireAuth, 
+			function(authRoute){
+				return route.startsWith(authRoute);
+			});
+	};
+
+	$rootScope.$on('$routeChangeStart', function(event, next, current){
+		if(routeDirty($location.url()))
+		{
+			var isLogin = $resource('public/is-login', null);	
+			isLogin.get({}, function(val){
+				$rootScope.isLogin = true;
+				$rootScope.userInfo = val['user'];
+			}, function(res){
+				$rootScope.isLogin = false;
+				$location.path('/login');
+			});
+		}
+	});
+});
+
 /*===========================================
 =            Route in AngularJS            =
 ===========================================*/
@@ -34,6 +60,14 @@ chevApp.config(['$routeProvider', '$locationProvider'	,function($routeProvider, 
 			templateUrl: 'public/pages/products.html',
 			controller: 'productsController'
 		}).
+		when('/user', {
+			templateUrl: 'public/pages/user.html',
+			controller: 'userController'
+		}).
+		// when('/user/:tab', {
+		// 	templateUrl: 'public/pages/user.html',
+		// 	controller: 'userMenuController'
+		// }).
 		otherwise ({
 			redirectTo: '/'
 		});
@@ -50,30 +84,60 @@ chevApp.config(['$routeProvider', '$locationProvider'	,function($routeProvider, 
 ====================================================*/
 
 // Controller For NAVBAR
-chevApp.controller('navbarController', function($scope, $location, $rootScope, $resource){
+chevApp.controller('navbarController', function($scope, $location, $rootScope, $resource, Cart){
 	$scope.isActive = function (viewLocation) { 
         return viewLocation === $location.path();
     };
     // Set up Chev Price Here
     $rootScope.chevPrice = 1000;
 
-    $rootScope.toggleModal = function(){
-    	var cart = window.localStorage['ChevCart'];
-    	if(cart !== 'undefined' && cart !== undefined) {
-    		$rootScope.cart = JSON.parse(cart);
-    	} else {
-    		$rootScope.cart = undefined;
-    	}
-		$rootScope.showModal = !$rootScope.showModal;
+    $rootScope.viewCart = function(){
+    	var getCart = Cart.index(function(){
+    		if(getCart["total"] == 0) {
+    			$rootScope.cart = undefined;
+    		} else {    		
+    			$rootScope.cart = getCart["products"];
+    		}
+    		
+    	});
+    	// var cart = window.localStorage['ChevCart'];
+    	// if(cart !== 'undefined' && cart !== undefined) {
+    	// 	$rootScope.cart = JSON.parse(cart);
+    	// } else {
+    	// 	$rootScope.cart = undefined;
+    	// }
+		// $rootScope.showModal = !$rootScope.showModal;
 
+
+    };
+
+    $rootScope.showCart = function(){
+    	var getCart = Cart.index(function(){
+    		if(getCart["total"] == 0) {
+    			$rootScope.cart = undefined;
+    		} else {    		
+    			$rootScope.cart = getCart["products"];
+    			$('.dropdown-menu').dropdown('toggle');
+    		}
+    		
+    	});
+    };
+
+    $rootScope.deleteItem = function(product_id){
+    	console.log(product_id);
+
+    	$resource('public/cart/' + product_id).delete(function(){
+    		$rootScope.showCart();
+    	});
 
     };
 
     // Use for clear cart
     $rootScope.clearCart = function(){
     	localStorage.clear();
+    	$rootScope.cart = undefined;
     	// console.log(window.localStorage['ChevCart']);
-    	$rootScope.showModal = !$rootScope.showModal;
+    	// $rootScope.showModal = !$rootScope.showModal;
     };
 
     // Use for link to login page
@@ -216,23 +280,33 @@ chevApp.controller('signupController', function($scope, $rootScope, Users){
 	}
 });
 
-chevApp.controller('productsController', function($scope, $rootScope){
+chevApp.controller('productsController', function($scope, $rootScope, $resource, Cart){
 	$rootScope.navbarClass = "text-dark";
-	$scope.addToCart = function(){
-		if($scope.amount === undefined)
-			showMessage($scope, "กรุณาระบุจำนวนสินค้า", "alertFailed", ".alertBox");
-		else {
-			var cart = window.localStorage['ChevCart'];
-			if(cart === undefined || cart === 'undefined') {
-				cart = {Chev: {amount:$scope.amount}};
-			} else {
-				cart = JSON.parse(cart);
-				cart["Chev"]["amount"] += $scope.amount;
-			}
-			window.localStorage['ChevCart'] = JSON.stringify(cart);
-			showMessage($scope, "นำสินค้าใส่ตะกร้าเรียบร้อยจำนวน " + $scope.amount + " ชิ้น", "alertSuccess", ".alertBox");			
-			$scope.amount = 1;
-		}	
+	$scope.addToCart = function(product_id){
+		// if($scope.amount === undefined)
+		// 	showMessage($scope, "กรุณาระบุจำนวนสินค้า", "alertFailed", ".alertBox");
+		// else {
+		// 	var cart = window.localStorage['ChevCart'];
+		// 	if(cart === undefined || cart === 'undefined') {
+		// 		cart = {Chev: {amount:$scope.amount}};
+		// 	} else {
+		// 		cart = JSON.parse(cart);
+		// 		cart["Chev"]["amount"] += $scope.amount;
+		// 	}
+		// 	window.localStorage['ChevCart'] = JSON.stringify(cart);
+		// 	showMessage($scope, "นำสินค้าใส่ตะกร้าเรียบร้อยจำนวน " + $scope.amount + " ชิ้น", "alertSuccess", ".alertBox");			
+		// 	$scope.amount = 1;
+		// }	
+		var addedItem = {};
+		addedItem['product_id'] = 1;
+		addedItem['product_amount'] = $scope.amount;
+		console.log(addedItem);
+		Cart.store(addedItem, function(){
+			$rootScope.showCart();
+			// sc();
+		});
+
+		showMessage($scope, "นำสินค้าใส่ตะกร้าเรียบร้อยจำนวน " + $scope.amount + " ชิ้น", "alertSuccess", ".alertBox");	
 	};
 });
 
@@ -247,6 +321,42 @@ chevApp.controller('logoutController', function($scope, $rootScope, $location, $
 		$rootScope.userInfo = null;
 	});
 });
+
+/*=======================================
+=            User Controller            =
+=======================================*/
+
+chevApp.controller('userController', function($scope, $rootScope, $location, $resource, User){
+	$rootScope.navbarClass = "text-dark";
+
+	var user = User;
+	// $scope.userInfoEdit = "absolute zeroOpacity";
+
+	$scope.editUserInfo = function(){
+		// $scope.userInfoShow = "animated zoomOut absolute";
+		// $scope.userInfoEdit = "animated zoomIn";
+		$scope.userInfoView = true;
+		$scope.updateData = $rootScope.userInfo;
+	}
+
+	$scope.updateInfo = function(){
+		// $rootScope.userInfo["name_first"] = "สมุหสมาคมนิยมไทย";
+		$rootScope.userInfo = $scope.updateData;
+		User.update({user_id:$rootScope.userInfo["id"]}, $rootScope.userInfo);
+		// $scope.userInfoEdit = "animated zoomOut absolute";
+		// $scope.userInfoShow = "animated zoomIn";
+		$scope.userInfoView = false;
+	};
+	console.log($rootScope.userInfo);
+	// $scope.pages = {processPurchase:'public/pages/user/processPurchase.html'}
+});
+
+// chevApp.controller('userMenuController', function($scope, $rootScope, $location, $routeParams){
+// 	$scope.tab = $routeParams['tab'];
+// 	console.log($scope.tab);
+// })
+
+
 
 /*========================================
 =            General Function            =
@@ -275,6 +385,13 @@ isLogin = function($resource, $rootScope)
 		$rootScope.isLogin = false;
 	});
 };
+
+if (typeof String.prototype.startsWith != 'function') {
+  // see below for better implementation!
+  String.prototype.startsWith = function (str){
+    return this.indexOf(str) == 0;
+  };
+}
 
 /*=====================================================
 =            Angular Directive (Component)            =
@@ -348,14 +465,23 @@ chevApp.factory('User', function($resource){
 	return $resource('public/user/:user_id', 
 		{}, 
 		{
-			show: {method:'GET'},
-		 	update: {method: 'PUT', params:{id: '@user_id'}},
-		 	delete: {method: 'DELETE', params:{id: '@user_id'}}
+			// show: {method:'GET'},
+		 	'update': {method: 'PUT', params:{id: '@user_id'}},
+		 	'delete': {method: 'DELETE', params:{id: '@user_id'}}
 		});
 });
 
 chevApp.factory('Users', function($resource){
 	return $resource('public/user', 
+		{}, 
+		{
+			index: {method:'GET'},
+		 	store: {method: 'POST'}
+		});
+});
+
+chevApp.factory('Cart', function($resource){
+	return $resource('public/cart', 
 		{}, 
 		{
 			index: {method:'GET'},
