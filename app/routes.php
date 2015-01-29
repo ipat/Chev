@@ -30,7 +30,7 @@ Route::resource('user', 'UserController');
 Route::resource('product','ProductController');
 Route::resource('cart','CartController');
 Route::post('logout', 'UserController@logout');
-
+Route::resource('order','OrderController');
 
 // use for facebook login if you need to ask p'TA later
 //Route::post('facebook', 'UserController@facebook');
