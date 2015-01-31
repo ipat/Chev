@@ -60,6 +60,10 @@ chevApp.config(['$routeProvider', '$locationProvider'	,function($routeProvider, 
 			templateUrl: 'public/pages/products.html',
 			controller: 'productsController'
 		}).
+		when('/checkout', {
+			templateUrl: 'public/pages/checkout.html',
+			controller: 'checkoutController'
+		}).
 		when('/user', {
 			templateUrl: 'public/pages/user.html',
 			controller: 'userController'
@@ -143,7 +147,11 @@ chevApp.controller('navbarController', function($scope, $location, $rootScope, $
     // Use for link to login page
     $rootScope.login = function(){
     	$location.path('/login');
-    	$rootScope.showModal = !$rootScope.showModal;
+    	// $rootScope.showModal = !$rootScope.showModal;
+    };
+
+    $rootScope.checkout = function(){
+    	$location.path('/checkout');
     };
 
     isLogin($resource, $rootScope);
@@ -151,7 +159,7 @@ chevApp.controller('navbarController', function($scope, $location, $rootScope, $
 
 // Controller for Homepage
 chevApp.controller('homeController', function($scope, $rootScope){
-	$rootScope.navbarClass = "";
+	$rootScope.navbarClass = "text-dark";
 	$(window).stellar();
 	$.stellar({
 	  horizontalScrolling: false
@@ -300,7 +308,7 @@ chevApp.controller('productsController', function($scope, $rootScope, $resource,
 		var addedItem = {};
 		addedItem['product_id'] = 1;
 		addedItem['product_amount'] = $scope.amount;
-		console.log(addedItem);
+		// console.log(addedItem);
 		Cart.store(addedItem, function(){
 			$rootScope.showCart();
 			// sc();
@@ -326,7 +334,7 @@ chevApp.controller('logoutController', function($scope, $rootScope, $location, $
 =            User Controller            =
 =======================================*/
 
-chevApp.controller('userController', function($scope, $rootScope, $location, $resource, User){
+chevApp.controller('userController', function($scope, $rootScope, $location, $resource, User, AddUserAddress, UserAddress, UserAddress){
 	$rootScope.navbarClass = "text-dark";
 
 	var user = User;
@@ -343,11 +351,68 @@ chevApp.controller('userController', function($scope, $rootScope, $location, $re
 		// $rootScope.userInfo["name_first"] = "สมุหสมาคมนิยมไทย";
 		$rootScope.userInfo = $scope.updateData;
 		User.update({user_id:$rootScope.userInfo["id"]}, $rootScope.userInfo);
+		$("#editUserInfo").modal('hide');
 		// $scope.userInfoEdit = "animated zoomOut absolute";
 		// $scope.userInfoShow = "animated zoomIn";
 		$scope.userInfoView = false;
 	};
-	console.log($rootScope.userInfo);
+
+	$scope.newAddressDlg = function(){
+		$scope.newAddressEnabled = true;
+		$scope.newAddressClass = "bounceIn";
+	};
+
+	$scope.submitAddress = function(isEdit){	
+		// console.log($scope.newAddress);
+		// $scope.newAddress["house_name"]	= ($scope.newAddress["house_name"] == null)? '':$scope.newAddress["house_name"];
+		// $scope.newAddress["road"]	= ($scope.newAddress["road"] == null)? '':$scope.newAddress["road"];
+		// AddUserAddress.store($scope.newAddress);
+		
+		// $scope.newAddressEnabled = false;
+		// $scope.newAddressClass = "bounceOut";
+		if(isEdit == true){
+			UserAddress.update({add_id:$scope.newAddress["id"]}, $scope.newAddress, function(res){
+    			isLogin($resource, $rootScope);
+			});
+		} else {
+			$scope.newAddress["house_name"]	= ($scope.newAddress["house_name"] == null)? '':$scope.newAddress["house_name"];
+			$scope.newAddress["road"]	= ($scope.newAddress["road"] == null)? '':$scope.newAddress["road"];
+			AddUserAddress.store($scope.newAddress, function(res){
+    			isLogin($resource, $rootScope);
+			});
+			
+			$scope.newAddressEnabled = false;
+			$scope.newAddressClass = "bounceOut";
+		}
+		console.log(isEdit);
+		$("#editAddress").modal('hide');
+	};
+
+	$scope.setDefaultAddress = function(num){
+
+		$rootScope.userInfo["default_address_id"] = num;
+		User.update({user_id:$rootScope.userInfo["id"]}, $rootScope.userInfo);
+	}
+
+	$scope.isDefault = function(num){
+		return $rootScope.userInfo["default_address_id"] === num;
+	}
+
+
+	$scope.callAddressBox = function(addId, isEdit){
+		// console.log(addId);
+		if(isEdit == true){
+			$scope.addressBoxTitle = "แก้ไขที่อยู่";
+			$scope.newAddress = $rootScope.userInfo["addresses"][addId];
+			$scope.newAddress['isEdit'] = true;
+		} else {
+			$scope.addressBoxTitle = "เพิ่มที่อยู่ใหม่";
+			$scope.newAddress = {};
+			$scope.newAddress['isEdit'] = false;
+		}
+	};
+
+	// console.log($rootScope.userInfo);
 	// $scope.pages = {processPurchase:'public/pages/user/processPurchase.html'}
 });
 
@@ -355,6 +420,21 @@ chevApp.controller('userController', function($scope, $rootScope, $location, $re
 // 	$scope.tab = $routeParams['tab'];
 // 	console.log($scope.tab);
 // })
+
+
+
+chevApp.controller('checkoutController', function($scope, $rootScope, $location, $routeParams, Cart){
+	$rootScope.navbarClass = "text-dark";
+
+	var getCart = Cart.index(function(){
+		if(getCart["total"] == 0) {
+			$rootScope.cart = undefined;
+		} else {    		
+			$rootScope.cart = getCart["products"];
+		}
+		
+	});
+});
 
 
 
@@ -381,6 +461,7 @@ isLogin = function($resource, $rootScope)
 	isLogin.get({}, function(val){
 		$rootScope.isLogin = true;
 		$rootScope.userInfo = val['user'];
+		console.log($rootScope.userInfo);
 	}, function(res){
 		$rootScope.isLogin = false;
 	});
@@ -394,7 +475,7 @@ if (typeof String.prototype.startsWith != 'function') {
 }
 
 /*=====================================================
-=            Angular Directive (Component)            =
+=            Angular Directive (Components)           =
 =====================================================*/
 
 // AlerBox Component
@@ -477,6 +558,24 @@ chevApp.factory('Users', function($resource){
 		{
 			index: {method:'GET'},
 		 	store: {method: 'POST'}
+		});
+});
+
+chevApp.factory('AddUserAddress', function($resource){
+	return $resource('public/user-address', 
+		{}, 
+		{
+		 	store: {method: 'POST'}
+		});
+});
+
+chevApp.factory('UserAddress', function($resource){
+	return $resource('public/user-address/:add_id', 
+		{}, 
+		{
+			// show: {method:'GET'},
+		 	'update': {method: 'PUT', params:{id: '@add_id'}},
+		 	'delete': {method: 'DELETE', params:{id: '@add_id'}}
 		});
 });
 
