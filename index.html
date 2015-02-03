@@ -93,7 +93,7 @@
                     <div>
                       <!-- <button class="red-btn col-md-12 full-width" ng-click="clearCart()"><i class="glyphicon glyphicon-trash"></i> ล้างตะกร้าสินค้า</button> -->
                       <!-- <div class="col-md-2"></div> -->
-                      <button class="default-btn col-md-12 full-width" ng-show="isLogin"><i class="glyphicon glyphicon-arrow-right"></i> เช็คเอาท์สินค้าเลย</button>
+                      <button class="default-btn col-md-12 full-width" ng-show="isLogin" ng-click="checkout()"><i class="glyphicon glyphicon-arrow-right"></i> เช็คเอาท์สินค้าเลย</button>
                       <button class="default-btn col-md-12 full-width" ng-show="!isLogin" ng-click="login()"><i class="fa fa-key"></i> เข้าสู่ระบบเพื่อเช็คเอาท์</button>
                       <div class="clear"></div>
                     </div>
@@ -173,6 +173,7 @@
         <script src="public/js/vendor/bootstrap.min.js"></script>
         <script src="public/js/vendor/angular.min.js"></script>
         <script src="public/js/vendor/angular-route.min.js"></script>
+        <script src="public/js/vendor/angular-ui-router.min.js"></script>
         <script src="public/js/vendor/angular-resource.min.js"></script>
         <script src="public/js/vendor/underscore-min.js"></script>
 

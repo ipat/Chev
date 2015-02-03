@@ -19,36 +19,33 @@
 	</div> -->
 	
 
-	<div class="col-md-5">
-		<div class="col-md-10">
-			<h3 >ข้อมูล่วนตัว 	</h3>
-		</div>
-		<div class="col-md-2 full-height">
-			<h4>
-				<a ng-click="editUserInfo()" class="{{userInfoShow}}" ng-hide="userInfoView">Edit</a>
-			</h4>
+	<div class="col-md-12">
+		<div >
+			<h3 >ข้อมูล่วนตัว 	<!-- <a ng-click="editUserInfo()" class="{{userInfoShow}} float-right" ng-hide="userInfoView">Edit</a> -->
+				<button ng-click="editUserInfo()" class="default-btn float-right {{userInfoShow}}" style="font-size:0.5em" data-toggle="modal" data-target="#editUserInfo"><i class="glyphicon glyphicon-pencil"></i></button>
+			</h3>
 		</div>
 		<div class="clear"></div>
 		
 		<hr>
-		<div class="{{userInfoShow}}" ng-hide="userInfoView">			
+		<div class="{{userInfoShow}}">			
 			<h4 class="col-md-12">คุณ {{userInfo.name_first}} {{userInfo.name_last}}</h4>
 			<h4 class="col-md-12">เบอร์โทรศัพท์ {{userInfo.tel}}</h4>
 			<div class="clear"></div>
 		</div>
-		<form class="{{userInfoEdit}}" style="" ng-show="userInfoView">
+		<!-- <form class="{{userInfoEdit}}" style="" ng-show="userInfoView">
 			<div class="col-md-6">
 				<label for="name_first">ชื่อ</label>
-				<input class="small-input" type="text" ng-model="updateData.name_first" name="name_first">
+				<input class="small-input" type="text" ng-model="updateData.name_first" name="name_first" required>
 			</div>
 			<div class="col-md-6">
 				<label for="name_last">นามสกุล</label>
-				<input class="small-input" type="text" ng-model="updateData.name_last" name="name_last">
+				<input class="small-input" type="text" ng-model="updateData.name_last" name="name_last" required>
 			</div>
 			<div class="clear"></div>
 			<div class="col-md-12">
 				<label for="tel">เบอร์โทรศัพท์</label>
-				<input class="small-input" type="text" ng-model="updateData.tel" name="tel">
+				<input class="small-input" type="text" ng-model="updateData.tel" name="tel" required>
 			</div>
 			<div class="clear"></div>
 			<div class="col-md-12">
@@ -56,14 +53,132 @@
 			</div>
 			
 			<div class="clear"></div>
-		</form>
+		</form> -->
 
-		<h3>ที่อยู่ในการจัดส่ง</h3>
+		<h3>ที่อยู่ในการจัดส่ง <button class="default-btn float-right" style="font-size:0.5em" data-toggle="modal" data-target="#editAddress" ng-click="callAddressBox(0, false)" ng-hide="newAddressEnabled"><i class="glyphicon glyphicon-plus"></i></button></h3>
+		<div class="clear"></div>
 		<hr>
+		
+
+		<div ng-repeat="(key,address) in userInfo.addresses" class="col-md-6">
+			<div class="" ng-class="{ 'default-btn':isDefault({{address.id}}), 'white-btn':!isDefault({{address.id}}) }" style="text-align:left; height:100%" >
+				<div class="col-md-4 col-xs-height">
+					<h1><i class="fa fa-home biggersize"></i></h1>
+				</div>
+				<div class="col-md-8 verticalCenter" style="padding-top:0.5em;">
+					<div class="badge" ng-show="isDefault(address.id)" >เป็นที่อยู่เริ่มต้น</div> {{address.title}}
+					<br>
+					{{address.house}} {{address.house_name}} {{address.road}} {{address.county}} <br>
+					{{address.district}} {{address.province}} <br>
+					{{address.postcode}}
+					<div class="clear"></div>
+					<div ng-show="!isDefault(address.id)" class="col-md-6 green-btn" ng-click="setDefaultAddress(address.id)">ตั้งที่อยู่เริ่มต้น</div>
+					<div class="col-md-6 default-btn" data-toggle="modal" data-target="#editAddress" ng-click="callAddressBox(key, true)">แก้ไขข้อมูล</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+		</div>
+		
+		<hr>
+
 	</div>
 
-	<div class="col-md-7">
-		
+	
+		<!-- <div class="col-md-7">
+			
+		</div> -->
+	<!-- Modal for Edit User Info -->
+	<div class="modal fade" id="editUserInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">แก้ไขข้อมูลส่วนตัว</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form class="{{userInfoEdit}}" style="" ng-show="userInfoView">
+				<div class="col-sm-6">
+					<label for="name_first">ชื่อ</label>
+					<input class="small-input" type="text" ng-model="updateData.name_first" name="name_first" required>
+				</div>
+				<div class="col-sm-6">
+					<label for="name_last">นามสกุล</label>
+					<input class="small-input" type="text" ng-model="updateData.name_last" name="name_last" required>
+				</div>
+				<div class="clear"></div>
+				<div class="col-sm-12">
+					<label for="tel">เบอร์โทรศัพท์</label>
+					<input class="small-input" type="text" ng-model="updateData.tel" name="tel" required>
+				</div>
+				<div class="clear"></div>
+			</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="white-btn" data-dismiss="modal">ยกเลิก</button>
+	        <button type="button" class="default-btn" ng-click="updateInfo()">บันทึก</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- Modal for EditAddress -->
+	<div class="modal fade" id="editAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">{{addressBoxTitle}}</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form style="">
+				<div class="col-sm-12">
+					<label for="title">ชื่อผู้ส่งถึง<span class="red">*</span></label>
+					<input class="small-input" type="text" ng-model="newAddress.title" name="title">
+				</div>
+				<div class="clear"></div>
+				<div class="col-sm-6">
+					<label for="house">ที่อยู่บ้าน<span class="red">*</span></label>
+					<input class="small-input" type="text" ng-model="newAddress.house" name="house">
+				</div>
+				<div class="col-sm-6">
+					<label for="house_name">ชื่อบ้าน</label>
+					<input class="small-input" type="text" ng-model="newAddress.house_name" name="house_name">
+				</div>
+				<div class="clear"></div>
+				<div class="col-sm-12">
+					<label for="road">ถนน</label>
+					<input class="small-input" type="text" ng-model="newAddress.road" name="road">
+				</div>
+				<div class="clear"></div>
+				<div class="col-sm-6">
+					<label for="district">ตำบล/แขวง<span class="red">*</span></label>
+					<input class="small-input" type="text" ng-model="newAddress.district" name="district">
+				</div>
+				<div class="col-sm-6">
+					<label for="county">อำเภอ/เขต<span class="red">*</span></label>
+					<input class="small-input" type="text" ng-model="newAddress.county" name="county">
+				</div>
+				<div class="clear"></div>
+				<div class="col-sm-6">
+					<label for="province">จังหวัด<span class="red">*</span></label>
+					<input class="small-input" type="text" ng-model="newAddress.province" name="province">
+				</div>
+				<div class="col-sm-6">
+					<label for="postcode">รหัสไปรษณีย์<span class="red">*</span></label>
+					<input class="small-input" type="text" ng-model="newAddress.postcode" name="postcode">
+				</div>
+				<div class="clear"></div>
+
+			</form>
+	      </div>
+	      <div class="modal-footer"> 
+	        <button type="button" class="white-btn" data-dismiss="modal">ยกเลิก</button>
+	        <button type="button" class="default-btn" ng-click="submitAddress(newAddress.isEdit)">บันทึก</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 
 </div>

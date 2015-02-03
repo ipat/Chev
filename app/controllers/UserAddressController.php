@@ -6,9 +6,9 @@ class UserAddressController extends BaseController {
       $this->beforeFilter('auth', array('only' => array(
         'store', 'update', 'destroy'
       )));
-      $this->beforeFilter('csrf', array('only' => array(
-        'store', 'update', 'destroy'
-      )));
+      // $this->beforeFilter('csrf', array('only' => array(
+      //   'store', 'update', 'destroy'
+      // )));
     }
 
     public function index () {

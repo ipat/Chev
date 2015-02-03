@@ -189,6 +189,14 @@ body{
 	text-align: right;
 }
 
+.float-right{
+	float: right;
+}
+
+.float-left{
+	float: left;
+}
+
 .cir-img {
 	width: 100%;
 	border-radius: 200px;
@@ -282,6 +290,9 @@ hr.gradient {
 	opacity: 0;
 }
 
+.red {
+	color: red;
+}
 
 .text-input{	
 	-webkit-appearance: none;
@@ -345,7 +356,7 @@ hr.gradient {
 	color: $text-dark !important;
 	border: 1px solid lighten($gray, 10%);
 	box-shadow: 0px 0.3em 0px $gray;	
-	text-shadow: 0px 2px 0px $gray;
+	text-shadow: 0px 1px 0px $gray;
 	&:active{
 		position:relative;
 		top: 0.2em;
@@ -399,6 +410,10 @@ hr.gradient {
 	@include box-shadow-top-down();
 }
 
+
+
+
+
 /*
 ===========================================================
 	Welcome Block
@@ -406,15 +421,19 @@ hr.gradient {
 */
 
 .welcomejumbo {
-	background: url('../img/38.jpg') no-repeat center center;
+	background: url('../img/main.jpg') no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 	background-attachment: fixed;
-	background-position: 0 0;
+	background-position: 0 -15em;
 	z-index: -1;
 	color: white;
 	text-shadow: black  0.1em 0.1em 10px;
 	// box-shadow: black 0em 0em 10px inset;
 	@include box-shadow-top-down();
-	margin-top: -100px;
+	// margin-top: -100px;
 }
 
 .welcometext {
@@ -436,7 +455,7 @@ hr.gradient {
 	text-shadow: black  0.1em 0.1em 10px;
 	// box-shadow: black 0em 0em 10px inset;
 	@include box-shadow-top-down();
-	margin-top: -100px;
+	// margin-top: -100px;
 }
 
 
