@@ -31,6 +31,7 @@ class Order extends Eloquent {
 		return array(
 			'id' => intval($this->id),
 			'user' => $user->toArray(),
+			'total' => $this->total,
 			'products' => $products->toArray(),
 			'address' => $this->address,   
 			'status' => $this->status,
