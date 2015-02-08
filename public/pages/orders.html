@@ -1,0 +1,147 @@
+<div class="center bottom-space">
+	<div class="jumbotron center">
+    <h2 style="font-size:2.4em">ประวัติการสั่งซื้อทั้งหมดของคุณ {{userInfo.name_first}}</h2>
+    <!-- <h3>ยังไม่ได้เข้าจ๊ะ <a href="login">เข้าดิฟระ</a></h3> -->
+  </div>
+	<div class="container">
+    <div class="col-md-12">
+      <div class="col-md-6" ng-repeat="(key,order) in orders">
+        <div class="white-btn" style="text-align:left; height:100%" >
+          <div class="col-md-3">            
+            <h1><i class="fa fa-pencil-square-o biggersize"></i></h1>
+          </div>
+          <div class="col-md-9" style="padding-top:1em;">
+            สถานะการสั่งซื้อ <b style="font-size:1.2em; ">{{(order.status==0)? "รอการยืนยันการโอนเงิน": (order.status==1)? "รอการจัดส่ง": "ทำการจัดส่งให้ท่านแล้ว"}}</b>
+            <br>
+            มีการอัพเดตล่าสุด: {{order.updated_at.date}}<br>
+            มูลค่าสินค้า: {{order.total}} บาท <br>
+            จัดส่งไปที่ {{order.address.title}} <br>
+            
+            <div>
+              <div class="white-btn col-md-6" data-toggle="modal" data-target="#orderInfo" ng-click="toggleOrderInfo(key)">รายละเอียดเพิ่มเติม</div>
+              <div class="default-btn col-md-6" data-toggle="modal" data-target="#transferConfirm" ng-click="setTransferItem(order.id)" ng-show="order.status==0">ยืนยันการโอนเงิน</div>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div class="clear"></div>
+          
+        </div>
+        
+        
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <hr>
+  </div>
+
+
+  <!-- Modal for Transfer Confirm -->
+  <div class="modal fade left" id="transferConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"><b>ยืนยันการโอนเงิน</b></h4>
+        </div>
+        <div class="modal-body">
+          <form class="" style="" >
+            <div class="col-sm-12">
+              <label for="amount">จำนวนเงินที่โอน</label>
+              <input class="small-input" ng-class="(valid.amount !== undefined)? 'invalid':''" type="number" ng-model="transfer.amount" name="amount" required>
+              <div class="noti" ng-bind="valid.amount"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-sm-12">
+              <label for="bank">โอนจากธนาคาร</label>
+              <!-- <input class="small-input" type="text" ng-model="trasfer.bank" name="bank" required> -->
+              <select name="bank" class="small-input"  id="bank" ng-model="transfer.bank" ng-init="transfer.bank = 'ธนาคารกสิกรไทย'">
+                <option value="ธนาคารกสิกรไทย" selected>ธนาคารกสิกรไทย</option>
+                <option value="ธนาคารไทยพาณิช">ธนาคารไทยพาณิช</option>
+                <option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</option>
+                <option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</option>
+                <option value="ธนาคารทหารไทย">ธนาคารทหารไทย</option>
+                <option value="ธนาคารออมสิน">ธนาคารออมสิน</option>
+                <option value="ธนาคารกรุงศรีอยุทยา">ธนาคารกรุงศรีอยุทยา</option>
+                <option value="ธนาคารธนชาติ">ธนาคารธนชาติ</option>
+              </select>
+            </div>
+            <div class="clear"></div>
+            <div class="clear"></div>
+            <div class="col-sm-6">
+              <label for="tel">เวลาที่โอนเงิน</label>
+              <!-- <input class="small-input" type="text" ng-model="transfer.tel" name="tel" required> -->
+              <input ng-model="transfer.time_before" ng-class="(valid.payTime !== undefined)? 'invalid':''" type="time" data-field="time"  class="small-input" required>
+              <div class="noti" ng-bind="valid.payTime"></div>
+            </div>
+            <div class="col-sm-6">
+              <label for="tel">วันที่โอนเงิน</label>
+              <!-- <input class="small-input" type="text" ng-model="transfer.tel" name="tel" required> -->
+              <input ng-model="transfer.date_before" ng-class="(valid.payTime !== undefined)? 'invalid':''" type="date" data-field="date"  class="small-input" required>
+              <div class="noti" ng-bind="valid.payTime"></div>
+            </div>
+            <div id="dtBox"></div>
+            <div class="clear"></div>
+          </form>
+
+          
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="white-btn" data-dismiss="modal">ยกเลิก</button>
+          <button type="button" class="default-btn" ng-click="updateTransfer()">บันทึก</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Modal for Order Info -->
+  <div class="modal fade left" id="orderInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"><b>ข้อมูลการสั่งซื้อ</b></h4>
+        </div>
+        <div class="modal-body">
+          <b>สถานะออร์เดอร์ปัจจุบัน <span style="font-size:1.2em; ">{{(currentOrder.status==0)? "รอการยืนยันการโอนเงิน": (currentOrder.status==1)? "รอการจัดส่ง": "ทำการจัดส่งให้ท่านแล้ว"}}</span></b> 
+          <hr>
+          <b>ที่อยู่ที่ใช้ในการจัดส่ง</b> <br>
+              {{currentOrder.address.title}}  
+              <br>
+                {{currentOrder.address.house}} {{currentOrder.address.house_name}} {{currentOrder.address.road}} {{currentOrder.address.county}} <br>
+                {{currentOrder.address.district}} {{currentOrder.address.province}} <br>
+                {{currentOrder.address.postcode}}
+              <br>
+          <hr>
+          <b>รายการสินค้าที่ทำการสั่งซื้อ</b>
+          <table class="table table-hover" >
+            <thead>
+              <tr>
+                <th>สินค้า</th>
+                <th>จำนวน</th>
+                <th>ราคา</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="(key, value) in currentOrder.products">
+                <th>{{value.product.name}}</th>
+                <th>{{value.setAmount}} ชิ้น</th>
+                <th>{{value.product.allprice * value.setAmount}} บาท</th>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="white-btn" data-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+</div>
+

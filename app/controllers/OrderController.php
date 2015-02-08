@@ -18,7 +18,7 @@ class OrderController extends BaseController{
 		return Response::json($all_order->toArray());
 	}
 	public function show($tmp){
-		return 11;
+		// return 11;
 		$user_id = Auth::user()->id;
 		$order = Order::where('user_id',$user_id)->get();
 		return Response::json($order->toArray());
