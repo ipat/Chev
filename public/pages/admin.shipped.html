@@ -1,0 +1,80 @@
+<!-- <div class="center bottom-space">
+	<div class="jumbotron">
+		<h1 class="title">การโอนเงิน</h1>
+		<h2>อิอิ</h2>
+	</div>
+	
+	
+	
+
+</div> -->
+
+<h2 class="center">รายการที่จัดส่งแล้ว</h2>
+<hr>
+<div class="panel panel-default col-md-6" ng-repeat="(key,order) in shippedOrder">
+	<div class="panel-body">
+		<b>คุณ {{order.user.name_first}} {{order.user.name_last}}</b> <br>
+		Tracking ID : <b>{{order.sendInfo.tracking_code}}</b> <br>
+		วันที่คาดว่าจะถึง : <b>{{order.sendInfo.arrival_date}}</b> บาท<br>
+		<div class="default-btn col-md-6" data-toggle="modal" data-target="#orderInfo" ng-click="toggleOrderInfo(key)">รายละเอียดเพิ่มเติม</div>
+	</div>
+</div>
+<div class="clear"></div>
+
+<!-- Modal for Order Info -->
+<div class="modal fade left" id="orderInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel"><b>ข้อมูลการสั่งซื้อ</b></h4>
+    </div>
+    <div class="modal-body">
+		สถานะการสั่งซื้อ <b style="font-size:1.2em; ">{{(currentOrder.status==0)? "รอการยืนยันการโอนเงิน": (currentOrder.status==1)? "รอการจัดส่ง": "ทำการจัดส่งให้ท่านแล้ว"}}</b> <br>
+		<hr>
+		ออร์เดอร์ของคุณ <b>{{currentOrder.user.name_first}} {{currentOrder.user.name_last}}</b> <br>
+		เบอร์โทรศัพท์ <b>{{currentOrder.user.tel}}</b> <br>
+		<hr>
+
+		<b>รายละเอียดการโอนเงิน</b> <br>
+		ทำการโอนจาก <b>{{currentOrder.payInfo.bank}}</b> มูลค่าที่โอน <b>{{currentOrder.payInfo.amount}}</b> บาท <br>
+		เมื่อเวลา <b>{{currentOrder.payInfo.payTime}}</b> <br>
+
+		<hr>
+
+		<b>รายละเอียดการจัดส่ง</b> <br>
+		Trackinng ID <b>{{currentOrder.sendInfo.tracking_code}}</b> วันที่คาดว่าสินค้าจะถึง <b>{{currentOrder.sendInfo.arrival_date}}</b> บาท <br>
+
+		<!-- <hr>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<b>แก้ไข Tracking ID</b>
+			</div>
+			<form class="panel-body">
+				<div class="col-md-12">
+					<label for="">Tracking ID</label>
+					<input type="text" class="small-input" ng-class="(valid.tracking_code !== undefined)? 'invalid':''" placeholder="Tracking ID" ng-model="ship.tracking_code">
+					<div class="noti" ng-bind="valid.tracking_code"></div>
+				</div>
+				<div class="col-md-12">
+					<label>วันที่คาดว่าจัดส่งถึง</label>
+					<input type="date" class="small-input" ng-class="(valid.arrival_date !== undefined)? 'invalid':''" ng-model="ship.arrival_date">
+					<div class="noti" ng-bind="valid.arrival_date"></div>
+				</div>
+				<div class="clear"></div>
+				<div class="col-md-4">
+					<button class="green-btn" ng-click="confirmShipping()">ยืนยันการจัดส่ง</button>
+				</div>
+				<div class="clear"></div>
+				
+			</form>	
+		</div> -->
+		
+		
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="white-btn" data-dismiss="modal">ปิด</button>
+    </div>
+  </div>
+</div>
+</div>

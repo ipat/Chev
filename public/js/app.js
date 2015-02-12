@@ -87,6 +87,26 @@ chevApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider'	,fun
 			templateUrl: 'public/pages/user.html',
 			controller: 'userController'
 		}).
+		state('admin', {
+			url: '/admin',
+			templateUrl: 'public/pages/admin.html',
+			controller: 'adminController'
+		}).
+		state('admin.orders', {
+			url: '/orders',
+			templateUrl: 'public/pages/admin.orders.html',
+			controller: 'adminOrderController'
+		}).
+		state('admin.transfered', {
+			url: '/transfered',
+			templateUrl: 'public/pages/admin.transfered.html',
+			controller: 'adminTransferedController'
+		}).
+		state('admin.shipped', {
+			url: '/shipped',
+			templateUrl: 'public/pages/admin.shipped.html',
+			controller: 'adminShippedController'
+		}).
 		state('orders', {
 			url: '/orders',
 			templateUrl: 'public/pages/orders.html',
@@ -748,6 +768,117 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders){
          
 });
 
+/*========================================
+=            Admin Controller            =
+========================================*/
+
+chevApp.controller('adminController', function($scope, $rootScope, Order){
+	$rootScope.navbarClass = "text-dark";
+	// $rootScope.allOrders = Order.index(function(res){
+	// 	console.log($rootScope.allOrders);
+	// });
+});
+
+/*==============================================
+=            Admin-Order Controller            =
+==============================================*/
+
+chevApp.controller('adminOrderController', function($scope, $rootScope, Order){
+	$scope.justOrder = {};
+	// for(var i = 0; i < $rootScope.allOrders.length; i++){
+	// 	if($rootScope.allOrders[i]["status"] == 0)
+	// 		$scope.justOrder.push($rootScope.allOrders[i]);
+	// 	console.log($rootScope.allOrders[i]["status"]);
+	// }
+	$scope.justOrder = Order.index({'status': 0}, function(res){
+		// console.log($scope.justOrder);
+	});
+
+	$scope.toggleOrderInfo = function(num){
+		$scope.currentOrder = $scope.justOrder[num];
+	};
+});
+
+/*===================================================
+=            Admin-Transfered Controller            =
+===================================================*/
+
+chevApp.controller('adminTransferedController', function($scope, $rootScope, Order, Orders){
+	$scope.transferedOrder = Order.index({'status': 1}, function(res){
+		// console.log($scope.transferedOrder);
+	});
+
+
+	$scope.toggleOrderInfo = function(num){
+		$scope.currentOrder = $scope.transferedOrder[num];
+		$scope.ship = {};
+		$scope.ship.status = 2; 
+	};
+
+	$scope.confirmShipping = function(){
+		Orders.update({temp_id: $scope.currentOrder.id}, $scope.ship, function(res){
+			console.log("Hello");
+			$("#orderInfo").modal('hide');
+			$scope.transferedOrder = Order.index({'status': 1}, function(res){
+				// console.log($scope.transferedOrder);
+			});
+		}, function(res){
+				var errorList = JSON.parse(res['data']['error']['message']);
+				errorList = errorList['messages'];
+				
+				$scope.valid = {};
+
+				for (var i = 0; i < errorList.length; i++) {
+					if(errorList[i] === "arrivalDate_missing")
+						$scope.valid.arrival_date = "กรุณาใส่วันที่คาดว่าสินค้าจะถึง";
+					else if(errorList[i] === "tracking_code_missing")
+						$scope.valid.tracking_code = "กรุณาใส่ Tracking ID";
+					
+				};
+		});
+	};
+});
+
+/*===================================================
+=            Admin-Shipped Controller            =
+===================================================*/
+
+chevApp.controller('adminShippedController', function($scope, $rootScope, Order, Orders){
+	$scope.shippedOrder = Order.index({'status': 2}, function(res){
+		console.log($scope.shippedOrder);
+	});
+
+
+	$scope.toggleOrderInfo = function(num){
+		$scope.currentOrder = $scope.shippedOrder[num];
+		$scope.ship = {};
+		$scope.ship.status = 2; 
+	};
+
+	$scope.confirmShipping = function(){
+		Orders.update({temp_id: $scope.currentOrder.id}, $scope.ship, function(res){
+			console.log("Hello");
+			$("#orderInfo").modal('hide');
+			$scope.shippedOrder = Order.index({'status': 2}, function(res){
+				// console.log($scope.transferedOrder);
+			});
+		}, function(res){
+				var errorList = JSON.parse(res['data']['error']['message']);
+				errorList = errorList['messages'];
+				
+				$scope.valid = {};
+
+				for (var i = 0; i < errorList.length; i++) {
+					if(errorList[i] === "arrivalDate_missing")
+						$scope.valid.arrival_date = "กรุณาใส่วันที่คาดว่าสินค้าจะถึง";
+					else if(errorList[i] === "tracking_code_missing")
+						$scope.valid.tracking_code = "กรุณาใส่ Tracking ID";
+					
+				};
+		});
+	};
+});
+
 
 /*========================================
 =            General Function            =
@@ -905,6 +1036,7 @@ chevApp.factory('Order', function($resource){
 	return $resource('public/order', 
 		{}, 
 		{
+			index: {method: 'get', isArray:true},
 			store: {method: 'POST'}
 		});
 });
