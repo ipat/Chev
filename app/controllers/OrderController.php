@@ -35,15 +35,16 @@ class OrderController extends BaseController{
 		$user_id = Auth::user()->id;
 		// $order = Order::where('id',$order_id)->where('user_id',$user_id)->first();
 		$order = Order::find($order_id);
-
+//		return $order;
 		if (!$order) {
 			App::abort('404', 'not_found');
 		}
 
+
 		if ($status == 0){
 			if ($order->user_id != $user_id
 				|| $order->status == 1) {
-				// trying to make change on the others
+				// trying to make change on the otherwiseers
 				// lowering the staus
 				// requires admin permission
 				if (! Auth::user()->isAdmin()) {
@@ -54,6 +55,7 @@ class OrderController extends BaseController{
 			// decresing order
 			if ($order->status == 1) {
 				// remove payInfo
+				return 1111;
 				$order->payInfo->delete();
 				$order->status = 0;
 				$order->save();
