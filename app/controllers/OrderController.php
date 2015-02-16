@@ -5,20 +5,22 @@ class OrderController extends BaseController{
     $this->beforeFilter('auth', array('only' => array(
       'index','update','store','destroy','show'
     )));
-    // $this->beforeFilter('admin', array('only' => array(
-    //   'index'
-    // )));
+    $this->beforeFilter('admin', array('only' => array(
+      'index'
+    )));
     
     // $this->beforeFilter('csrf', array('only' => array(
     //   'index','update','store','destroy','show'
     // )));
 	}
 	public function index(){
-		$all_order = Order::where('status',1)->get();
+		$status = Input::get('status');
+
+		$all_order = Order::where('status', $status)->get();
 		return Response::json($all_order->toArray());
 	}
 	public function show($tmp){
-		return 11;
+		// return 11;
 		$user_id = Auth::user()->id;
 		$order = Order::where('user_id',$user_id)->get();
 		return Response::json($order->toArray());

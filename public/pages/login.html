@@ -14,8 +14,9 @@
 
 		
 		<form ng-submit="login()" ng-show="!isLogin">
-			<input class="text-input" ng-model="form.email" type="text" name="mail" placeholder="E-mail">
-			<input class="text-input" ng-model="form.password" type="password" name="password" placeholder="Password">
+			<input class="text-input" ng-model="form.email" type="text" name="mail" placeholder="E-mail" ng-class="(valid.password !== undefined)? 'invalid':''">
+			<input class="text-input" ng-model="form.password" type="password" name="password" placeholder="Password" ng-class="(valid.password !== undefined)? 'invalid':''">
+			<div class="noti" ng-bind="valid.password" style="top:-1.25em;"></div>
 			<button type="submit" class="default-btn midium-size full-width">เข้าสู่ระบบ</button>
 		</form>
 		

@@ -312,6 +312,14 @@ hr.gradient {
 		border: 1px solid $webtheme-dark;
 	}
 
+	
+
+}
+
+.invalid{
+	box-shadow: 0px 0px 8px $red;
+	border: 1px solid $red;	
+	top: -0.8em;
 }
 
 .small-input{
@@ -320,6 +328,22 @@ hr.gradient {
 	font-size: 1em;
 	height: 2.5em;
 }
+
+.noti{
+	background-color: $red;
+	color: white;
+	text-shadow: 0 2px 0 darken($red,10%);
+	border-radius: 0 0 3px 3px;
+	top: -0.8em;
+	position: relative;
+	width: 100%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	left:0;
+	right:0;
+}
+
 
 .default-btn{
 	-webkit-appearance: none;
@@ -506,12 +530,13 @@ hr.gradient {
 }
 
 .highlight-nav {
-	background-color: $tran-black;
+	background-color: white;
+	box-shadow: 0px 0px 5px #888;
 	background-image: none;
 	a {
 		@include transition(all, 0.5s, ease);
 		font-size: 1.2em;
-		color: white !important;
+		// color: white !important;
 	}
 	.navbar-nav a {
 		@include transition(all, 0.5s, ease);

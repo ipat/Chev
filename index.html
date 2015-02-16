@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="public/css/main.css">
         <link rel="stylesheet" href="public/css/jquery.bootstrap-touchspin.css">
         <link rel="stylesheet" href="public/css/animate.css">
+        <link rel="stylesheet" href="public/css/DateTimePicker.min.css">
 
         <script src="public/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <base href="/chev/index.html">
@@ -54,13 +55,22 @@
             <button type="submit" class="btn btn-success">Sign in</button>
           </form> -->
           <ul class="nav navbar-nav navbar-right">
-            <li><a ng-class="{ active: isActive('/') }" href="./" >Home</a></li>
-            <li><a ng-class="{ active: isActive('/ingredients') }" href="ingredients">Ingredients</a></li>
-            <li><a ng-class="{ active: isActive('/howitwork') }" href="howitwork">How It Work</a></li>
-            <li><a ng-class="{ active: isActive('/products') }" href="products">Products</a></li>
-            <li><a ng-class="{ active: isActive('/About') }" href="#">About Us</a></li>
-            <li><a ng-class="{ active: isActive('/login') }" ng-show="!isLogin" href="login">Login</a></li>
-            <li><a ng-class="{ active: isActive('/user') }" ng-show="isLogin" href="user">คุณ {{userInfo.name_first}}</a></li>
+            <li><a ng-class="{ active: isActive('/') }" ui-sref="home" >Home</a></li>
+            <li><a ng-class="{ active: isActive('/ingredients') }" ui-sref="ingredients">Ingredients</a></li>
+            <li><a ng-class="{ active: isActive('/howitwork') }" ui-sref="howitwork">How It Work</a></li>
+            <li><a ng-class="{ active: isActive('/products') }" ui-sref="products">Products</a></li>
+            <li><a ng-class="{ active: isActive('/About') }" ui-sref="#">About Us</a></li>
+            <li><a ng-class="{ active: isActive('/login') }" ng-show="!isLogin" ui-sref="login">Login</a></li>
+            <!-- <li><a ng-class="{ active: isActive('/user') }" ng-show="isLogin" ui-sref="user">คุณ {{userInfo.name_first}}</a></li> -->
+            <li class="dropdown" ng-show="isLogin">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">คุณ {{userInfo.name_first}} <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" style="color:black !important">
+                <li><a ui-sref="user">ข้อมูลส่วนตัว</a></li>
+                <li><a ui-sref="orders">รายการสั่งซื้อ</a></li>
+                <li class="divider"></li>
+                <li><a href="logout">ออกจากระบบ</a></li>
+              </ul>
+            </li>
             <!-- <li class="left-border right-border cart"><a href="#" ng-click="viewCart()"><span class="glyphicon glyphicon-shopping-cart"></span></a></li> -->
 
             <li class="left-border right-border cart dropdown">
@@ -107,7 +117,8 @@
       </div>
     </div>
 
-    <ng-view></ng-view>
+    <!-- <ng-view></ng-view> -->
+    <div data-ui-view></div>
 
     <!-- Cart Modal for Every page -->
     <modal title="ตะกร้าสินค้า" visible="showModal">
@@ -176,6 +187,7 @@
         <script src="public/js/vendor/angular-ui-router.min.js"></script>
         <script src="public/js/vendor/angular-resource.min.js"></script>
         <script src="public/js/vendor/underscore-min.js"></script>
+        <script src="public/js/vendor/DateTimePicker.min.js"></script>
 
         <script src="public/js/main.js"></script>
         <script src="public/js/app.js"></script>

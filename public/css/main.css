@@ -219,9 +219,28 @@ hr.gradient {
     box-shadow: 0px 0px 8px #2196f3;
     border: 1px solid #007af3; }
 
+.invalid {
+  box-shadow: 0px 0px 8px #ff3d00;
+  border: 1px solid #ff3d00;
+  top: -0.8em; }
+
 .small-input {
   font-size: 1em;
   height: 2.5em; }
+
+.noti {
+  background-color: #ff3d00;
+  color: white;
+  text-shadow: 0 2px 0 #cc3100;
+  border-radius: 0 0 3px 3px;
+  top: -0.8em;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0; }
 
 .default-btn, .white-btn, .spiner-btn-left, .spiner-btn-right, .red-btn, .green-btn {
   -webkit-appearance: none;
@@ -381,7 +400,8 @@ hr.gradient {
   color: white; }
 
 .highlight-nav {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: white;
+  box-shadow: 0px 0px 5px #888;
   background-image: none; }
   .highlight-nav a {
     -webkit-transition: all 0.5s ease;
@@ -389,8 +409,7 @@ hr.gradient {
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    font-size: 1.2em;
-    color: white !important; }
+    font-size: 1.2em; }
   .highlight-nav .navbar-nav a {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;

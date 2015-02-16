@@ -10,15 +10,22 @@
 	<div class="col-md-6 verticalLine "  style="padding-top:0.8em">
 		<div alert-box class="col-md-12 alertBox" style="display:none; text-align: left;"></div>
 		<form ng-submit="signup()" name="signupform" ng-show="!isLogin"> 
-			<input class="text-input" ng-model="form.email" type="text" name="email" placeholder="E-mail">
-			<input class="text-input" ng-model="form.password" type="password" name="password" placeholder="Password">
-			<input class="text-input" ng-model="form.confirm_password" type="password" name="confirm-password" placeholder="Confirm Password">
-			<input class="text-input" ng-model="form.name_first" type="text" name="name" placeholder="Name">
-			<input class="text-input" ng-model="form.name_last" type="text" name="surname" placeholder="Surname">
-			<input class="text-input" ng-model="form.tel" type="text" name="tel" placeholder="Phone Number">
+			<input class="text-input" ng-class="(valid.email !== undefined)? 'invalid':''" ng-model="form.email" type="text" name="email" placeholder="E-mail">
+			<div class="noti" style="top:-1.25em;" ng-bind="valid.email"></div>
+			<input class="text-input" ng-class="(valid.password !== undefined)? 'invalid':''" ng-model="form.password" type="password" name="password" placeholder="Password">
+			<div class="noti" style="top:-1.25em;" ng-bind="valid.password"></div>
+			<input class="text-input" ng-class="(valid.confirm_password !== undefined)? 'invalid':''" ng-model="form.confirm_password" type="password" name="confirm-password" placeholder="Confirm Password">
+			<div class="noti" style="top:-1.25em;" ng-bind="valid.confirm_password"></div>
+			<input class="text-input" ng-class="(valid.name_first !== undefined)? 'invalid':''" ng-model="form.name_first" type="text" name="name" placeholder="Name">
+			<div class="noti" style="top:-1.25em;" ng-bind="valid.name_first"></div>
+			<input class="text-input" ng-class="(valid.name_last !== undefined)? 'invalid':''" ng-model="form.name_last" type="text" name="surname" placeholder="Surname">
+			<div class="noti" style="top:-1.25em;" ng-bind="valid.name_last"></div>
+			<input class="text-input" ng-class="(valid.tel !== undefined)? 'invalid':''" ng-model="form.tel" type="text" name="tel" placeholder="Phone Number">
+			<div class="noti" style="top:-1.25em;" ng-bind="valid.tel"></div>
 			<div>
 				<div class="col-md-6 firstInput">
-					<input class="text-input " ng-model="form.age" type="number" name="age" placeholder="Age" min="1">	
+					<input class="text-input " ng-class="(valid.age !== undefined)? 'invalid':''" ng-model="form.age" type="number" name="age" placeholder="Age" min="1">	
+					<div class="noti" style="top:-1.25em;" ng-bind="valid.age"></div>
 				</div>
 				<div class="col-md-6 lastInput">
 					<select name="gender" id="gender" ng-model="form.gender" class="text-input" ng-options="gender.title for gender in genders" placeholder="Gender">

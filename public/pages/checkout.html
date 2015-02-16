@@ -9,29 +9,29 @@
 		<hr>
 		<div class="col-sm-2"></div>
 		<table class="table table-hover col-sm-8" >
-          <thead>
-            <tr>
-              <th>สินค้า</th>
-              <th>จำนวน</th>
-              <th>ราคา</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="(key, value) in cart">
-              <th>{{value.product.name}}</th>
-              <th>{{value.setAmount}} ชิ้น</th>
-              <th>{{value.product.allprice * value.setAmount}} บาท</th>
-              <th><a ng-click="deleteItem(value.product.product_id)"><i class="glyphicon glyphicon-remove-circle"></i></a></th>
-            </tr>
-          </tbody>
-        </table>
-        <div class="col-sm-2"></div>
-        <div class="clear"></div>
-        <div class="col-sm-4"></div>
-        <div class="default-btn col-sm-4">ดำเนินการต่อ</div>
-        <div class="col-sm-4"></div>
-        <div class="clear"></div>
+      <thead>
+        <tr>
+          <th>สินค้า</th>
+          <th>จำนวน</th>
+          <th>ราคา</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="(key, value) in cart">
+          <th>{{value.product.name}}</th>
+          <th>{{value.setAmount}} ชิ้น</th>
+          <th>{{value.product.allprice * value.setAmount}} บาท</th>
+          <th><a ng-click="deleteItem(value.product.product_id)"><i class="glyphicon glyphicon-remove-circle"></i></a></th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="col-sm-2"></div>
+    <div class="clear"></div>
+    <div class="col-sm-4"></div>
+    <a ui-sref="chooseAdd"><div class="default-btn col-sm-4">ดำเนินการต่อ</div></a>
+    <div class="col-sm-4"></div>
+    <div class="clear"></div>
 	</div>
 	
 

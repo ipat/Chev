@@ -80,7 +80,7 @@
 			</div>
 			
 		</div>
-		
+		<div class="clear"></div>
 		<hr>
 
 	</div>
@@ -101,16 +101,19 @@
 	        <form class="{{userInfoEdit}}" style="" ng-show="userInfoView">
 				<div class="col-sm-6">
 					<label for="name_first">ชื่อ</label>
-					<input class="small-input" type="text" ng-model="updateData.name_first" name="name_first" required>
+					<input class="small-input" ng-class="(valid.name_first !== undefined)? 'invalid':''" type="text" ng-model="updateData.name_first" name="name_first" required>
+					<div class="noti" ng-bind="valid.name_first"></div>
 				</div>
 				<div class="col-sm-6">
 					<label for="name_last">นามสกุล</label>
-					<input class="small-input" type="text" ng-model="updateData.name_last" name="name_last" required>
+					<input class="small-input" ng-class="(valid.name_last !== undefined)? 'invalid':''" type="text" ng-model="updateData.name_last" name="name_last" required>
+					<div class="noti" ng-bind="valid.name_last"></div>
 				</div>
 				<div class="clear"></div>
 				<div class="col-sm-12">
 					<label for="tel">เบอร์โทรศัพท์</label>
-					<input class="small-input" type="text" ng-model="updateData.tel" name="tel" required>
+					<input class="small-input" ng-class="(valid.tel !== undefined)? 'invalid':''" type="text" ng-model="updateData.tel" name="tel" required>
+					<div class="noti" ng-bind="valid.tel"></div>
 				</div>
 				<div class="clear"></div>
 			</form>
@@ -135,39 +138,47 @@
 	        <form style="">
 				<div class="col-sm-12">
 					<label for="title">ชื่อผู้ส่งถึง<span class="red">*</span></label>
-					<input class="small-input" type="text" ng-model="newAddress.title" name="title">
+					<input class="small-input" ng-class="(valid.title !== undefined)? 'invalid':''" type="text" ng-model="newAddress.title" name="title">
+					<div class="noti" ng-bind="valid.title"></div>
 				</div>
 				<div class="clear"></div>
 				<div class="col-sm-6">
 					<label for="house">ที่อยู่บ้าน<span class="red">*</span></label>
-					<input class="small-input" type="text" ng-model="newAddress.house" name="house">
+					<input class="small-input" ng-class="(valid.house !== undefined)? 'invalid':''" type="text" ng-model="newAddress.house" name="house">
+					<div class="noti" ng-bind="valid.house"></div>
 				</div>
 				<div class="col-sm-6">
 					<label for="house_name">ชื่อบ้าน</label>
-					<input class="small-input" type="text" ng-model="newAddress.house_name" name="house_name">
+					<input class="small-input" ng-class="(valid.house_name !== undefined)? 'invalid':''" type="text" ng-model="newAddress.house_name" name="house_name">
+					<div class="noti" ng-bind="valid.house_name"></div>
 				</div>
 				<div class="clear"></div>
 				<div class="col-sm-12">
 					<label for="road">ถนน</label>
-					<input class="small-input" type="text" ng-model="newAddress.road" name="road">
+					<input class="small-input" ng-class="(valid.road !== undefined)? 'invalid':''" type="text" ng-model="newAddress.road" name="road">
+					<div class="noti" ng-bind="valid.road"></div>
 				</div>
 				<div class="clear"></div>
 				<div class="col-sm-6">
 					<label for="district">ตำบล/แขวง<span class="red">*</span></label>
-					<input class="small-input" type="text" ng-model="newAddress.district" name="district">
+					<input class="small-input" ng-class="(valid.district !== undefined)? 'invalid':''" type="text" ng-model="newAddress.district" name="district">
+					<div class="noti" ng-bind="valid.district"></div>
 				</div>
 				<div class="col-sm-6">
 					<label for="county">อำเภอ/เขต<span class="red">*</span></label>
-					<input class="small-input" type="text" ng-model="newAddress.county" name="county">
+					<input class="small-input" ng-class="(valid.county !== undefined)? 'invalid':''" type="text" ng-model="newAddress.county" name="county">
+					<div class="noti" ng-bind="valid.county"></div>
 				</div>
 				<div class="clear"></div>
 				<div class="col-sm-6">
 					<label for="province">จังหวัด<span class="red">*</span></label>
-					<input class="small-input" type="text" ng-model="newAddress.province" name="province">
+					<input class="small-input" ng-class="(valid.province !== undefined)? 'invalid':''" type="text" ng-model="newAddress.province" name="province">
+					<div class="noti" ng-bind="valid.province"></div>
 				</div>
 				<div class="col-sm-6">
 					<label for="postcode">รหัสไปรษณีย์<span class="red">*</span></label>
-					<input class="small-input" type="text" ng-model="newAddress.postcode" name="postcode">
+					<input class="small-input" ng-class="(valid.postcode !== undefined)? 'invalid':''" type="text" ng-model="newAddress.postcode" name="postcode">
+					<div class="noti" ng-bind="valid.postcode"></div>
 				</div>
 				<div class="clear"></div>
 
