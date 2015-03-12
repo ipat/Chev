@@ -31,7 +31,7 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <div class="navbar navbar-fixed-top {{navbarClass}}" role="navigation" ng-controller="navbarController">
+    <div class="navbar navbar-fixed-top {{navbarClass}}" role="navigation" ng-controller="navbarController" style="border-bottom-width: 0px;">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -55,9 +55,9 @@
             <button type="submit" class="btn btn-success">Sign in</button>
           </form> -->
           <ul class="nav navbar-nav navbar-right">
-            <li><a ng-class="{ active: isActive('/') }" ui-sref="home" >Home</a></li>
+            <li><a ng-class="{ active: isActive('/') }" ui-sref="home" >Success Story</a></li>
             <li><a ng-class="{ active: isActive('/ingredients') }" ui-sref="ingredients">Ingredients</a></li>
-            <li><a ng-class="{ active: isActive('/howitwork') }" ui-sref="howitwork">How It Work</a></li>
+            <li><a ng-class="{ active: isActive('/howitwork') }" ui-sref="howitwork">How It Works</a></li>
             <li><a ng-class="{ active: isActive('/products') }" ui-sref="products">Products</a></li>
             <li><a ng-class="{ active: isActive('/About') }" ui-sref="#">About Us</a></li>
             <li><a ng-class="{ active: isActive('/login') }" ng-show="!isLogin" ui-sref="login">Login</a></li>
@@ -73,7 +73,7 @@
             </li>
             <!-- <li class="left-border right-border cart"><a href="#" ng-click="viewCart()"><span class="glyphicon glyphicon-shopping-cart"></span></a></li> -->
 
-            <li class="left-border right-border cart dropdown">
+            <li class="cart dropdown">
               <!-- <div class="dropdown"> -->
                 <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart" ng-click="viewCart()"></span></a>
                 
@@ -121,18 +121,7 @@
     <div data-ui-view></div>
 
     <!-- Cart Modal for Every page -->
-    <modal title="ตะกร้าสินค้า" visible="showModal">
-      <!-- <form role="form">
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" />
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form> -->
+    <!-- <modal title="ตะกร้าสินค้า" visible="showModal">
 
       <div ng-show="cart===undefined">
         ยังไม่มีสินค้าในตะกร้าเลย <a href="products" ng-click="viewCart()">เติมเต็ม</a> ตะกร้าคุณสิ
@@ -156,7 +145,6 @@
         </table>
         <div>
           <button class="red-btn col-md-12" ng-click="clearCart()"><i class="glyphicon glyphicon-trash"></i> ล้างตะกร้าสินค้า</button>
-          <!-- <div class="col-md-2"></div> -->
           <button class="default-btn col-md-12" ng-show="isLogin"><i class="glyphicon glyphicon-arrow-right"></i> เช็คเอาท์สินค้าเลย</button>
           <button class="default-btn col-md-12" ng-show="!isLogin" ng-click="login()"><i class="fa fa-key"></i> เข้าสู่ระบบเพื่อเช็คเอาท์</button>
           <div class="clear"></div>
@@ -164,7 +152,7 @@
       </div>
       
     </modal>
-
+ -->
 
     <div class="container">
       <footer class="center">

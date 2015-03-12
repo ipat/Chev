@@ -5,14 +5,14 @@
 		<h3>เราภูมิใจในสิ่งที่เราเสนอให้คุณ</a></h3>
 	</div>
 	<div class="clear"></div>
-	<div class="shadow-top-down center" style="background-color:#FAFAFA;">
+	<div class="shadow-top center" style="background-color:#FAFAFA;">
 		<div style="height: 2em"></div>
+		<div class="col-md-1"></div>
 		<div class="col-md-4 bottom-space" style="padding-top: 2em;">
 			<img src="public/img/bottle.png" alt="Product">
 		</div>
-		<div class="col-md-1"></div>
-		<div class="col-md-7 bottom-space left" style="padding-top:0.8em">
-			<h2 class="left biggersize">Chev - เชฟ</h2>
+		<div class="col-md-6 bottom-space left" style="padding-top:0.8em">
+			<h1 class="left">Chev - เชฟ</h1>
 			<hr>
 			<div class="col-md-12">
 				หากเจอสถานที่ที่ปักหมุดผิดหรือต้องการแก้ไขรายละเอียดใดๆ เพิ่มเติม คุณสามารถแก้ไขหรือรายงานปัญหาตำแหน่งสถานที่ผิดผ่าน Google Maps บนเดสก์ท็อปได้ง่ายๆ #GoogleTHTips มาร่วมช่วยกันอัปเดตข้อมูลบน Google Maps กันเถอะ
@@ -52,7 +52,60 @@
 	                buttondown_class: "spiner-btn-left",
             		buttonup_class: "spiner-btn-right"
 	            });
-	        </script>
+	        </script>	    
+		<div class="col-md-1"></div>
+		</div>
+		<div class="clear"></div>	
+	</div>
+	<div class="shadow-down center" style="background-color:#ECECEC;">
+		<div style="height: 2em"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-4 bottom-space" style="padding-top: 2em;">
+			<img src="public/img/bottle.png" alt="Product">
+		</div>
+		<div class="col-md-6 bottom-space left" style="padding-top:0.8em">
+			<h1 class="left">Chev - เชฟ</h1>
+			<hr>
+			<div class="col-md-12">
+				หากเจอสถานที่ที่ปักหมุดผิดหรือต้องการแก้ไขรายละเอียดใดๆ เพิ่มเติม คุณสามารถแก้ไขหรือรายงานปัญหาตำแหน่งสถานที่ผิดผ่าน Google Maps บนเดสก์ท็อปได้ง่ายๆ #GoogleTHTips มาร่วมช่วยกันอัปเดตข้อมูลบน Google Maps กันเถอะ
+				<br><br>
+				หากมีข้อสงสัยใดๆเกี่ยวกับ Google Maps สอบถามได้ที่ http://bit.ly/11mT0CM
+				<br><br>
+			</div>
+			<div class="clear"></div>
+			<div class="left">
+				<h4>
+					<div class="col-md-6"><b>ราคาสินค้า</b></div>
+					<div class="col-md-6">1,000 บาท</div>
+				</h4>
+				<div class="clear"></div>
+				<h4>
+					<div class="col-md-6"><b>ประกอบไปด้วย</b></div>
+					<div class="col-md-6">100 เม็ด</div>
+				</h4>
+				<div class="clear"></div>
+			</div>
+
+			<hr>
+			<!-- Here is Alert Box -->
+			<div alert-box class="col-md-12 alertBox" s style="display:none;"></div>
+			
+			<div class="col-md-6 col-sm-12">
+				<input id="amount" type="number" value="" name="amount" class="text-input" style="top:0.15em; border-radius:0px;" ng-model="amount" min="1">
+			</div>
+			<div class="clear"></div>
+			<div class="col-md-6 col-sm-12">
+				<button ng-click="addToCart()" type="submit" class="default-btn midium-size full-width"><i class="glyphicon glyphicon-shopping-cart"></i> เพิ่มลงตะกร้า</button>
+			</div>
+
+	        <script>
+	            $("input[name='amount']").TouchSpin({
+	                initval: 1,
+	                buttondown_class: "spiner-btn-left",
+            		buttonup_class: "spiner-btn-right"
+	            });
+	        </script>	    
+		<div class="col-md-1"></div>
 		</div>
 		<div class="clear"></div>	
 	</div>

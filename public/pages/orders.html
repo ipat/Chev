@@ -108,6 +108,11 @@
         <div class="modal-body">
           <b>สถานะออร์เดอร์ปัจจุบัน <span style="font-size:1.2em; ">{{(currentOrder.status==0)? "รอการยืนยันการโอนเงิน": (currentOrder.status==1)? "รอการจัดส่ง": "ทำการจัดส่งให้ท่านแล้ว"}}</span></b> 
           <hr>
+          <div ng-show="currentOrder.status==2">
+            Tracking ID: <b style="font-size:1.2em; ">{{currentOrder.sendInfo.tracking_code}}</b> <br>
+            เวลาที่คาดว่าจะส่งถึง: <b style="font-size:1.2em; ">{{currentOrder.sendInfo.arrival_date}}</b>
+          </div>
+          <hr>
           <b>ที่อยู่ที่ใช้ในการจัดส่ง</b> <br>
               {{currentOrder.address.title}}  
               <br>

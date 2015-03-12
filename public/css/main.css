@@ -68,6 +68,11 @@
 	Component Styling
 ===========================================================
 */
+html {
+  zoom: 0.9;
+  -moz-transform: scale(0.9);
+  -moz-transform-origin: 0 0; }
+
 body {
   font-family: 'thaisans_neue_lightregular';
   font-size: 16px; }
@@ -101,7 +106,7 @@ body {
 
 .feature-icon, .social-icon {
   text-align: center;
-  font-size: 8em;
+  font-size: 6em;
   line-height: 1.8em;
   width: 1.8em;
   -moz-border-radius: 150px;
@@ -255,17 +260,17 @@ hr.gradient {
   margin-bottom: 0.8em;
   text-align: center;
   color: white !important;
-  background-color: #239dff;
-  border: 1px solid #51adf6;
-  box-shadow: 0px 0.3em 0px #007af3;
+  background-color: #1abc9c;
+  border: 1px solid #1abc9c;
+  box-shadow: 0px 0.3em 0px #16a085;
   cursor: pointer;
   text-shadow: none;
-  text-shadow: 0px 2px 0px #007af3;
+  text-shadow: 0px 2px 0px #16a085;
   padding: 0.3em 1em 0.3em; }
   .default-btn:active, .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active, .red-btn:active, .green-btn:active {
     position: relative;
     top: 0.2em;
-    box-shadow: 0px 0.1em 2px #007af3; }
+    box-shadow: 0px 0.1em 2px #16a085; }
 
 .white-btn, .spiner-btn-left, .spiner-btn-right {
   background-color: whitesmoke;
@@ -315,6 +320,16 @@ hr.gradient {
   -webkit-box-shadow: inset  0  8px 10px -8px #696868,  inset  0 -8px 10px -8px #696868;
   box-shadow: inset  0  8px 10px -8px #696868,  inset  0 -8px 10px -8px #696868; }
 
+.shadow-top {
+  -moz-box-shadow: inset  0  8px 10px -8px #696868;
+  -webkit-box-shadow: inset  0  8px 10px -8px #696868;
+  box-shadow: inset  0  8px 10px -8px #696868; }
+
+.shadow-down {
+  -moz-box-shadow: inset  0 -8px 10px -8px #696868;
+  -webkit-box-shadow: inset  0 -8px 10px -8px #696868;
+  box-shadow: inset  0 -8px 10px -8px #696868; }
+
 /*
 ===========================================================
 	Welcome Block
@@ -329,11 +344,7 @@ hr.gradient {
   background-attachment: fixed;
   background-position: 0 -15em;
   z-index: -1;
-  color: white;
-  text-shadow: black  0.1em 0.1em 10px;
-  -moz-box-shadow: inset  0  8px 10px -8px #696868,  inset  0 -8px 10px -8px #696868;
-  -webkit-box-shadow: inset  0  8px 10px -8px #696868,  inset  0 -8px 10px -8px #696868;
-  box-shadow: inset  0  8px 10px -8px #696868,  inset  0 -8px 10px -8px #696868; }
+  color: white; }
 
 .welcometext {
   padding-top: 12em; }
@@ -349,10 +360,7 @@ hr.gradient {
   background-position: 0 0;
   z-index: -1;
   color: white;
-  text-shadow: black  0.1em 0.1em 10px;
-  -moz-box-shadow: inset  0  8px 10px -8px #696868,  inset  0 -8px 10px -8px #696868;
-  -webkit-box-shadow: inset  0  8px 10px -8px #696868,  inset  0 -8px 10px -8px #696868;
-  box-shadow: inset  0  8px 10px -8px #696868,  inset  0 -8px 10px -8px #696868; }
+  text-shadow: black  0.1em 0.1em 10px; }
 
 /*
 ===========================================================
@@ -360,7 +368,7 @@ hr.gradient {
 ===========================================================
 */
 .navbar {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: white;
   background-image: none;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -376,7 +384,7 @@ hr.gradient {
     color: white;
     font-size: 1.2em; }
     .navbar .navbar-nav a:hover, .navbar a:hover {
-      background-color: rgba(33, 150, 243, 0.4) !important;
+      background-color: rgba(26, 188, 156, 0.4) !important;
       color: white; }
     .navbar .navbar-nav a:focus, .navbar a:focus {
       background-color: rgba(255, 255, 255, 0); }
@@ -396,7 +404,7 @@ hr.gradient {
     height: 150%; }
 
 .active {
-  background-color: rgba(33, 150, 243, 0.4) !important;
+  background-color: rgba(26, 188, 156, 0.4) !important;
   color: white; }
 
 .highlight-nav {
@@ -408,17 +416,13 @@ hr.gradient {
     -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    font-size: 1.2em; }
+    transition: all 0.5s ease; }
   .highlight-nav .navbar-nav a {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    font-size: 1em; }
-  .highlight-nav img {
-    height: 100%; }
+    transition: all 0.5s ease; }
 
 @media (max-width: 767px) {
   .navbar-nav {
@@ -447,10 +451,7 @@ hr.gradient {
   z-index: -1;
   color: white;
   text-shadow: black  0.1em 0.1em 10px;
-  margin-top: 50px;
-  -moz-box-shadow: inset  0  8px 10px -8px #696868,  inset  0 -8px 10px -8px #696868;
-  -webkit-box-shadow: inset  0  8px 10px -8px #696868,  inset  0 -8px 10px -8px #696868;
-  box-shadow: inset  0  8px 10px -8px #696868,  inset  0 -8px 10px -8px #696868; }
+  margin-top: 50px; }
 
 .jumbotext {
   height: 100%;
