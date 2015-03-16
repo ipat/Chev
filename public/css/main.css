@@ -74,12 +74,15 @@ html {
   -moz-transform-origin: 0 0; }
 
 body {
-  font-family: 'thaisans_neue_lightregular';
+  font-family: 'lato', 'thaisans_neue_lightregular';
   font-size: 16px; }
+
+.lato {
+  font-family: 'lato', 'thaisans_neue_lightregular'; }
 
 .btn {
   border-radius: 0px;
-  font-family: 'thaisans_neuebold';
+  font-family: 'lato','thaisans_neuebold';
   box-shadow: #666666 0px 1px 3px 0px;
   background-image: none; }
 
@@ -152,9 +155,9 @@ hr.gradient {
   text-align: center; }
 
 .text-dark {
-  color: #2b2c25 !important; }
+  color: #2b2c25; }
   .text-dark a {
-    color: #2b2c25 !important; }
+    color: #2b2c25; }
 
 .bottom-space {
   margin-bottom: 50px; }
@@ -202,6 +205,12 @@ hr.gradient {
 .red {
   color: red; }
 
+.auto-padding-top {
+  padding-top: 7em; }
+  @media screen and (max-width: 1080px) {
+    .auto-padding-top {
+      padding-top: 0em; } }
+
 .text-input, .small-input {
   -webkit-appearance: none;
   -moz-border-radius: 3px;
@@ -221,7 +230,7 @@ hr.gradient {
   border: 1px solid #CCC;
   margin-bottom: 0.8em; }
   .text-input:focus, .small-input:focus {
-    box-shadow: 0px 0px 8px #2196f3;
+    box-shadow: 0px 0px 8px #3d7830;
     border: 1px solid #007af3; }
 
 .invalid {
@@ -349,6 +358,34 @@ hr.gradient {
 .welcometext {
   padding-top: 12em; }
 
+.inner-white-blur {
+  -webkit-box-shadow: inset 10px 10px 38px 49px white;
+  -moz-box-shadow: inset 10px 10px 38px 49px white;
+  box-shadow: inset 10px 10px 38px 49px white; }
+
+/*
+===========================================================
+	Images Style
+===========================================================
+*/
+.fixed-width-img {
+  width: 100%; }
+
+.widepic {
+  height: 10em; }
+  @media screen and (max-width: 991px) {
+    .widepic {
+      padding-top: 2em; } }
+  .widepic img {
+    height: 100%;
+    width: 100%; }
+    @media screen and (max-width: 991px) {
+      .widepic img {
+        width: 50%; } }
+    @media screen and (max-width: 450px) {
+      .widepic img {
+        width: 100%; } }
+
 /*
 ===========================================================
 	Nature Mask
@@ -381,11 +418,11 @@ hr.gradient {
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    color: white;
     font-size: 1.2em; }
     .navbar .navbar-nav a:hover, .navbar a:hover {
-      background-color: rgba(26, 188, 156, 0.4) !important;
-      color: white; }
+      background-color: transparent;
+      color: #3d7830 !important;
+      font-weight: bolder; }
     .navbar .navbar-nav a:focus, .navbar a:focus {
       background-color: rgba(255, 255, 255, 0); }
   .navbar a {
@@ -404,8 +441,8 @@ hr.gradient {
     height: 150%; }
 
 .active {
-  background-color: rgba(26, 188, 156, 0.4) !important;
-  color: white; }
+  color: #3d7830 !important;
+  font-weight: 900; }
 
 .highlight-nav {
   background-color: white;
@@ -434,7 +471,7 @@ hr.gradient {
   padding: 0.5em 1em 0.5em;
   color: black; }
   .dropdown-area a {
-    color: #2196f3 !important; }
+    color: #3d7830 !important; }
 
 /*
 ===========================================================
@@ -450,7 +487,6 @@ hr.gradient {
   background-position: 0 0;
   z-index: -1;
   color: white;
-  text-shadow: black  0.1em 0.1em 10px;
   margin-top: 50px; }
 
 .jumbotext {

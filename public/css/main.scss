@@ -96,8 +96,8 @@
 	Variable Assign
 ===========================================================
 */
-$webtheme-light: #BBDEFB;
-$webtheme: #2196F3;
+$webtheme-light: #538253;
+$webtheme: lighten(#182f13, 20%);
 $webtheme-mid: #239DFF;
 $webtheme-dark: #007AF3;
 $webtheme-tran: rgba(26, 188, 156,0.4);
@@ -130,16 +130,21 @@ html{
 }
 
 body{
-	font-family: 'thaisans_neue_lightregular';
+	font-family: 'lato', 'thaisans_neue_lightregular';
 	font-size: 16px;
 	// transform: scale(0.9);
  //    transform-origin: 10% 10%;
 }
 
+.lato{
+	font-family: 'lato', 'thaisans_neue_lightregular';
+
+}
+
 
 .btn {
 	border-radius: 0px;
-	font-family: 'thaisans_neuebold';
+	font-family: 'lato','thaisans_neuebold';
 	box-shadow: $light-black 0px 1px 3px 0px;	
 	background-image: none;
 }
@@ -231,9 +236,9 @@ hr.gradient {
 }
 
 .text-dark {
-	color: $text-dark !important;
+	color: $text-dark;
 	a{
-		color: $text-dark !important;
+		color: $text-dark;
 	}
 }
 
@@ -298,6 +303,17 @@ hr.gradient {
 
 .red {
 	color: red;
+}
+
+.auto-padding-top {
+	padding-top: 7em;
+
+
+	@media screen and (max-width: 1080px){
+		padding-top: 0em;
+	}
+
+
 }
 
 .text-input{	
@@ -479,6 +495,42 @@ hr.gradient {
 	padding-top: 12em;
 }
 
+.inner-white-blur {
+	
+	-webkit-box-shadow: inset 10px 10px 38px 49px rgba(255,255,255,1);
+	-moz-box-shadow: inset 10px 10px 38px 49px rgba(255,255,255,1);
+	box-shadow: inset 10px 10px 38px 49px rgba(255,255,255,1);
+}
+
+/*
+===========================================================
+	Images Style
+===========================================================
+*/
+
+.fixed-width-img {
+	width: 100%;
+}
+
+.widepic {
+	height: 10em;
+	@media screen and (max-width: 991px){
+		padding-top: 2em;
+	}
+
+	img{
+		height: 100%;
+		width: 100%;
+		@media screen and (max-width: 991px){
+			width: 50%;
+		}
+
+		@media screen and (max-width: 450px){
+			width: 100%;
+		}
+	}
+}
+
 /*
 ===========================================================
 	Nature Mask
@@ -513,11 +565,12 @@ hr.gradient {
 
 	.navbar-nav a, a{
 		@include transition(all, 0.5s, ease);
-		color: white;
+		// color: white;
 
 		&:hover{
-			background-color: $webtheme-tran !important;
-			color: white;
+			background-color: rgba(0, 0, 0, 0);
+			color: $webtheme !important;
+			font-weight: bolder;
 		}
 
 		&:focus{
@@ -540,8 +593,10 @@ hr.gradient {
 }
 .active 
 {
-	background-color: $webtheme-tran !important;
-	color: white ;
+	// background-color: $webtheme-tran !important;
+	color: $webtheme !important;
+	font-weight: 900;
+	
 }
 
 .highlight-nav {
@@ -598,7 +653,7 @@ hr.gradient {
 	background-position: 0 0;
 	z-index: -1;
 	color: white;
-	text-shadow: black  0.1em 0.1em 10px;
+	// text-shadow: black  0.1em 0.1em 10px;
 	// box-shadow: black 0em 0em 10px -2px inset;
 	margin-top: 50px;
 
