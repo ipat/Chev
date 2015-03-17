@@ -1,4 +1,4 @@
-var chevApp = angular.module('chevApp', [ 'ui.router', 'ngResource']);
+var chevApp = angular.module('chevApp', [ 'ui.router', 'ngResource', 'ui.bootstrap']);
 
 chevApp.run(function($rootScope, $location, $resource){
 
@@ -206,6 +206,17 @@ chevApp.controller('homeController', function($scope, $rootScope){
 	$.stellar({
 	  horizontalScrolling: false
 	});
+
+	$scope.myInterval = 3000;
+
+	 $scope.slides = [
+	    {
+	      image: 'public/img/ban1.png'
+	    },
+	    {
+	      image: 'public/img/ban2.png'
+	    }
+	 ];
 });
 
 // Controller for Ingredients Page

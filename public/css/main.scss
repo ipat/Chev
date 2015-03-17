@@ -45,6 +45,18 @@
     src: url('../fonts/thaisansneue-ultralight-webfont.eot');src: url('../fonts/thaisansneue-ultralight-webfont.eot?#iefix') format('embedded-opentype'),url('../fonts/thaisansneue-ultralight-webfont.woff') format('woff'),url('../fonts/thaisansneue-ultralight-webfont.ttf') format('truetype'),url('../fonts/thaisansneue-ultralight-webfont.svg#thaisans_neue_ultltregular') format('svg');font-weight: normal;font-style: normal;
 }
 
+@font-face {
+    font-family: 'THSarabunNew';
+    src: url('../fonts/thsarabunnew-webfont.eot');
+    src: url('../fonts/thsarabunnew-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/thsarabunnew-webfont.woff') format('woff'),
+         url('../fonts/thsarabunnew-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 /*
 ===========================================================
 	Mixin(s)
@@ -105,7 +117,7 @@ $webtheme-tran: rgba(26, 188, 156,0.4);
 $tran-black: rgba(0, 0, 0, 0.4);
 $light-black: #666666;
 
-$text-dark: #2B2C25;
+$text-dark: black;//#2B2C25;
 $text-light: #E0E1DD;
 
 $light-blue: #46B5F7;
@@ -138,9 +150,11 @@ body{
 
 .lato{
 	font-family: 'lato', 'thaisans_neue_lightregular';
-
 }
 
+.sarabun {
+	font-family: 'THSarabunNew', 'lato', 'thaisans_neue_lightregular';
+}
 
 .btn {
 	border-radius: 0px;
@@ -468,6 +482,51 @@ hr.gradient {
      box-shadow:        inset  0 -8px 10px -8px #696868;
 }
 
+.default-panel {
+	background-color: $webtheme-tran;
+	border: 3px solid darken($webtheme-tran, 10%);
+	@include border-radius(5px);
+	padding: 1em;
+	.badge {
+		background-color: darken($webtheme-tran, 20%);
+	}
+
+	margin-bottom: 1em;
+}
+
+.white-panel {
+	background-color: darken(white, 5%);
+	border: 3px solid darken(white, 20%);
+	@include border-radius(5px);
+	padding: 1em;
+	margin-bottom: 1em;
+}
+
+.red-panel {
+	@extend .white-panel;
+	background-color: lighten(red, 45%);
+	border: 3px solid lighten(red, 20%);
+}
+
+
+/*
+===========================================================
+	Carousel
+===========================================================
+*/
+
+#slides_control > div{
+  height: 200px;
+}
+
+img{
+  margin:auto;
+  width: 100%;
+}
+
+#slides_control {
+  position:absolute;
+}
 
 /*
 ===========================================================
@@ -476,13 +535,14 @@ hr.gradient {
 */
 
 .welcomejumbo {
-	background: url('../img/main.jpg') no-repeat center center;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	background-attachment: fixed;
-	background-position: 0 -15em;
+	padding: 0px;
+	// background: url('../img/ban1.png') no-repeat center top;
+	// -webkit-background-size: 100% auto;
+	// -moz-background-size: 100% auto;
+	// -o-background-size: 100% auto;
+	// background-size: 100% auto;
+	// background-attachment: fixed;
+	// background-position: 0 -15em;
 	z-index: -1;
 	color: white;
 	// text-shadow: black  0.1em 0.1em 10px;
@@ -557,9 +617,12 @@ hr.gradient {
 ===========================================================
 */
 
+
+
 .navbar{
 	background-color: white;
 	background-image: none;
+	font-weight: 900;
 
 	@include transition(all, 0.5s, ease);
 

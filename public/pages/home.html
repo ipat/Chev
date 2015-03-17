@@ -1,10 +1,20 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron welcomejumbo" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="100">
-      <div class="container welcometext">
+      <!-- <div class="container welcometext right">
         <h1>สุดยอดนวัตกรรม</h1>
         <p>พบกับสุดยอดแห่งนวัตกรรม ที่นี่ เร็วๆนี้</p>
-        <p><a class="default-btn" role="button">Learn more &raquo;</a></p>
-      </div>
+        <h1></h1>
+      </div> -->
+      <carousel interval="myInterval">
+        <slide ng-repeat="slide in slides" active="slide.active">
+          <img ng-src="{{slide.image}}" >
+          <div class="carousel-caption right">
+            <!-- <h4>Slide {{$index+1}}</h4> -->
+            <p><a class="default-btn" role="button">Learn more &raquo;</a></p>
+          </div>
+        </slide>
+
+      </carousel>
     </div>
 
     <div class="container">
@@ -18,7 +28,7 @@
             </div>
           </div>
           <h2 class="center">มันเยี่ยมยอดไปเลย</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p class="sarabun">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           <p class="center"><a class="white-btn" href="#" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-md-4">
@@ -26,7 +36,7 @@
               <img src="public/img/2.png" class="fixed-width-img" alt="">
             </div>
           <h2 class="center">ดีต่อสิ่งแวดล้อม</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p class="sarabun">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           <p class="center"><a class="white-btn" href="#" role="button">View details &raquo;</a></p>
        </div>
         <div class="col-md-4">
@@ -34,7 +44,7 @@
               <img src="public/img/3.png" class="fixed-width-img" alt="">
             </div>
           <h2 class="center">เป็นของขวัญให้แก่คุณ</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p class="sarabun">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
           <p class="center"><a class="white-btn" href="#" role="button">View details &raquo;</a></p>
         </div>
       </div>
@@ -58,7 +68,7 @@
       <div class="col-md-10">
         <h2>อย่ามัวทำตัวแมวๆไปวันๆ</h2>
         <hr>
-        <p>
+        <p class="sarabun">
           แมวเริ่มเข้ามาเกี่ยวข้องกับวิถีชีวิตของมนุษย์ตั้งแต่เมื่อประมาณ 9,500 ปีก่อน ซึ่งจากหลักฐานทางประวัติศาสตร์ที่เก่าแก่ที่สุดของแมวคือการทำมัมมี่แมวที่ค้นพบในสมัยอียิปต์โบราณ หรือในพิพิธภัณฑ์อังกฤษในกรุงลอนดอน มีการแสดงสมบัติที่นำออกมาจากพีระมิดโบราณแห่งอียิปต์ ซึ่งรวมถึงมัมมี่แมวหลายตัว ซึ่งเมื่อนำเอาผ้าพันมัมมี่ออกก็พบว่า
         </p>
       </div>
@@ -68,7 +78,7 @@
       <div class="col-md-10">
         <h2>เมื่อมีแมวก็ต้องมีหมา</h2>
         <hr>
-        <p>
+        <p class="sarabun">
           หมา หรือภาษาทางการว่า สุนัข เป็นสัตว์เลี้ยงลูกด้วยน้ำนมหลายชนิดหลายสกุลในวงศ์ Canidae ออกลูกเป็นตัว ลำตัวมีขนปกคลุม มีเขี้ยว 2 คู่ เท้าหน้ามี 5 นิ้ว เท้าหลังมี 4 นิ้ว ซ่อนเล็บไม่ได้ อวัยวะเพศของสุนัขตัวผู้มีกระดูกอยู่ภายใน 1 ชิ้น สุนัขที่ยังคงเป็นสัตว์ป่า เช่น หมาใน (Cuon alpinus) สุนัขที่เลี้ยงเป็นสัตว์บ้าน คือ ชนิด Canis lupus familiaris สุนัขเป็นสัตว์ที่มีหลายพันธุ์ เช่น ลาบราดอร์, โกลเดินริทรีฟเวอร์, ชิวาวา และอีกมากมาย มีทั้งขนาดเล็กและใหญ่ ดุและไม่ดุ พันธุ์ที่มีขนาดใหญ่ เช่น โกลเด้น ลาบราดอร์ ที่มีขนาดเล็ก เช่น ชิวาวา ชิสุ ส่วนที่ดุ ได้แก่ ร็อดไวเลอร์ อัลเซเชียน สุนัขแต่ละพันธุ์จะมีนิสัยแตกต่างกัน
         </p>
       </div>
