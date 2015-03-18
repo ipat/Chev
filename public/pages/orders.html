@@ -4,21 +4,66 @@
     <!-- <h3>ยังไม่ได้เข้าจ๊ะ <a href="login">เข้าดิฟระ</a></h3> -->
   </div>
 	<div class="container">
+    <!--===================== Waiting Order ==========================-->
+
+    <div class="page-header left"><h2>รายการที่รอการดำเนินการ</h2></div>
+
     <div class="col-md-12">
       <div class="col-md-6" ng-repeat="(key,order) in orders">
-        <div ng-class="{ 'red-panel':{{order.status==0}}, 'white-panel': {{order.status==1}}, 'white-panel': {{order.status==2}} }" style="text-align:left; height:100%" >
+        <div ng-class="{ 'red-panel':{{order.status==0}}, 'yellow-panel': {{order.status==1}} }" style="text-align:left; height:100%" ng-show="order.status!=2">
           <div class="col-md-3">            
-            <h1><i class="fa fa-pencil-square-o biggersize"></i></h1>
+            <h1><i class="fa biggersize" ng-class="{ 'fa-pencil-square-o':{{order.status==0}}, 'fa-clock-o': {{order.status==1}} }"></i></h1>
+          </div>
+          <div class="col-md-9" style="padding-top:1em;">
+            <div ng-show="order.status==0" ><span class="fa fa-close right flat-red" style="width:100%; font-size:1.2em; float:right;"></span> </div>
+            สถานะการสั่งซื้อ <b style="font-size:1.2em; ">{{(order.status==0)? "รอการยืนยันการโอนเงิน": (order.status==1)? "รอการจัดส่ง": "ทำการจัดส่งให้ท่านแล้ว"}}</b>
+            <br>
+            จะทำการจัดส่งไปให้คุณ <b>{{order.address.title}}</b> <br>
+            มูลค่าสินค้า: <b>{{order.total}} บาท</b><br>
+
+            <div ng-show="order.status==1">
+              โอนผ่านธนาคาร <b>{{order.payInfo.bank}}</b> <br>
+              โอนด้วยเงิน: <b>{{order.payInfo.amount}} บาท</b><br>
+            </div>
+            <div ng-show="order.status==0" ><br></div>
+            
+            <div>
+              <div class="flat-white-btn col-md-6" data-toggle="modal" data-target="#orderInfo" ng-click="toggleOrderInfo(key)">รายละเอียดเพิ่มเติม</div>
+              <div class="flat-red-btn col-md-6" data-toggle="modal" data-target="#transferConfirm" ng-click="setTransferItem(order.id)" ng-show="order.status==0">ยืนยันการโอนเงิน</div>
+              <div class="flat-yellow-btn col-md-6" data-toggle="modal" data-target="#cancelConfirm" ng-click="setCancelItem(order.id)" ng-show="order.status==1">ยกเลิกการยืนยัน</div>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div class="clear"></div>
+          
+        </div>
+        
+        
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    
+
+    <!--===================== Completed Order ==========================-->
+    <div class="page-header left"><h2>รายการจัดส่งสินค้าแล้ว</h2></div>
+
+    <div class="col-md-12">
+      <div class="col-md-6" ng-repeat="(key,order) in orders">
+        <div ng-class="{ 'green-panel':{{order.status==2}}, 'white-panel': {{order.status!=2}} }" style="text-align:left; height:100%" ng-show="order.status==2">
+          <div class="col-md-3">            
+            <h1><i class="fa fa-truck biggersize"></i></h1>
           </div>
           <div class="col-md-9" style="padding-top:1em;">
             สถานะการสั่งซื้อ <b style="font-size:1.2em; ">{{(order.status==0)? "รอการยืนยันการโอนเงิน": (order.status==1)? "รอการจัดส่ง": "ทำการจัดส่งให้ท่านแล้ว"}}</b>
             <br>
-            มีการอัพเดตล่าสุด: {{order.updated_at.date}}<br>
-            มูลค่าสินค้า: {{order.total}} บาท <br>
-            จัดส่งไปที่ {{order.address.title}} <br>
+            จัดส่งไปให้คุณ <b>{{order.address.title}}</b> <br>
+            Tracking ID: <b>{{order.sendInfo.tracking_code}}</b><br>
+            วันที่คาดว่าจะส่งถึง: <b>{{order.sendInfo.arrival_date}}</b><br>
+            มูลค่าสินค้า: <b>{{order.total}} บาท</b><br>
             
             <div>
-              <div class="white-btn col-md-6" data-toggle="modal" data-target="#orderInfo" ng-click="toggleOrderInfo(key)">รายละเอียดเพิ่มเติม</div>
+              <div class="flat-green-btn col-md-6" data-toggle="modal" data-target="#orderInfo" ng-click="toggleOrderInfo(key)">รายละเอียดเพิ่มเติม</div>
               <div class="default-btn col-md-6" data-toggle="modal" data-target="#transferConfirm" ng-click="setTransferItem(order.id)" ng-show="order.status==0">ยืนยันการโอนเงิน</div>
               <div class="clear"></div>
             </div>
@@ -32,7 +77,8 @@
       <div class="clear"></div>
     </div>
     <div class="clear"></div>
-    <hr>
+    
+
   </div>
 
 
@@ -142,6 +188,26 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="white-btn" data-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for CANCEL TRANSFER -->
+  <div class="modal fade left" id="cancelConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"><b>ข้อมูลการสั่งซื้อ</b></h4>
+        </div>
+        <div class="modal-body">
+          <h3 class="center">คุณต้องการยกเลิกการโอนเงินจริงหรือไม่ ?</h3>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="flat-white-btn" data-dismiss="modal">ปิด</button>          
+          <button type="button" class="flat-yellow-btn" ng-click="cancelTransfer()">ต้องการยกเลิก</button>
         </div>
       </div>
     </div>

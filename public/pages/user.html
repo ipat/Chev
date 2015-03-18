@@ -59,21 +59,26 @@
 		<div class="clear"></div>
 		<hr>
 		
+		<div class="center" ng-show="userInfo.addresses==Null">
+			<h3>ยังไม่มีที่อยู่ที่ใช้ในการจัดส่ง</h3>
+		</div>
 
 		<div ng-repeat="(key,address) in userInfo.addresses" class="col-md-6">
-			<div class="" ng-class="{ 'default-panel':isDefault({{address.id}}), 'white-panel':!isDefault({{address.id}}) }" style="text-align:left; height:100%" >
-				<div class="col-md-4 col-xs-height">
-					<h1><i class="fa fa-home biggersize"></i></h1>
+			<div class="" ng-class="{ 'green-panel':isDefault({{address.id}}), 'white-panel':!isDefault({{address.id}}) }" style="text-align:left; height:100%" >
+				<div class="col-md-3 col-xs-height">
+					<h1><i class="fa fa-home biggersize" ng-show="!isDefault(address.id)"></i></h1>
+					<h1><i class="fa fa-check-square-o biggersize" ng-show="isDefault(address.id)"></i></h1>
 				</div>
-				<div class="col-md-8 verticalCenter" style="padding-top:0.5em;">
+				<div class="col-md-9 verticalCenter" style="padding-top:0.5em; font-size:1.1em;">
 					<div class="badge" ng-show="isDefault(address.id)" >เป็นที่อยู่เริ่มต้น</div> {{address.title}}
 					<br>
 					{{address.house}} {{address.house_name}} {{address.road}} {{address.county}} <br>
 					{{address.district}} {{address.province}} <br>
 					{{address.postcode}}
 					<div class="clear"></div>
-					<div ng-show="!isDefault(address.id)" class="col-md-6 green-btn" ng-click="setDefaultAddress(address.id)">ตั้งที่อยู่เริ่มต้น</div>
-					<div class="col-md-6 default-btn" data-toggle="modal" data-target="#editAddress" ng-click="callAddressBox(key, true)">แก้ไขข้อมูล</div>
+					<br>
+					<div ng-show="!isDefault(address.id)" class="col-md-6 flat-white-btn" ng-click="setDefaultAddress(address.id)">ตั้งที่อยู่เริ่มต้น</div>
+					<div class="col-md-6 flat-green-btn" data-toggle="modal" data-target="#editAddress" ng-click="callAddressBox(key, true)">แก้ไขข้อมูล</div>
 					<div class="clear"></div>
 				</div>
 				<div class="clear"></div>
@@ -81,7 +86,6 @@
 			
 		</div>
 		<div class="clear"></div>
-		<hr>
 
 	</div>
 
@@ -119,7 +123,7 @@
 			</form>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="white-btn" data-dismiss="modal">ยกเลิก</button>
+	        <button type="button" class="flat-white-btn" data-dismiss="modal">ยกเลิก</button>
 	        <button type="button" class="default-btn" ng-click="updateInfo()">บันทึก</button>
 	      </div>
 	    </div>
@@ -185,7 +189,7 @@
 			</form>
 	      </div>
 	      <div class="modal-footer"> 
-	        <button type="button" class="white-btn" data-dismiss="modal">ยกเลิก</button>
+	        <button type="button" class="flat-white-btn" data-dismiss="modal">ยกเลิก</button>
 	        <button type="button" class="default-btn" ng-click="submitAddress(newAddress.isEdit)">บันทึก</button>
 	      </div>
 	    </div>

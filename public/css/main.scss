@@ -131,6 +131,11 @@ $green: #76FF03;
 
 $transparent: rgba(255, 255, 255, 0);
 
+$flat-green: #2ecc71;
+$flat-yellow: #f1c40f;
+$flat-red: #e74c3c;
+$flat-blue: #3498db;
+
 
 /*
 ===========================================================
@@ -319,6 +324,10 @@ hr.gradient {
 	color: red;
 }
 
+.flat-red {
+	color: $flat-red;
+}
+
 .auto-padding-top {
 	padding-top: 7em;
 
@@ -383,7 +392,7 @@ hr.gradient {
 
 .default-btn{
 	-webkit-appearance: none;
-	@include border-radius(3px);
+	@include border-radius(7px);
 	text-decoration: none !important;
 	outline: none;
 	height: 2.5em;
@@ -394,7 +403,7 @@ hr.gradient {
 	color: white !important;
 	background-color: #1abc9c;
 	border: 1px solid darken(#1abc9c, 0%);
-	box-shadow: 0px 0.3em 0px #16a085;	
+	box-shadow: 0px 0.2em 0px #16a085;	
 	cursor: pointer;
 	text-shadow: none;	
 	text-shadow: 0px 2px 0px #16a085;
@@ -404,7 +413,7 @@ hr.gradient {
 
 	&:active{
 		position:relative;
-		top: 0.2em;
+		top: 0.1em;
 		box-shadow: 0px 0.1em 2px #16a085;
 		// border-bottom: 0.1em solid $webtheme-dark;
 	}
@@ -415,11 +424,11 @@ hr.gradient {
 	background-color: $light-gray;
 	color: $text-dark !important;
 	border: 1px solid lighten($gray, 10%);
-	box-shadow: 0px 0.3em 0px $gray;	
+	box-shadow: 0px 0.2em 0px $gray;	
 	text-shadow: 0px 1px 0px $gray;
 	&:active{
 		position:relative;
-		top: 0.2em;
+		top: 0.1em;
 		box-shadow: 0px 0.1em 2px $gray;
 	}
 }
@@ -429,7 +438,7 @@ hr.gradient {
 	background-color: $red;
 	border: 1px solid lighten($red, 10%);
 	color: white !important;
-	box-shadow: 0px 0.3em 0px darken($red, 10%);	
+	box-shadow: 0px 0.2em 0px darken($red, 10%);	
 	text-shadow: 0px 2px 0px darken($red, 10%);
 	&:active{
 		position:relative;
@@ -443,7 +452,7 @@ hr.gradient {
 	background-color: $green;
 	border: 1px solid lighten($green, 10%);
 	color: black !important;
-	box-shadow: 0px 0.3em 0px darken($green, 10%);	
+	box-shadow: 0px 0.2em 0px darken($green, 10%);	
 	text-shadow: 0px 2px 0px darken($green, 10%);
 	&:active{
 		position:relative;
@@ -451,6 +460,67 @@ hr.gradient {
 		box-shadow: 0px 0.1em 2px darken($green, 10%);
 	}
 }
+
+@mixin button-style($color) {
+	@extend .default-btn;
+	background-color: $color;
+	// border: 1px solid lighten($color, 10%);
+	border: none;
+	// color: black !important;
+	box-shadow: 0px 0.2em 0px darken($color, 10%);	
+	text-shadow: 0px 0px 0px darken($color, 10%);
+	&:active{
+		position:relative;
+		top: 0.1em;
+		box-shadow: 0px 0.1em 2px darken($color, 10%);
+	}
+}
+
+.flat-green-btn{
+	@include button-style(#2ecc71);
+	color: white;
+}
+
+.flat-yellow-btn{
+	@include button-style(#f1c40f);
+	color: black !important;
+}
+
+.flat-red-btn{
+	@include button-style(#e74c3c);
+	color: white;
+}
+
+.flat-white-btn{
+	@include button-style(#ecf0f1);
+	color: black !important;
+}
+
+.emerald-flat-button {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  height: 60px;
+  padding: 0;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #2ecc71;
+  border: 0;
+  border-bottom: 2px solid #28be68;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #28be68;
+  box-shadow: inset 0 -2px #28be68;
+  @include border-radius(5px);
+}
+.emerald-flat-button:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 
 .spiner-btn-left{
 	@extend .white-btn;
@@ -487,16 +557,12 @@ hr.gradient {
 	border: 3px solid darken($webtheme-tran, 10%);
 	@include border-radius(5px);
 	padding: 1em;
-	.badge {
-		background-color: darken($webtheme-tran, 20%);
-	}
-
 	margin-bottom: 1em;
 }
 
 .white-panel {
-	background-color: darken(white, 5%);
-	border: 3px solid darken(white, 20%);
+	background-color: darken(white, 2%);
+	border: 3px solid darken(white, 10%);
 	@include border-radius(5px);
 	padding: 1em;
 	margin-bottom: 1em;
@@ -504,8 +570,24 @@ hr.gradient {
 
 .red-panel {
 	@extend .white-panel;
-	background-color: lighten(red, 45%);
-	border: 3px solid lighten(red, 20%);
+	background-color: lighten($flat-red, 40%);
+	border: 3px solid lighten($flat-red, 20%);
+}
+
+.green-panel {
+	@extend .white-panel;
+	background-color: lighten($flat-green, 45%);
+	border: 3px solid lighten($flat-green, 20%);
+
+	.badge {
+		background-color: darken($flat-green, 10%);
+	}
+}
+
+.yellow-panel {
+	@extend .white-panel;
+	background-color: lighten($flat-yellow, 45%);
+	border: 3px solid lighten($flat-yellow, 20%);
 }
 
 
@@ -519,7 +601,7 @@ hr.gradient {
   height: 200px;
 }
 
-img{
+.carousel-img {
   margin:auto;
   width: 100%;
 }
@@ -623,7 +705,6 @@ img{
 	background-color: white;
 	background-image: none;
 	font-weight: 900;
-
 	@include transition(all, 0.5s, ease);
 
 	.navbar-nav a, a{

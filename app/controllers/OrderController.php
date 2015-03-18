@@ -57,7 +57,7 @@ class OrderController extends BaseController{
 			// decresing order
 			if ($order->status == 1) {
 				// remove payInfo
-				return 1111;
+				// return 1111;
 				$order->payInfo->delete();
 				$order->status = 0;
 				$order->save();

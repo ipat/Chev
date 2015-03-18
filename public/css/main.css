@@ -214,6 +214,9 @@ hr.gradient {
 .red {
   color: red; }
 
+.flat-red {
+  color: #e74c3c; }
+
 .auto-padding-top {
   padding-top: 7em; }
   @media screen and (max-width: 1080px) {
@@ -265,11 +268,11 @@ hr.gradient {
   left: 0;
   right: 0; }
 
-.default-btn, .white-btn, .spiner-btn-left, .spiner-btn-right, .red-btn, .green-btn {
+.default-btn, .white-btn, .spiner-btn-left, .spiner-btn-right, .red-btn, .green-btn, .flat-green-btn, .flat-yellow-btn, .flat-red-btn, .flat-white-btn {
   -webkit-appearance: none;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
   text-decoration: none !important;
   outline: none;
   height: 2.5em;
@@ -280,32 +283,32 @@ hr.gradient {
   color: white !important;
   background-color: #1abc9c;
   border: 1px solid #1abc9c;
-  box-shadow: 0px 0.3em 0px #16a085;
+  box-shadow: 0px 0.2em 0px #16a085;
   cursor: pointer;
   text-shadow: none;
   text-shadow: 0px 2px 0px #16a085;
   padding: 0.3em 1em 0.3em; }
-  .default-btn:active, .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active, .red-btn:active, .green-btn:active {
+  .default-btn:active, .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active, .red-btn:active, .green-btn:active, .flat-green-btn:active, .flat-yellow-btn:active, .flat-red-btn:active, .flat-white-btn:active {
     position: relative;
-    top: 0.2em;
+    top: 0.1em;
     box-shadow: 0px 0.1em 2px #16a085; }
 
 .white-btn, .spiner-btn-left, .spiner-btn-right {
   background-color: whitesmoke;
   color: black !important;
   border: 1px solid #d7d7d7;
-  box-shadow: 0px 0.3em 0px #bdbdbd;
+  box-shadow: 0px 0.2em 0px #bdbdbd;
   text-shadow: 0px 1px 0px #bdbdbd; }
   .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active {
     position: relative;
-    top: 0.2em;
+    top: 0.1em;
     box-shadow: 0px 0.1em 2px #bdbdbd; }
 
 .red-btn {
   background-color: #ff3d00;
   border: 1px solid #ff6433;
   color: white !important;
-  box-shadow: 0px 0.3em 0px #cc3100;
+  box-shadow: 0px 0.2em 0px #cc3100;
   text-shadow: 0px 2px 0px #cc3100; }
   .red-btn:active {
     position: relative;
@@ -316,12 +319,82 @@ hr.gradient {
   background-color: #76ff03;
   border: 1px solid #92ff36;
   color: black !important;
-  box-shadow: 0px 0.3em 0px #5ecf00;
+  box-shadow: 0px 0.2em 0px #5ecf00;
   text-shadow: 0px 2px 0px #5ecf00; }
   .green-btn:active {
     position: relative;
     top: 0.2em;
     box-shadow: 0px 0.1em 2px #5ecf00; }
+
+.flat-green-btn {
+  background-color: #2ecc71;
+  border: none;
+  box-shadow: 0px 0.2em 0px #25a25a;
+  text-shadow: 0px 0px 0px #25a25a;
+  color: white; }
+  .flat-green-btn:active {
+    position: relative;
+    top: 0.1em;
+    box-shadow: 0px 0.1em 2px #25a25a; }
+
+.flat-yellow-btn {
+  background-color: #f1c40f;
+  border: none;
+  box-shadow: 0px 0.2em 0px #c29d0b;
+  text-shadow: 0px 0px 0px #c29d0b;
+  color: black !important; }
+  .flat-yellow-btn:active {
+    position: relative;
+    top: 0.1em;
+    box-shadow: 0px 0.1em 2px #c29d0b; }
+
+.flat-red-btn {
+  background-color: #e74c3c;
+  border: none;
+  box-shadow: 0px 0.2em 0px #d62c1a;
+  text-shadow: 0px 0px 0px #d62c1a;
+  color: white; }
+  .flat-red-btn:active {
+    position: relative;
+    top: 0.1em;
+    box-shadow: 0px 0.1em 2px #d62c1a; }
+
+.flat-white-btn {
+  background-color: #ecf0f1;
+  border: none;
+  box-shadow: 0px 0.2em 0px #cfd9db;
+  text-shadow: 0px 0px 0px #cfd9db;
+  color: black !important; }
+  .flat-white-btn:active {
+    position: relative;
+    top: 0.1em;
+    box-shadow: 0px 0.1em 2px #cfd9db; }
+
+.emerald-flat-button {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  height: 60px;
+  padding: 0;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #2ecc71;
+  border: 0;
+  border-bottom: 2px solid #28be68;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #28be68;
+  box-shadow: inset 0 -2px #28be68;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; }
+
+.emerald-flat-button:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
 
 .spiner-btn-left {
   font-size: 23px;
@@ -356,12 +429,10 @@ hr.gradient {
   border-radius: 5px;
   padding: 1em;
   margin-bottom: 1em; }
-  .default-panel .badge {
-    background-color: rgba(14, 98, 82, 0.4); }
 
-.white-panel, .red-panel {
-  background-color: #f2f2f2;
-  border: 3px solid #cccccc;
+.white-panel, .red-panel, .green-panel, .yellow-panel {
+  background-color: #fafafa;
+  border: 3px solid #e6e6e6;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -369,8 +440,18 @@ hr.gradient {
   margin-bottom: 1em; }
 
 .red-panel {
-  background-color: #ffe5e5;
-  border: 3px solid #ff6666; }
+  background-color: #fdf3f2;
+  border: 3px solid #f29f97; }
+
+.green-panel {
+  background-color: #e6f9ee;
+  border: 3px solid #7ee2a8; }
+  .green-panel .badge {
+    background-color: #25a25a; }
+
+.yellow-panel {
+  background-color: #fef9e8;
+  border: 3px solid #f7dc6f; }
 
 /*
 ===========================================================
@@ -380,7 +461,7 @@ hr.gradient {
 #slides_control > div {
   height: 200px; }
 
-img {
+.carousel-img {
   margin: auto;
   width: 100%; }
 

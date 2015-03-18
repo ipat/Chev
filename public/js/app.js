@@ -254,6 +254,73 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 			return text === "More Info v" ? "Less ^" : "More Info v";
 		})
 	});
+
+	var data = {
+	    labels: ["January", "February", "March", "April", "May", "June", "July"],
+	    datasets: [
+	        {
+	            label: "My First dataset",
+	            fillColor: "rgba(220,220,220,0.5)",
+	            strokeColor: "rgba(220,220,220,0.8)",
+	            highlightFill: "rgba(220,220,220,0.75)",
+	            highlightStroke: "rgba(220,220,220,1)",
+	            data: [65, 59, 80, 81, 56, 55, 40]
+	        },
+	        {
+	            label: "My Second dataset",
+	            fillColor: "rgba(151,187,205,0.5)",
+	            strokeColor: "rgba(151,187,205,0.8)",
+	            highlightFill: "rgba(151,187,205,0.75)",
+	            highlightStroke: "rgba(151,187,205,1)",
+	            data: [28, 48, 40, 19, 86, 27, 90]
+	        }
+	    ]
+	};
+
+	var options = {
+	    //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+	    scaleBeginAtZero : true,
+
+	    //Boolean - Whether grid lines are shown across the chart
+	    scaleShowGridLines : true,
+
+	    //String - Colour of the grid lines
+	    scaleGridLineColor : "rgba(0,0,0,.05)",
+
+	    //Number - Width of the grid lines
+	    scaleGridLineWidth : 1,
+
+	    //Boolean - Whether to show horizontal lines (except X axis)
+	    scaleShowHorizontalLines: true,
+
+	    //Boolean - Whether to show vertical lines (except Y axis)
+	    scaleShowVerticalLines: true,
+
+	    //Boolean - If there is a stroke on each bar
+	    barShowStroke : true,
+
+	    //Number - Pixel width of the bar stroke
+	    barStrokeWidth : 2,
+
+	    //Number - Spacing between each of the X value sets
+	    barValueSpacing : 5,
+
+	    //Number - Spacing between data sets within X values
+	    barDatasetSpacing : 1,
+
+	    responsive: true, 
+
+	    maintainAspectRatio: true,
+
+	    //String - A legend template
+	    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+	var ctx = document.getElementById("firstChart").getContext("2d");
+	var myBarChart = new Chart(ctx).Bar(data, options);
+
+
 });
 
 chevApp.controller('howitworkController', function($scope, $rootScope){
@@ -368,6 +435,7 @@ chevApp.controller('productsController', function($scope, $rootScope, $resource,
 		addedItem['product_id'] = 1;
 		addedItem['product_amount'] = $scope.amount;
 		// console.log(addedItem);
+		console.log(addedItem);
 		Cart.store(addedItem, function(){
 			$rootScope.showCart();
 			// sc();
@@ -715,9 +783,9 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders){
 		$scope.currentOrder = orders[num];
 	};
 
-	$scope.updateTransfer = function(){
-		console.log($scope.transfer);
-	};
+	// $scope.updateTransfer = function(){
+	// 	console.log($scope.transfer);
+	// };
 	
 	// $("#dtBox").DateTimePicker();
 	var currentTransfer = -1;
@@ -727,6 +795,25 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders){
 		$scope.transfer = {};
 		$scope.transfer.bank = 'ธนาคารกสิกรไทย';
 	};
+
+	$scope.setCancelItem = function(num){
+		currentTransfer = num;
+		$scope.valid = {};
+		$scope.transfer = {};
+		$scope.transfer.bank = 'ธนาคารกสิกรไทย';
+	};
+
+	$scope.cancelTransfer = function(){
+		$scope.transfer.status = 0;
+
+		Orders.update({temp_id: currentTransfer}, $scope.transfer, function(res){
+			$("#cancelConfirm").modal('hide');
+			var orders = Orders.get({temp_id: 1}, function(){
+				$scope.orders = orders;
+				console.log(orders);
+			});
+		});
+	}
 
 	$scope.updateTransfer = function(){
 
@@ -773,6 +860,8 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders){
 					
 				};
 		});	
+
+
 		
 		console.log($scope.transfer);
 	};
