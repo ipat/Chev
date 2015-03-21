@@ -59,6 +59,12 @@
   src: url("../fonts/thsarabunnew-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thsarabunnew-webfont.woff") format("woff"), url("../fonts/thsarabunnew-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: 'champagne__limousinesregular';
+  src: url("Champagne & Limousines-webfont.eot");
+  src: url("Champagne & Limousines-webfont.eot?#iefix") format("embedded-opentype"), url("Champagne & Limousines-webfont.woff2") format("woff2"), url("Champagne & Limousines-webfont.woff") format("woff"), url("Champagne & Limousines-webfont.ttf") format("truetype"), url("Champagne & Limousines-webfont.svg#champagne__limousinesregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 /*
 ===========================================================
 	Mixin(s)
@@ -85,6 +91,9 @@ body {
 
 .lato {
   font-family: 'lato', 'thaisans_neue_lightregular'; }
+
+.champagne {
+  font-family: 'champagne__limousinesregular', 'thaisans_neueregular'; }
 
 .sarabun {
   font-family: 'THSarabunNew', 'lato', 'thaisans_neue_lightregular'; }
@@ -142,6 +151,18 @@ body {
 .float-left {
   float: left; }
 
+.no-margin {
+  margin: 0; }
+
+.no-padding {
+  padding: 0; }
+
+.head-height {
+  height: 4em; }
+  @media screen and (max-width: 767px) {
+    .head-height {
+      height: 0em; } }
+
 .cir-img {
   width: 100%;
   border-radius: 200px;
@@ -179,7 +200,7 @@ hr.gradient {
   font-size: 1.5em; }
 
 .biggersize {
-  font-size: 3em; }
+  font-size: 4em; }
 
 .verticalLine {
   border-left: 1px solid #CCC; }
@@ -225,9 +246,9 @@ hr.gradient {
 
 .text-input, .small-input {
   -webkit-appearance: none;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -242,8 +263,8 @@ hr.gradient {
   border: 1px solid #CCC;
   margin-bottom: 0.8em; }
   .text-input:focus, .small-input:focus {
-    box-shadow: 0px 0px 8px #3d7830;
-    border: 1px solid #007af3; }
+    box-shadow: 0px 0px 8px #bbd275;
+    border: 1px solid #bbd275; }
 
 .invalid {
   box-shadow: 0px 0px 8px #ff3d00;
@@ -254,14 +275,18 @@ hr.gradient {
   font-size: 1em;
   height: 2.5em; }
 
+.webtheme-shadow {
+  color: #bbd275;
+  text-shadow: 0px 3px 0px #a8c54f; }
+
 .noti {
   background-color: #ff3d00;
   color: white;
   text-shadow: 0 2px 0 #cc3100;
-  border-radius: 0 0 3px 3px;
+  border-radius: 0 0 8px 8px;
   top: -0.8em;
   position: relative;
-  width: 100%;
+  width: 98%;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -281,17 +306,16 @@ hr.gradient {
   margin-bottom: 0.8em;
   text-align: center;
   color: white !important;
-  background-color: #1abc9c;
-  border: 1px solid #1abc9c;
-  box-shadow: 0px 0.2em 0px #16a085;
+  background-color: #bbd275;
+  border: 1px solid #a8c54f;
+  box-shadow: 0px 0.2em 0px #a8c54f;
   cursor: pointer;
   text-shadow: none;
-  text-shadow: 0px 2px 0px #16a085;
   padding: 0.3em 1em 0.3em; }
   .default-btn:active, .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active, .red-btn:active, .green-btn:active, .flat-green-btn:active, .flat-yellow-btn:active, .flat-red-btn:active, .flat-white-btn:active {
     position: relative;
     top: 0.1em;
-    box-shadow: 0px 0.1em 2px #16a085; }
+    box-shadow: 0px 0.1em 2px #a8c54f; }
 
 .white-btn, .spiner-btn-left, .spiner-btn-right {
   background-color: whitesmoke;
@@ -424,18 +448,34 @@ hr.gradient {
 .default-panel {
   background-color: rgba(26, 188, 156, 0.4);
   border: 3px solid rgba(20, 143, 119, 0.4);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
   padding: 1em;
   margin-bottom: 1em; }
+  .default-panel .badge {
+    background-color: rgba(20, 143, 119, 0.4); }
+
+.blank-panel {
+  background-color: #fafafa;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  padding: 1em;
+  margin-bottom: 1em;
+  box-shadow: 0px 0.5em 0px #d9d9d9;
+  cursor: pointer; }
+  .blank-panel:active {
+    position: relative;
+    top: 0.4em;
+    box-shadow: 0px 0.1em 2px #d9d9d9; }
 
 .white-panel, .red-panel, .green-panel, .yellow-panel {
   background-color: #fafafa;
   border: 3px solid #e6e6e6;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
   padding: 1em;
   margin-bottom: 1em; }
 
@@ -452,6 +492,20 @@ hr.gradient {
 .yellow-panel {
   background-color: #fef9e8;
   border: 3px solid #f7dc6f; }
+
+.tag-head {
+  background-color: #bbd275;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 1em 0 0.5em;
+  color: white;
+  font-size: 2em; }
+
+.tag-tail {
+  background-color: #f2f2f2;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 2em 2em 1em; }
 
 /*
 ===========================================================
@@ -530,7 +584,7 @@ hr.gradient {
 .navbar {
   background-color: white;
   background-image: none;
-  font-weight: 900;
+  font-weight: 400;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
@@ -545,7 +599,7 @@ hr.gradient {
     font-size: 1.2em; }
     .navbar .navbar-nav a:hover, .navbar a:hover {
       background-color: transparent;
-      color: #3d7830 !important;
+      color: #bbd275 !important;
       font-weight: bolder; }
     .navbar .navbar-nav a:focus, .navbar a:focus {
       background-color: rgba(255, 255, 255, 0); }
@@ -565,7 +619,7 @@ hr.gradient {
     height: 150%; }
 
 .active {
-  color: #3d7830 !important;
+  color: #bbd275 !important;
   font-weight: 900; }
 
 .highlight-nav {
@@ -595,7 +649,7 @@ hr.gradient {
   padding: 0.5em 1em 0.5em;
   color: black; }
   .dropdown-area a {
-    color: #3d7830 !important; }
+    color: #bbd275 !important; }
 
 /*
 ===========================================================
@@ -606,9 +660,7 @@ hr.gradient {
   background-color: rgba(255, 255, 255, 0); }
 
 .midjumbo {
-  background: url("../img/60.jpg") no-repeat center center;
-  background-attachment: fixed;
-  background-position: 0 0;
+  background: url("../img/promotion.png") no-repeat center center;
   z-index: -1;
   color: white;
   margin-top: 50px; }
@@ -671,6 +723,83 @@ hr.gradient {
 .fa-youtube-play:hover {
   background-color: #bb0000;
   color: white; }
+
+/*
+===========================================================
+	Progress Bar
+===========================================================
+*/
+ol.progtrckr {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+ol.progtrckr li {
+  display: inline-block;
+  text-align: center;
+  line-height: 3em; }
+
+ol.progtrckr[data-progtrckr-steps="2"] li {
+  width: 49%; }
+
+ol.progtrckr[data-progtrckr-steps="3"] li {
+  width: 33%; }
+
+ol.progtrckr[data-progtrckr-steps="4"] li {
+  width: 24%; }
+
+ol.progtrckr[data-progtrckr-steps="5"] li {
+  width: 19%; }
+
+ol.progtrckr[data-progtrckr-steps="6"] li {
+  width: 16%; }
+
+ol.progtrckr[data-progtrckr-steps="7"] li {
+  width: 14%; }
+
+ol.progtrckr[data-progtrckr-steps="8"] li {
+  width: 12%; }
+
+ol.progtrckr[data-progtrckr-steps="9"] li {
+  width: 11%; }
+
+ol.progtrckr li.progtrckr-done {
+  color: black;
+  border-bottom: 4px solid yellowgreen; }
+
+ol.progtrckr li.progtrckr-todo {
+  color: silver;
+  border-bottom: 4px solid silver; }
+
+ol.progtrckr li:after {
+  content: "\00a0\00a0"; }
+
+ol.progtrckr li:before {
+  position: relative;
+  bottom: -2.5em;
+  float: left;
+  left: 50%;
+  line-height: 1em; }
+
+ol.progtrckr li.progtrckr-done:before {
+  content: "\2713";
+  color: white;
+  background-color: yellowgreen;
+  height: 1.2em;
+  width: 1.2em;
+  line-height: 1.2em;
+  border: none;
+  border-radius: 1.2em; }
+
+ol.progtrckr li.progtrckr-todo:before {
+  content: "\2002";
+  color: white;
+  background-color: silver;
+  height: 1.2em;
+  width: 1.2em;
+  line-height: 1.2em;
+  border: none;
+  border-radius: 1.2em; }
 
 /*
 ===========================================================
