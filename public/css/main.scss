@@ -884,6 +884,16 @@ hr.gradient {
 	// @include blur(5px, 0.99);
 }
 
+.promotion-img {
+	width: 100%;
+	height: auto;
+
+	// @media screen and (max-width: 500px){
+	// 	width: auto;
+	// 	height: 100%;
+	// }
+}
+
 .jumbotext {
 
 	.title {

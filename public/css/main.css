@@ -665,6 +665,10 @@ hr.gradient {
   color: white;
   margin-top: 50px; }
 
+.promotion-img {
+  width: 100%;
+  height: auto; }
+
 .jumbotext {
   height: 100%;
   width: 100%;
