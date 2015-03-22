@@ -320,6 +320,30 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 
 	};
 
+	var inView = false;
+
+	function isScrolledIntoView(elem)
+	{
+	    var docViewTop = $(window).scrollTop();
+	    var docViewBottom = docViewTop + $(window).height();
+
+	    var elemTop = $(elem).offset().top;
+	    var elemBottom = elemTop + $(elem).height();
+
+	    return ((elemTop <= docViewBottom) && (elemBottom >= docViewTop));
+	}
+
+	$(window).scroll(function() {
+	    if (isScrolledIntoView('#firstChart')) {
+	        if (inView) { return; }
+	        inView = true;
+	        new Chart(document.getElementById("firstChart").getContext("2d")).Bar(data, options);
+	    } else {
+	        inView = false;  
+	    }
+	});
+
+
 	var ctx = document.getElementById("firstChart").getContext("2d");
 	var myBarChart = new Chart(ctx).Bar(data, options);
 

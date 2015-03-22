@@ -12,11 +12,11 @@
       <div class="col-md-6" ng-repeat="(key,order) in orders">
         <div ng-class="{ 'red-panel':{{order.status==0}}, 'yellow-panel': {{order.status==1}} }" style="text-align:left; height:100%" ng-show="order.status!=2">
           <div class="col-md-3">            
-            <h1><i class="fa biggersize" ng-class="{ 'fa-pencil-square-o':{{order.status==0}}, 'fa-clock-o': {{order.status==1}} }"></i></h1>
+            <h1><i class="fa" style="font-size:3em;" ng-class="{ 'fa-pencil-square-o':{{order.status==0}}, 'fa-clock-o': {{order.status==1}} }"></i></h1>
           </div>
           <div class="col-md-9" style="padding-top:1em;">
             <div ng-show="order.status==0" ><span class="fa fa-close right flat-red" style="width:100%; font-size:1.2em; float:right;"></span> </div>
-            สถานะการสั่งซื้อ <b style="font-size:1.2em; ">{{(order.status==0)? "รอการยืนยันการโอนเงิน": (order.status==1)? "รอการจัดส่ง": "ทำการจัดส่งให้ท่านแล้ว"}}</b>
+            สถานะการสั่งซื้อ <b style="font-size:1.2em; ">{{(order.status==0)? "รอการยืนยันการโอนเงิน": (order.status==1)? "รอการตรวจสอบ": "ทำการจัดส่งให้ท่านแล้ว"}}</b>
             <br>
             จะทำการจัดส่งไปให้คุณ <b>{{order.address.title}}</b> <br>
             มูลค่าสินค้า: <b>{{order.total}} บาท</b><br>
@@ -52,7 +52,7 @@
       <div class="col-md-6" ng-repeat="(key,order) in orders">
         <div ng-class="{ 'green-panel':{{order.status==2}}, 'white-panel': {{order.status!=2}} }" style="text-align:left; height:100%" ng-show="order.status==2">
           <div class="col-md-3">            
-            <h1><i class="fa fa-truck biggersize"></i></h1>
+            <h1><i class="fa fa-truck" style="font-size:3em;"></i></h1>
           </div>
           <div class="col-md-9" style="padding-top:1em;">
             สถานะการสั่งซื้อ <b style="font-size:1.2em; ">{{(order.status==0)? "รอการยืนยันการโอนเงิน": (order.status==1)? "รอการจัดส่ง": "ทำการจัดส่งให้ท่านแล้ว"}}</b>

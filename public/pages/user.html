@@ -55,21 +55,32 @@
 			<div class="clear"></div>
 		</form> -->
 
-		<h3>ที่อยู่ในการจัดส่ง <button class="default-btn float-right" style="font-size:0.5em" data-toggle="modal" data-target="#editAddress" ng-click="callAddressBox(0, false)" ng-hide="newAddressEnabled"><i class="glyphicon glyphicon-plus"></i></button></h3>
+		<h3>ที่อยู่ในการจัดส่ง <!-- <button class="default-btn float-right" style="font-size:0.5em" data-toggle="modal" data-target="#editAddress" ng-click="callAddressBox(0, false)" ng-hide="newAddressEnabled"><i class="glyphicon glyphicon-plus"></i></button> --></h3>
 		<div class="clear"></div>
 		<hr>
 		
-		<div class="center" ng-show="userInfo.addresses==Null">
+		<!-- <div class="center" ng-show="userInfo.addresses==Null">
 			<h3>ยังไม่มีที่อยู่ที่ใช้ในการจัดส่ง</h3>
+		</div> -->
+		<div class="col-md-6" data-toggle="modal" data-target="#editAddress" ng-click="callAddressBox(0, false)" ng-hide="newAddressEnabled">
+			<div class="blank-panel" style="height: 100%;">
+				<div class="col-md-4">
+					<h1><i class="fa fa-home biggersize webtheme-shadow"></i></h1>
+				</div>
+				<div class="col-md-8">
+					<h1 class="center" style="font-size:3.5em;">เพิ่มที่อยู่ใหม่</h1>
+					<h4 class="center webtheme-shadow" style="font-size: 1.35em;"><i class="fa fa-plus-circle biggersize"></i></h4>
+				</div>
+				<div class="clear"></div>
+			</div>
 		</div>
-
 		<div ng-repeat="(key,address) in userInfo.addresses" class="col-md-6">
 			<div class="" ng-class="{ 'green-panel':isDefault({{address.id}}), 'white-panel':!isDefault({{address.id}}) }" style="text-align:left; height:100%" >
-				<div class="col-md-3 col-xs-height">
-					<h1><i class="fa fa-home biggersize" ng-show="!isDefault(address.id)"></i></h1>
-					<h1><i class="fa fa-check-square-o biggersize" ng-show="isDefault(address.id)"></i></h1>
+				<div class="col-md-4 col-xs-height">
+					<h1><i class="fa fa-home biggersize center" ng-show="!isDefault(address.id)"></i></h1>
+					<h1><i class="fa fa-check-square-o biggersize center" ng-show="isDefault(address.id)"></i></h1>
 				</div>
-				<div class="col-md-9 verticalCenter" style="padding-top:0.5em; font-size:1.1em;">
+				<div class="col-md-8 verticalCenter" style="padding-top:0.5em; font-size:1.1em;">
 					<div class="badge" ng-show="isDefault(address.id)" >เป็นที่อยู่เริ่มต้น</div> {{address.title}}
 					<br>
 					{{address.house}} {{address.house_name}} {{address.road}} {{address.county}} <br>

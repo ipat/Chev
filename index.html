@@ -32,7 +32,9 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <div class="navbar navbar-fixed-top {{navbarClass}}" role="navigation" ng-controller="navbarController" style="border-bottom-width: 0px;">
+    <div class="navbar navbar-fixed-top {{navbarClass}} champagne" role="navigation" ng-controller="navbarController" style="border-bottom-width: 0px;">
+      <div style="height:0.8em;"></div>
+
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -41,7 +43,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./" style="font-size: 2em;">
+          <a class="navbar-brand champagne" href="./" style="font-size: 3em;">
           <!-- <img src="public/img/logo.png" alt="Logo"> -->
           CHEV</a>
         </div>
@@ -55,13 +57,13 @@
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
           </form> -->
-          <ul class="nav navbar-nav navbar-right lato">
-            <li><a ng-class="{ active: isActive('/') }" ui-sref="home" >Success Story</a></li>
-            <li><a ng-class="{ active: isActive('/ingredients') }" ui-sref="ingredients">Ingredients</a></li>
-            <li><a ng-class="{ active: isActive('/howitwork') }" ui-sref="howitwork">How It Works</a></li>
-            <li><a ng-class="{ active: isActive('/products') }" ui-sref="products">Shop</a></li>
-            <li><a ng-class="{ active: isActive('/About') }" ui-sref="#">About Us</a></li>
-            <li><a ng-class="{ active: isActive('/login') }" ng-show="!isLogin" ui-sref="login">Login</a></li>
+          <ul class="nav navbar-nav navbar-right champagne">
+            <li><a ng-class="{ active: isActive('/') }" ui-sref="home" >ตัวอย่างความสำเร็จ</a></li>
+            <li><a ng-class="{ active: isActive('/ingredients') }" ui-sref="ingredients">สารอาหาร</a></li>
+            <li><a ng-class="{ active: isActive('/howitwork') }" ui-sref="howitwork">กลไกการทำงาน</a></li>
+            <li><a ng-class="{ active: isActive('/products') }" ui-sref="products">ร้านค้า</a></li>
+            <li><a ng-class="{ active: isActive('/About') }" ui-sref="#">เกี่ยวกับเรา</a></li>
+            <li><a ng-class="{ active: isActive('/login') }" ng-show="!isLogin" ui-sref="login">เข้าสู่ระบบ</a></li>
             <!-- <li><a ng-class="{ active: isActive('/user') }" ng-show="isLogin" ui-sref="user">คุณ {{userInfo.name_first}}</a></li> -->
             <li class="dropdown" ng-show="isLogin">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">คุณ {{userInfo.name_first}} <span class="caret"></span></a>
@@ -116,6 +118,7 @@
 
         </div><!--/.navbar-collapse -->
       </div>
+      <div style="height:0.8em;"></div>
     </div>
 
     <!-- <ng-view></ng-view> -->
