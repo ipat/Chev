@@ -215,6 +215,9 @@ chevApp.controller('homeController', function($scope, $rootScope){
 	    },
 	    {
 	      image: 'public/img/ban2.png'
+	    },
+	    {
+	      image: 'public/img/ban3.png'
 	    }
 	 ];
 });
