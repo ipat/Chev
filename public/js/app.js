@@ -443,6 +443,7 @@ chevApp.controller('signupController', function($scope, $rootScope, Users){
 
 chevApp.controller('productsController', function($scope, $rootScope, $resource, Cart){
 	$rootScope.navbarClass = "text-dark";
+	$scope.amount = 1;
 	$scope.addToCart = function(product_id){
 		// if($scope.amount === undefined)
 		// 	showMessage($scope, "กรุณาระบุจำนวนสินค้า", "alertFailed", ".alertBox");

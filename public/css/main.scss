@@ -604,20 +604,20 @@ hr.gradient {
 
 .blank-panel {
 	background-color: darken(white, 2%);
-	// border: 4px dashed  darken(white, 10%);
+	border: 4px dashed  $webtheme;
 	@include border-radius(8px);
 	padding: 1em;
 	margin-bottom: 1em;
 
 	// border: 1px solid darken(white, 10%);//#1abc9c, 0%);
-	box-shadow: 0px 0.5em 0px darken(white, 15%);//#16a085;	
+	// box-shadow: 0px 0.5em 0px darken(white, 15%);//#16a085;	
 	cursor: pointer;
-	&:active{
-		position:relative;
-		top: 0.4em;
-		box-shadow: 0px 0.1em 2px darken(white, 15%);//#16a085;
-		// border-bottom: 0.1em solid $webtheme-dark;
-	}
+	// &:active{
+	// 	position:relative;
+	// 	top: 0.4em;
+	// 	box-shadow: 0px 0.1em 2px darken(white, 15%);//#16a085;
+	// 	// border-bottom: 0.1em solid $webtheme-dark;
+	// }
 }
 
 .white-panel {

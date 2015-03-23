@@ -105,25 +105,25 @@ body {
   background-image: none; }
 
 .btn-primary {
-  background-color: #46b5f7;
+  background-color: #46B5F7;
   border: none; }
   .btn-primary:hover {
-    background-color: #18a3f5; }
+    background-color: #18A3F5; }
 
 .btn-defalut {
-  background-color: whitesmoke; }
+  background-color: #F5F5F5; }
   .btn-defalut:hover {
-    background-color: #bdbdbd;
+    background-color: #BDBDBD;
     color: white; }
 
 .icon-bar {
   background-color: white; }
 
 .left-border {
-  border-left: 1px solid #bdbdbd; }
+  border-left: 1px solid #BDBDBD; }
 
 .right-border {
-  border-right: 1px solid #bdbdbd; }
+  border-right: 1px solid #BDBDBD; }
 
 .feature-icon, .social-icon {
   text-align: center;
@@ -267,8 +267,8 @@ hr.gradient {
     border: 1px solid #bbd275; }
 
 .invalid {
-  box-shadow: 0px 0px 8px #ff3d00;
-  border: 1px solid #ff3d00;
+  box-shadow: 0px 0px 8px #FF3D00;
+  border: 1px solid #FF3D00;
   top: -0.8em; }
 
 .small-input {
@@ -280,7 +280,7 @@ hr.gradient {
   text-shadow: 0px 3px 0px #a8c54f; }
 
 .noti {
-  background-color: #ff3d00;
+  background-color: #FF3D00;
   color: white;
   text-shadow: 0 2px 0 #cc3100;
   border-radius: 0 0 8px 8px;
@@ -318,18 +318,18 @@ hr.gradient {
     box-shadow: 0px 0.1em 2px #a8c54f; }
 
 .white-btn, .spiner-btn-left, .spiner-btn-right {
-  background-color: whitesmoke;
+  background-color: #F5F5F5;
   color: black !important;
   border: 1px solid #d7d7d7;
-  box-shadow: 0px 0.2em 0px #bdbdbd;
-  text-shadow: 0px 1px 0px #bdbdbd; }
+  box-shadow: 0px 0.2em 0px #BDBDBD;
+  text-shadow: 0px 1px 0px #BDBDBD; }
   .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active {
     position: relative;
     top: 0.1em;
-    box-shadow: 0px 0.1em 2px #bdbdbd; }
+    box-shadow: 0px 0.1em 2px #BDBDBD; }
 
 .red-btn {
-  background-color: #ff3d00;
+  background-color: #FF3D00;
   border: 1px solid #ff6433;
   color: white !important;
   box-shadow: 0px 0.2em 0px #cc3100;
@@ -340,7 +340,7 @@ hr.gradient {
     box-shadow: 0px 0.1em 2px #cc3100; }
 
 .green-btn {
-  background-color: #76ff03;
+  background-color: #76FF03;
   border: 1px solid #92ff36;
   color: black !important;
   box-shadow: 0px 0.2em 0px #5ecf00;
@@ -458,17 +458,13 @@ hr.gradient {
 
 .blank-panel {
   background-color: #fafafa;
+  border: 4px dashed #bbd275;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   border-radius: 8px;
   padding: 1em;
   margin-bottom: 1em;
-  box-shadow: 0px 0.5em 0px #d9d9d9;
   cursor: pointer; }
-  .blank-panel:active {
-    position: relative;
-    top: 0.4em;
-    box-shadow: 0px 0.1em 2px #d9d9d9; }
 
 .white-panel, .red-panel, .green-panel, .yellow-panel {
   background-color: #fafafa;
@@ -554,7 +550,6 @@ hr.gradient {
     .widepic {
       padding-top: 2em; } }
   .widepic img {
-    height: 100%;
     width: 100%; }
     @media screen and (max-width: 991px) {
       .widepic img {
@@ -686,7 +681,7 @@ hr.gradient {
   font-size: 1.5em;
   line-height: 2em;
   vertical-align: middle;
-  background-color: #76ff03;
+  background-color: #76FF03;
   border-bottom: 0.3em solid #5ecf00;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -697,7 +692,7 @@ hr.gradient {
   text-shadow: 0px 2px 0px #5ecf00; }
 
 .alertFailed {
-  background-color: #ff3d00;
+  background-color: #FF3D00;
   border-bottom: 0.3em solid #cc3100;
   color: white;
   text-shadow: 0px 2px 0px #cc3100; }
@@ -823,3 +818,5 @@ ol.progtrckr li.progtrckr-todo:before {
 
 .ng-leave.ng-leave-active {
   opacity: 0; }
+
+/*# sourceMappingURL=main.css.map */
