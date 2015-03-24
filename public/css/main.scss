@@ -604,7 +604,7 @@ hr.gradient {
 
 .blank-panel {
 	background-color: darken(white, 2%);
-	// border: 4px dashed  darken(white, 10%);
+	border: 4px dashed  $webtheme;
 	@include border-radius(8px);
 	padding: 1em;
 	margin-bottom: 1em;
