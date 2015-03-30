@@ -263,67 +263,67 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 		})
 	});
 
-	var data = {
-	    labels: ["1000 mg of L-carnitine/day", "1000 mg of other low calorie diet group/day"],
-	    datasets: [
-	        {
-	            label: "My First dataset",
-	            fillColor: "rgba(220,220,220,0.5)",
-	            strokeColor: "rgba(220,220,220,0.8)",
-	            highlightFill: "rgba(220,220,220,0.75)",
-	            highlightStroke: "rgba(220,220,220,1)",
-	            data: [3, 1]
-	        },
-	        {
-	            label: "My Second dataset",
-	            fillColor: "rgba(151,187,205,0.5)",
-	            strokeColor: "rgba(151,187,205,0.8)",
-	            highlightFill: "rgba(151,187,205,0.75)",
-	            highlightStroke: "rgba(151,187,205,1)",
-	            data: [5, 2]
-	        }
-	    ]
-	};
+	// var data = {
+	//     labels: ["1000 mg of L-carnitine/day", "1000 mg of other low calorie diet group/day"],
+	//     datasets: [
+	//         {
+	//             label: "My First dataset",
+	//             fillColor: "rgba(220,220,220,0.5)",
+	//             strokeColor: "rgba(220,220,220,0.8)",
+	//             highlightFill: "rgba(220,220,220,0.75)",
+	//             highlightStroke: "rgba(220,220,220,1)",
+	//             data: [3, 1]
+	//         },
+	//         {
+	//             label: "My Second dataset",
+	//             fillColor: "rgba(151,187,205,0.5)",
+	//             strokeColor: "rgba(151,187,205,0.8)",
+	//             highlightFill: "rgba(151,187,205,0.75)",
+	//             highlightStroke: "rgba(151,187,205,1)",
+	//             data: [5, 2]
+	//         }
+	//     ]
+	// };
 
-	var options = {
-	    //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-	    scaleBeginAtZero : true,
+	// var options = {
+	//     //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+	//     scaleBeginAtZero : true,
 
-	    //Boolean - Whether grid lines are shown across the chart
-	    scaleShowGridLines : true,
+	//     //Boolean - Whether grid lines are shown across the chart
+	//     scaleShowGridLines : true,
 
-	    //String - Colour of the grid lines
-	    scaleGridLineColor : "rgba(0,0,0,.05)",
+	//     //String - Colour of the grid lines
+	//     scaleGridLineColor : "rgba(0,0,0,.05)",
 
-	    //Number - Width of the grid lines
-	    scaleGridLineWidth : 1,
+	//     //Number - Width of the grid lines
+	//     scaleGridLineWidth : 1,
 
-	    //Boolean - Whether to show horizontal lines (except X axis)
-	    scaleShowHorizontalLines: true,
+	//     //Boolean - Whether to show horizontal lines (except X axis)
+	//     scaleShowHorizontalLines: true,
 
-	    //Boolean - Whether to show vertical lines (except Y axis)
-	    scaleShowVerticalLines: true,
+	//     //Boolean - Whether to show vertical lines (except Y axis)
+	//     scaleShowVerticalLines: true,
 
-	    //Boolean - If there is a stroke on each bar
-	    barShowStroke : true,
+	//     //Boolean - If there is a stroke on each bar
+	//     barShowStroke : true,
 
-	    //Number - Pixel width of the bar stroke
-	    barStrokeWidth : 2,
+	//     //Number - Pixel width of the bar stroke
+	//     barStrokeWidth : 2,
 
-	    //Number - Spacing between each of the X value sets
-	    barValueSpacing : 5,
+	//     //Number - Spacing between each of the X value sets
+	//     barValueSpacing : 5,
 
-	    //Number - Spacing between data sets within X values
-	    barDatasetSpacing : 1,
+	//     //Number - Spacing between data sets within X values
+	//     barDatasetSpacing : 1,
 
-	    responsive: true, 
+	//     responsive: true, 
 
-	    maintainAspectRatio: true,
+	//     maintainAspectRatio: true,
 
-	    //String - A legend template
-	    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+	//     //String - A legend template
+	//     legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 
-	};
+	// };
 
 	var inView = false;
 
@@ -339,18 +339,64 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 	}
 
 	$(window).scroll(function() {
-	    if (isScrolledIntoView('#firstChart')) {
+	    if (isScrolledIntoView('#chart1')) {
 	        if (inView) { return; }
 	        inView = true;
-	        new Chart(document.getElementById("firstChart").getContext("2d")).StackedBar(data, options);
+	        setTimeout(function(){
+	        	chart1.load({
+		        	columns: [
+			            ['x', '1000 mg of L-carnitine', '1000 mg of other'],
+			            ['Min', 3, 1],
+			            ['Max', 5, 2],
+			        ]
+			    });
+	        }, 1000);
+	        setTimeout(function() {
+				chart1.groups([['Min', 'Max']])
+			}, 1000);
 	    } else {
 	        inView = false;  
 	    }
 	});
 
 
-	var ctx = document.getElementById("firstChart").getContext("2d");
-	var myBarChart = new Chart(ctx).StackedBar(data, options);
+	// var ctx = document.getElementById("firstChart").getContext("2d");
+	// var myBarChart = new Chart(ctx).StackedBar(data, options);
+
+	var chart1 = c3.generate({
+		bindto: '#chart1',
+		// data: {
+		// 	columns: [
+	 //            ['Min', 3, 1],
+	 //            ['Max', 5, 2]
+	 //        ],
+	 //        type: 'bar'
+		// }
+		// grid: {
+	 //        x: {
+	 //            type: 'category',
+	 //            categories: ['cat1', 'cat2']
+	 //        }
+	 //    }
+	 	data: {
+	        x : 'x',
+	        columns: [
+	        ],
+	        type: 'bar'
+	    },
+	    axis: {
+	        x: {
+	            type: 'category',
+	            tick: {
+	                rotate: 75,
+	                multiline: false
+	            },
+	            height: 130
+	        }
+	    }
+	});
+
+	
 
 
 });

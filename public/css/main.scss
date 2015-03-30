@@ -122,7 +122,7 @@
 ===========================================================
 */
 $webtheme-light: #538253;
-$webtheme: #bbd275;//lighten(#182f13, 20%);
+$webtheme: yellowgreen;//lighten(#182f13, 20%);
 $webtheme-mid: #239DFF;
 $webtheme-dark: #007AF3;
 $webtheme-tran: rgba(26, 188, 156,0.4);
@@ -309,7 +309,7 @@ hr.gradient {
 }
 
 .gray-bg {
-	background-color: #222;//darken($webtheme, 10%);
+	background-color: #333;//darken($webtheme, 10%);
 	color: white;
 	a {
 		color: white;
@@ -321,7 +321,7 @@ hr.gradient {
 }
 
 .bottom-space {
-	margin-bottom: 50px;
+	margin-bottom: 60px;
 }
 
 .no-padding {
@@ -633,7 +633,7 @@ hr.gradient {
 	border: 4px dashed  $webtheme;
 	@include border-radius(8px);
 	padding: 1em;
-	margin-bottom: 1em;
+	// margin-bottom: 1em;
 
 	// border: 1px solid darken(white, 10%);//#1abc9c, 0%);
 	// box-shadow: 0px 0.5em 0px darken(white, 15%);//#16a085;	
@@ -647,7 +647,7 @@ hr.gradient {
 }
 
 .white-panel {
-	background-color: darken(white, 2%);
+	background-color: darken(white, 0%);
 	border: 3px solid darken(white, 10%);
 	@include border-radius(8px);
 	padding: 1em;
@@ -662,11 +662,11 @@ hr.gradient {
 
 .green-panel {
 	@extend .white-panel;
-	background-color: lighten($flat-green, 45%);
-	border: 3px solid lighten($flat-green, 20%);
+	background-color: lighten($webtheme, 30%);
+	border: 3px solid darken($webtheme, 20%);
 
 	.badge {
-		background-color: darken($flat-green, 10%);
+		background-color: darken($webtheme, 20%);
 	}
 }
 
@@ -980,7 +980,7 @@ footer {
 .footer-square{
 	width: 100%;
 	height: 100%;
-	color: #222;//darken($webtheme, 20%);
+	color: #333;//darken($webtheme, 20%);
 	// padding-bottom: 100%;
 	@include border-radius(8px);
 	box-shadow: 0px 0px 5px #888;

@@ -30,7 +30,7 @@
     </div>
 
     <div ng-repeat="(key,address) in userInfo.addresses" class="col-md-6">
-      <div class="" ng-class="{ 'default-panel':isDefault({{address.id}}), 'white-panel':!isDefault({{address.id}}) }" style="text-align:left; height:100%" >
+      <div class="" ng-class="{ 'green-panel':isDefault({{address.id}}), 'white-panel':!isDefault({{address.id}}) }" style="text-align:left; height:100%" >
         <div class="col-md-4 col-xs-height">
           <h1><i class="fa fa-home biggersize" ng-show="!isDefault(address.id)"></i></h1>
           <h1><i class="fa fa-check-square-o biggersize" ng-show="isDefault(address.id)"></i></h1>
