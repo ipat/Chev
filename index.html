@@ -14,7 +14,7 @@
         <style>
             body {
                 padding-top: 50px;
-                padding-bottom: 20px;
+                /*padding-bottom: 20px;*/
             }
         </style>
         <link rel="stylesheet" href="public/css/bootstrap-theme.min.css">
@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="public/css/jquery.bootstrap-touchspin.css">
         <link rel="stylesheet" href="public/css/animate.css">
         <link rel="stylesheet" href="public/css/DateTimePicker.min.css">
+        <link rel="stylesheet" href="public/css/c3.min.css">
         <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
         <script src="public/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -33,7 +34,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <div class="navbar navbar-fixed-top {{navbarClass}} champagne" role="navigation" ng-controller="navbarController" style="border-bottom-width: 0px;">
-      <div style="height:0.8em;"></div>
+      <div style="height:1.2em;"></div>
 
       <div class="container">
         <div class="navbar-header">
@@ -58,7 +59,7 @@
             <button type="submit" class="btn btn-success">Sign in</button>
           </form> -->
           <ul class="nav navbar-nav navbar-right champagne">
-            <li><a ng-class="{ active: isActive('/') }" ui-sref="home" >ตัวอย่างความสำเร็จ</a></li>
+            <li><a ng-class="{ active: isActive('/successStory') }" ui-sref="successStory" >ตัวอย่างความสำเร็จ</a></li>
             <li><a ng-class="{ active: isActive('/ingredients') }" ui-sref="ingredients">สารอาหาร</a></li>
             <li><a ng-class="{ active: isActive('/howitwork') }" ui-sref="howitwork">กลไกการทำงาน</a></li>
             <li><a ng-class="{ active: isActive('/products') }" ui-sref="products">ร้านค้า</a></li>
@@ -66,7 +67,7 @@
             <li><a ng-class="{ active: isActive('/login') }" ng-show="!isLogin" ui-sref="login">เข้าสู่ระบบ</a></li>
             <!-- <li><a ng-class="{ active: isActive('/user') }" ng-show="isLogin" ui-sref="user">คุณ {{userInfo.name_first}}</a></li> -->
             <li class="dropdown" ng-show="isLogin">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">คุณ {{userInfo.name_first}} <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">คุณ {{userInfo.name_first}} <span class="cart"></span></a>
               <ul class="dropdown-menu" role="menu" style="color:black !important">
                 <li><a ui-sref="user">ข้อมูลส่วนตัว</a></li>
                 <li><a ui-sref="orders">รายการสั่งซื้อ</a></li>
@@ -157,18 +158,59 @@
       
     </modal>
  -->
+    <!-- Footer -->
+    <div class="gray-bg" style="height:100%; padding-bottom: 3em;">
+      <div style="height:1em;"></div>
+      <div class="container">
+        <div class="col-sm-3">
+          <h4>แผนผังเว็บไซด์</h4>
+          <!-- <hr> -->
+          <ul class="footer-list">
+            <li><a href="home">หน้าหลัก</a></li>
+            <li><a href="successStory">ตัวอย่างความสำเร็จ</a></li>
+            <li><a href="ingredients">สารอาหาร</a></li>
+            <li><a href="howitwork">กลไกการทำงาน</a></li>
+            <li><a href="products">ร้านค้า</a></li>
+            <li><a href="aboutus">เกี่ยวกับเรา</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-4">
+          <div class="col-sm-4" style="padding: 5px;">
+            <div class="footer-square facebook-square">
+              <span class="fa fa-facebook inside-square"></span>
+            </div>
+          </div>
+          <div class="col-sm-4" style="padding: 5px;">            
+            <div class="footer-square instagram-square">
+              <span class="fa fa-instagram inside-square"></span>
+            </div>
+          </div><!-- 
+          <div class="clear"></div> -->
+          <div class="col-sm-4" style="padding: 5px;">            
+            <div class="footer-square youtube-square">
+              <span class="fa fa-youtube-play inside-square"></span>
+            </div>
+          </div>
 
-    <div class="container">
-      <footer class="center">
-        <div class="hr">
+          <div class="clear"></div>
           <hr>
-          <a href=""><i class="fa fa-facebook social-icon"></i></a>
-          <a href=""><i class="fa fa-twitter social-icon"></i></a>
-          <a href=""><i class="fa fa-youtube-play social-icon"></i></a>
-        </div>      
-          <p>&copy; Chev 2014</p>
-      </footer>
-    </div> <!-- /container -->            
+
+
+        </div>
+      </div>
+
+        <div class="clear"></div>
+        <!-- <footer class="center">
+          <div class="hr">
+            <hr>
+            <a href=""><i class="fa fa-facebook social-icon"></i></a>
+            <a href=""><i class="fa fa-twitter social-icon"></i></a>
+            <a href=""><i class="fa fa-youtube-play social-icon"></i></a>
+          </div>      
+            <p>&copy; Chev 2014</p>
+        </footer> -->
+      </div> <!-- /container -->   
+    </div>         
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="public/js/vendor/jquery.stellar.min.js"></script>
         <script>window.jQuery || document.write('<script src="public/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
@@ -180,12 +222,15 @@
         <script src="public/js/vendor/angular-resource.min.js"></script>
         <script src="public/js/vendor/underscore-min.js"></script>
         <script src="public/js/vendor/DateTimePicker.min.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="public/js/vendor/c3.min.js"></script>
 
         <script src="public/js/main.js"></script>
         <script src="public/js/app.js"></script>
         <script src="public/js/jquery.bootstrap-touchspin.js"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
         <script type="text/javascript" src="public/js/vendor/chart.min.js"></script>
+        <script type="text/javascript" src="public/js/vendor/chart.stackedbar.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

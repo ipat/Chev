@@ -37,6 +37,11 @@ chevApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider'	,fun
 			templateUrl: 'public/pages/home.html',
 			controller: 'homeController'
 		}).
+		state('successStory', {
+			url: '/successStory',
+			templateUrl: 'public/pages/successStory.html',
+			controller: 'successStoryController'
+		}).
 		state('ingredients', {
 			url: '/ingredients',
 			templateUrl: 'public/pages/ingredients.html',
@@ -259,7 +264,7 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 	});
 
 	var data = {
-	    labels: ["January", "February", "March", "April", "May", "June", "July"],
+	    labels: ["1000 mg of L-carnitine/day", "1000 mg of other low calorie diet group/day"],
 	    datasets: [
 	        {
 	            label: "My First dataset",
@@ -267,7 +272,7 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 	            strokeColor: "rgba(220,220,220,0.8)",
 	            highlightFill: "rgba(220,220,220,0.75)",
 	            highlightStroke: "rgba(220,220,220,1)",
-	            data: [65, 59, 80, 81, 56, 55, 40]
+	            data: [3, 1]
 	        },
 	        {
 	            label: "My Second dataset",
@@ -275,7 +280,7 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 	            strokeColor: "rgba(151,187,205,0.8)",
 	            highlightFill: "rgba(151,187,205,0.75)",
 	            highlightStroke: "rgba(151,187,205,1)",
-	            data: [28, 48, 40, 19, 86, 27, 90]
+	            data: [5, 2]
 	        }
 	    ]
 	};
@@ -337,7 +342,7 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 	    if (isScrolledIntoView('#firstChart')) {
 	        if (inView) { return; }
 	        inView = true;
-	        new Chart(document.getElementById("firstChart").getContext("2d")).Bar(data, options);
+	        new Chart(document.getElementById("firstChart").getContext("2d")).StackedBar(data, options);
 	    } else {
 	        inView = false;  
 	    }
@@ -345,9 +350,13 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 
 
 	var ctx = document.getElementById("firstChart").getContext("2d");
-	var myBarChart = new Chart(ctx).Bar(data, options);
+	var myBarChart = new Chart(ctx).StackedBar(data, options);
 
 
+});
+
+chevApp.controller('successStoryController', function($scope, $rootScope){
+	$rootScope.navbarClass = "text-dark";
 });
 
 chevApp.controller('howitworkController', function($scope, $rootScope){

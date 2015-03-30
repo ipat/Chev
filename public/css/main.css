@@ -61,8 +61,8 @@
   font-style: normal; }
 @font-face {
   font-family: 'champagne__limousinesregular';
-  src: url("Champagne & Limousines-webfont.eot");
-  src: url("Champagne & Limousines-webfont.eot?#iefix") format("embedded-opentype"), url("Champagne & Limousines-webfont.woff2") format("woff2"), url("Champagne & Limousines-webfont.woff") format("woff"), url("Champagne & Limousines-webfont.ttf") format("truetype"), url("Champagne & Limousines-webfont.svg#champagne__limousinesregular") format("svg");
+  src: url("../fonts/Champagne & Limousines-webfont.eot");
+  src: url("../fonts/Champagne & Limousines-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Champagne & Limousines-webfont.woff2") format("woff2"), url("../fonts/Champagne & Limousines-webfont.woff") format("woff"), url("../fonts/Champagne & Limousines-webfont.ttf") format("truetype"), url("../fonts/Champagne & Limousines-webfont.svg#champagne__limousinesregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 /*
@@ -157,6 +157,18 @@ body {
 .no-padding {
   padding: 0; }
 
+.border-padding {
+  padding: 0 2em 0; }
+  @media screen and (max-width: 767px) {
+    .border-padding {
+      padding: 0 15em 0; } }
+  @media screen and (max-width: 650px) {
+    .border-padding {
+      padding: 0 10em 0; } }
+  @media screen and (max-width: 500px) {
+    .border-padding {
+      padding: 0 2em 0; } }
+
 .head-height {
   height: 4em; }
   @media screen and (max-width: 767px) {
@@ -188,6 +200,15 @@ hr.gradient {
   color: black; }
   .text-dark a {
     color: black; }
+
+.gray-bg {
+  background-color: #222;
+  color: white; }
+  .gray-bg a {
+    color: white; }
+
+.top-space {
+  margin-top: 50px; }
 
 .bottom-space {
   margin-bottom: 50px; }
@@ -503,6 +524,9 @@ hr.gradient {
   border-bottom-right-radius: 10px;
   padding: 2em 2em 1em; }
 
+.text-shadow {
+  text-shadow: rgba(0, 0, 0, 0.2) 0em 0.2em 0px; }
+
 /*
 ===========================================================
 	Carousel
@@ -652,7 +676,8 @@ hr.gradient {
 ===========================================================
 */
 .jumbotron {
-  background-color: rgba(255, 255, 255, 0); }
+  background-color: rgba(255, 255, 255, 0);
+  margin-top: 1.7em; }
 
 .midjumbo {
   background: url("../img/promotion.png") no-repeat center center;
@@ -702,6 +727,39 @@ hr.gradient {
 	Footer
 ===========================================================
 */
+footer {
+  padding-top: 2em; }
+
+.footer-square {
+  width: 100%;
+  height: 100%;
+  color: #222;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px #888;
+  background-color: white;
+  vertical-align: middle;
+  font-size: 5em;
+  text-align: center; }
+
+.footer-list {
+  cursor: pointer;
+  margin: 0.75em 0;
+  padding: 0 1em;
+  list-style-type: none; }
+  .footer-list li:before {
+    content: "";
+    border-color: transparent #FFF;
+    border-style: solid;
+    border-width: 0.35em 0 0.35em 0.45em;
+    display: block;
+    height: 0;
+    width: 0;
+    left: -1em;
+    top: 0.9em;
+    position: relative; }
+
 .social-icon {
   font-size: 2em;
   position: relative;
@@ -711,15 +769,22 @@ hr.gradient {
   z-index: 20;
   top: -1.5em; }
 
-.fa-facebook:hover {
+.inside-square {
+  height: 100%; }
+
+.facebook-square:hover {
   background-color: #3b5998;
+  color: white; }
+
+.instagram-square:hover {
+  background-color: #3F729B;
   color: white; }
 
 .fa-twitter:hover {
   background-color: #00ACED;
   color: white; }
 
-.fa-youtube-play:hover {
+.youtube-square:hover {
   background-color: #bb0000;
   color: white; }
 
