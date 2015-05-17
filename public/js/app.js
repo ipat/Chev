@@ -230,38 +230,38 @@ chevApp.controller('homeController', function($scope, $rootScope){
 // Controller for Ingredients Page
 chevApp.controller('ingredientController', function($scope, $rootScope){
 	$rootScope.navbarClass = "text-dark";
-	$(window).stellar();
-	$.stellar({
-	  horizontalScrolling: false
-	});
+	// $(window).stellar();
+	// $.stellar({
+	//   horizontalScrolling: false
+	// });
 
-	$("#click1").click(function(event) {
-		$("#read1").slideToggle("slow");
-		$(this).text(function(i, text){
-			return text === "More Info v" ? "Less ^" : "More Info v";
-		})
-	});
+	// $("#click1").click(function(event) {
+	// 	$("#read1").slideToggle("slow");
+	// 	$(this).text(function(i, text){
+	// 		return text === "More Info v" ? "Less ^" : "More Info v";
+	// 	})
+	// });
 
-	$("#click2").click(function(event) {
-		$("#read2").slideToggle("slow");
-		$(this).text(function(i, text){
-			return text === "More Info v" ? "Less ^" : "More Info v";
-		})
-	});
+	// $("#click2").click(function(event) {
+	// 	$("#read2").slideToggle("slow");
+	// 	$(this).text(function(i, text){
+	// 		return text === "More Info v" ? "Less ^" : "More Info v";
+	// 	})
+	// });
 
-	$("#click3").click(function(event) {
-		$("#read3").slideToggle("slow");
-		$(this).text(function(i, text){
-			return text === "More Info v" ? "Less ^" : "More Info v";
-		})
-	});
+	// $("#click3").click(function(event) {
+	// 	$("#read3").slideToggle("slow");
+	// 	$(this).text(function(i, text){
+	// 		return text === "More Info v" ? "Less ^" : "More Info v";
+	// 	})
+	// });
 
-	$("#click4").click(function(event) {
-		$("#read4").slideToggle("slow");
-		$(this).text(function(i, text){
-			return text === "More Info v" ? "Less ^" : "More Info v";
-		})
-	});
+	// $("#click4").click(function(event) {
+	// 	$("#read4").slideToggle("slow");
+	// 	$(this).text(function(i, text){
+	// 		return text === "More Info v" ? "Less ^" : "More Info v";
+	// 	})
+	// });
 
 	// var data = {
 	//     labels: ["1000 mg of L-carnitine/day", "1000 mg of other low calorie diet group/day"],
@@ -343,58 +343,39 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 	        if (inView) { return; }
 	        inView = true;
 	        setTimeout(function(){
-	        	chart1.load({
-		        	columns: [
-			            ['x', '1000 mg of L-carnitine', '1000 mg of other'],
-			            ['Min', 3, 1],
-			            ['Max', 5, 2],
-			        ]
-			    });
+	        	
 	        }, 1000);
-	        setTimeout(function() {
-				chart1.groups([['Min', 'Max']])
-			}, 1000);
+	        
 	    } else {
 	        inView = false;  
 	    }
 	});
 
-
+	new Chartist.Bar('#chart1', {
+	  labels: ['1000 mg of L-canitine', '1000mg of other'],
+	  series: [
+	    [3, 1],
+	    [5, 2]
+	  ]
+	}, {
+	  seriesBarDistance: 12,
+	  stackBars: true,
+	  axisY: {
+	    labelInterpolationFnc: function(value) {
+	      return (value) + '';
+	    }
+	  }
+	}).on('draw', function(data) {
+	  if(data.type === 'bar') {
+	    data.element.attr({
+	      style: 'stroke-width: 30px'
+	    });
+	  }
+	});
 	// var ctx = document.getElementById("firstChart").getContext("2d");
 	// var myBarChart = new Chart(ctx).StackedBar(data, options);
 
-	var chart1 = c3.generate({
-		bindto: '#chart1',
-		// data: {
-		// 	columns: [
-	 //            ['Min', 3, 1],
-	 //            ['Max', 5, 2]
-	 //        ],
-	 //        type: 'bar'
-		// }
-		// grid: {
-	 //        x: {
-	 //            type: 'category',
-	 //            categories: ['cat1', 'cat2']
-	 //        }
-	 //    }
-	 	data: {
-	        x : 'x',
-	        columns: [
-	        ],
-	        type: 'bar'
-	    },
-	    axis: {
-	        x: {
-	            type: 'category',
-	            tick: {
-	                rotate: 75,
-	                multiline: false
-	            },
-	            height: 130
-	        }
-	    }
-	});
+
 
 	
 

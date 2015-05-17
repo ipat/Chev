@@ -149,6 +149,7 @@ $flat-yellow: #f1c40f;
 $flat-red: #e74c3c;
 $flat-blue: #3498db;
 
+$hide_nav_width: 990px;
 
 /*
 ===========================================================
@@ -176,6 +177,7 @@ body{
 
 .sarabun {
 	font-family: 'THSarabunNew', 'lato', 'thaisans_neue_lightregular';
+	line-height: 1.5em;
 }
 
 .btn {
@@ -270,7 +272,7 @@ body{
 	height: 4em;
 
 	@media screen and (max-width: 767px){
-		height: 0em;
+		height: 2em;
 	}
 }
 
@@ -719,6 +721,22 @@ hr.gradient {
   position:absolute;
 }
 
+// .carousel .item>img {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     max-width: 100%;
+//     height: 100%;
+// }
+
+// .carousel-inner > .item > img {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     min-width: 100%;
+//     height: 500px;
+// }
+
 /*
 ===========================================================
 	Welcome Block
@@ -871,14 +889,14 @@ hr.gradient {
 	}
 }
 
-@media (max-width: 767px) {
-  .navbar-nav {
-    background-color: $tran-black;
-    a{
-    	color: white !important;
-    }
-  }
-}
+// @media (max-width: 767px) {
+//   .navbar-nav {
+//     background-color: $tran-black;
+//     a{
+//     	color: white !important;
+//     }
+//   }
+// }
 
 .dropdown-area {
 	width: 20em;
@@ -1144,3 +1162,45 @@ ol.progtrckr li.progtrckr-todo:before {
   opacity: 0;
 }
 
+
+
+
+
+// HIDE NAVBAR AT WIDTH
+
+@media (max-width: $hide_nav_width) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+		top: 0;
+		border-width: 0 0 1px;
+	}
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+		margin-top: 7.5px;
+	}
+	.navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+  		display:block !important;
+	}
+}
