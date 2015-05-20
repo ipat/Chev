@@ -26,6 +26,8 @@ chevApp.run(function($rootScope, $location, $resource){
 	});
 });
 
+var user_csrf;
+
 /*===========================================
 =            Route in AngularJS            =
 ===========================================*/
@@ -51,6 +53,11 @@ chevApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider'	,fun
 			url: '/howitwork',
 			templateUrl: 'public/pages/howitwork.html',
 			controller: 'howitworkController'
+		}).
+		state('secret', {
+			url: '/secret',
+			templateUrl: 'public/pages/secret.html',
+			controller: 'secretController'
 		}).
 		state('login', {
 			url: '/login',
@@ -141,6 +148,12 @@ chevApp.controller('navbarController', function($scope, $location, $rootScope, $
     };
     // Set up Chev Price Here
     $rootScope.chevPrice = 1000;
+
+ //    $('.nav a').on('click', function(){
+	//     // $(".btn-navbar").click(); //bootstrap 2.x
+	//     // $(".navbar-toggle").click() //bootstrap 3.x by Richard
+	//     $(".navbar-collapse").collapse('hide');
+	// });
 
     $rootScope.viewCart = function(){
     	var getCart = Cart.index(function(){
@@ -386,6 +399,10 @@ chevApp.controller('successStoryController', function($scope, $rootScope){
 	$rootScope.navbarClass = "text-dark";
 });
 
+chevApp.controller('secretController', function($scope, $rootScope){
+	$rootScope.navbarClass = "text-dark";
+});
+
 chevApp.controller('howitworkController', function($scope, $rootScope){
 	$rootScope.navbarClass = "text-dark";
 });
@@ -401,7 +418,9 @@ chevApp.controller('loginController', function($scope, $rootScope, $resource){
 			showMessage($scope, "เข้าสู่ระบบสำเร็จ", "alertSuccess", ".alertBox", 5000);
 			$rootScope.isLogin = true;
 			$rootScope.userInfo = val['user'];
-			// console.log(val);
+
+			$rootScope.user_csrf = val["csrf_token"];
+			// console.log(user_csrf);
 		}, function(res){
 			// showMessage($scope, "เกิดข้อผิดพลาด อาจเกิดจากเมล์หรือรหัสผ่านผิด", "alertFailed", ".alertBox", 20000);
 			// var errorList = JSON.parse(res['data']['error']['message']);
@@ -435,6 +454,7 @@ chevApp.controller('signupController', function($scope, $rootScope, Users){
 		else {
 			var genderTemp = $scope.form.gender;
 			$scope.form.gender = $scope.form.gender['val'];
+			$scope.form._token = $rootScope.user_csrf;
 			console.log($scope.form.gender);
 			var feedback = Users.store($scope.form, function(val){
 				showMessage($scope, "สมัครสมาชิกเสร็จสิ้น", "alertSuccess", ".alertBox", 10000);
@@ -479,7 +499,8 @@ chevApp.controller('signupController', function($scope, $rootScope, Users){
 
 chevApp.controller('productsController', function($scope, $rootScope, $resource, Cart){
 	$rootScope.navbarClass = "text-dark";
-	$scope.amount = 1;
+	$scope.amount1 = 1;
+	$scope.amount2 = 1;
 	$scope.addToCart = function(product_id){
 		// if($scope.amount === undefined)
 		// 	showMessage($scope, "กรุณาระบุจำนวนสินค้า", "alertFailed", ".alertBox");
@@ -495,11 +516,15 @@ chevApp.controller('productsController', function($scope, $rootScope, $resource,
 		// 	showMessage($scope, "นำสินค้าใส่ตะกร้าเรียบร้อยจำนวน " + $scope.amount + " ชิ้น", "alertSuccess", ".alertBox");			
 		// 	$scope.amount = 1;
 		// }	
+		// console.log(product_id);
 		var addedItem = {};
-		addedItem['product_id'] = 1;
-		addedItem['product_amount'] = $scope.amount;
+		addedItem['product_id'] = product_id;
+		addedItem['product_amount'] = $scope["amount" + product_id] ;
+		$scope["amount" + product_id] = 1;
+		// console.log("PID " + product_id);
+		// console.log($scope);
 		// console.log(addedItem);
-		console.log(addedItem);
+		// console.log(addedItem);
 		Cart.store(addedItem, function(){
 			$rootScope.showCart();
 			// sc();
@@ -511,8 +536,9 @@ chevApp.controller('productsController', function($scope, $rootScope, $resource,
 
 
 chevApp.controller('logoutController', function($scope, $rootScope, $location, $resource){
-	var Logout = $resource('public/logout', {},  {'logout': { method: 'GET', isArray:true}});
-
+	isLogin($resource, $rootScope);
+	var Logout = $resource('public/logout', {'_token': $rootScope.user_csrf},  {'logout': { method: 'GET', isArray:true}});
+	// console.log($rootScope.user_csrf);
 		// console.log(hello);
 	Logout.logout(function(val){
 		$location.path('/home');
@@ -542,6 +568,7 @@ chevApp.controller('userController', function($scope, $rootScope, $location, $re
 	$scope.updateInfo = function(){
 		// $rootScope.userInfo["name_first"] = "สมุหสมาคมนิยมไทย";
 		$rootScope.userInfo = $scope.updateData;
+		// console.log($rootScope.userInfo);
 		User.update({user_id:$rootScope.userInfo["id"]}, $rootScope.userInfo, function(res){
 			$("#editUserInfo").modal('hide');
 		}, function(res){
@@ -586,7 +613,10 @@ chevApp.controller('userController', function($scope, $rootScope, $location, $re
 		
 		// $scope.newAddressEnabled = false;
 		// $scope.newAddressClass = "bounceOut";
+		var address = $scope.newAddress;
+		// address._token = $rootScope.user_csrf;
 		if(isEdit == true){
+			$scope.newAddress._token = $rootScope.user_csrf;
 			UserAddress.update({add_id:$scope.newAddress["id"]}, $scope.newAddress, function(res){
     			isLogin($resource, $rootScope);
 				$("#editAddress").modal('hide');
@@ -615,6 +645,7 @@ chevApp.controller('userController', function($scope, $rootScope, $location, $re
 					};
 			});
 		} else {
+			$scope.newAddress._token = $rootScope.user_csrf;
 			$scope.newAddress["house_name"]	= ($scope.newAddress["house_name"] == null)? '':$scope.newAddress["house_name"];
 			$scope.newAddress["road"]	= ($scope.newAddress["road"] == null)? '':$scope.newAddress["road"];
 			AddUserAddress.store($scope.newAddress, function(res){
@@ -723,6 +754,7 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 		// $scope.newAddressEnabled = false;
 		// $scope.newAddressClass = "bounceOut";
 		if(isEdit == true){
+			$scope.newAddress._token = $rootScope.user_csrf;
 			UserAddress.update({add_id:$scope.newAddress["id"]}, $scope.newAddress, function(res){
     			isLogin($resource, $rootScope);
 				$("#editAddress").modal('hide');
@@ -751,6 +783,7 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 					};
 			});
 		} else {
+			$scope.newAddress._token = $rootScope.user_csrf;
 			$scope.newAddress["house_name"]	= ($scope.newAddress["house_name"] == null)? '':$scope.newAddress["house_name"];
 			$scope.newAddress["road"]	= ($scope.newAddress["road"] == null)? '':$scope.newAddress["road"];
 			AddUserAddress.store($scope.newAddress, function(res){
@@ -838,7 +871,7 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders){
 	$rootScope.navbarClass = "text-dark";
 	$scope.valid = {};
 	
-	var orders = Orders.get({temp_id: 1}, function(){
+	var orders = Orders.get({temp_id: 1, '_token': $rootScope.user_csrf}, function(){
 		$scope.orders = orders;
 		console.log(orders);
 	});
@@ -869,10 +902,11 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders){
 
 	$scope.cancelTransfer = function(){
 		$scope.transfer.status = 0;
+		$scope.transfer._token = $rootScope.user_csrf;
 
 		Orders.update({temp_id: currentTransfer}, $scope.transfer, function(res){
 			$("#cancelConfirm").modal('hide');
-			var orders = Orders.get({temp_id: 1}, function(){
+			var orders = Orders.get({temp_id: 1, '_token': $rootScope.user_csrf}, function(){
 				$scope.orders = orders;
 				console.log(orders);
 			});
@@ -882,6 +916,7 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders){
 	$scope.updateTransfer = function(){
 
 		$scope.transfer.status = 1;
+		$scope.transfer._token = $rootScope.user_csrf;
 
 		if($scope.transfer.date_before !== undefined && $scope.transfer.time_before !== undefined){
 			var month = $scope.transfer.date_before.getMonth()+1;
@@ -954,7 +989,7 @@ chevApp.controller('adminOrderController', function($scope, $rootScope, Order){
 	// 		$scope.justOrder.push($rootScope.allOrders[i]);
 	// 	console.log($rootScope.allOrders[i]["status"]);
 	// }
-	$scope.justOrder = Order.index({'status': 0}, function(res){
+	$scope.justOrder = Order.index({'status': 0, '_token': $rootScope.user_csrf}, function(res){
 		// console.log($scope.justOrder);
 	});
 
@@ -968,7 +1003,7 @@ chevApp.controller('adminOrderController', function($scope, $rootScope, Order){
 ===================================================*/
 
 chevApp.controller('adminTransferedController', function($scope, $rootScope, Order, Orders){
-	$scope.transferedOrder = Order.index({'status': 1}, function(res){
+	$scope.transferedOrder = Order.index({'status': 1, '_token': $rootScope.user_csrf}, function(res){
 		// console.log($scope.transferedOrder);
 	});
 
@@ -980,10 +1015,11 @@ chevApp.controller('adminTransferedController', function($scope, $rootScope, Ord
 	};
 
 	$scope.confirmShipping = function(){
+		$scope.ship = $rootScope.user_csrf;
 		Orders.update({temp_id: $scope.currentOrder.id}, $scope.ship, function(res){
 			console.log("Hello");
 			$("#orderInfo").modal('hide');
-			$scope.transferedOrder = Order.index({'status': 1}, function(res){
+			$scope.transferedOrder = Order.index({'status': 1, '_token': $rootScope.user_csrf}, function(res){
 				// console.log($scope.transferedOrder);
 			});
 		}, function(res){
@@ -1008,7 +1044,7 @@ chevApp.controller('adminTransferedController', function($scope, $rootScope, Ord
 ===================================================*/
 
 chevApp.controller('adminShippedController', function($scope, $rootScope, Order, Orders){
-	$scope.shippedOrder = Order.index({'status': 2}, function(res){
+	$scope.shippedOrder = Order.index({'status': 2, '_token': $rootScope.user_csrf}, function(res){
 		console.log($scope.shippedOrder);
 	});
 
@@ -1020,10 +1056,11 @@ chevApp.controller('adminShippedController', function($scope, $rootScope, Order,
 	};
 
 	$scope.confirmShipping = function(){
+		$scope.ship._token = $rootScope.user_csrf;
 		Orders.update({temp_id: $scope.currentOrder.id}, $scope.ship, function(res){
 			console.log("Hello");
 			$("#orderInfo").modal('hide');
-			$scope.shippedOrder = Order.index({'status': 2}, function(res){
+			$scope.shippedOrder = Order.index({'status': 2, '_token': $rootScope.user_csrf}, function(res){
 				// console.log($scope.transferedOrder);
 			});
 		}, function(res){
@@ -1065,11 +1102,23 @@ isLogin = function($resource, $rootScope, callback)
 {
 	var isLogin = $resource('public/is-login', null);	
 	isLogin.get({}, function(val){
-		$rootScope.isLogin = true;
-		$rootScope.userInfo = val['user'];
-		console.log($rootScope.userInfo);
+		// console.log(val['user']);
+		if(val['user'] !== 'null'){
+			// console.log(val);
+			$rootScope.isLogin = true;
+			$rootScope.userInfo = val['user'];
+			$rootScope.userInfo._token = val['csrf_token'];
+			$rootScope.user_csrf = val['csrf_token'];
+			// console.log($rootScope.userInfo);
+			chevApp.constant("CSRF_TOKEN", val['csrf_token']);
+
+		} else {
+			$rootScope.isLogin = false;
+			$rootScope.user_csrf = val['csrf_token'];
+			chevApp.constant("CSRF_TOKEN", val['csrf_token']);
+		}
 		if(typeof callback !== 'undefined')
-			callback();
+			$roocallback();
 	}, function(res){
 		$rootScope.isLogin = false;
 	});
@@ -1209,8 +1258,8 @@ chevApp.factory('Orders', function($resource){
 	return $resource('public/order/:temp_id', 
 		{}, 
 		{
-			get: {method:'GET', params:{id: '@temp_id'}, isArray:true},
-			'update': {method:'PUT', params:{id: '@temp_id'}}
+			get: {method:'GET', params:{id: '@temp_id', '_token': '@_token'}, isArray:true},
+			'update': {method:'PUT', params:{id: '@temp_id', '_token': '@_token'}}
 		});
 });
 

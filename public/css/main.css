@@ -97,7 +97,7 @@ body {
 
 .sarabun {
   font-family: 'THSarabunNew', 'lato', 'thaisans_neue_lightregular';
-  line-height: 1.5em; }
+  line-height: 1.8em; }
 
 .btn {
   border-radius: 0px;
@@ -159,6 +159,7 @@ body {
   padding: 0; }
 
 .border-padding {
+  margin-top: 1.5em;
   padding: 0 2em 0; }
   @media screen and (max-width: 767px) {
     .border-padding {
@@ -209,7 +210,7 @@ hr.gradient {
     color: white; }
 
 .top-space {
-  margin-top: 50px; }
+  margin-top: 30px; }
 
 .bottom-space {
   margin-bottom: 60px; }
@@ -285,8 +286,8 @@ hr.gradient {
   border: 1px solid #CCC;
   margin-bottom: 0.8em; }
   .text-input:focus, .small-input:focus {
-    box-shadow: 0px 0px 8px yellowgreen;
-    border: 1px solid yellowgreen; }
+    box-shadow: 0px 0px 8px #bde347;
+    border: 1px solid #bde347; }
 
 .invalid {
   box-shadow: 0px 0px 8px #FF3D00;
@@ -298,8 +299,8 @@ hr.gradient {
   height: 2.5em; }
 
 .webtheme-shadow {
-  color: yellowgreen;
-  text-shadow: 0px 3px 0px #7ba428; }
+  color: #bde347;
+  text-shadow: 0px 3px 0px #aad621; }
 
 .noti {
   background-color: #FF3D00;
@@ -328,16 +329,16 @@ hr.gradient {
   margin-bottom: 0.8em;
   text-align: center;
   color: white !important;
-  background-color: yellowgreen;
-  border: 1px solid #7ba428;
-  box-shadow: 0px 0.2em 0px #7ba428;
+  background-color: #bde347;
+  border: 1px solid #aad621;
+  box-shadow: 0px 0.2em 0px #aad621;
   cursor: pointer;
   text-shadow: none;
   padding: 0.3em 1em 0.3em; }
   .default-btn:active, .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active, .red-btn:active, .green-btn:active, .flat-green-btn:active, .flat-yellow-btn:active, .flat-red-btn:active, .flat-white-btn:active {
     position: relative;
     top: 0.1em;
-    box-shadow: 0px 0.1em 2px #7ba428; }
+    box-shadow: 0px 0.1em 2px #aad621; }
 
 .white-btn, .spiner-btn-left, .spiner-btn-right {
   background-color: #F5F5F5;
@@ -480,7 +481,7 @@ hr.gradient {
 
 .blank-panel {
   background-color: #fafafa;
-  border: 4px dashed yellowgreen;
+  border: 4px dashed #bde347;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   border-radius: 8px;
@@ -501,17 +502,17 @@ hr.gradient {
   border: 3px solid #f29f97; }
 
 .green-panel {
-  background-color: #d7ebad;
-  border: 3px solid #5c7b1e; }
+  background-color: #edf7cc;
+  border: 3px solid #87aa1a; }
   .green-panel .badge {
-    background-color: #5c7b1e; }
+    background-color: #87aa1a; }
 
 .yellow-panel {
   background-color: #fef9e8;
   border: 3px solid #f7dc6f; }
 
 .tag-head {
-  background-color: yellowgreen;
+  background-color: #bde347;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 1em 0 0.5em;
@@ -582,6 +583,27 @@ hr.gradient {
       .widepic img {
         width: 100%; } }
 
+.max-width-500 {
+  max-width: 500px; }
+
+.max-width-400 {
+  max-width: 400px; }
+
+.max-width-300 {
+  max-width: 300px; }
+
+.max-width-200 {
+  max-width: 200px; }
+
+.auto-show-mobile {
+  display: none; }
+
+@media screen and (max-width: 768px) {
+  .auto-hide-mobile {
+    display: none; }
+
+  .auto-show-mobile {
+    display: block; } }
 /*
 ===========================================================
 	Nature Mask
@@ -618,7 +640,7 @@ hr.gradient {
     font-size: 1.2em; }
     .navbar .navbar-nav a:hover, .navbar a:hover {
       background-color: transparent;
-      color: yellowgreen !important;
+      color: #bde347 !important;
       font-weight: bolder; }
     .navbar .navbar-nav a:focus, .navbar a:focus {
       background-color: rgba(255, 255, 255, 0); }
@@ -638,7 +660,7 @@ hr.gradient {
     height: 150%; }
 
 .active {
-  color: yellowgreen !important;
+  color: #bde347 !important;
   font-weight: 900; }
 
 .highlight-nav {
@@ -663,7 +685,7 @@ hr.gradient {
   padding: 0.5em 1em 0.5em;
   color: black; }
   .dropdown-area a {
-    color: yellowgreen !important; }
+    color: #bde347 !important; }
 
 /*
 ===========================================================
@@ -673,6 +695,11 @@ hr.gradient {
 .jumbotron {
   background-color: rgba(255, 255, 255, 0);
   margin-top: 1.7em; }
+  @media screen and (max-width: 600px) {
+    .jumbotron h2 {
+      font-size: 1.5em; }
+    .jumbotron h3 {
+      font-size: 1.2em; } }
 
 .midjumbo {
   background: url("../img/promotion.png") no-repeat center center;

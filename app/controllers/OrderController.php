@@ -9,9 +9,9 @@ class OrderController extends BaseController{
       'index'
     )));
     
-    // $this->beforeFilter('csrf', array('only' => array(
-    //   'index','update','store','destroy','show'
-    // )));
+    $this->beforeFilter('csrf', array('only' => array(
+      'index','update','store','destroy','show'
+    )));
 	}
 	public function index(){
 		$status = Input::get('status');

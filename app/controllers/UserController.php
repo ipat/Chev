@@ -12,9 +12,9 @@ class UserController extends BaseController {
 			'index', 'update', 'destroy'//, 'logout', 'isLogin'
 			)));
 		
-		//$this->beforeFilter('csrf', array('only' => array(
-		 //	'store', 'update', 'destroy', 'logout'
-		 	//)));
+		$this->beforeFilter('csrf', array('only' => array(
+		 	'store', 'update', 'destroy', 'logout'
+		 	)));
 		$this->beforeFilter('admin', array('only' => array(
 			'index'
 			)));
@@ -345,8 +345,8 @@ class UserController extends BaseController {
 		$cart = $this->cartToDatabase();
 		return Response::json(array(
 			'user' => Auth::user()->toArray(),
-			// 'csrf_token' => csrf_token(),
-			// 'cart' => $cart,
+			'csrf_token' => csrf_token(),
+			'cart' => $cart,
 		));
 	}
 
@@ -429,11 +429,21 @@ class UserController extends BaseController {
 		// 		);
 		// }
 
-		return Response::json(array(
-			'user' => Auth::user()->toArray(),
-			// 'csrf_token' => csrf_token(),
-			// 'cart' => $cart
-			));
+		if(Auth::user()){
+			return Response::json(array(
+				'user' => Auth::user()->toArray(),
+				'csrf_token' => csrf_token(),
+				// 'cart' => $cart
+				));
+		} else {
+			return Response::json(array(
+				'user' => null,
+				'csrf_token' => csrf_token(),
+				// 'cart' => $cart
+				));
+		}
+
+		
 	}
 
 	public function hasEmail() {

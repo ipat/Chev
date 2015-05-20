@@ -1,6 +1,6 @@
 <div class="center at-view-flip-in-vertical
-         at-view-flip-out-vertical">
-	<div style="background-image: url('public/img/inside_product2.png'); color:white;">
+         at-view-flip-out-vertical animated fadeIn">
+	<div style="background-color: #A3C242; color:white;">
       <div class="container text-shadow" >
         <div class="center jumbotron">
           <h1 class="title">PRODUCTS</h1>
@@ -14,13 +14,13 @@
       </div> <!-- /container -->
     </div>
 	<div class="clear"></div>
-	<div class="shadow-top center" style="background-color:#FAFAFA;">
+	<div class="shadow-top center" style="background-color:white;">
 		<div style="height: 2em"></div>
-		<div class="col-md-1"></div>
-		<div class="col-md-4 bottom-space" style="padding-top: 2em;">
-			<img src="public/img/Shop_product.png" style="width:50%;" alt="Product">
+		<!-- <div class="col-md-1"></div> -->
+		<div class="col-md-5" style="padding-top: 2em;">
+			<img src="public/img/promotionProduct.png" style="width:100%;" class="max-width-400"  alt="Product">
 		</div>
-		<div class="col-md-6 bottom-space left" style="padding-top:0.8em">
+		<div class="col-md-7 bottom-space left" style="padding-top:0.8em">
 			<h1 class="left">Chev - เชฟ</h1>
 			<hr>
 			<div class="col-md-12 sarabun">
@@ -48,11 +48,11 @@
 			<!-- <div alert-box class="col-md-12 alertBox" s style="display:none;"></div> -->
 			
 			<div class="col-md-6 col-sm-12">
-				<input id="amount" type="number" name="amount" class="text-input" style="top:0.15em; border-radius:0px;" ng-model="amount" min="1">
+				<input id="amount" type="number" name="amount" class="text-input" style="top:0.15em; border-radius:0px;" ng-model="amount2" min="1">
 			</div>
 			<div class="clear"></div>
 			<div class="col-md-6 col-sm-12">
-				<button ng-click="addToCart()" type="submit" class="default-btn midium-size full-width"><i class="glyphicon glyphicon-shopping-cart"></i> เพิ่มลงตะกร้า</button>
+				<button ng-click="addToCart(2)" type="submit" class="default-btn midium-size full-width"><i class="glyphicon glyphicon-shopping-cart"></i> เพิ่มลงตะกร้า</button>
 			</div>
 
 	        <script>
@@ -66,13 +66,13 @@
 		</div>
 		<div class="clear"></div>	
 	</div>
-	<div class="center" style="background-color:#ECECEC;">
+	<div class="center" style="background-color:white;">
 		<div style="height: 2em"></div>
-		<div class="col-md-1"></div>
-		<div class="col-md-4 bottom-space" style="padding-top: 2em;">
-			<img src="public/img/Shop_product.png"  alt="Product">
+		<!-- <div class="col-md-1"></div> -->
+		<div class="col-md-5" style="padding-top: 2em;">
+			<img src="public/img/Shop_product.png" style="width:50%;" class="max-width-200" alt="Product">			
 		</div>
-		<div class="col-md-6 bottom-space left" style="padding-top:0.8em">
+		<div class="col-md-7 bottom-space left" style="padding-top:0.8em">
 			<h1 class="left">Chev - เชฟ</h1>
 			<hr>
 			<div class="col-md-12 sarabun">
@@ -100,15 +100,15 @@
 			<!-- <div alert-box class="col-md-12 alertBox" s style="display:none;"></div> -->
 			
 			<div class="col-md-6 col-sm-12">
-				<input id="amount" type="number" value="" name="amount" class="text-input" style="top:0.15em; border-radius:0px;" ng-model="amount" min="1">
+				<input id="amount1" type="number" value="" name="amount1" class="text-input" style="top:0.15em; border-radius:0px;" ng-model="amount1" min="1">
 			</div>
 			<div class="clear"></div>
 			<div class="col-md-6 col-sm-12">
-				<button ng-click="addToCart()" type="submit" class="default-btn midium-size full-width"><i class="glyphicon glyphicon-shopping-cart"></i> เพิ่มลงตะกร้า</button>
+				<button ng-click="addToCart(1)" type="submit" class="default-btn midium-size full-width"><i class="glyphicon glyphicon-shopping-cart"></i> เพิ่มลงตะกร้า</button>
 			</div>
 
 	        <script>
-	            $("input[name='amount']").TouchSpin({
+	            $("input[name='amount1']").TouchSpin({
 	                initval: 1,
 	                buttondown_class: "spiner-btn-left",
             		buttonup_class: "spiner-btn-right"

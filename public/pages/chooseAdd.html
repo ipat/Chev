@@ -1,4 +1,4 @@
-<div class="center bottom-space">
+<div class="center bottom-space animated fadeIn">
 	<div class="jumbotron">
 		<!-- <div style="height:100px"></div> -->
 		<h1 class="title"><i class="fa fa-truck"></i> เลือกที่อยู่ในการจัดส่ง</h1>
@@ -42,7 +42,7 @@
           {{address.district}} {{address.province}} <br>
           {{address.postcode}}
           <div class="clear"></div>
-          <div ng-show="!isDefault(address.id)" class="col-md-6 green-btn" ng-click="setCurrentAddress(address.id)">ใช้เป็นที่อยู่ในการจัดส่ง</div>
+          <div ng-show="!isDefault(address.id)" class="col-md-6 flat-white-btn" ng-click="setCurrentAddress(address.id)">ส่งไปที่อยู่นี้</div>
           <div class="col-md-6 default-btn" data-toggle="modal" data-target="#editAddress" ng-click="callAddressBox(key, true)">แก้ไขข้อมูล</div>
           <div class="clear"></div>
         </div>
@@ -60,6 +60,8 @@
 	</div>
 	
 
+</div>
+  <!-- Address Modal -->
   <div class="modal fade" id="editAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left;">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -124,5 +126,3 @@
       </div>
     </div>
   </div>
-
-</div>
