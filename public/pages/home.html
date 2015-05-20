@@ -1,3 +1,4 @@
+<a name="top"></a>
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="animated fadeIn">
     <div class="jumbotron welcomejumbo" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="100">
@@ -6,7 +7,8 @@
         <p>พบกับสุดยอดแห่งนวัตกรรม ที่นี่ เร็วๆนี้</p>
         <h1></h1>
       </div> -->
-      <carousel interval="myInterval">
+      <!-- Carousel for Large Screen -->
+      <carousel interval="myInterval" class="auto-hide-mobile">
         <slide ng-repeat="slide in slides" active="slide.active">
           <img class="carousel-img" ng-src="{{slide.image}}" >
           <div class="carousel-caption right">
@@ -14,7 +16,6 @@
             <p><a class="default-btn" role="button">Learn more &raquo;</a></p>
           </div>
         </slide>
-
       </carousel>
     </div>
 
@@ -200,7 +201,7 @@
     </div>
 
     <div>
-      <a href="successStory#workout">
+      <a href="secret">
         <img src="public/img/workoutPlan.png" style="width:100%;">
       </a>
     </div>

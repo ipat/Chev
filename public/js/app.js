@@ -227,7 +227,7 @@ chevApp.controller('homeController', function($scope, $rootScope){
 
 	$scope.myInterval = 3000;
 
-	 $scope.slides = [
+	$scope.slides = [
 	    {
 	      image: 'public/img/ban1.png'
 	    },
@@ -340,29 +340,29 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 
 	var inView = false;
 
-	function isScrolledIntoView(elem)
-	{
-	    var docViewTop = $(window).scrollTop();
-	    var docViewBottom = docViewTop + $(window).height();
+	// function isScrolledIntoView(elem)
+	// {
+	//     var docViewTop = $(window).scrollTop();
+	//     var docViewBottom = docViewTop + $(window).height();
 
-	    var elemTop = $(elem).offset().top;
-	    var elemBottom = elemTop + $(elem).height();
+	//     var elemTop = $(elem).offset().top;
+	//     var elemBottom = elemTop + $(elem).height();
 
-	    return ((elemTop <= docViewBottom) && (elemBottom >= docViewTop));
-	}
+	//     return ((elemTop <= docViewBottom) && (elemBottom >= docViewTop));
+	// }
 
-	$(window).scroll(function() {
-	    if (isScrolledIntoView('#chart1')) {
-	        if (inView) { return; }
-	        inView = true;
-	        setTimeout(function(){
+	// $(window).scroll(function() {
+	//     if (isScrolledIntoView('#chart1')) {
+	//         if (inView) { return; }
+	//         inView = true;
+	//         setTimeout(function(){
 	        	
-	        }, 1000);
+	//         }, 1000);
 	        
-	    } else {
-	        inView = false;  
-	    }
-	});
+	//     } else {
+	//         inView = false;  
+	//     }
+	// });
 
 	new Chartist.Bar('#chart1', {
 	  labels: ['1000 mg of L-canitine', '1000mg of other'],
@@ -848,6 +848,7 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 	$scope.submitOrder = function(){
 		var add = {};
 		add["address_id"] = $scope.currentAddress;
+		add["_token"] = $rootScope.user_csrf;
 		Order.store(add, function(){
 			$location.path('/howToTransfer');
 		});
@@ -867,14 +868,18 @@ chevApp.controller('howToTransferController', function($scope, $rootScope ){
 =            Orders Controller            =
 =========================================*/
 
-chevApp.controller('ordersController', function($scope, $rootScope, Orders){
+chevApp.controller('ordersController', function($scope, $rootScope, Orders, $resource){
 	$rootScope.navbarClass = "text-dark";
+	var orders;
+	isLogin($resource, $rootScope, function(){
+		orders = Orders.get({temp_id: 1, '_token': $rootScope.user_csrf}, function(){
+			$scope.orders = orders;
+			// console.log(orders);
+		});
+	});
 	$scope.valid = {};
 	
-	var orders = Orders.get({temp_id: 1, '_token': $rootScope.user_csrf}, function(){
-		$scope.orders = orders;
-		console.log(orders);
-	});
+	
 
 	$scope.toggleOrderInfo = function(num){
 		$scope.currentOrder = orders[num];
@@ -887,6 +892,8 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders){
 	// $("#dtBox").DateTimePicker();
 	var currentTransfer = -1;
 	$scope.setTransferItem = function(num){
+
+		// console.log($rootScope.user_csrf);
 		currentTransfer = num;
 		$scope.valid = {};
 		$scope.transfer = {};
@@ -908,7 +915,7 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders){
 			$("#cancelConfirm").modal('hide');
 			var orders = Orders.get({temp_id: 1, '_token': $rootScope.user_csrf}, function(){
 				$scope.orders = orders;
-				console.log(orders);
+				// console.log(orders);
 			});
 		});
 	}
@@ -941,9 +948,9 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders){
 		// $scope.transfer.time = $scope.transfer.date + " " + $scope.transfer.time + ":00";
 		Orders.update({temp_id: currentTransfer}, $scope.transfer, function(res){
 			$("#transferConfirm").modal('hide');
-			var orders = Orders.get({temp_id: 1}, function(){
+			var orders = Orders.get({temp_id: 1, '_token': $rootScope.user_csrf}, function(){
 				$scope.orders = orders;
-				console.log(orders);
+				// console.log(orders);
 			});
 		}, function(res){
 				var errorList = JSON.parse(res['data']['error']['message']);
@@ -962,7 +969,7 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders){
 
 
 		
-		console.log($scope.transfer);
+		// console.log($scope.transfer);
 	};
          
 });
@@ -1015,7 +1022,7 @@ chevApp.controller('adminTransferedController', function($scope, $rootScope, Ord
 	};
 
 	$scope.confirmShipping = function(){
-		$scope.ship = $rootScope.user_csrf;
+		$scope.ship._token = $rootScope.user_csrf;
 		Orders.update({temp_id: $scope.currentOrder.id}, $scope.ship, function(res){
 			console.log("Hello");
 			$("#orderInfo").modal('hide');
@@ -1103,7 +1110,7 @@ isLogin = function($resource, $rootScope, callback)
 	var isLogin = $resource('public/is-login', null);	
 	isLogin.get({}, function(val){
 		// console.log(val['user']);
-		if(val['user'] !== 'null'){
+		if(val['user'] != null){
 			// console.log(val);
 			$rootScope.isLogin = true;
 			$rootScope.userInfo = val['user'];
@@ -1118,7 +1125,7 @@ isLogin = function($resource, $rootScope, callback)
 			chevApp.constant("CSRF_TOKEN", val['csrf_token']);
 		}
 		if(typeof callback !== 'undefined')
-			$roocallback();
+			callback();
 	}, function(res){
 		$rootScope.isLogin = false;
 	});
