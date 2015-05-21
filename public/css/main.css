@@ -316,6 +316,9 @@ hr.gradient {
   left: 0;
   right: 0; }
 
+.hidden-overflow {
+  overflow: hidden; }
+
 .default-btn, .white-btn, .spiner-btn-left, .spiner-btn-right, .red-btn, .green-btn, .flat-green-btn, .flat-yellow-btn, .flat-red-btn, .flat-white-btn {
   -webkit-appearance: none;
   -moz-border-radius: 7px;
@@ -604,6 +607,15 @@ hr.gradient {
 
   .auto-show-mobile {
     display: block; } }
+.auto-show-mobile-small {
+  display: none; }
+
+@media screen and (max-width: 450px) {
+  .auto-hide-mobile-small {
+    display: none; }
+
+  .auto-show-mobile-small {
+    display: block; } }
 /*
 ===========================================================
 	Nature Mask
@@ -622,6 +634,11 @@ hr.gradient {
 	Navbar
 ===========================================================
 */
+.logo {
+  padding: 0.3em;
+  position: relative;
+  top: -10px; }
+
 .navbar {
   background-color: white;
   background-image: none;
@@ -702,7 +719,6 @@ hr.gradient {
       font-size: 1.2em; } }
 
 .midjumbo {
-  background: url("../img/promotion.png") no-repeat center center;
   z-index: -1;
   color: white;
   margin-top: 50px; }

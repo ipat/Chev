@@ -242,13 +242,13 @@ chevApp.controller('homeController', function($scope, $rootScope){
 
 	 $scope.slides1 = [
 	    {
-	      image: 'public/img/ban1.png'
+	      image: 'public/img/NEW_BANNER1_MOBILE.png'
 	    },
 	    {
-	      image: 'public/img/ban2.png'
+	      image: 'public/img/NEW_BANNER2_MOBILE.png'
 	    },
 	    {
-	      image: 'public/img/ban3.png'
+	      image: 'public/img/NEW_BANNER3_MOBILE.png'
 	    }
 	 ];
 });

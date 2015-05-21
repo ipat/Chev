@@ -8,7 +8,7 @@
         <h1></h1>
       </div> -->
       <!-- Carousel for Large Screen -->
-      <carousel interval="myInterval" class="auto-hide-mobile">
+      <carousel interval="myInterval" class="auto-hide-mobile-small">
         <slide ng-repeat="slide in slides" active="slide.active">
           <img class="carousel-img" ng-src="{{slide.image}}" >
           <div class="carousel-caption right">
@@ -19,12 +19,12 @@
       </carousel>
 
       <!-- Carousel for Large Screen -->
-      <carousel interval="myInterval1" class="auto-show-mobile" style="height: 400px">
+      <carousel interval="myInterval1" class="auto-show-mobile-small" style="height: 400px">
         <slide ng-repeat="slide in slides1" active="slide.active" style="overflow: hidden;">
           <img class="" ng-src="{{slide.image}}" style="height:400px; width:auto; max-width:auto;">
           <div class="carousel-caption right">
             <!-- <h4>Slide {{$index+1}}</h4> -->
-            <p><a class="default-btn" role="button">Learn more &raquo;</a></p>
+            <!-- <p class="center"><a class="default-btn" role="button" style="font-size: 15px;">Learn more &raquo;</a></p> -->
           </div>
         </slide>
       </carousel>
@@ -43,6 +43,7 @@
           <h2 class="center">SUCCESS</h2>
           <p class="sarabun">คุณสามารถเปลี่ยนแปลงตัวเองได้มากว่าคุณคิด เป็นตัวคุณที่ดีที่สุดในแบบที่คุณเป็น คุณพร้อมหรือยังที่จะเข้ามาเป็นส่วนหนึ่งแห่งความสำเร็จไปกับพวกเรา</p>
           <p class="center"><a class="white-btn" href="successStory#top" role="button">View details &raquo;</a></p>
+          <div class="top-space">&nbsp;</div>
         </div>
         <div class="col-md-4">
           <div class="center">
@@ -51,6 +52,7 @@
           <h2 class="center">INGREDIENTS</h2>
           <p class="sarabun">ผลิตภัณฑ์เสริมอาหาร CHEV ได้คัดสรรส่วนผสมระดับพรีเมียมอย่างพิถีพิถัน เพื่อทำให้ผลิตภัณฑ์เสริมอาหาร CHEV เป็นผลิตภัณฑ์เสริมอาหารที่ดีที่สุด </p>
           <p class="center"><a class="white-btn" href="ingredients#top" role="button">View details &raquo;</a></p>
+          <div class="top-space">&nbsp;</div>
        </div>
         <div class="col-md-4">
           <div class="center">
@@ -65,9 +67,9 @@
     </div> <!-- /container -->
     
     <!-- Mid page picture -->
-    <div class="jumbotron midjumbo no-padding" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="100">
-      <img src="public/img/promotion2_mini.png" class="promotion-img auto-hide-mobile" alt="" >
-      <img src="public/img/promotion2_mini.png" class="auto-show-mobile" style="height:400px;" alt="" >
+    <div class="jumbotron midjumbo no-padding hidden-overflow" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="100">
+      <img src="public/img/promotion2_mini.png" class="promotion-img auto-hide-mobile-small" alt="" >
+      <img src="public/img/promotionProduct.png" class="auto-show-mobile-small" style="width:100%;" alt="" >
 
       <div class="container">
         <!-- <div class="jumbotext"><div class="title">โปรโมชั่น</div></div>
@@ -213,10 +215,10 @@
       <div class="clear"></div> -->
     </div>
 
-    <div>
+    <div class="hidden-overflow">
       <a href="secret">
-        <img src="public/img/workoutPlan.png" class="auto-hide-mobile" style="width:100%;">
-        <img src="public/img/workoutPlan.png" class="auto-show-mobile" style="height:400px">
+        <img src="public/img/successPlan.png" class="auto-hide-mobile-small" style="width:100%;">
+        <img src="public/img/MOBILE_workoutPlan.png" class="auto-show-mobile-small" style="width:100%">
       </a>
     </div>
 </div>
