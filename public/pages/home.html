@@ -17,6 +17,17 @@
           </div>
         </slide>
       </carousel>
+
+      <!-- Carousel for Large Screen -->
+      <carousel interval="myInterval1" class="auto-show-mobile" style="height: 400px">
+        <slide ng-repeat="slide in slides1" active="slide.active" style="overflow: hidden;">
+          <img class="" ng-src="{{slide.image}}" style="height:400px; width:auto; max-width:auto;">
+          <div class="carousel-caption right">
+            <!-- <h4>Slide {{$index+1}}</h4> -->
+            <p><a class="default-btn" role="button">Learn more &raquo;</a></p>
+          </div>
+        </slide>
+      </carousel>
     </div>
 
     <div class="container">
@@ -55,7 +66,9 @@
     
     <!-- Mid page picture -->
     <div class="jumbotron midjumbo no-padding" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="100">
-      <img src="public/img/promotion2_mini.png" class="promotion-img" alt="" >
+      <img src="public/img/promotion2_mini.png" class="promotion-img auto-hide-mobile" alt="" >
+      <img src="public/img/promotion2_mini.png" class="auto-show-mobile" style="height:400px;" alt="" >
+
       <div class="container">
         <!-- <div class="jumbotext"><div class="title">โปรโมชั่น</div></div>
         <div class="jumbotext"><h4 style="margin-bottom: 70px">เแมว หรือ แมวบ้าน (ชื่อวิทยาศาสตร์: Felis catus) เป็นสัตว์เลี้ยงลูกด้วยน้ำนม อยู่ในตระกูล Felidae ซึ่งเป็นตระกูลเดียวกับสิงโตและเสือดาว ต้นตระกูลแมวมาจากเสือไซบีเรีย</h4></div> -->
@@ -202,7 +215,8 @@
 
     <div>
       <a href="secret">
-        <img src="public/img/workoutPlan.png" style="width:100%;">
+        <img src="public/img/workoutPlan.png" class="auto-hide-mobile" style="width:100%;">
+        <img src="public/img/workoutPlan.png" class="auto-show-mobile" style="height:400px">
       </a>
     </div>
 </div>

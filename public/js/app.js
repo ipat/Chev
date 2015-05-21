@@ -91,7 +91,7 @@ chevApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider'	,fun
 		}).
 		state('howToTransfer', {
 			url: '/howToTransfer',
-			templateUrl: 'public/pages/howToTransfer.html',
+			templateUrl: 'public/pages/howtotransfer.html',
 			controller: 'howToTransferController'
 		}).
 		state('user', {
@@ -226,8 +226,21 @@ chevApp.controller('homeController', function($scope, $rootScope){
 	});
 
 	$scope.myInterval = 3000;
+	$scope.myInterval1 = 3000;
 
 	$scope.slides = [
+	    {
+	      image: 'public/img/ban1.png'
+	    },
+	    {
+	      image: 'public/img/ban2.png'
+	    },
+	    {
+	      image: 'public/img/ban3.png'
+	    }
+	 ];
+
+	 $scope.slides1 = [
 	    {
 	      image: 'public/img/ban1.png'
 	    },
@@ -850,7 +863,7 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 		add["address_id"] = $scope.currentAddress;
 		add["_token"] = $rootScope.user_csrf;
 		Order.store(add, function(){
-			$location.path('/howToTransfer');
+			$location.path('howToTransfer');
 		});
 	};
 });
