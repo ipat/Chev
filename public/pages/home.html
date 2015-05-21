@@ -19,9 +19,9 @@
       </carousel>
 
       <!-- Carousel for Large Screen -->
-      <carousel interval="myInterval1" class="auto-show-mobile-small" style="height: 400px">
+      <carousel interval="myInterval1" class="auto-show-mobile-small" >
         <slide ng-repeat="slide in slides1" active="slide.active" style="overflow: hidden;">
-          <img class="" ng-src="{{slide.image}}" style="height:400px; width:auto; max-width:auto;">
+          <img class="carousel-img" ng-src="{{slide.image}}">
           <div class="carousel-caption right">
             <!-- <h4>Slide {{$index+1}}</h4> -->
             <!-- <p class="center"><a class="default-btn" role="button" style="font-size: 15px;">Learn more &raquo;</a></p> -->
@@ -65,6 +65,14 @@
       </div>
 
     </div> <!-- /container -->
+
+    <div class="hidden-overflow">
+      <div class="top-space"></div>
+      <a href="secret">
+        <img src="public/img/successPlan.png" class="auto-hide-mobile-small" style="width:100%;">
+        <img src="public/img/MOBILE_workoutPlan.png" class="auto-show-mobile-small" style="width:100%">
+      </a>
+    </div>
     
     <!-- Mid page picture -->
     <div class="jumbotron midjumbo no-padding hidden-overflow" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="100">
@@ -215,10 +223,4 @@
       <div class="clear"></div> -->
     </div>
 
-    <div class="hidden-overflow">
-      <a href="secret">
-        <img src="public/img/successPlan.png" class="auto-hide-mobile-small" style="width:100%;">
-        <img src="public/img/MOBILE_workoutPlan.png" class="auto-show-mobile-small" style="width:100%">
-      </a>
-    </div>
 </div>
