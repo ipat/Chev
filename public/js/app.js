@@ -412,8 +412,18 @@ chevApp.controller('successStoryController', function($scope, $rootScope){
 	$rootScope.navbarClass = "text-dark";
 });
 
-chevApp.controller('secretController', function($scope, $rootScope){
+chevApp.controller('secretController', function($scope, $rootScope, $sce){
 	$rootScope.navbarClass = "text-dark";
+
+	var videoKey = {
+		"CRUNCHES": "https://www.youtube.com/embed/-GRHJVnRu6k",
+		"PLANK": "https://www.youtube.com/embed/bQ0UFyBhHm0",
+		"BICYCLE": "https://www.youtube.com/embed/Ss2ZFkHYuw0"
+	}
+
+	$scope.openVideo = function(key){
+		$scope.videoUrl = $sce.trustAsResourceUrl(videoKey[key]);
+	}
 });
 
 chevApp.controller('howitworkController', function($scope, $rootScope){
