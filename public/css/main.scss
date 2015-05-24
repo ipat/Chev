@@ -1226,27 +1226,37 @@ ol.progtrckr li.progtrckr-todo:before {
 	text-align: center;
 	padding-top: 0.2em;
 	padding-bottom: 0.2em;
-	-moz-border-radius: 0px;
-	-webkit-border-radius: 7px 7px 0px 0px;
-	border-radius: 7px 7px 0px 0px; 
+	border-left: 5px solid darken($webtheme, 10%);
+	// -moz-border-radius: 0px;
+	// -webkit-border-radius: 7px 7px 0px 0px;
+	// border-radius: 7px 7px 0px 0px; 
 
 }
 
 
 .day-content {
-	background-color: #EFEFEF;
+	// background-color: #EFEFEF;
 	ul {
 		list-style-type: none;
 		padding: 0;
 		margin: 0;
 
+		li {
+			border-bottom: 1px solid #EEE;
+			font-size: 0.9em;
+		}
+
 	}
 	padding: 0.5em;
-	
+	border-left: 5px solid #EEE;
 
-	-moz-border-radius: 0px;
-	-webkit-border-radius: 0px 0px 7px 7px;
-	border-radius: 0px 0px 7px 7px; 
+	// :hover {
+	// 	border-left: 5px solid #CCC;
+	// }
+
+	// -moz-border-radius: 0px;
+	// -webkit-border-radius: 0px 0px 7px 7px;
+	// border-radius: 0px 0px 7px 7px; 
 
 	margin-bottom: 1em;
 }
@@ -1254,24 +1264,28 @@ ol.progtrckr li.progtrckr-todo:before {
 .row2 {
 	.day-header {
 		background-color: darken($webtheme, 5%);
+		border-left: 5px solid darken($webtheme, 15%);
 	}
 }
 
 .row3 {
 	.day-header {
 		background-color: darken($webtheme, 10%);
+		border-left: 5px solid darken($webtheme, 20%);
 	}
 }
 
 .row4 {
 	.day-header {
 		background-color: darken($webtheme, 15%);
+		border-left: 5px solid darken($webtheme, 25%);
 	}
 }
 
 .row5 {
 	.day-header {
 		background-color: darken($webtheme, 20%);
+		border-left: 5px solid darken($webtheme, 30%);
 	}
 }
 

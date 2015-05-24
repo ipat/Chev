@@ -418,7 +418,29 @@ chevApp.controller('secretController', function($scope, $rootScope, $sce){
 	var videoKey = {
 		"CRUNCHES": "https://www.youtube.com/embed/-GRHJVnRu6k",
 		"PLANK": "https://www.youtube.com/embed/bQ0UFyBhHm0",
-		"BICYCLE": "https://www.youtube.com/embed/Ss2ZFkHYuw0"
+		"BICYCLE": "https://www.youtube.com/embed/Ss2ZFkHYuw0",
+		"BURPEES": "https://www.youtube.com/embed/ASLMTHeqTrI",
+		"KNEE": "https://www.youtube.com/embed/Tfuczqb9DfM",
+		"RUSSIAN": "https://www.youtube.com/embed/SKDwU4-jVRY",
+		"SUPERMAN": "https://www.youtube.com/embed/H_3LzJ7UZhM",
+		"SQUAT": "https://www.youtube.com/embed/0gYepAYbHF0",
+		"JUMPING": "https://www.youtube.com/embed/cd0uwwbZN3c",
+		"DONKEY": "https://www.youtube.com/embed/9oRisUfbLO8",
+		"SQUAT-J": "https://www.youtube.com/embed/5__lyorjsBQ",
+		"PUSH": "https://www.youtube.com/embed/5-M70kze5HI",
+		"TRICEP": "https://www.youtube.com/embed/BaAl3TPRVwk",
+		"PUNCHES": "https://www.youtube.com/embed/mSbiLf2DB-M",
+		"BUTT": "https://www.youtube.com/embed/x2BUUV_rfrQ",
+		"PLANK-W": "https://www.youtube.com/embed/x5aUhai5-A8",
+		"LUNGES": "https://www.youtube.com/embed/tsW7X3PFDls",
+		"WOOD": "https://www.youtube.com/embed/aM16AmP-i1A",
+		"MOUNTAIN": "https://www.youtube.com/embed/YapPxDOzoH4",
+		"STANDING": "https://www.youtube.com/embed/o8X6CL8HKCE",
+		"PLANK-J": "https://www.youtube.com/embed/4OdtafjymWk",
+		"SEAL": "https://www.youtube.com/embed/8Cz0FAJYKBI",
+		"FROGGIES": "https://www.youtube.com/embed/xkAMi8RFcpI",
+		"V": "https://www.youtube.com/embed/a8lr-wFKmaA",
+		"KICK": "https://www.youtube.com/embed/ululWz1nawM",
 	}
 
 	$scope.openVideo = function(key){

@@ -5,66 +5,77 @@
   src: url("../fonts/thaisansneue-black-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-black-webfont.woff") format("woff"), url("../fonts/thaisansneue-black-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-black-webfont.svg#thaisans_neue_blackregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'thaisans_neuebold';
   src: url("../fonts/thaisansneue-bold-webfont.eot");
   src: url("../fonts/thaisansneue-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-bold-webfont.woff") format("woff"), url("../fonts/thaisansneue-bold-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-bold-webfont.svg#thaisans_neuebold") format("svg");
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'thaisans_neue_extbdregular';
   src: url("../fonts/thaisansneue-extrabold-webfont.eot");
   src: url("../fonts/thaisansneue-extrabold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-extrabold-webfont.woff") format("woff"), url("../fonts/thaisansneue-extrabold-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-extrabold-webfont.svg#thaisans_neue_extbdregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'thaisans_neue_extltregular';
   src: url("../fonts/thaisansneue-extralight-webfont.eot");
   src: url("../fonts/thaisansneue-extralight-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-extralight-webfont.woff") format("woff"), url("../fonts/thaisansneue-extralight-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-extralight-webfont.svg#thaisans_neue_extltregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'thaisans_neue_lightregular';
   src: url("../fonts/thaisansneue-light-webfont.eot");
   src: url("../fonts/thaisansneue-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-light-webfont.woff") format("woff"), url("../fonts/thaisansneue-light-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-light-webfont.svg#thaisans_neue_lightregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'thaisans_neueregular';
   src: url("../fonts/thaisansneue-regular-webfont.eot");
   src: url("../fonts/thaisansneue-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-regular-webfont.woff") format("woff"), url("../fonts/thaisansneue-regular-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-regular-webfont.svg#thaisans_neueregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'thaisans_neue_sembdregular';
   src: url("../fonts/thaisansneue-semibold-webfont.eot");
   src: url("../fonts/thaisansneue-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-semibold-webfont.woff") format("woff"), url("../fonts/thaisansneue-semibold-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-semibold-webfont.svg#thaisans_neue_sembdregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'thaisans_neue_ultbdregular';
   src: url("../fonts/thaisansneue-ultrabold-webfont.eot");
   src: url("../fonts/thaisansneue-ultrabold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-ultrabold-webfont.woff") format("woff"), url("../fonts/thaisansneue-ultrabold-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-ultrabold-webfont.svg#thaisans_neue_ultbdregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'thaisans_neue_ultltregular';
   src: url("../fonts/thaisansneue-ultralight-webfont.eot");
   src: url("../fonts/thaisansneue-ultralight-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-ultralight-webfont.woff") format("woff"), url("../fonts/thaisansneue-ultralight-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-ultralight-webfont.svg#thaisans_neue_ultltregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'THSarabunNew';
   src: url("../fonts/thsarabunnew-webfont.eot");
   src: url("../fonts/thsarabunnew-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thsarabunnew-webfont.woff") format("woff"), url("../fonts/thsarabunnew-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'champagne__limousinesregular';
   src: url("../fonts/Champagne & Limousines-webfont.eot");
   src: url("../fonts/Champagne & Limousines-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Champagne & Limousines-webfont.woff2") format("woff2"), url("../fonts/Champagne & Limousines-webfont.woff") format("woff"), url("../fonts/Champagne & Limousines-webfont.ttf") format("truetype"), url("../fonts/Champagne & Limousines-webfont.svg#champagne__limousinesregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+
 /*
 ===========================================================
 	Mixin(s)
@@ -106,25 +117,25 @@ body {
   background-image: none; }
 
 .btn-primary {
-  background-color: #46B5F7;
+  background-color: #46b5f7;
   border: none; }
   .btn-primary:hover {
-    background-color: #18A3F5; }
+    background-color: #18a3f5; }
 
 .btn-defalut {
-  background-color: #F5F5F5; }
+  background-color: whitesmoke; }
   .btn-defalut:hover {
-    background-color: #BDBDBD;
+    background-color: #bdbdbd;
     color: white; }
 
 .icon-bar {
   background-color: white; }
 
 .left-border {
-  border-left: 1px solid #BDBDBD; }
+  border-left: 1px solid #bdbdbd; }
 
 .right-border {
-  border-right: 1px solid #BDBDBD; }
+  border-right: 1px solid #bdbdbd; }
 
 .feature-icon, .social-icon {
   text-align: center;
@@ -190,10 +201,10 @@ body {
 hr.gradient {
   border: 0;
   height: 1px;
-  background-image: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
-  background-image: -moz-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
-  background-image: -ms-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
-  background-image: -o-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent); }
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); }
 
 .hr {
   text-align: center; }
@@ -290,8 +301,8 @@ hr.gradient {
     border: 1px solid #bde347; }
 
 .invalid {
-  box-shadow: 0px 0px 8px #FF3D00;
-  border: 1px solid #FF3D00;
+  box-shadow: 0px 0px 8px #ff3d00;
+  border: 1px solid #ff3d00;
   top: -0.8em; }
 
 .small-input {
@@ -303,7 +314,7 @@ hr.gradient {
   text-shadow: 0px 3px 0px #aad621; }
 
 .noti {
-  background-color: #FF3D00;
+  background-color: #ff3d00;
   color: white;
   text-shadow: 0 2px 0 #cc3100;
   border-radius: 0 0 8px 8px;
@@ -344,18 +355,18 @@ hr.gradient {
     box-shadow: 0px 0.1em 2px #aad621; }
 
 .white-btn, .spiner-btn-left, .spiner-btn-right {
-  background-color: #F5F5F5;
+  background-color: whitesmoke;
   color: black !important;
   border: 1px solid #d7d7d7;
-  box-shadow: 0px 0.2em 0px #BDBDBD;
-  text-shadow: 0px 1px 0px #BDBDBD; }
+  box-shadow: 0px 0.2em 0px #bdbdbd;
+  text-shadow: 0px 1px 0px #bdbdbd; }
   .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active {
     position: relative;
     top: 0.1em;
-    box-shadow: 0px 0.1em 2px #BDBDBD; }
+    box-shadow: 0px 0.1em 2px #bdbdbd; }
 
 .red-btn {
-  background-color: #FF3D00;
+  background-color: #ff3d00;
   border: 1px solid #ff6433;
   color: white !important;
   box-shadow: 0px 0.2em 0px #cc3100;
@@ -366,7 +377,7 @@ hr.gradient {
     box-shadow: 0px 0.1em 2px #cc3100; }
 
 .green-btn {
-  background-color: #76FF03;
+  background-color: #76ff03;
   border: 1px solid #92ff36;
   color: black !important;
   box-shadow: 0px 0.2em 0px #5ecf00;
@@ -656,7 +667,7 @@ hr.gradient {
     transition: all 0.5s ease;
     font-size: 1.2em; }
     .navbar .navbar-nav a:hover, .navbar a:hover {
-      background-color: transparent;
+      background-color: rgba(0, 0, 0, 0);
       color: #bde347 !important;
       font-weight: bolder; }
     .navbar .navbar-nav a:focus, .navbar a:focus {
@@ -743,7 +754,7 @@ hr.gradient {
   font-size: 1.5em;
   line-height: 2em;
   vertical-align: middle;
-  background-color: #76FF03;
+  background-color: #76ff03;
   border-bottom: 0.3em solid #5ecf00;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -754,7 +765,7 @@ hr.gradient {
   text-shadow: 0px 2px 0px #5ecf00; }
 
 .alertFailed {
-  background-color: #FF3D00;
+  background-color: #ff3d00;
   border-bottom: 0.3em solid #cc3100;
   color: white;
   text-shadow: 0px 2px 0px #cc3100; }
@@ -915,33 +926,35 @@ ol.progtrckr li.progtrckr-todo:before {
   text-align: center;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 7px 7px 0px 0px;
-  border-radius: 7px 7px 0px 0px; }
+  border-left: 5px solid #aad621; }
 
 .day-content {
-  background-color: #EFEFEF;
   padding: 0.5em;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px 0px 7px 7px;
-  border-radius: 0px 0px 7px 7px;
+  border-left: 5px solid #EEE;
   margin-bottom: 1em; }
   .day-content ul {
     list-style-type: none;
     padding: 0;
     margin: 0; }
+    .day-content ul li {
+      border-bottom: 1px solid #EEE;
+      font-size: 0.9em; }
 
 .row2 .day-header {
-  background-color: #b5e031; }
+  background-color: #b5e031;
+  border-left: 5px solid #99c01d; }
 
 .row3 .day-header {
-  background-color: #aad621; }
+  background-color: #aad621;
+  border-left: 5px solid #87aa1a; }
 
 .row4 .day-header {
-  background-color: #99c01d; }
+  background-color: #99c01d;
+  border-left: 5px solid #759417; }
 
 .row5 .day-header {
-  background-color: #87aa1a; }
+  background-color: #87aa1a;
+  border-left: 5px solid #647e13; }
 
 .videoModal {
   padding: 0px; }
@@ -1014,5 +1027,3 @@ ol.progtrckr li.progtrckr-todo:before {
 
   .collapse.in {
     display: block !important; } }
-
-/*# sourceMappingURL=main.css.map */
