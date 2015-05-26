@@ -146,6 +146,10 @@ chevApp.controller('navbarController', function($scope, $location, $rootScope, $
 	$scope.isActive = function (viewLocation) { 
         return viewLocation === $location.path();
     };
+
+    $rootScope.$on('$stateChangeSuccess', function() {
+	   document.body.scrollTop = document.documentElement.scrollTop = 0;
+	});
     // Set up Chev Price Here
     $rootScope.chevPrice = 1000;
 
@@ -251,6 +255,24 @@ chevApp.controller('homeController', function($scope, $rootScope){
 	      image: 'public/img/NEW_BANNER3_MOBILE.png'
 	    }
 	 ];
+
+
+	 $(".show-more a").on("click", function() {
+	    var $this = $(this); 
+	    var $content = $this.parent().prev("p.content");
+	    var linkText = $this.text().toUpperCase();    
+	    console.log($content);
+	    
+	    if(linkText === "SHOW MORE"){
+	        linkText = "Show less";
+	        $content.switchClass("hideContent", "showContent", 400);
+	    } else {
+	        linkText = "Show more";
+	        $content.switchClass("showContent", "hideContent", 400);
+	    };
+
+	    $this.text(linkText);
+	});
 });
 
 // Controller for Ingredients Page
@@ -380,16 +402,25 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 	new Chartist.Bar('#chart1', {
 	  labels: ['1000 mg of L-canitine', '1000mg of other'],
 	  series: [
-	    [3, 1],
-	    [5, 2]
+	    [
+	    	{meta: 'Max', value: 3},
+	    	{meta: 'Min', value: 1}
+	    ],
+	    [
+	    	{meta: 'Max', value: 5}, 
+	    	{meta: 'Min', value: 2}
+	    ]
 	  ]
 	}, {
-	  seriesBarDistance: 12,
-	  stackBars: true,
-	  axisY: {
-	    labelInterpolationFnc: function(value) {
-	      return (value) + '';
-	    }
+		seriesBarDistance: 12,
+		stackBars: true,
+		axisY: {
+			labelInterpolationFnc: function(value) {
+		    	return (value) + '';
+		    },
+		plugins: [
+		    Chartist.plugins.tooltip()
+		],
 	  }
 	}).on('draw', function(data) {
 	  if(data.type === 'bar') {

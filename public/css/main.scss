@@ -717,6 +717,32 @@ hr.gradient {
 }
 
 
+.hideContent {
+
+	@media screen and (max-width: 768px){		
+	    overflow: hidden;
+	    // line-height: 1em;
+	    height: 7em;
+	}
+
+	height: auto;
+}
+
+.more-btn {
+	display: none;
+	font-size: 1.1em;
+
+	@media screen and (max-width: 768px){		
+	    display: block;
+	}
+
+}
+
+.showContent {
+    // line-height: 1em;
+    height: auto;
+}
+
 /*
 ===========================================================
 	Carousel

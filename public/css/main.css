@@ -542,6 +542,23 @@ hr.gradient {
 .text-shadow {
   text-shadow: rgba(0, 0, 0, 0.2) 0em 0.2em 0px; }
 
+.hideContent {
+  height: auto; }
+  @media screen and (max-width: 768px) {
+    .hideContent {
+      overflow: hidden;
+      height: 7em; } }
+
+.more-btn {
+  display: none;
+  font-size: 1.1em; }
+  @media screen and (max-width: 768px) {
+    .more-btn {
+      display: block; } }
+
+.showContent {
+  height: auto; }
+
 /*
 ===========================================================
 	Carousel
