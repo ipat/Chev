@@ -974,6 +974,75 @@ ol.progtrckr li.progtrckr-todo:before {
   line-height: 30px;
   box-shadow: 0 0 3px black; }
 
+.greenBar {
+  border-top: 1px solid #bde347; }
+
+.calResult {
+  border: 5px solid #EEE;
+  border-radius: 5px; }
+
+.form-horizontal {
+  border: 5px solid #bde347;
+  border-radius: 5px;
+  padding-top: 20px; }
+
+.calBox1 {
+  border-left: 5px solid #bde347;
+  font-size: 1.3em;
+  padding-left: 0.3em;
+  margin-bottom: 1em;
+  display: block; }
+  .calBox1 .title {
+    color: #b5e031;
+    text-shadow: 0px 1px 0px #444; }
+  .calBox1 .bar {
+    background-color: #bde347;
+    border: none;
+    line-height: 5px;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out; }
+
+.calBox2 {
+  border-left: 5px solid #f1c40f;
+  font-size: 1.3em;
+  padding-left: 0.3em;
+  margin-bottom: 1em;
+  display: block; }
+  .calBox2 .title {
+    color: #dab10d;
+    text-shadow: 0px 1px 0px #444; }
+  .calBox2 .bar {
+    background-color: #f1c40f;
+    border: none;
+    line-height: 5px;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out; }
+
+.calBox3 {
+  border-left: 5px solid #e74c3c;
+  font-size: 1.3em;
+  padding-left: 0.3em;
+  margin-bottom: 1em;
+  display: block; }
+  .calBox3 .title {
+    color: #e43725;
+    text-shadow: 0px 1px 0px #444; }
+  .calBox3 .bar {
+    background-color: #e74c3c;
+    border: none;
+    line-height: 5px;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out; }
+
 /*
 ===========================================================
 	Style for Angular 

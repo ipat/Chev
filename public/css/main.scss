@@ -1311,6 +1311,66 @@ ol.progtrckr li.progtrckr-todo:before {
 	box-shadow: 0 0 3px black;
 }
 
+
+.greenBar {
+	border-top: 1px solid $webtheme;
+}
+
+.calResult{
+	border: 5px solid #EEE;
+	// background: lighten($webtheme, 35%);
+	// padding: 10px;
+	border-radius: 5px;
+
+}
+
+
+.form-horizontal{
+	border: 5px solid $webtheme;
+	border-radius: 5px;
+	// padding: 10px;
+	padding-top: 20px;
+}
+
+@mixin calBox($color){
+	border-left: 5px solid $color;
+	font-size: 1.3em;
+	padding-left: 0.3em;
+	margin-bottom: 1em;
+	display: block;
+
+	.title {
+		color: darken($color, 5%);
+		text-shadow: 0px 1px 0px #444;
+	}
+
+	.bar {
+		background-color: $color;
+		border: none;
+		line-height: 5px;
+		@include transition(all, 1s, ease-in-out);
+		// display: none;
+		// width: 100%;
+	}
+
+	// :hover {
+	// 	background-color: lighten($color, 30%);
+	// }
+
+	
+}
+
+.calBox1{
+	@include calBox($webtheme);
+}
+
+.calBox2{
+	@include calBox(#f1c40f);	
+}
+
+.calBox3{
+	@include calBox(#e74c3c);	
+}
 // .row {
 //     display: table;
 // }

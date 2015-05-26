@@ -414,6 +414,11 @@ chevApp.controller('successStoryController', function($scope, $rootScope){
 
 chevApp.controller('secretController', function($scope, $rootScope, $sce){
 	$rootScope.navbarClass = "text-dark";
+	$scope.gender = "male";
+	$scope.cal = 400;
+	$scope.bar1 = 0;
+	$scope.bar2 = 0;
+	$scope.bar3 = 0;
 
 	var videoKey = {
 		"CRUNCHES": "https://www.youtube.com/embed/-GRHJVnRu6k",
@@ -445,6 +450,33 @@ chevApp.controller('secretController', function($scope, $rootScope, $sce){
 
 	$scope.openVideo = function(key){
 		$scope.videoUrl = $sce.trustAsResourceUrl(videoKey[key]);
+	}
+
+	$scope.calculateCal = function(){
+		if($scope.gender == "male") {
+			$scope.cal = 10 * $scope.weight + 6.25 * $scope.height - 5 * $scope.age + 5;
+		} else {
+			$scope.cal = 10 * $scope.weight + 6.25 * $scope.height - 5 * $scope.age - 161;
+		}
+
+		if(!Number.isNaN($scope.cal)){
+			$(".form-horizontal").slideUp(400);
+			$(".calResult").slideDown(400, function(){
+			});
+		
+			$scope.bar1 = 100;
+			$scope.bar2 = ($scope.cal - 200)/($scope.cal) * 100;
+			$scope.bar3 = ($scope.cal - 400)/($scope.cal) * 100;
+		}
+		
+	}
+
+	$scope.reCal = function(){
+		$(".form-horizontal").slideDown(400);
+		$(".calResult").slideUp(400);
+		$scope.bar1 = 0;
+		$scope.bar2 = 0;
+		$scope.bar3 = 0;
 	}
 });
 
