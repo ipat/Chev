@@ -559,6 +559,9 @@ hr.gradient {
 .showContent {
   height: auto; }
 
+.chart img {
+  width: 100%; }
+
 /*
 ===========================================================
 	Carousel
