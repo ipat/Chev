@@ -8,6 +8,7 @@
 		<div class="col-sm-6">
 			<div class="tag-head">
 				<h1 class="no-margin">เข้าสู่ระบบ<span ng-show="isLogin">แล้ว</span></h1>
+				<h1>{{welcomeMsg}}</h1>
 				<h1 class="biggersize no-margin"><i class="fa fa-key"></i></h1>
 				<h4 class="" ng-hide="isLogin">หากยังไม่มีกด <b><a href="signup" style="color:white;text-decoration:underline;">สมัครใหม่เลยสิ</a></b></h4>
 			</div>
@@ -17,6 +18,7 @@
 					<input class="text-input" ng-model="form.password" type="password" name="password" placeholder="Password" ng-class="(valid.password !== undefined)? 'invalid':''">
 					<div class="noti" ng-bind="valid.password" style="top:-1.25em;"></div>
 					<button type="submit" class="default-btn midium-size full-width">เข้าสู่ระบบ</button>
+					<div ng-click="loginFB()" class="white-btn midium-size full-width">เข้าสู่ระบบด้วย Facebook</div>
 				</form>
 
 				<h2 ng-show="isLogin" style="padding-bottom: 1em;">ยินดีต้อนรับครับคุณ {{userInfo.name_first}}</h2>

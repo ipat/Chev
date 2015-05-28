@@ -1,4 +1,4 @@
-var chevApp = angular.module('chevApp', [ 'ui.router', 'ngResource', 'ui.bootstrap']);
+var chevApp = angular.module('chevApp', [ 'ui.router', 'ngResource', 'ui.bootstrap', 'ngFacebook']);
 
 chevApp.run(function($rootScope, $location, $resource){
 
@@ -24,15 +24,32 @@ chevApp.run(function($rootScope, $location, $resource){
 			});
 		}
 	});
+
+	(function(){
+		// If we've already installed the SDK, we're done
+		if (document.getElementById('facebook-jssdk')) {return;}
+
+		// Get the first script element, which we'll use to find the parent node
+		var firstScriptElement = document.getElementsByTagName('script')[0];
+
+		// Create a new script element and set its id
+		var facebookJS = document.createElement('script'); 
+		facebookJS.id = 'facebook-jssdk';
+
+		// Set the new script's source to the source of the Facebook JS SDK
+		facebookJS.src = '//connect.facebook.net/en_US/all.js';
+
+		// Insert the Facebook JS SDK into the DOM
+		firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
+	}());
 });
 
-var user_csrf;
 
 /*===========================================
 =            Route in AngularJS            =
 ===========================================*/
 
-chevApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider'	,function($locationProvider,$stateProvider,  $urlRouterProvider) {
+chevApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$facebookProvider' ,function($locationProvider,$stateProvider,  $urlRouterProvider, $facebookProvider) {
 	$stateProvider.
 		state('home', {
 			url: '/',
@@ -135,6 +152,8 @@ chevApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider'	,fun
 		// $locationProvider.html5Mode({
 		// 	enabled: true
 		// });
+
+		$facebookProvider.setAppId('151793521582103');
 }]);
 
 /*====================================================
@@ -142,7 +161,7 @@ chevApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider'	,fun
 ====================================================*/
 
 // Controller For NAVBAR
-chevApp.controller('navbarController', function($scope, $location, $rootScope, $resource, Cart){
+chevApp.controller('navbarController', function($scope, $location, $rootScope, $resource, Cart, $facebook){
 	$scope.isActive = function (viewLocation) { 
         return viewLocation === $location.path();
     };
@@ -218,7 +237,7 @@ chevApp.controller('navbarController', function($scope, $location, $rootScope, $
     	$location.path('/checkout');
     };
 
-    isLogin($resource, $rootScope);
+    isLogin($resource, $rootScope, isLoginFB($rootScope, $facebook));
 });
 
 // Controller for Homepage
@@ -437,7 +456,7 @@ chevApp.controller('howitworkController', function($scope, $rootScope){
 	$rootScope.navbarClass = "text-dark";
 });
 
-chevApp.controller('loginController', function($scope, $rootScope, $resource){
+chevApp.controller('loginController', function($scope, $rootScope, $resource, $facebook){
 	$rootScope.navbarClass = "text-dark";
 	
 	isLogin($resource, $rootScope);
@@ -462,6 +481,29 @@ chevApp.controller('loginController', function($scope, $rootScope, $resource){
 		});
 		// console.log(feedback);
 	}
+
+	$scope.loginFB = function(){
+		$facebook.login().then(function() {
+	      // refresh();
+	      isLoginFB($rootScope, $facebook);
+	    });
+	}
+
+	// function refresh() {
+	// 	$facebook.api("/me").then( 
+	// 		function(response) {
+	// 			$scope.welcomeMsg = "Welcome " + response.name;
+	// 			$scope.isLoggedIn = true;
+	// 			console.log(response);
+	// 		},
+	// 		function(err) {
+	// 			$scope.welcomeMsg = "Please log in";
+	// 		});
+	// }
+
+	isLoginFB($rootScope, $facebook);
+
+
 
 });
 
@@ -1135,7 +1177,7 @@ showMessage = function($scope, message, style, element, time)
 
 };
 
-isLogin = function($resource, $rootScope, callback)
+isLogin = function($resource, $rootScope, $facebook, callback)
 {
 	var isLogin = $resource('public/is-login', null);	
 	isLogin.get({}, function(val){
@@ -1144,6 +1186,7 @@ isLogin = function($resource, $rootScope, callback)
 			// console.log(val);
 			$rootScope.isLogin = true;
 			$rootScope.userInfo = val['user'];
+			console.log($rootScope.userInfo);
 			$rootScope.userInfo._token = val['csrf_token'];
 			$rootScope.user_csrf = val['csrf_token'];
 			// console.log($rootScope.userInfo);
@@ -1158,8 +1201,24 @@ isLogin = function($resource, $rootScope, callback)
 			callback();
 	}, function(res){
 		$rootScope.isLogin = false;
+		if(typeof callback !== 'undefined')
+			callback();
 	});
 };
+
+isLoginFB = function($rootScope, $facebook, callback){
+	$facebook.api("/me").then( 
+		function(response) {
+			$rootScope.welcomeMsg = "Welcome " + response.name;
+			$rootScope.isLogin = true;
+			console.log(response);
+		},
+		function(err) {
+			// $rootScope.isLogin = false;
+
+			// $scope.welcomeMsg = "Please log in";
+		});
+}
 
 if (typeof String.prototype.startsWith != 'function') {
   // see below for better implementation!
