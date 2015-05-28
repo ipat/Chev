@@ -63,10 +63,10 @@
           </form> -->
           <ul class="nav navbar-nav navbar-right champagne">
             <li><a ng-class="{ active: isActive('/successStory') }" ui-sref="successStory" >ตัวอย่างความสำเร็จ</a></li>
+            <li><a ng-class="{ active: isActive('/secret') }" ui-sref="secret">เคล็ดลับความสำเร็จ</a></li>
             <li><a ng-class="{ active: isActive('/ingredients') }" ui-sref="ingredients">สารอาหาร</a></li>
             <li><a ng-class="{ active: isActive('/howitwork') }" ui-sref="howitwork">กลไกการทำงาน</a></li>
             <li><a ng-class="{ active: isActive('/products') }" ui-sref="products">ร้านค้า</a></li>
-            <li><a ng-class="{ active: isActive('/secret') }" ui-sref="secret">เคล็ดลับความสำเร็จ</a></li>
             <li><a ng-class="{ active: isActive('/login') }" ng-show="!isLogin" ui-sref="login">เข้าสู่ระบบ</a></li>
             <!-- <li><a ng-class="{ active: isActive('/user') }" ng-show="isLogin" ui-sref="user">คุณ {{userInfo.name_first}}</a></li> -->
             <li class="dropdown" ng-show="isLogin">
