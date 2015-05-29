@@ -576,5 +576,28 @@ class UserController extends BaseController {
 		return Redirect::to('../login');
 		//->with('message', FlashMessage::DisplayAlert('Could not recover account. Please contact your Administrator for further assistence.', 'danger'));
 	} //End ResetPassword FN
+
+	public function updateEmail()
+	{
+		if(!Auth::check()){
+			App::abort('404', 'user_not_found');
+		}
+		
+		$input = array(
+			'email' => Input::get('email'),
+			'tel' => Input::get('tel')
+			);
+		$user_id = Auth::user()->id;
+		$user = User::where('id',$user_id)->first();
+		if(!$user){
+			App::abort('404', 'user_not_found');
+		}else{
+			$user->email = $input['email'];
+			$user->tel = $input['tel'];
+			save();
+			return true;
+		} 
+
+	}
 }
 
