@@ -237,7 +237,7 @@ chevApp.controller('navbarController', function($scope, $location, $rootScope, $
     	$location.path('/checkout');
     };
 
-    isLogin($resource, $rootScope, isLoginFB($rootScope, $facebook));
+    isLogin($resource, $rootScope);
 });
 
 // Controller for Homepage
@@ -485,7 +485,13 @@ chevApp.controller('loginController', function($scope, $rootScope, $resource, $f
 	$scope.loginFB = function(){
 		$facebook.login().then(function() {
 	      // refresh();
-	      isLoginFB($rootScope, $facebook);
+	      // isLoginFB($rootScope, $facebook);
+	      var loginFB = $resource('public/facebook', {}, {'facebook' : {method:'POST'}});
+	      var authRes = $facebook.getAuthResponse();
+	      console.log(authRes.accessToken);
+	      loginFB.facebook({"code": authRes.accessToken}, function(val){
+	      	console.log(val);
+	      })
 	    });
 	}
 
@@ -501,7 +507,7 @@ chevApp.controller('loginController', function($scope, $rootScope, $resource, $f
 	// 		});
 	// }
 
-	isLoginFB($rootScope, $facebook);
+	// isLoginFB($rootScope, $facebook);
 
 
 
@@ -1212,6 +1218,12 @@ isLoginFB = function($rootScope, $facebook, callback){
 			$rootScope.welcomeMsg = "Welcome " + response.name;
 			$rootScope.isLogin = true;
 			console.log(response);
+			var test = $facebook.getAuthResponse(function(res){
+				console.log(res);
+				console.log("Hello");
+			});
+
+			console.log(test);
 		},
 		function(err) {
 			// $rootScope.isLogin = false;

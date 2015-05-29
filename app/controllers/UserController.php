@@ -355,8 +355,12 @@ class UserController extends BaseController {
 		if (!$code) {
 			App::abort('400', 'code_missing');
 		}
+		// return $code;
+		// return var_dump(file_get_contents("https://www.facebook.com"));
+		// OAuth::setHttpClient('CurlClient');
+		OAuth::setHttpClient('CurlClient');
 
-		$fb = OAuth::consumer('Facebook', 'http://localhost:8080/');
+		$fb = OAuth::consumer('Facebook', 'http://localhost/chev');
 		$accessToken = $fb->requestAccessToken($code);
 		$result = json_decode($fb->request('/me'), true);
 
@@ -410,7 +414,7 @@ class UserController extends BaseController {
 	public function logout () {
 		Auth::logout();
 		return Response::json([
-			// 'csrf_token' => csrf_token()
+			'csrf_token' => csrf_token()
 			]);
 	}
 
