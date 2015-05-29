@@ -587,6 +587,37 @@ class UserController extends BaseController {
 			'email' => Input::get('email'),
 			'tel' => Input::get('tel')
 			);
+		//Validation section.
+		
+		$rules = array(
+			'email' => 'required|min:4|unique:user',
+			'tel' => 'required|min:8', //Numeric is number only.
+			);
+		$messages = array(
+			'email.required' => 'email_missing',
+			'email.min' => 'email_length',
+			'email.unique' => 'email_found',
+			'tel.required' => 'tel_missing',
+			'tel.min' => 'tel_length',
+			
+			);
+		$validator = Validator::make(
+			array(
+				'email' => $input['email'],
+				'tel' => $input['tel'],
+				),
+			$rules,
+			$messages
+			);
+
+		// validate fails
+		if($validator->fails()) {
+			App::abort('400', json_encode(array(
+				'because' => 'validate_fail',
+				'messages' => $validator->messages()->all()
+				)));
+		}
+
 		$user_id = Auth::user()->id;
 		$user = User::where('id',$user_id)->first();
 		if(!$user){

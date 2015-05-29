@@ -6,7 +6,7 @@ class OrderController extends BaseController{
       'index','update','store','destroy','show'
     )));
     $this->beforeFilter('admin', array('only' => array(
-      'index'
+      'index','destroy'
     )));
     
     $this->beforeFilter('csrf', array('only' => array(
