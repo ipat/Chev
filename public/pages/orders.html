@@ -15,7 +15,7 @@
             <h1><i class="fa" style="font-size:3em;" ng-class="{ 'fa-pencil-square-o':{{order.status==0}}, 'fa-clock-o': {{order.status==1}} }"></i></h1>
           </div>
           <div class="col-md-9" style="padding-top:1em;">
-            <div ng-show="order.status==0" ><span class="fa fa-close right flat-red" style="width:100%; font-size:1.2em; float:right;"></span> </div>
+            <div ng-show="order.status==0" ><span class="fa fa-close right flat-red" style="width:100%; font-size:1.2em; float:right; opacity:0;"></span> </div>
             สถานะการสั่งซื้อ <b style="font-size:1.2em; ">{{(order.status==0)? "รอการยืนยันการโอนเงิน": (order.status==1)? "รอการตรวจสอบ": "ทำการจัดส่งให้ท่านแล้ว"}}</b>
             <br>
             จะทำการจัดส่งไปให้คุณ <b>{{order.address.title}}</b> <br>

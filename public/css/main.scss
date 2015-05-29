@@ -542,6 +542,20 @@ hr.gradient {
 	}
 }
 
+.blue-btn{
+	@extend .default-btn;
+	background-color: #3b5998;
+	border: 1px solid lighten(#3b5998, 10%);
+	color: white !important;
+	box-shadow: 0px 0.2em 0px darken(#3b5998, 10%);	
+	text-shadow: 0px 2px 0px darken(#3b5998, 10%);
+	&:active{
+		position:relative;
+		top: 0.2em;
+		box-shadow: 0px 0.1em 2px darken(#3b5998, 10%);
+	}
+}
+
 @mixin button-style($color) {
 	@extend .default-btn;
 	background-color: $color;

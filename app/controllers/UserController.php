@@ -357,12 +357,14 @@ class UserController extends BaseController {
 		}
 		// return $code;
 		// return var_dump(file_get_contents("https://www.facebook.com"));
+		Facebook::setAccessToken($code);
+		$result = Facebook::object('me')->get();
+		// return $facebook_user;
 		// OAuth::setHttpClient('CurlClient');
-		OAuth::setHttpClient('CurlClient');
 
-		$fb = OAuth::consumer('Facebook', 'http://localhost/chev');
-		$accessToken = $fb->requestAccessToken($code);
-		$result = json_decode($fb->request('/me'), true);
+		// $fb = OAuth::consumer('Facebook', 'http://localhost/chev');
+		// $accessToken = $fb->requestAccessToken($code);
+		// $result = json_decode($fb->request('/me'), true);
 
 		// already signed in, performs linking current account with facebook
 		if (Auth::check()) {

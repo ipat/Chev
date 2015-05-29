@@ -330,7 +330,7 @@ hr.gradient {
 .hidden-overflow {
   overflow: hidden; }
 
-.default-btn, .white-btn, .spiner-btn-left, .spiner-btn-right, .red-btn, .green-btn, .flat-green-btn, .flat-yellow-btn, .flat-red-btn, .flat-white-btn {
+.default-btn, .white-btn, .spiner-btn-left, .spiner-btn-right, .red-btn, .green-btn, .blue-btn, .flat-green-btn, .flat-yellow-btn, .flat-red-btn, .flat-white-btn {
   -webkit-appearance: none;
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -349,7 +349,7 @@ hr.gradient {
   cursor: pointer;
   text-shadow: none;
   padding: 0.3em 1em 0.3em; }
-  .default-btn:active, .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active, .red-btn:active, .green-btn:active, .flat-green-btn:active, .flat-yellow-btn:active, .flat-red-btn:active, .flat-white-btn:active {
+  .default-btn:active, .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active, .red-btn:active, .green-btn:active, .blue-btn:active, .flat-green-btn:active, .flat-yellow-btn:active, .flat-red-btn:active, .flat-white-btn:active {
     position: relative;
     top: 0.1em;
     box-shadow: 0px 0.1em 2px #aad621; }
@@ -386,6 +386,17 @@ hr.gradient {
     position: relative;
     top: 0.2em;
     box-shadow: 0px 0.1em 2px #5ecf00; }
+
+.blue-btn {
+  background-color: #3b5998;
+  border: 1px solid #4c70ba;
+  color: white !important;
+  box-shadow: 0px 0.2em 0px #2d4373;
+  text-shadow: 0px 2px 0px #2d4373; }
+  .blue-btn:active {
+    position: relative;
+    top: 0.2em;
+    box-shadow: 0px 0.1em 2px #2d4373; }
 
 .flat-green-btn {
   background-color: #2ecc71;

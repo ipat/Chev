@@ -6,7 +6,7 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"artdarek/oauth-4-laravel": "dev-master"
+		"sammyk/laravel-facebook-sdk": "~1.1"
 	},
 	"autoload": {
 		"classmap": [

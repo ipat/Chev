@@ -153,7 +153,7 @@ chevApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$f
 		// 	enabled: true
 		// });
 
-		$facebookProvider.setAppId('151793521582103');
+		$facebookProvider.setAppId('1396688577327448');
 }]);
 
 /*====================================================
@@ -204,7 +204,7 @@ chevApp.controller('navbarController', function($scope, $location, $rootScope, $
     			$rootScope.cart = undefined;
     		} else {    		
     			$rootScope.cart = getCart["products"];
-    			$('.dropdown-menu').dropdown('toggle');
+    			$('.cart-droupdown').dropdown('toggle');
     		}
     		
     	});
@@ -426,9 +426,9 @@ chevApp.controller('secretController', function($scope, $rootScope, $sce){
 
 	$scope.calculateCal = function(){
 		if($scope.gender == "male") {
-			$scope.cal = 10 * $scope.weight + 6.25 * $scope.height - 5 * $scope.age + 5;
+			$scope.cal = 10 * $scope.weight + 6.25 * $scope.height - 5 * $scope.age + 5 + 200;
 		} else {
-			$scope.cal = 10 * $scope.weight + 6.25 * $scope.height - 5 * $scope.age - 161;
+			$scope.cal = 10 * $scope.weight + 6.25 * $scope.height - 5 * $scope.age - 161 + 200;
 		}
 
 		if(!Number.isNaN($scope.cal)){
@@ -467,7 +467,6 @@ chevApp.controller('loginController', function($scope, $rootScope, $resource, $f
 			showMessage($scope, "เข้าสู่ระบบสำเร็จ", "alertSuccess", ".alertBox", 5000);
 			$rootScope.isLogin = true;
 			$rootScope.userInfo = val['user'];
-
 			$rootScope.user_csrf = val["csrf_token"];
 			// console.log(user_csrf);
 		}, function(res){
@@ -484,15 +483,13 @@ chevApp.controller('loginController', function($scope, $rootScope, $resource, $f
 
 	$scope.loginFB = function(){
 		$facebook.login().then(function() {
-	      // refresh();
-	      // isLoginFB($rootScope, $facebook);
 	      var loginFB = $resource('public/facebook', {}, {'facebook' : {method:'POST'}});
 	      var authRes = $facebook.getAuthResponse();
-	      console.log(authRes.accessToken);
 	      loginFB.facebook({"code": authRes.accessToken}, function(val){
-	      	console.log(val);
+	      	isLogin($resource, $rootScope);
 	      })
 	    });
+
 	}
 
 	// function refresh() {
@@ -605,21 +602,24 @@ chevApp.controller('productsController', function($scope, $rootScope, $resource,
 		// console.log(addedItem);
 		Cart.store(addedItem, function(){
 			$rootScope.showCart();
-			// sc();
+			// isLogin($resource, $rootScope);
+			// console.log("Finish");
 		});
-
 		showMessage($scope, "นำสินค้าใส่ตะกร้าเรียบร้อยจำนวน " + $scope.amount + " ชิ้น", "alertSuccess", ".alertBox");	
 	};
 });
 
 
 chevApp.controller('logoutController', function($scope, $rootScope, $location, $resource){
+	console.log($rootScope.user_csrf);
+	console.log("HELLO");
 	isLogin($resource, $rootScope);
-	var Logout = $resource('public/logout', {'_token': $rootScope.user_csrf},  {'logout': { method: 'GET', isArray:true}});
+	var Logout = $resource('public/logout', {'_token': $rootScope.user_csrf},  {'logout': { method: 'GET', isArray:false}});
 	// console.log($rootScope.user_csrf);
-		// console.log(hello);
+		console.log('hello');
 	Logout.logout(function(val){
 		$location.path('/home');
+		console.log('hi');
 		$rootScope.isLogin = false;
 		$rootScope.userInfo = null;
 	});
@@ -1183,7 +1183,7 @@ showMessage = function($scope, message, style, element, time)
 
 };
 
-isLogin = function($resource, $rootScope, $facebook, callback)
+isLogin = function($resource, $rootScope, callback)
 {
 	var isLogin = $resource('public/is-login', null);	
 	isLogin.get({}, function(val){
@@ -1192,7 +1192,6 @@ isLogin = function($resource, $rootScope, $facebook, callback)
 			// console.log(val);
 			$rootScope.isLogin = true;
 			$rootScope.userInfo = val['user'];
-			console.log($rootScope.userInfo);
 			$rootScope.userInfo._token = val['csrf_token'];
 			$rootScope.user_csrf = val['csrf_token'];
 			// console.log($rootScope.userInfo);
@@ -1205,32 +1204,31 @@ isLogin = function($resource, $rootScope, $facebook, callback)
 		}
 		if(typeof callback !== 'undefined')
 			callback();
+		// console.log(callback;
 	}, function(res){
 		$rootScope.isLogin = false;
-		if(typeof callback !== 'undefined')
-			callback();
 	});
 };
 
-isLoginFB = function($rootScope, $facebook, callback){
-	$facebook.api("/me").then( 
-		function(response) {
-			$rootScope.welcomeMsg = "Welcome " + response.name;
-			$rootScope.isLogin = true;
-			console.log(response);
-			var test = $facebook.getAuthResponse(function(res){
-				console.log(res);
-				console.log("Hello");
-			});
+// isLoginFB = function($rootScope, $facebook, callback){
+// 	$facebook.api("/me").then( 
+// 		function(response) {
+// 			$rootScope.welcomeMsg = "Welcome " + response.name;
+// 			$rootScope.isLogin = true;
+// 			console.log(response);
+// 			var test = $facebook.getAuthResponse(function(res){
+// 				console.log(res);
+// 				console.log("Hello");
+// 			});
 
-			console.log(test);
-		},
-		function(err) {
-			// $rootScope.isLogin = false;
+// 			console.log(test);
+// 		},
+// 		function(err) {
+// 			// $rootScope.isLogin = false;
 
-			// $scope.welcomeMsg = "Please log in";
-		});
-}
+// 			// $scope.welcomeMsg = "Please log in";
+// 		});
+// }
 
 if (typeof String.prototype.startsWith != 'function') {
   // see below for better implementation!
