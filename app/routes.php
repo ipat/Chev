@@ -40,3 +40,4 @@ Route::resource('order','OrderController');
 
 // sometimes we have more than 1 place, Is it neccesary?? 
 Route::resource('user-address', 'UserAddressController');
+Route::post('updateEmail','UserController@updateEmail');
