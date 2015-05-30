@@ -588,12 +588,26 @@ class UserController extends BaseController {
 			'tel' => Input::get('tel')
 			);
 		//Validation section.
-		
-		$rules = array(
+		$user_id = Auth::user()->id;
+		$user = User::where('id',$user_id)->first();
+		if(!$user){
+			App::abort('404', 'user_not_found');
+		}
+		if()
+		$rules1 = array(
+			'tel' => 'required|min:8', //Numeric is number only.
+			);
+		$messages1 = array(
+			'tel.required' => 'tel_missing',
+			'tel.min' => 'tel_length',
+			
+			);
+
+		$rules2 = array(
 			'email' => 'required|min:4|unique:user',
 			'tel' => 'required|min:8', //Numeric is number only.
 			);
-		$messages = array(
+		$messages2 = array(
 			'email.required' => 'email_missing',
 			'email.min' => 'email_length',
 			'email.unique' => 'email_found',
@@ -601,14 +615,27 @@ class UserController extends BaseController {
 			'tel.min' => 'tel_length',
 			
 			);
-		$validator = Validator::make(
+
+		if($user->email){
+			$validator = Validator::make(
 			array(
 				'email' => $input['email'],
 				'tel' => $input['tel'],
 				),
-			$rules,
-			$messages
+			$rules1,
+			$messages1
 			);
+		}else{
+			$validator = Validator::make(
+			array(
+				'email' => $input['email'],
+				'tel' => $input['tel'],
+				),
+			$rules2,
+			$messages2
+			);
+		}
+		
 
 		// validate fails
 		if($validator->fails()) {
@@ -618,16 +645,12 @@ class UserController extends BaseController {
 				)));
 		}
 
-		$user_id = Auth::user()->id;
-		$user = User::where('id',$user_id)->first();
-		if(!$user){
-			App::abort('404', 'user_not_found');
-		}else{
-			$user->email = $input['email'];
-			$user->tel = $input['tel'];
-			save();
-			return true;
-		} 
+		
+		$user->email = $input['email'];
+		$user->tel = $input['tel'];
+		$user->save();
+		return true;
+		 
 
 	}
 }
