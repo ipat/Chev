@@ -55,7 +55,7 @@
     <div class="col-sm-2"></div>
     <div class="clear"></div>
     <div class="col-sm-4"></div>
-    <div class="default-btn col-sm-4" ng-click="submitOrder()" style="font-size:1.5em;"><span class="glyphicon glyphicon-shopping-cart"></span> สั่งซื้อเลย</div>
+    <div class="default-btn col-sm-4" ng-click="submitOrder()" style="font-size:1.5em; line-height:1.8em;"><span class="glyphicon glyphicon-shopping-cart"></span> สั่งซื้อเลย</div>
     <div class="col-sm-4"></div>
 	</div>
 	
@@ -122,6 +122,38 @@
         <div class="modal-footer"> 
           <button type="button" class="white-btn" data-dismiss="modal">ยกเลิก</button>
           <button type="button" class="default-btn" ng-click="submitAddress(newAddress.isEdit)">บันทึก</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Email Tes Modal -->
+  <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">ข้อมูลบางอย่างของท่านไม่ครบ</h4>
+        </div>
+        <div class="modal-body">
+          <form style="">
+        <div class="col-sm-12" ng-show="noEmail">
+          <label for="email">อีเมล์<span class="red">*</span></label>
+          <input class="small-input" ng-class="(valid.email !== undefined)? 'invalid':''" type="email" ng-model="email" name="email">
+          <div class="noti" ng-bind="valid.email"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="col-sm-12" ng-show="noTel">
+          <label for="tel">เบอร์โทรศัพท์<span class="red">*</span></label>
+          <input class="small-input" ng-class="(valid.tel !== undefined)? 'invalid':''" type="text" ng-model="tel" name="tel">
+          <div class="noti" ng-bind="valid.tel"></div>
+        </div>
+        <div class="clear"></div>
+
+      </form>
+        </div>
+        <div class="modal-footer"> 
+          <button type="button" class="white-btn" data-dismiss="modal">ยกเลิก</button>
+          <button type="button" class="default-btn" ng-click="addInfo()">บันทึก</button>
         </div>
       </div>
     </div>

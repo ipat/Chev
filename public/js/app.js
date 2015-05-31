@@ -431,7 +431,7 @@ chevApp.controller('secretController', function($scope, $rootScope, $sce){
 			$scope.cal = 10 * $scope.weight + 6.25 * $scope.height - 5 * $scope.age - 161 + 200;
 		}
 
-		if(!Number.isNaN($scope.cal)){
+		if(!isNaN($scope.cal)){
 			$(".form-horizontal").slideUp(400);
 			$(".calResult").slideDown(400, function(){
 			});
@@ -821,6 +821,8 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 	
 	isLogin($resource, $rootScope, function(){
 		$scope.currentAddress = $rootScope.userInfo["default_address_id"];
+		console.log($rootScope.userInfo);
+		
 	});
 
 	$scope.submitAddress = function(isEdit){	
@@ -924,13 +926,75 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 
 
 	$scope.submitOrder = function(){
-		var add = {};
-		add["address_id"] = $scope.currentAddress;
-		add["_token"] = $rootScope.user_csrf;
-		Order.store(add, function(){
-			$location.path('howToTransfer');
-		});
+		$scope.tel = $rootScope.userInfo["tel"];
+		$scope.noTel = false;
+		$scope.email = $rootScope.userInfo["email"];
+		$scope.noEmail = false;
+		if($scope.tel == "" || $scope.tel == null)
+			$scope.noTel = true;
+		if($scope.email == "" || $scope.email == null)
+			$scope.noEmail = true;
+
+		if($scope.noTel == false && $scope.noEmail == false){			
+			var add = {};
+			add["address_id"] = $scope.currentAddress;
+			add["_token"] = $rootScope.user_csrf;
+			Order.store(add, function(){
+				$location.path('howToTransfer');
+			});
+		} else {
+			$("#emailModal").modal('show');
+		}
 	};
+
+
+	$scope.addInfo = function(){
+		console.log("Hello");
+		$scope.info = {};
+		$scope.info["email"] = $scope.email;
+		$scope.info["tel"] = $scope.tel;
+		$scope.info._token = $rootScope.user_csrf;
+		$scope.valid = {};
+		update = $resource('public/updateEmail', {}, {'updateEmail' : {method:'POST'}});
+		update.updateEmail($scope.info, function(res){
+			isLogin($resource, $rootScope);
+			var add = {};
+			add["address_id"] = $scope.currentAddress;
+			add["_token"] = $rootScope.user_csrf;
+			Order.store(add, function(){
+				$location.path('howToTransfer');
+			});
+			$("#emailModal").modal('hide');
+			// $("#editAddress").modal('hide');
+		}, function(res){
+
+			console.log(res);
+				var errorList = JSON.parse(res['data']['error']['message']);
+				errorList = errorList['messages'];
+				console.log(errorList);
+				
+				// $scope.valid = {};
+
+				for (var i = 0; i < errorList.length; i++) {
+					if(errorList[i] === "email_missing")
+						$scope.valid.email = "กรุณากรอกอีเมล์";
+					else if(errorList[i] === "email_length")
+						$scope.valid.email = "ขนาดอีเมล์ผิดพลาด";
+					else if(errorList[i] === "email_found")
+						$scope.valid.email = "อีเมล์นี้ได้ใช้ไปแล้ว";
+					else if(errorList[i] === "tel_missing")
+						$scope.valid.tel = "กรุณากรอกเบอร์โทรศัพท์";
+					else if(errorList[i] === "tel_length")
+						$scope.valid.tel = "ขนาดเบอร์โทรศัพท์ผิดพลาด";
+				};
+				// 	else if(errorList[i] === "postcode_missing")
+				// 		$scope.valid.postcode = "กรุณาใส่รหัสไปรษณีย์";
+
+
+					
+				// };
+		});
+	}
 });
 
 /*================================================
@@ -1311,7 +1375,8 @@ chevApp.factory('User', function($resource){
 		{
 			// show: {method:'GET'},
 		 	'update': {method: 'PUT', params:{id: '@user_id'}},
-		 	'delete': {method: 'DELETE', params:{id: '@user_id'}}
+		 	'delete': {method: 'DELETE', params:{id: '@user_id'}},
+		 	'updateEmail': {method:'POST', params:{id: '@user_id'}}
 		});
 });
 

@@ -1074,6 +1074,109 @@ ol.progtrckr li.progtrckr-todo:before {
     -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out; }
 
+.panel1 {
+  border-color: #3498db; }
+  .panel1 .panel-heading {
+    background-color: #3498db;
+    background-image: none;
+    color: white; }
+    .panel1 .panel-heading .panel-title {
+      font-size: 1.4em;
+      line-height: 1.5em; }
+  .panel1 table {
+    width: 100%; }
+    .panel1 table thead tr {
+      border-bottom: 4px solid #258cd1;
+      line-height: 2em;
+      font-size: 1.2em; }
+    .panel1 table tbody tr {
+      border-bottom: 2px solid #3498db;
+      line-height: 2em; }
+
+.panel2 {
+  border-color: #258cd1; }
+  .panel2 .panel-heading {
+    background-color: #258cd1;
+    background-image: none;
+    color: white; }
+    .panel2 .panel-heading .panel-title {
+      font-size: 1.4em;
+      line-height: 1.5em; }
+  .panel2 table {
+    width: 100%; }
+    .panel2 table thead tr {
+      border-bottom: 4px solid #217dbb;
+      line-height: 2em;
+      font-size: 1.2em; }
+    .panel2 table tbody tr {
+      border-bottom: 2px solid #258cd1;
+      line-height: 2em; }
+
+.panel3 {
+  border-color: #217dbb; }
+  .panel3 .panel-heading {
+    background-color: #217dbb;
+    background-image: none;
+    color: white; }
+    .panel3 .panel-heading .panel-title {
+      font-size: 1.4em;
+      line-height: 1.5em; }
+  .panel3 table {
+    width: 100%; }
+    .panel3 table thead tr {
+      border-bottom: 4px solid #1d6fa5;
+      line-height: 2em;
+      font-size: 1.2em; }
+    .panel3 table tbody tr {
+      border-bottom: 2px solid #217dbb;
+      line-height: 2em; }
+
+.panel4 {
+  border-color: #1d6fa5; }
+  .panel4 .panel-heading {
+    background-color: #1d6fa5;
+    background-image: none;
+    color: white; }
+    .panel4 .panel-heading .panel-title {
+      font-size: 1.4em;
+      line-height: 1.5em; }
+  .panel4 table {
+    width: 100%; }
+    .panel4 table thead tr {
+      border-bottom: 4px solid #196090;
+      line-height: 2em;
+      font-size: 1.2em; }
+    .panel4 table tbody tr {
+      border-bottom: 2px solid #1d6fa5;
+      line-height: 2em; }
+
+.tab {
+  text-indent: 40px; }
+
+.table tbody tr > td.success {
+  background-color: #dff0d8 !important; }
+
+.table tbody tr > td.error {
+  background-color: #f2dede !important; }
+
+.table tbody tr > td.warning {
+  background-color: #fcf8e3 !important; }
+
+.table tbody tr > td.info {
+  background-color: #d9edf7 !important; }
+
+.table-hover tbody tr:hover > td.success {
+  background-color: #d0e9c6 !important; }
+
+.table-hover tbody tr:hover > td.error {
+  background-color: #ebcccc !important; }
+
+.table-hover tbody tr:hover > td.warning {
+  background-color: #faf2cc !important; }
+
+.table-hover tbody tr:hover > td.info {
+  background-color: #c4e3f3 !important; }
+
 /*
 ===========================================================
 	Style for Angular 

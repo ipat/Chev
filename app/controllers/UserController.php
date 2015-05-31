@@ -593,7 +593,6 @@ class UserController extends BaseController {
 		if(!$user){
 			App::abort('404', 'user_not_found');
 		}
-		if()
 		$rules1 = array(
 			'tel' => 'required|min:8', //Numeric is number only.
 			);

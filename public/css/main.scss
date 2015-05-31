@@ -1419,6 +1419,105 @@ ol.progtrckr li.progtrckr-todo:before {
 .calBox3{
 	@include calBox(#e74c3c);	
 }
+
+@mixin panelTemplate($color) {
+	border-color: $color;
+	.panel-heading {
+		background-color: darken($color, 0%);
+		background-image: none;
+		color: white;
+
+		.panel-title {
+			font-size: 1.4em;
+			line-height: 1.5em;
+		}
+	}
+
+	table{
+		width: 100%;
+
+		thead tr {
+			border-bottom: 4px solid darken($color, 5%);
+			line-height: 2em;
+			font-size: 1.2em;
+		}
+
+		tbody tr {
+			border-bottom: 2px solid $color;
+			line-height: 2em;
+		}
+	}
+
+}
+
+.panel1 {
+	@include panelTemplate(#3498db);
+}
+
+.panel2 {
+	@include panelTemplate(darken(#3498db, 5%));
+}
+
+.panel3 {
+	@include panelTemplate(darken(#3498db, 10%));
+}
+
+.panel4 {
+	@include panelTemplate(darken(#3498db, 15%));
+}
+
+
+.tab {
+	text-indent: 40px;
+}
+
+// .diet-table1{
+// 	width: 100%;
+
+// 	thead tr {
+// 		border-bottom: 4px solid darken($webtheme, 10%);
+// 		line-height: 2em;
+// 		font-size: 1.2em;
+// 	}
+
+// 	tbody tr {
+// 		border-bottom: 2px solid $webtheme;
+// 		line-height: 2em;
+// 	}
+// }
+
+
+.table tbody tr > td.success {
+  background-color: #dff0d8 !important;
+}
+
+.table tbody tr > td.error {
+  background-color: #f2dede !important;
+}
+
+.table tbody tr > td.warning {
+  background-color: #fcf8e3 !important;
+}
+
+.table tbody tr > td.info {
+  background-color: #d9edf7 !important;
+}
+
+.table-hover tbody tr:hover > td.success {
+  background-color: #d0e9c6 !important;
+}
+
+.table-hover tbody tr:hover > td.error {
+  background-color: #ebcccc !important;
+}
+
+.table-hover tbody tr:hover > td.warning {
+  background-color: #faf2cc !important;
+}
+
+.table-hover tbody tr:hover > td.info {
+  background-color: #c4e3f3 !important;
+}
 // .row {
 //     display: table;
 // }
