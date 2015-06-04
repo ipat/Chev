@@ -651,7 +651,7 @@ class UserController extends BaseController {
 		$user->email = $input['email'];
 		$user->tel = $input['tel'];
 		$user->save();
-		return true;
+		return Response::json("True");
 		 
 
 	}
