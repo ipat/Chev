@@ -430,7 +430,15 @@ chevApp.controller('secretController', function($scope, $rootScope, $sce){
 
 	$scope.openVideo = function(key){
 		$scope.videoUrl = $sce.trustAsResourceUrl(videoKey[key]);
+
+
+		$('#videoModal').on('hidden.bs.modal', function () {
+		    $scope.videoUrl = "";
+		    // console.log("closeVideo");
+		});
 	}
+
+
 
 	$scope.calculateCal = function(){
 		if($scope.gender == "male") {
@@ -825,11 +833,12 @@ chevApp.controller('checkoutController', function($scope, $rootScope, $location,
 
 chevApp.controller('chooseAddController', function($scope, $rootScope, $location,  Cart, User, UserAddress, AddUserAddress, $resource, Order){
 	$rootScope.navbarClass = "text-dark";
-
+	// console.log($rootScope.userInfo);
+	$rootScope.viewCart();
 	
 	isLogin($resource, $rootScope, function(){
 		$scope.currentAddress = $rootScope.userInfo["default_address_id"];
-		console.log($rootScope.userInfo);
+		// console.log($rootScope.userInfo);
 		
 	});
 
@@ -934,6 +943,11 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 
 
 	$scope.submitOrder = function(){
+
+		if($rootScope.cart == undefined){
+			$location.path('/products');
+		}
+			
 		$scope.tel = $rootScope.userInfo["tel"];
 		$scope.noTel = false;
 		$scope.email = $rootScope.userInfo["email"];
