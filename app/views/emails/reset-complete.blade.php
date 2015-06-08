@@ -49,6 +49,7 @@
     </style>
   </head>
   <body>
+    <div class="box"><a href="http://www.chev-diet.com"><img src="http://www.chev-diet.com/public/img/logo2.png" width="125" class="logo inline"></a>
       <p class="head-fix"><strong>รีเซ็ตรหัสผ่านเสร็จสิ้น</strong></p>
       <div class="line top"></div>
       <p class="content">รหัสผ่านของคุณ {{$name_first}} ถูกรีเซ็ตเรียบร้อย !</p>

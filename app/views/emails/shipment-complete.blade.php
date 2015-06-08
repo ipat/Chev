@@ -49,22 +49,20 @@
     </style>
   </head>
   <body>
-    <div class="box"><a href="https://www.kene.co.th"><img src="https://www.kene.co.th/public/img/logo/logo-black.png" width="110" class="logo inline"></a>
+    <div class="box"><a href="http://www.chev-diet.com"><img src="http://www.chev-diet.com/public/img/logo2.png" width="125" class="logo inline"></a>
       <p class="head-fix"><strong>จัดส่งสินค้าเรียบร้อย !</strong></p>
       <div class="line top"></div>
-      <p class="content">ทางเราได้ดำเนินการจัดส่งสินค้าของออเดอร์ {{SP42545mrdg}} เป็นที่เรียบร้อย !</p>
-      <p class="content">เลขพัสดุ EMS ของออเดอร์คือ <strong>{{Ej34952052rs2}}</strong></p>
-      <p class="content">เราเป็นเกียรติอย่างยิ่งที่คุณ {{name}} ได้มอบโอกาศให้เราได้ดูแลสุขภาพผิวของคุณ</p>
-      <p class="content">
-        หากคุณ {{name}} พบปัญหาหรือมีข้อสงสัยอย่างไร สามารถสอบถามได้ที่ Facebook Fanpage
-        : <a href="">{{www.facebook.com/kenestore}}</a> หรือทาง Email : <a href="">{{contact@kene.co.th}}</a>
+      <p class="content">เลขพัสดุ EMS ของออเดอร์คือ <strong>{{tracking_code}}</strong></p>
+      <p class="content">สินค้าจะถึงประมาณวันที่ <strong>{{arrival_date}}</strong></p>
+      <p class="content">เราเป็นเกียรติอย่างยิ่งที่คุณ {{first_name}} {{last_name}} ได้มอบโอกาศให้เราได้ดูแลสุขภาพผิวของคุณ</p>
+       <p class="content">
+        หากคุณ {{$name_first}} พบปัญหาหรือมีข้อสงสัยอย่างไร สามารถสอบถามได้ที่ <a href="https://www.facebook.com/kenestore">Facebook Fanpage</a> หรือทาง Email : <a href="mailto:wattanai.chev@gmail.com">wattanai.chev@gmail.com</a>
       </p>
       <p class="content">
         ขอบคุณทุกความเชื่อมั่นและความไว้ใจที่มีให้เรา<br>
-        KENE
+        CHEV
       </p>
-      <div class="line bottom"></div><img src="https://www.kene.co.th/public/img/logo/footer-sp-logo.png" width="120" class="sp-logo">
-      <p style="line-height: 2; font-size: 8px;" class="content">KENE™ is a trademark of SP Personal Care Co., Ltd. All products are under formulation and license of SP Personal Care Co., Ltd.</p>
+      <p style="line-height: 2; font-size: 8px;" class="content">CHEV DIETARY SUPPLEMENT</p>
     </div>
   </body>
 </html>

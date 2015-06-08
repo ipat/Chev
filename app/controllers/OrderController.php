@@ -185,7 +185,19 @@ class OrderController extends BaseController{
 				$sendInfo->arrival_date = $request['arrivalDate'];
 				$sendInfo->tracking_code = $request['tracking_code'];
 				$sendInfo->save();
-
+				//
+				$arrival = $sendInfo->arrival_date;
+				$arrival = $arrival->format('Y-m-d');
+				$array = array(
+							'name_first'=>$user->name_first,
+							'name_last' =>$user->name_last,
+							'arrival_date'=>$arrival,
+							'tracking_code'=>$sendInfo->tracking_code
+						);
+				Mail::send('emails.shipment-complete', $array, function($message) use ($user){
+      				$message->to($user->email, $user->name_first.' '.$user->name_last)->subject('ได้ทำการส่งสินค้าเรียบร้อยแล้ว');
+    			});
+				//
 				$order = Order::where('id',$order_id)->first();
 				$order->status = $status;
 				$order->save();
