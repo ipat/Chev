@@ -178,6 +178,12 @@ chevApp.controller('navbarController', function($scope, $location, $rootScope, $
 	//     $(".navbar-collapse").collapse('hide');
 	// });
 
+	$scope.hideNavbar = function(){
+
+		if($(window).width() <= 990)
+			$(".navbar-toggle").click();
+	}
+
     $rootScope.viewCart = function(){
     	var getCart = Cart.index(function(){
     		if(getCart["total"] == 0) {
@@ -229,11 +235,13 @@ chevApp.controller('navbarController', function($scope, $location, $rootScope, $
 
     // Use for link to login page
     $rootScope.login = function(){
+    	$scope.hideNavbar();
     	$location.path('/login');
     	// $rootScope.showModal = !$rootScope.showModal;
     };
 
     $rootScope.checkout = function(){
+    	$scope.hideNavbar();
     	$location.path('/checkout');
     };
 
@@ -422,7 +430,15 @@ chevApp.controller('secretController', function($scope, $rootScope, $sce){
 
 	$scope.openVideo = function(key){
 		$scope.videoUrl = $sce.trustAsResourceUrl(videoKey[key]);
+
+
+		$('#videoModal').on('hidden.bs.modal', function () {
+		    $scope.videoUrl = "";
+		    // console.log("closeVideo");
+		});
 	}
+
+
 
 	$scope.calculateCal = function(){
 		if($scope.gender == "male") {
@@ -817,11 +833,12 @@ chevApp.controller('checkoutController', function($scope, $rootScope, $location,
 
 chevApp.controller('chooseAddController', function($scope, $rootScope, $location,  Cart, User, UserAddress, AddUserAddress, $resource, Order){
 	$rootScope.navbarClass = "text-dark";
-
+	// console.log($rootScope.userInfo);
+	$rootScope.viewCart();
 	
 	isLogin($resource, $rootScope, function(){
 		$scope.currentAddress = $rootScope.userInfo["default_address_id"];
-		console.log($rootScope.userInfo);
+		// console.log($rootScope.userInfo);
 		
 	});
 
@@ -926,6 +943,11 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 
 
 	$scope.submitOrder = function(){
+
+		if($rootScope.cart == undefined){
+			$location.path('/products');
+		}
+			
 		$scope.tel = $rootScope.userInfo["tel"];
 		$scope.noTel = false;
 		$scope.email = $rootScope.userInfo["email"];
@@ -939,6 +961,10 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 			var add = {};
 			add["address_id"] = $scope.currentAddress;
 			add["_token"] = $rootScope.user_csrf;
+
+			if($scope.currentAddress == null){
+				$("#warningModal").modal("show");
+			}
 			Order.store(add, function(){
 				$location.path('howToTransfer');
 			});
@@ -961,6 +987,9 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 			var add = {};
 			add["address_id"] = $scope.currentAddress;
 			add["_token"] = $rootScope.user_csrf;
+			if($scope.currentAddress == null){
+				$("#warningModal").modal("show");
+			}
 			Order.store(add, function(){
 				$location.path('howToTransfer');
 			});

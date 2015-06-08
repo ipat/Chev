@@ -62,20 +62,20 @@
             <button type="submit" class="btn btn-success">Sign in</button>
           </form> -->
           <ul class="nav navbar-nav navbar-right champagne">
-            <li><a ng-class="{ active: isActive('/successStory') }" ui-sref="successStory" >ตัวอย่างความสำเร็จ</a></li>
-            <li><a ng-class="{ active: isActive('/secret') }" ui-sref="secret">เคล็ดลับความสำเร็จ</a></li>
-            <li><a ng-class="{ active: isActive('/ingredients') }" ui-sref="ingredients">สารอาหาร</a></li>
-            <li><a ng-class="{ active: isActive('/howitwork') }" ui-sref="howitwork">กลไกการทำงาน</a></li>
-            <li><a ng-class="{ active: isActive('/products') }" ui-sref="products">ร้านค้า</a></li>
-            <li><a ng-class="{ active: isActive('/login') }" ng-show="!isLogin" ui-sref="login">เข้าสู่ระบบ</a></li>
+            <li><a ng-class="{ active: isActive('/successStory') }" ng-click="hideNavbar()" ui-sref="successStory" >ตัวอย่างความสำเร็จ</a></li>
+            <li><a ng-class="{ active: isActive('/secret') }" ng-click="hideNavbar()" ui-sref="secret">เคล็ดลับความสำเร็จ</a></li>
+            <li><a ng-class="{ active: isActive('/ingredients') }" ng-click="hideNavbar()" ui-sref="ingredients">สารอาหาร</a></li>
+            <li><a ng-class="{ active: isActive('/howitwork') }" ng-click="hideNavbar()" ui-sref="howitwork">กลไกการทำงาน</a></li>
+            <li><a ng-class="{ active: isActive('/products') }" ng-click="hideNavbar()" ui-sref="products">ร้านค้า</a></li>
+            <li><a ng-class="{ active: isActive('/login') }" ng-show="!isLogin" ng-click="hideNavbar()" ui-sref="login">เข้าสู่ระบบ</a></li>
             <!-- <li><a ng-class="{ active: isActive('/user') }" ng-show="isLogin" ui-sref="user">คุณ {{userInfo.name_first}}</a></li> -->
             <li class="dropdown" ng-show="isLogin">
               <a id='userDropdown' href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">คุณ {{userInfo.name_first}} <span class="cart"></span></a>
               <ul class="dropdown-menu" aria-labledby="userDropdown" role="menu" style="color:black !important">
-                <li><a ui-sref="user">ข้อมูลส่วนตัว</a></li>
-                <li><a ui-sref="orders">รายการสั่งซื้อ</a></li>
+                <li><a ui-sref="user" ng-click="hideNavbar()">ข้อมูลส่วนตัว</a></li>
+                <li><a ui-sref="orders" ng-click="hideNavbar()">รายการสั่งซื้อ</a></li>
                 <li class="divider"></li>
-                <li><a href="logout">ออกจากระบบ</a></li>
+                <li><a href="logout" ng-click="hideNavbar()">ออกจากระบบ</a></li>
               </ul>
             </li>
             <!-- <li class="left-border right-border cart"><a href="#" ng-click="viewCart()"><span class="glyphicon glyphicon-shopping-cart"></span></a></li> -->
@@ -84,7 +84,7 @@
               <!-- <div class="dropdown"> -->
                 <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="true"><span class="glyphicon glyphicon-shopping-cart" ng-click="viewCart()"></span></a>
                 
-                <div class="dropdown-menu dropdown-area cart-droupdown" role="menu" aria-labledby="dLabel">
+                <div class="dropdown-menu dropdown-area cart-droupdown" role="menu" aria-labledby="dLabel" data-no-collapse="true">
                   <div ng-show="cart===undefined">
                     ยังไม่มีสินค้าในตะกร้าเลย <a href="products" ng-click="viewCart()">เติมเต็ม</a> ตะกร้าคุณสิ
                   </div>

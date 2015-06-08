@@ -401,7 +401,10 @@ class UserController extends BaseController {
 			// if user is not created, next create a new one
 			if (!$user) {
 				$user = new User();
-				$user->email = $result['email'];
+				if(!isset($result['email']))
+					$user->email = "";
+				else
+					$user->email = $result['email'];
 				$user->password = null;
 				$user->facebook= $result['id'];
 				$user->name_first = $result['first_name'];
@@ -555,7 +558,7 @@ class UserController extends BaseController {
 		$user->email = $input['email'];
 		$user->tel = $input['tel'];
 		$user->save();
-		return true;
+		return Response::json("True");
 		 
 
 	}

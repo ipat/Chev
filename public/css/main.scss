@@ -1261,6 +1261,27 @@ ol.progtrckr li.progtrckr-todo:before {
     border-radius: 1.2em;
 }
 
+.point-enable {
+	background-color: $webtheme;
+	border-radius: 100px;
+	width: 2em;
+	height: 2em;
+	float:left;
+	margin-left: 10%;
+	margin-right: 1em;
+	color: white;
+}
+
+.point-disable {
+	@extend .point-enable;
+	background-color: #EFEFEF;
+	color: #AAAAAA;
+}
+
+.text-disable {
+	color: #AAAAAA;
+}
+
 /*
 ===========================================================
 	Table Style
