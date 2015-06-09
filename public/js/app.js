@@ -100,6 +100,11 @@ chevApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$f
 			url: '/checkout',
 			templateUrl: 'public/pages/checkout.html',
 			controller: 'checkoutController'
+		}).		
+		state('forget', {
+			url: '/forget',
+			templateUrl: 'public/pages/forget.html',
+			controller: 'forgetController'
 		}).
 		state('chooseAdd', {
 			url: '/chooseAdd',
@@ -694,6 +699,21 @@ chevApp.controller('userController', function($scope, $rootScope, $location, $re
 		// $scope.userInfoView = false;
 	};
 
+	$scope.updatePassword = function(){
+		var newPassword = {
+			"newPassword": $scope.newPassword,
+			"confirmNewPassword": $scope.confirmNewPassword
+		};
+
+		var ChangePass = $resource('public/changePass', {'_token': $rootScope.user_csrf }, {'changePass' : {method:'POST'}});
+
+		ChangePass.changePass(newPassword, function(val){
+			console.log("TEST");
+		}, function(res){
+			console.log("ERROR!");
+		});
+	}
+
 	$scope.newAddressDlg = function(){
 		$scope.newAddressEnabled = true;
 		$scope.newAddressClass = "bounceIn";
@@ -1024,6 +1044,42 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 				// };
 		});
 	}
+});
+
+
+/*================================================
+=               Forget Controller                =
+================================================*/
+
+chevApp.controller('forgetController', function($scope, $rootScope, $resource ){
+
+	var Forget = $resource('public/forget', {}, {'forget' : {method:'POST'}});
+	$scope.forget = function() {
+		var feedback = Forget.forget($scope.form, function(val){
+			$rootScope.isLogin = true;
+			$rootScope.userInfo = val['user'];
+			$rootScope.user_csrf = val["csrf_token"];
+			$scope.isForget = true;
+			// console.log(user_csrf);
+		}, function(res){
+			// showMessage($scope, "เกิดข้อผิดพลาด อาจเกิดจากเมล์หรือรหัสผ่านผิด", "alertFailed", ".alertBox", 20000);
+			var errorList = JSON.parse(res['data']['error']['message']);
+			errorList = errorList['messages'];
+
+			$scope.valid = {};
+
+			if(errorList[0] == "email_missing")
+				$scope.valid.email = "กรุณากรอกอีเมล์";
+			else if(errorList[0] == "email_not_email")
+				$scope.valid.email = "รูปแบบอีเมล์ไม่ถูกต้อง";
+			else if(errorList[0] == "email_not_found")
+				$scope.valid.email = "ไม่พบอีเมล์ดังกล่าว";
+
+			
+		});
+	}
+
+	
 });
 
 /*================================================

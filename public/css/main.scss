@@ -163,6 +163,8 @@ html{
 body{
 	font-family: 'lato', 'thaisans_neue_lightregular';
 	font-size: 16px;
+	-webkit-font-smoothing: antialiased !important;
+	text-rendering: optimizeLegibility; 
 	// transform: scale(0.9);
  //    transform-origin: 10% 10%;
 }

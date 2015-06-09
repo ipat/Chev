@@ -188,20 +188,23 @@ class OrderController extends BaseController{
 				//
 				$arrival = $sendInfo->arrival_date;
 				$arrival = $arrival->format('Y-m-d');
+				$order = Order::where('id',$order_id)->first();
+				$order->status = $status;
+				$order->save();
+				$order = $order->toArray();
+				return $order['user'];
 				$array = array(
 							'name_first'=>$user->name_first,
 							'name_last' =>$user->name_last,
 							'arrival_date'=>$arrival,
 							'tracking_code'=>$sendInfo->tracking_code
 						);
-				Mail::send('emails.shipment-complete', $array, function($message) use ($user){
-      				$message->to($user->email, $user->name_first.' '.$user->name_last)->subject('ได้ทำการส่งสินค้าเรียบร้อยแล้ว');
-    			});
+				//Mail::send('emails.shipment-complete', $array, function($message) use ($user){
+      			//	$message->to($user->email, $user->name_first.' '.$user->name_last)->subject('ได้ทำการส่งสินค้าเรียบร้อยแล้ว');
+    			//});
 				//
-				$order = Order::where('id',$order_id)->first();
-				$order->status = $status;
-				$order->save();
-				return Response::json($order->toArray());
+
+				return Response::json($order);
 			}
 
 		}
