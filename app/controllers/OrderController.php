@@ -44,8 +44,7 @@ class OrderController extends BaseController{
 
 
 		if ($status == 0){
-			if ($order->user_id != $user_id
-				|| $order->status == 1) {
+			if ($order->user_id != $user_id) {
 				// trying to make change on the otherwiseers
 				// lowering the staus
 				// requires admin permission
