@@ -24,7 +24,7 @@
 				<h2 ng-show="isLogin" style="padding-bottom: 1em;">ยินดีต้อนรับครับคุณ {{userInfo.name_first}}</h2>
 			</div>
 
-			<div ng-click="" class="midium-size full-width" style="line-height: 1.8em; text-decoration:underline; font-size: 1.2em;"></span> <a href="forget">ลืมรหัสผ่าน</a></div>
+			<div ng-click="" class="midium-size full-width" style="line-height: 1.8em; text-decoration:underline; font-size: 1.2em;"></span> <a href="forget" ng-show="!isLogin">ลืมรหัสผ่าน</a></div>
 		</div>
     	<div class="col-sm-3"></div>
     	

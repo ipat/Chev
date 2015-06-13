@@ -649,6 +649,11 @@ hr.gradient {
      box-shadow:        inset  0 -8px 10px -8px #696868;
 }
 
+
+.hide {
+	display: none;
+}
+
 .default-panel {
 	background-color: $webtheme-tran;
 	border: 3px solid darken($webtheme-tran, 10%);
