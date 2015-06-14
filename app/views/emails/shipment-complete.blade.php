@@ -52,9 +52,9 @@
     <div class="box"><a href="http://www.chev-diet.com"><img src="http://www.chev-diet.com/public/img/logo2.png" width="125" class="logo inline"></a>
       <p class="head-fix"><strong>จัดส่งสินค้าเรียบร้อย !</strong></p>
       <div class="line top"></div>
-      <p class="content">เลขพัสดุ EMS ของออเดอร์คือ <strong>{{tracking_code}}</strong></p>
-      <p class="content">สินค้าจะถึงประมาณวันที่ <strong>{{arrival_date}}</strong></p>
-      <p class="content">เราเป็นเกียรติอย่างยิ่งที่คุณ {{first_name}} {{last_name}} ได้มอบโอกาศให้เราได้ดูแลสุขภาพผิวของคุณ</p>
+      <p class="content">เลขพัสดุ EMS ของออเดอร์คือ <strong>{{$tracking_code}}</strong></p>
+      <p class="content">สินค้าจะถึงประมาณวันที่ <strong>{{$arrival_date}}</strong></p>
+      <p class="content">เราเป็นเกียรติอย่างยิ่งที่คุณ {{$name_first}} {{$name_last}} ได้มอบโอกาศให้เราได้ดูแลสุขภาพผิวของคุณ</p>
        <p class="content">
         หากคุณ {{$name_first}} พบปัญหาหรือมีข้อสงสัยอย่างไร สามารถสอบถามได้ที่ <a href="https://www.facebook.com/kenestore">Facebook Fanpage</a> หรือทาง Email : <a href="mailto:wattanai.chev@gmail.com">wattanai.chev@gmail.com</a>
       </p>

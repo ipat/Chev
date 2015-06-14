@@ -9,9 +9,9 @@ class OrderController extends BaseController{
       'index','destroy'
     )));
     
-    $this->beforeFilter('csrf', array('only' => array(
-      'index','update','store','destroy','show'
-    )));
+    //$this->beforeFilter('csrf', array('only' => array(
+    //  'index','update','store','destroy','show'
+    //)));
 	}
 	public function index(){
 		$status = Input::get('status');
@@ -20,7 +20,6 @@ class OrderController extends BaseController{
 		return Response::json($all_order->toArray());
 	}
 	public function show($tmp){
-		// return 11;
 		$user_id = Auth::user()->id;
 		$order = Order::where('user_id',$user_id)->get();
 		return Response::json($order->toArray());
@@ -31,10 +30,10 @@ class OrderController extends BaseController{
 		return Response::json(Order::carttoOrder(intval($userAddressId)));
 	}
 	public function update($order_id){
-		//return 'here';
 		$status = intval(Input::get('status'));
 
 		$user_id = Auth::user()->id;
+
 		// $order = Order::where('id',$order_id)->where('user_id',$user_id)->first();
 		$order = Order::find($order_id);
 //		return $order;
@@ -142,6 +141,7 @@ class OrderController extends BaseController{
 			}
 		}
 		else if ($status == 2) {
+			
 			// Admin permission is required
 			if (! Auth::user()->isAdmin()) {
 				App::abort('401', 'not_admin');
@@ -172,6 +172,7 @@ class OrderController extends BaseController{
 				$rules,
 				$messages
 			);
+
 			if($validator->fails()) {
 				App::abort('400', json_encode(array(
 					'because' => 'validate_fail',
@@ -179,30 +180,39 @@ class OrderController extends BaseController{
 				)));
 			}
 			else {
+				
 				// He's an admin, permission granted
+				
 				$sendInfo = new SendInfo;
 				$sendInfo->order_id= $order_id;
 				$sendInfo->arrival_date = $request['arrivalDate'];
 				$sendInfo->tracking_code = $request['tracking_code'];
 				$sendInfo->save();
-				//
+				
 				$arrival = $sendInfo->arrival_date;
-				$arrival = $arrival->format('Y-m-d');
+				//$arrival = $arrival->format('Y-m-d');
+				//return Response::json($status);
 				$order = Order::where('id',$order_id)->first();
 				$order->status = $status;
+
+				// return  $request['tracking_code'];				
 				$order->save();
 				$order = $order->toArray();
-				return $order['user'];
+				
 				$array = array(
-							'name_first'=>$user->name_first,
-							'name_last' =>$user->name_last,
+							'name_first'=>$order['user']['name_first'],
+							'name_last' =>$order['user']['name_last'],
 							'arrival_date'=>$arrival,
-							'tracking_code'=>$sendInfo->tracking_code
+							'tracking_code'=>$request['tracking_code']
 						);
-				//Mail::send('emails.shipment-complete', $array, function($message) use ($user){
-      			//	$message->to($user->email, $user->name_first.' '.$user->name_last)->subject('ได้ทำการส่งสินค้าเรียบร้อยแล้ว');
-    			//});
-				//
+				$user = array();
+				$user['email'] = $order['user']['email'];
+				$user['name_first'] = $order['user']['name_first'];
+				$user['name_last'] = $order['user']['name_last'];
+				Mail::send('emails.shipment-complete', $array, function($message) use ($user){
+      				$message->to($user['email'], $user['name_first'].' '.$user['name_last'])->subject('ได้ทำการส่งสินค้าเรียบร้อยแล้ว');
+    			});
+				
 
 				return Response::json($order);
 			}
