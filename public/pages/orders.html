@@ -9,8 +9,8 @@
     <div class="page-header left"><h2>รายการที่รอการดำเนินการ</h2></div>
 
     <div class="col-md-12">
-      <div class="col-md-6" ng-repeat="(key,order) in orders">
-        <div ng-class="{ 'red-panel':{{order.status==0}}, 'yellow-panel': {{order.status==1}} }" style="text-align:left; height:100%" ng-show="order.status!=2">
+      <div class="col-md-6" ng-class="{'hide': {{order.status==2}} }" ng-repeat="(key,order) in orders">
+        <div ng-class="{ 'red-panel':{{order.status==0}}, 'yellow-panel': {{order.status==1}} }" style="text-align:left; height:100%">
           <div class="col-md-3">            
             <h1><i class="fa" style="font-size:3em;" ng-class="{ 'fa-pencil-square-o':{{order.status==0}}, 'fa-clock-o': {{order.status==1}} }"></i></h1>
           </div>
@@ -49,8 +49,8 @@
     <div class="page-header left"><h2>รายการจัดส่งสินค้าแล้ว</h2></div>
 
     <div class="col-md-12">
-      <div class="col-md-6" ng-repeat="(key,order) in orders">
-        <div ng-class="{ 'green-panel':{{order.status==2}}, 'white-panel': {{order.status!=2}} }" style="text-align:left; height:100%" ng-show="order.status==2">
+      <div class="col-md-6" ng-repeat="(key,order) in orders" ng-class="{'hide': {{order.status!=2}} }">
+        <div ng-class="{ 'green-panel':{{order.status==2}}, 'white-panel': {{order.status!=2}} }" style="text-align:left; height:100%">
           <div class="col-md-3">            
             <h1><i class="fa fa-truck" style="font-size:3em;"></i></h1>
           </div>
