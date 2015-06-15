@@ -45,3 +45,5 @@ Route::post('updateEmail','UserController@updateEmail');
 // Route submit of forgotten password form to the UserController
 Route::post('forget', 'UserController@forgotpassword');
 Route::get('resetpassword/{resetcode}', 'UserController@resetpassword');
+
+Route::post('changepassword','UserController@changepassword');

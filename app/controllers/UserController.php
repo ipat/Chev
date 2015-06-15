@@ -655,5 +655,18 @@ class UserController extends BaseController {
 		return Redirect::to('../login');
 		//->with('message', FlashMessage::DisplayAlert('Could not recover account. Please contact your Administrator for further assistence.', 'danger'));
 	} //End ResetPassword FN
+	public function changepassword()
+	{
+		$user = Auth::user();
+		$password_old = Input::get('password_old');
+		$password_new = Input::get('password_new');
+		if( strlen($password_old)>0 && !Hash::check($password_old, $user->password))
+	        return Response::json('PASSWORD IS INCORRECT');
+	    else{
+	    	$user->password = Hash::make($new_password);
+	    	$user->save();
+	    	return Response::json('SUCCESSFULLY');
+	    }
+	}
 }
 
