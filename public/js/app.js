@@ -266,25 +266,31 @@ chevApp.controller('homeController', function($scope, $rootScope){
 
 	$scope.slides = [
 	    {
-	      image: 'public/img/ban1.png'
+	      image: 'public/img/ban1.jpg'
 	    },
 	    {
-	      image: 'public/img/ban2.png'
+	      image: 'public/img/ban2.jpg'
 	    },
 	    {
-	      image: 'public/img/ban3.png'
+	      image: 'public/img/ban3.jpg'
+	    },
+	    {
+	      image: 'public/img/banner_test.jpg'
 	    }
 	 ];
 
 	 $scope.slides1 = [
 	    {
-	      image: 'public/img/NEW_BANNER1_MOBILE.png'
+	      image: 'public/img/NEW_BANNER1_MOBILE.jpg'
 	    },
 	    {
-	      image: 'public/img/NEW_BANNER2_MOBILE.png'
+	      image: 'public/img/NEW_BANNER2_MOBILE.jpg'
 	    },
 	    {
-	      image: 'public/img/NEW_BANNER3_MOBILE.png'
+	      image: 'public/img/NEW_BANNER3_MOBILE.jpg'
+	    },
+	    {
+	      image: 'public/img/mobile_testBanner.jpg'
 	    }
 	 ];
 
@@ -544,50 +550,50 @@ chevApp.controller('signupController', function($scope, $rootScope, Users){
 	$scope.signup = function() {
 		// var SignUp = $resource('public/user');
 		// var feedback = SignUp.post()
-		if($scope.form.password != $scope.form.confirm_password){
-			showMessage($scope, "รหัสผ่านไม่ตรงกัน", "alertFailed", ".alertBox", 10000);
-		}
-		else {
-			var genderTemp = $scope.form.gender;
-			$scope.form.gender = $scope.form.gender['val'];
-			$scope.form._token = $rootScope.user_csrf;
-			console.log($scope.form.gender);
-			var feedback = Users.store($scope.form, function(val){
-				showMessage($scope, "สมัครสมาชิกเสร็จสิ้น", "alertSuccess", ".alertBox", 10000);
-				$rootScope.isLogin = true;
-				$rootScope.userInfo = val['user'];
-			}, function(res){
-				var errorList = JSON.parse(res['data']['error']['message']);
-				errorList = errorList['messages'];
-				$scope.valid = {};
+		
+		var genderTemp = $scope.form.gender;
+		$scope.form.gender = $scope.form.gender['val'];
+		$scope.form._token = $rootScope.user_csrf;
+		console.log($scope.form.gender);
+		var feedback = Users.store($scope.form, function(val){
+			showMessage($scope, "สมัครสมาชิกเสร็จสิ้น", "alertSuccess", ".alertBox", 10000);
+			$rootScope.isLogin = true;
+			$rootScope.userInfo = val['user'];
+		}, function(res){
+			var errorList = JSON.parse(res['data']['error']['message']);
+			errorList = errorList['messages'];
+			$scope.valid = {};
+			console.log("HELLO");
 
-				var errorMsg = "<u style='text-align:center;'>เกิดข้อผิดพลาด</u> <br /> ";
-				for (var i = 0; i < errorList.length; i++) {
-					if(errorList[i] === "email_missing")
-						$scope.valid.email = "ไม่ได้เติมอีเมล์";
-					else if(errorList[i] === "password_missing")
-						$scope.valid.password = "ไม่ได้เติมรหัสผ่าน";
-					else if(errorList[i] === "tel_missing")
-						$scope.valid.tel = "ไม่ได้เติมเบอร์โทรศัพท์";
-					else if(errorList[i] === "name_first_missing")
-						$scope.valid.name_first = "ไม่ได้เติมชื่อ";
-					else if(errorList[i] === "name_last_missing")
-						$scope.valid.name_last = "ไม่ได้เติมนามสกุล";
-					else if(errorList[i] === "password_length")
-						$scope.valid.password = "ความยาวรหัสผ่านไม่ครบ";
-					else if(errorList[i] === "email_length")
-						$scope.valid.email = "ความยาวอีเมล์ไม่ครบ";
-					else if(errorList[i] === "email_found")
-						$scope.valid.email = "อีเมล์นี้ได้ใช้ไปแล้ว";
-					else if(errorList[i] === "tel_length")
-						$scope.valid.tel = "ความยาวเบอร์โทรศัพท์ไม่ครบ";
+			var errorMsg = "<u style='text-align:center;'>เกิดข้อผิดพลาด</u> <br /> ";
+			for (var i = 0; i < errorList.length; i++) {
+				if(errorList[i] === "email_missing")
+					$scope.valid.email = "ไม่ได้เติมอีเมล์";
+				else if(errorList[i] === "password_missing")
+					$scope.valid.password = "ไม่ได้เติมรหัสผ่าน";
+				else if(errorList[i] === "tel_missing")
+					$scope.valid.tel = "ไม่ได้เติมเบอร์โทรศัพท์";
+				else if(errorList[i] === "name_first_missing")
+					$scope.valid.name_first = "ไม่ได้เติมชื่อ";
+				else if(errorList[i] === "name_last_missing")
+					$scope.valid.name_last = "ไม่ได้เติมนามสกุล";
+				else if(errorList[i] === "password_length")
+					$scope.valid.password = "ความยาวรหัสผ่านไม่ครบ";
+				else if(errorList[i] === "email_length")
+					$scope.valid.email = "ความยาวอีเมล์ไม่ครบ";
+				else if(errorList[i] === "email_found")
+					$scope.valid.email = "อีเมล์นี้ได้ใช้ไปแล้ว";
+				else if(errorList[i] === "tel_length")
+					$scope.valid.tel = "ความยาวเบอร์โทรศัพท์ไม่ครบ";
 
-				};
-				// showMessage($scope, errorMsg, "alertFailed", ".alertBox", 10000);
-				$scope.form.gender = genderTemp;
-			});
+			};
+			// showMessage($scope, errorMsg, "alertFailed", ".alertBox", 10000);
+			if($scope.form.password != $scope.form.confirm_password)
+				$scope.valid.password = "รหัสผ่านไม่ตรงกัน";
+			$scope.form.gender = genderTemp;
+		});
 			// console.log(feedback); 
-		}
+	
 		
 
 	}
@@ -701,17 +707,49 @@ chevApp.controller('userController', function($scope, $rootScope, $location, $re
 
 	$scope.updatePassword = function(){
 		var newPassword = {
-			"newPassword": $scope.newPassword,
-			"confirmNewPassword": $scope.confirmNewPassword
+			"password_old": $scope.oldPassword,
+			"password_new": $scope.newPassword
 		};
+		$scope.valid = {};
 
-		var ChangePass = $resource('public/changePass', {'_token': $rootScope.user_csrf }, {'changePass' : {method:'POST'}});
+		var ChangePass = $resource('public/changepassword', {'_token': $rootScope.user_csrf }, {'changePass' : {method:'POST'}});
 
-		ChangePass.changePass(newPassword, function(val){
-			console.log("TEST");
-		}, function(res){
-			console.log("ERROR!");
-		});
+		if($scope.newPassword != $scope.confirmNewPassword){
+			$scope.valid.password = "รหัสผ่านไม่ตรงกัน";
+
+		} else {
+			ChangePass.changePass(newPassword, function(val){
+				console.log("TEST");
+				$('#changePassword').modal("hide");
+				$scope.oldPassword = "";
+				$scope.newPassword = "";
+				$scope.confirmNewPassword = "";
+				// $scope.valid = {};
+			}, function(res){
+				console.log("ERROR!");
+
+				var errorList = JSON.parse(res['data']['error']['message']);
+					errorList = errorList['messages'];
+					
+					$scope.valid = {};
+
+					for (var i = 0; i < errorList.length; i++) {
+						if(errorList[i] === "password_missing")
+							$scope.valid.password = "กรุณากรอกรหัสผ่าน";
+						else if(errorList[i] === "password_length")
+							$scope.valid.password = "รหัสผ่าสั้นเกินไป";
+						else if(errorList[i] === "password_not_match")
+							$scope.valid.oldPassword = "รหัสผ่านเดิมไม่ถูกต้อง";
+
+
+						
+					};
+			});
+
+
+		}
+
+		
 	}
 
 	$scope.newAddressDlg = function(){

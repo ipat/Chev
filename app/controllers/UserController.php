@@ -660,10 +660,52 @@ class UserController extends BaseController {
 		$user = Auth::user();
 		$password_old = Input::get('password_old');
 		$password_new = Input::get('password_new');
-		if( strlen($password_old)>0 && !Hash::check($password_old, $user->password))
-	        return Response::json('PASSWORD IS INCORRECT');
+
+		$rules = array(
+			// 'email' => 'required|min:4|unique:user',
+			'password_new' => 'required|min:7',
+			// 'tel' => 'required|min:8', //Numeric is number only.
+			// 'name_first' => 'required', //Alpha is alphabet only
+			// 'name_last' => 'required', //Thus, Firstname and Lastname should be English.
+			// 'name' => 'unique_name', //Test for uniqueness of name (name_first + name_last)
+			);
+
+
+		$messages = array(
+			// 'email.required' => 'email_missing',
+			// 'email.min' => 'email_length',
+			// 'email.unique' => 'email_found',
+			'password_new.required' => 'password_missing',
+			'password_new.min' => 'password_length',
+			// 'tel.required' => 'tel_missing',
+			// 'tel.min' => 'tel_length',
+			// 'name_first.required' => 'name_first_missing',
+			// 'name_last.required' => 'name_last_missing',
+			// 'name.unique_name' => 'name_found'
+			);
+
+		$validator = Validator::make(array(
+			'password_new' => $password_new
+			), 
+			$rules, 
+			$messages);
+
+
+		if($validator->fails())
+			App::abort('400', json_encode(array(
+				'because' => 'validate_fail',
+				'messages' => $validator->messages()->all()
+				)));
+
+
+
+		if( strlen($password_old)<=0 && !Hash::check($password_old, $user->password))
+	        App::abort('400', json_encode(array(
+	        		'because' => 'validate_fail',
+					'messages' => array('password_not_match')
+	        	)));
 	    else{
-	    	$user->password = Hash::make($new_password);
+	    	$user->password = Hash::make($password_new);
 	    	$user->save();
 	    	return Response::json('SUCCESSFULLY');
 	    }

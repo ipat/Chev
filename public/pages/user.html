@@ -22,7 +22,7 @@
 	<div class="col-md-12">
 		<div >
 			<h3 >ข้อมูล่วนตัว 	<!-- <a ng-click="editUserInfo()" class="{{userInfoShow}} float-right" ng-hide="userInfoView">Edit</a> -->
-				<button class="default-btn float-right" style="font-size:0.5em; margin-left: 1em;" data-toggle="modal" data-target="#changePassword"><b>เปลี่ยนรหัสผ่าน</b></button>
+				<button class="default-btn float-right" style="font-size:0.5em; margin-left: 1em;" data-toggle="modal" data-target="#changePassword" ng-hide="userInfo.facebook"><b>เปลี่ยนรหัสผ่าน</b></button>
 				<button ng-click="editUserInfo()" class="default-btn float-right {{userInfoShow}}" style="font-size:0.5em" data-toggle="modal" data-target="#editUserInfo"><i class="glyphicon glyphicon-pencil"></i></button>
 			</h3>
 		</div>
@@ -154,15 +154,20 @@
 	      <div class="modal-body">
 	        <form>
 				<div class="col-sm-12">
-					<label for="newPassword">รหัสผ่านใหม่</label>
-					<input class="small-input" ng-class="(valid.newPassword !== undefined)? 'invalid':''" type="password" ng-model="newPassword" name="newPassword" required>
-					<div class="noti" ng-bind="valid.newPassword"></div>
+					<label for="oldPassword">รหัสผ่านเดิม</label>
+					<input class="small-input" ng-class="(valid.oldPassword !== undefined)? 'invalid':''" type="password" ng-model="oldPassword" name="oldPassword" required>
+					<div class="noti" ng-bind="valid.oldPassword"></div>
 				</div>
 				<div class="clear"></div>
 				<div class="col-sm-12">
+					<label for="confirmNewPassword">รหัสผ่านใหม่</label>
+					<input class="small-input" ng-class="(valid.confirmNewPassword !== undefined)? 'invalid':''" type="password" ng-model="newPassword" name="newPassword" required>
+					<div class="noti" ng-bind="valid.password"></div>
+				</div>
+				<div class="col-sm-12">
 					<label for="confirmNewPassword">ยืนยันรหัสผ่านใหม่</label>
 					<input class="small-input" ng-class="(valid.confirmNewPassword !== undefined)? 'invalid':''" type="password" ng-model="confirmNewPassword" name="confirmNewPassword" required>
-					<div class="noti" ng-bind="valid.confirmNewPassword"></div>
+					<div class="noti" ng-bind="valid.password"></div>
 				</div>
 				<div class="clear"></div>
 			</form>
