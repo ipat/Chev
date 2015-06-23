@@ -266,6 +266,9 @@ chevApp.controller('homeController', function($scope, $rootScope){
 
 	$scope.slides = [
 	    {
+	      image: 'public/img/banner_test.jpg'
+	    },
+	    {
 	      image: 'public/img/ban1.jpg'
 	    },
 	    {
@@ -273,13 +276,13 @@ chevApp.controller('homeController', function($scope, $rootScope){
 	    },
 	    {
 	      image: 'public/img/ban3.jpg'
-	    },
-	    {
-	      image: 'public/img/banner_test.jpg'
 	    }
 	 ];
 
 	 $scope.slides1 = [
+	    {
+	      image: 'public/img/mobile_testBanner.jpg'
+	    },
 	    {
 	      image: 'public/img/NEW_BANNER1_MOBILE.jpg'
 	    },
@@ -288,9 +291,6 @@ chevApp.controller('homeController', function($scope, $rootScope){
 	    },
 	    {
 	      image: 'public/img/NEW_BANNER3_MOBILE.jpg'
-	    },
-	    {
-	      image: 'public/img/mobile_testBanner.jpg'
 	    }
 	 ];
 
