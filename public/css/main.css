@@ -5,77 +5,66 @@
   src: url("../fonts/thaisansneue-black-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-black-webfont.woff") format("woff"), url("../fonts/thaisansneue-black-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-black-webfont.svg#thaisans_neue_blackregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'thaisans_neuebold';
   src: url("../fonts/thaisansneue-bold-webfont.eot");
   src: url("../fonts/thaisansneue-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-bold-webfont.woff") format("woff"), url("../fonts/thaisansneue-bold-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-bold-webfont.svg#thaisans_neuebold") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'thaisans_neue_extbdregular';
   src: url("../fonts/thaisansneue-extrabold-webfont.eot");
   src: url("../fonts/thaisansneue-extrabold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-extrabold-webfont.woff") format("woff"), url("../fonts/thaisansneue-extrabold-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-extrabold-webfont.svg#thaisans_neue_extbdregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'thaisans_neue_extltregular';
   src: url("../fonts/thaisansneue-extralight-webfont.eot");
   src: url("../fonts/thaisansneue-extralight-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-extralight-webfont.woff") format("woff"), url("../fonts/thaisansneue-extralight-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-extralight-webfont.svg#thaisans_neue_extltregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'thaisans_neue_lightregular';
   src: url("../fonts/thaisansneue-light-webfont.eot");
   src: url("../fonts/thaisansneue-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-light-webfont.woff") format("woff"), url("../fonts/thaisansneue-light-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-light-webfont.svg#thaisans_neue_lightregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'thaisans_neueregular';
   src: url("../fonts/thaisansneue-regular-webfont.eot");
   src: url("../fonts/thaisansneue-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-regular-webfont.woff") format("woff"), url("../fonts/thaisansneue-regular-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-regular-webfont.svg#thaisans_neueregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'thaisans_neue_sembdregular';
   src: url("../fonts/thaisansneue-semibold-webfont.eot");
   src: url("../fonts/thaisansneue-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-semibold-webfont.woff") format("woff"), url("../fonts/thaisansneue-semibold-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-semibold-webfont.svg#thaisans_neue_sembdregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'thaisans_neue_ultbdregular';
   src: url("../fonts/thaisansneue-ultrabold-webfont.eot");
   src: url("../fonts/thaisansneue-ultrabold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-ultrabold-webfont.woff") format("woff"), url("../fonts/thaisansneue-ultrabold-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-ultrabold-webfont.svg#thaisans_neue_ultbdregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'thaisans_neue_ultltregular';
   src: url("../fonts/thaisansneue-ultralight-webfont.eot");
   src: url("../fonts/thaisansneue-ultralight-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thaisansneue-ultralight-webfont.woff") format("woff"), url("../fonts/thaisansneue-ultralight-webfont.ttf") format("truetype"), url("../fonts/thaisansneue-ultralight-webfont.svg#thaisans_neue_ultltregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'THSarabunNew';
   src: url("../fonts/thsarabunnew-webfont.eot");
   src: url("../fonts/thsarabunnew-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/thsarabunnew-webfont.woff") format("woff"), url("../fonts/thsarabunnew-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'champagne__limousinesregular';
   src: url("../fonts/Champagne & Limousines-webfont.eot");
   src: url("../fonts/Champagne & Limousines-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Champagne & Limousines-webfont.woff2") format("woff2"), url("../fonts/Champagne & Limousines-webfont.woff") format("woff"), url("../fonts/Champagne & Limousines-webfont.ttf") format("truetype"), url("../fonts/Champagne & Limousines-webfont.svg#champagne__limousinesregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 /*
 ===========================================================
 	Mixin(s)
@@ -119,25 +108,25 @@ body {
   background-image: none; }
 
 .btn-primary {
-  background-color: #46b5f7;
+  background-color: #46B5F7;
   border: none; }
   .btn-primary:hover {
-    background-color: #18a3f5; }
+    background-color: #18A3F5; }
 
 .btn-defalut {
-  background-color: whitesmoke; }
+  background-color: #F5F5F5; }
   .btn-defalut:hover {
-    background-color: #bdbdbd;
+    background-color: #BDBDBD;
     color: white; }
 
 .icon-bar {
   background-color: white; }
 
 .left-border {
-  border-left: 1px solid #bdbdbd; }
+  border-left: 1px solid #BDBDBD; }
 
 .right-border {
-  border-right: 1px solid #bdbdbd; }
+  border-right: 1px solid #BDBDBD; }
 
 .feature-icon, .social-icon {
   text-align: center;
@@ -203,10 +192,10 @@ body {
 hr.gradient {
   border: 0;
   height: 1px;
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); }
+  background-image: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+  background-image: -moz-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+  background-image: -ms-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+  background-image: -o-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent); }
 
 .hr {
   text-align: center; }
@@ -303,8 +292,8 @@ hr.gradient {
     border: 1px solid #bde347; }
 
 .invalid {
-  box-shadow: 0px 0px 8px #ff3d00;
-  border: 1px solid #ff3d00;
+  box-shadow: 0px 0px 8px #FF3D00;
+  border: 1px solid #FF3D00;
   top: -0.8em; }
 
 .small-input {
@@ -316,7 +305,7 @@ hr.gradient {
   text-shadow: 0px 3px 0px #aad621; }
 
 .noti {
-  background-color: #ff3d00;
+  background-color: #FF3D00;
   color: white;
   text-shadow: 0 2px 0 #cc3100;
   border-radius: 0 0 8px 8px;
@@ -357,18 +346,18 @@ hr.gradient {
     box-shadow: 0px 0.1em 2px #aad621; }
 
 .white-btn, .spiner-btn-left, .spiner-btn-right {
-  background-color: whitesmoke;
+  background-color: #F5F5F5;
   color: black !important;
   border: 1px solid #d7d7d7;
-  box-shadow: 0px 0.2em 0px #bdbdbd;
-  text-shadow: 0px 1px 0px #bdbdbd; }
+  box-shadow: 0px 0.2em 0px #BDBDBD;
+  text-shadow: 0px 1px 0px #BDBDBD; }
   .white-btn:active, .spiner-btn-left:active, .spiner-btn-right:active {
     position: relative;
     top: 0.1em;
-    box-shadow: 0px 0.1em 2px #bdbdbd; }
+    box-shadow: 0px 0.1em 2px #BDBDBD; }
 
 .red-btn {
-  background-color: #ff3d00;
+  background-color: #FF3D00;
   border: 1px solid #ff6433;
   color: white !important;
   box-shadow: 0px 0.2em 0px #cc3100;
@@ -379,7 +368,7 @@ hr.gradient {
     box-shadow: 0px 0.1em 2px #cc3100; }
 
 .green-btn {
-  background-color: #76ff03;
+  background-color: #76FF03;
   border: 1px solid #92ff36;
   color: black !important;
   box-shadow: 0px 0.2em 0px #5ecf00;
@@ -703,7 +692,7 @@ hr.gradient {
     transition: all 0.5s ease;
     font-size: 1.2em; }
     .navbar .navbar-nav a:hover, .navbar a:hover {
-      background-color: rgba(0, 0, 0, 0);
+      background-color: transparent;
       color: #bde347 !important;
       font-weight: bolder; }
     .navbar .navbar-nav a:focus, .navbar a:focus {
@@ -790,7 +779,7 @@ hr.gradient {
   font-size: 1.5em;
   line-height: 2em;
   vertical-align: middle;
-  background-color: #76ff03;
+  background-color: #76FF03;
   border-bottom: 0.3em solid #5ecf00;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -801,7 +790,7 @@ hr.gradient {
   text-shadow: 0px 2px 0px #5ecf00; }
 
 .alertFailed {
-  background-color: #ff3d00;
+  background-color: #FF3D00;
   border-bottom: 0.3em solid #cc3100;
   color: white;
   text-shadow: 0px 2px 0px #cc3100; }
@@ -1252,3 +1241,11 @@ ol.progtrckr li.progtrckr-todo:before {
 
   .collapse.in {
     display: block !important; } }
+#fb-root {
+  display: none; }
+
+/* To fill the container and nothing else */
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+  width: 100% !important; }
+
+/*# sourceMappingURL=main.css.map */

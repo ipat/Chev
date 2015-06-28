@@ -122,7 +122,7 @@ chevApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$f
 			controller: 'userController'
 		}).
 		state('admin', {
-			url: '/admin',
+			url: '/adminChev',
 			templateUrl: 'public/pages/admin.html',
 			controller: 'adminController'
 		}).
@@ -266,31 +266,39 @@ chevApp.controller('homeController', function($scope, $rootScope){
 
 	$scope.slides = [
 	    {
-	      image: 'public/img/banner_test.jpg'
+	      image: 'public/img/banner_test.jpg',
+	      url: 'successStory'
 	    },
 	    {
-	      image: 'public/img/ban1.jpg'
+	      image: 'public/img/ban1.jpg',
+	      url: 'howitwork'
 	    },
 	    {
-	      image: 'public/img/ban2.jpg'
+	      image: 'public/img/ban2.jpg',
+	      url: 'ingredients'
 	    },
 	    {
-	      image: 'public/img/ban3.jpg'
+	      image: 'public/img/ban3.jpg',
+	      url: 'secret'
 	    }
 	 ];
 
 	 $scope.slides1 = [
 	    {
-	      image: 'public/img/mobile_testBanner.jpg'
+	      image: 'public/img/mobile_testBanner.jpg',
+	      url: 'successStory'
 	    },
 	    {
-	      image: 'public/img/NEW_BANNER1_MOBILE.jpg'
+	      image: 'public/img/NEW_BANNER1_MOBILE.jpg',
+	      url: 'howitwork'
 	    },
 	    {
-	      image: 'public/img/NEW_BANNER2_MOBILE.jpg'
+	      image: 'public/img/NEW_BANNER2_MOBILE.jpg',
+	      url: 'ingredients'
 	    },
 	    {
-	      image: 'public/img/NEW_BANNER3_MOBILE.jpg'
+	      image: 'public/img/NEW_BANNER3_MOBILE.jpg',
+	      url: 'secret'
 	    }
 	 ];
 
@@ -445,7 +453,7 @@ chevApp.controller('secretController', function($scope, $rootScope, $sce){
 
 		$('#videoModal').on('hidden.bs.modal', function () {
 		    $scope.videoUrl = "";
-		    // console.log("closeVideo");
+		    $scope.$apply();
 		});
 	}
 
@@ -483,9 +491,11 @@ chevApp.controller('howitworkController', function($scope, $rootScope){
 	$rootScope.navbarClass = "text-dark";
 });
 
-chevApp.controller('loginController', function($scope, $rootScope, $resource, $facebook){
+chevApp.controller('loginController', function($scope, $rootScope, $resource, $facebook, $location){
 	$rootScope.navbarClass = "text-dark";
-	
+	if($rootScope.isLogin)
+		$location.path('/home');
+
 	isLogin($resource, $rootScope);
 
 	var Login = $resource('public/login', {}, {'login' : {method:'POST'}});
@@ -495,7 +505,7 @@ chevApp.controller('loginController', function($scope, $rootScope, $resource, $f
 			$rootScope.isLogin = true;
 			$rootScope.userInfo = val['user'];
 			$rootScope.user_csrf = val["csrf_token"];
-			// console.log(user_csrf);
+			$location.path('/home');
 		}, function(res){
 			// showMessage($scope, "เกิดข้อผิดพลาด อาจเกิดจากเมล์หรือรหัสผ่านผิด", "alertFailed", ".alertBox", 20000);
 			// var errorList = JSON.parse(res['data']['error']['message']);
@@ -513,7 +523,9 @@ chevApp.controller('loginController', function($scope, $rootScope, $resource, $f
 	      var loginFB = $resource('public/facebook', {}, {'facebook' : {method:'POST'}});
 	      var authRes = $facebook.getAuthResponse();
 	      loginFB.facebook({"code": authRes.accessToken}, function(val){
-	      	isLogin($resource, $rootScope);
+	      	isLogin($resource, $rootScope, function(){
+	      		$location.path('/home');
+	      	});
 	      })
 	    });
 
@@ -643,7 +655,6 @@ chevApp.controller('logoutController', function($scope, $rootScope, $location, $
 	isLogin($resource, $rootScope);
 	var Logout = $resource('public/logout', {'_token': $rootScope.user_csrf},  {'logout': { method: 'GET', isArray:false}});
 	// console.log($rootScope.user_csrf);
-		console.log('hello');
 	Logout.logout(function(val){
 		$location.path('/home');
 		console.log('hi');

@@ -127,6 +127,10 @@
               <input ng-model="transfer.date_before" ng-class="(valid.payTime !== undefined)? 'invalid':''" type="date" data-field="date"  class="small-input" required>
               <div class="noti" ng-bind="valid.payTime"></div>
             </div>
+            <div class="col-sm-12">
+              <label for="file">สำเนาใบหลักฐานการโอนเงิน</label>
+              <input type="file" id="file">
+            </div>
             <div id="dtBox"></div>
             <div class="clear"></div>
           </form>
