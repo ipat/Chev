@@ -270,7 +270,7 @@ chevApp.controller('homeController', function($scope, $rootScope){
 	      url: 'successStory'
 	    },
 	    {
-	      image: 'public/img/ban1.jpg',
+	      image: 'public/img/NEW_BANNER1_newfont.jpg',
 	      url: 'howitwork'
 	    },
 	    {
