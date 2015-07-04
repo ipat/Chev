@@ -58,7 +58,7 @@
       </p>
       <p class="content">คุณ {{$name_first}} สามารถลงชื่อเข้าใช้งานได้ <a href="http://www.chev-diet.com/login">ที่นี่</a></p>
       <p class="content">
-        หากคุณ {{$name_first}} พบปัญหาหรือมีข้อสงสัยอย่างไร สามารถสอบถามได้ที่ <a href="https://www.facebook.com/kenestore">Facebook Fanpage</a> หรือทาง Email : <a href="mailto:wattanai.chev@gmail.com">wattanai.chev@gmail.com</a>
+        หากคุณ {{$name_first}} พบปัญหาหรือมีข้อสงสัยอย่างไร สามารถสอบถามได้ที่ <a href="https://www.facebook.com/chevdiet">Facebook Fanpage</a> หรือทาง Email : <a href="mailto:order@chev-diet.com">order@chev-diet.com</a>
       </p>
       <p class="content">
         ขอบคุณทุกความเชื่อมั่นและความไว้ใจที่มีให้เรา<br>

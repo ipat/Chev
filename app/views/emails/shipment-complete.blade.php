@@ -56,7 +56,7 @@
       <p class="content">สินค้าจะถึงประมาณวันที่ <strong>{{$arrival_date}}</strong></p>
       <p class="content">เราเป็นเกียรติอย่างยิ่งที่คุณ {{$name_first}} {{$name_last}} ได้มอบโอกาศให้เราได้ดูแลสุขภาพผิวของคุณ</p>
        <p class="content">
-        หากคุณ {{$name_first}} พบปัญหาหรือมีข้อสงสัยอย่างไร สามารถสอบถามได้ที่ <a href="https://www.facebook.com/kenestore">Facebook Fanpage</a> หรือทาง Email : <a href="mailto:wattanai.chev@gmail.com">wattanai.chev@gmail.com</a>
+        หากคุณ {{$name_first}} พบปัญหาหรือมีข้อสงสัยอย่างไร สามารถสอบถามได้ที่ <a href="https://www.facebook.com/chevdiet">Facebook Fanpage</a> หรือทาง Email : <a href="mailto:order@chev-diet.com">order@chev-diet.com</a>
       </p>
       <p class="content">
         ขอบคุณทุกความเชื่อมั่นและความไว้ใจที่มีให้เรา<br>
