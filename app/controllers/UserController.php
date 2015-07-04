@@ -101,7 +101,8 @@ class UserController extends BaseController {
 			'name_last' => $user->name_last
 		];
 		Mail::send('emails.register-complete', $array, function($message) use ($user) {
-		 	$message->to($user->email, $user->name_first.' '.$user->name_last)->subject('สมัครสมาชิค CHEV-DIET เสร็จสิ้น');
+			$message->from('order@chev-diet.com', 'CHEV dietary  supplement');
+		 	$message->to($user->email, $user->name_first.' '.$user->name_last)->subject('สมัครสมาชิก CHEV-DIET เสร็จสิ้น');
 		});
 		
 		$user->save();
@@ -618,6 +619,7 @@ class UserController extends BaseController {
 				//return 1111122;
 				// Send a mail to the user. This will plug the datavalues into the reminder email template and mail the user.
 				Mail::send('emails.reset-complete', $data, function($message) use ($user) {
+					$message->from('order@chev-diet.com', 'CHEV dietary  supplement');
 					$message->to($user->email, $user->name_first . ' ' . $user->name_last)->subject('รีเซ็ตรหัสผ่านเสร็จสิ้น');
 				});
 			}
