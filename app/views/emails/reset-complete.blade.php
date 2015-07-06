@@ -26,15 +26,6 @@
       .inline {
         display: inline-block;
       }
-      .head-fix {
-        padding: 0;
-        margin: 0;
-        line-height: -20px;
-        position: absolute;
-        top: 6px;
-        left: 145px;
-        color: rgba(0,0,0,0.6);
-      }
       .content {
         font-size: 0.8rem;
         padding-left: 10px;
@@ -49,9 +40,8 @@
     </style>
   </head>
   <body>
-    <div class="box"><a href="http://www.chev-diet.com"><img src="http://www.chev-diet.com/public/img/logo2.png" width="125" class="logo inline"></a>
-      <p class="head-fix"><strong>รีเซ็ตรหัสผ่านเสร็จสิ้น</strong></p>
-      <div class="line top"></div>
+    <div class="box"><a href="http://www.chev-diet.com"><img src="http://www.chev-diet.com/public/img/logo_email.png" width="131" class="logo inline"></a>
+      <p><strong>รีเซ็ตรหัสผ่านเสร็จสิ้น</strong></p>
       <p class="content">รหัสผ่านของคุณ {{$name_first}} ถูกรีเซ็ตเรียบร้อย !</p>
       <p class="content">
         เพื่อการตั้งรหัสผ่านใหม่ที่คุณต้องการ โปรดเข้าสู่ระบบผ่านลิ้งค์ <a href="{{ $link }}">{{$link}}</a> โดยใช้รหัสผ่านชั่วคราวของเราในการเข้าสู่ระบบ
@@ -68,7 +58,8 @@
         ขอบคุณทุกความเชื่อมั่นและความไว้ใจที่มีให้เรา<br>
         CHEV DIETARY SUPPLEMENT
       </p>
-      <div class="line bottom"></div><img src="https://www.kene.co.th/public/img/logo/footer-sp-logo.png" width="120" class="sp-logo">
+      <div>_________________________________________________________________________________________________________________</div>
+      <p style="line-height: 2; font-size: 8px;" class="content">CHEV DIETARY SUPPLEMENT</p>
     </div>
   </body>
 </html>

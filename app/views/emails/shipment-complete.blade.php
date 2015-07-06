@@ -26,15 +26,6 @@
       .inline {
         display: inline-block;
       }
-      .head-fix {
-        padding: 0;
-        margin: 0;
-        line-height: -20px;
-        position: absolute;
-        top: 6px;
-        left: 145px;
-        color: rgba(0,0,0,0.6);
-      }
       .content {
         font-size: 0.8rem;
         padding-left: 10px;
@@ -49,9 +40,8 @@
     </style>
   </head>
   <body>
-    <div class="box"><a href="http://www.chev-diet.com"><img src="http://www.chev-diet.com/public/img/logo2.png" width="125" class="logo inline"></a>
-      <p class="head-fix"><strong>จัดส่งสินค้าเรียบร้อย !</strong></p>
-      <div class="line top"></div>
+    <div class="box"><a href="http://www.chev-diet.com"><img src="http://www.chev-diet.com/public/img/logo_email.png" width="131" class="logo inline"></a>
+      <p><strong>จัดส่งสินค้าเรียบร้อย !</strong></p>
       <p class="content">เลขพัสดุ EMS ของออเดอร์คือ <strong>{{$tracking_code}}</strong></p>
       <p class="content">สินค้าจะถึงประมาณวันที่ <strong>{{$arrival_date}}</strong></p>
       <p class="content">เราเป็นเกียรติอย่างยิ่งที่คุณ {{$name_first}} {{$name_last}} ได้มอบโอกาศให้เราได้ดูแลสุขภาพผิวของคุณ</p>
@@ -62,6 +52,7 @@
         ขอบคุณทุกความเชื่อมั่นและความไว้ใจที่มีให้เรา<br>
         CHEV
       </p>
+      <div class="line bottom"></div>
       <p style="line-height: 2; font-size: 8px;" class="content">CHEV DIETARY SUPPLEMENT</p>
     </div>
   </body>

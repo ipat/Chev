@@ -100,11 +100,7 @@ class UserController extends BaseController {
 			'name_first' => $user->name_first,
 			'name_last' => $user->name_last
 		];
-		Mail::send('emails.register-complete', $array, function($message) use ($user) {
-			$message->from('order@chev-diet.com', 'CHEV dietary  supplement');
-		 	$message->to($user->email, $user->name_first.' '.$user->name_last)->subject('สมัครสมาชิก CHEV-DIET เสร็จสิ้น');
-		});
-		
+			
 		$user->save();
 
 		// passively log the user into the system
@@ -114,7 +110,10 @@ class UserController extends BaseController {
 		$buildCart->user_id = $user->id;
 		$buildCart->save();
 
-		
+		Mail::send('emails.register-complete', $array, function($message) use ($user) {
+			$message->from('order@chev-diet.com', 'CHEV dietary  supplement');
+		 	$message->to($user->email, $user->name_first.' '.$user->name_last)->subject('สมัครสมาชิก CHEV-DIET เสร็จสิ้น');
+		});
 
 		// $cart = $this->cartToDatabase();
 		return Response::json(array(

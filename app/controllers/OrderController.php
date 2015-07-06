@@ -189,12 +189,12 @@ class OrderController extends BaseController{
 				$sendInfo->save();
 				
 				$arrival = $sendInfo->arrival_date;
-				//$arrival = $arrival->format('Y-m-d');
-				//return Response::json($status);
+				$arrival = new DateTime($arrival);
+				$arrival = $arrival->format('Y-M-d');
+				
 				$order = Order::where('id',$order_id)->first();
 				$order->status = $status;
 
-				// return  $request['tracking_code'];				
 				$order->save();
 				$order = $order->toArray();
 				
