@@ -472,6 +472,24 @@ hr.gradient {
 // 		color: $webtheme;
 // 	}
 // }
+.button {
+    -moz-appearance: button;
+    /* Firefox */
+    -webkit-appearance: button;
+    /* Safari and Chrome */
+    padding: 10px;
+    margin: 10px;
+    width: 70px;
+}
+
+.progress {
+	height: 0.8em;
+	.progress-bar{
+		background-image: none;
+		background-color: $webtheme;
+	}
+}
+
 
 .default-btn{
 	-webkit-appearance: none;

@@ -65,7 +65,9 @@
 		<b>รายละเอียดการโอนเงิน</b> <br>
 		ทำการโอนจาก <b>{{currentOrder.payInfo.bank}}</b> มูลค่าที่โอน <b>{{currentOrder.payInfo.amount}}</b> บาท <br>
 		เมื่อเวลา <b>{{currentOrder.payInfo.payTime}}</b> <br>
-
+		<br>
+		<b>หลักฐารการโอนเงิน</b>
+		<a href="public/upload/{{currentOrder.payInfo.pic_url}}" target="_blank"><img src="public/upload/{{currentOrder.payInfo.pic_url}}" style="width: 100%; height: auto;"></a>
 		<hr>
 		<div class="panel panel-default">
 			<div class="panel-heading">

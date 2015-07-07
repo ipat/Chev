@@ -321,6 +321,21 @@ hr.gradient {
 .hidden-overflow {
   overflow: hidden; }
 
+.button {
+  -moz-appearance: button;
+  /* Firefox */
+  -webkit-appearance: button;
+  /* Safari and Chrome */
+  padding: 10px;
+  margin: 10px;
+  width: 70px; }
+
+.progress {
+  height: 0.8em; }
+  .progress .progress-bar {
+    background-image: none;
+    background-color: #bde347; }
+
 .default-btn, .white-btn, .spiner-btn-left, .spiner-btn-right, .red-btn, .green-btn, .blue-btn, .flat-green-btn, .flat-yellow-btn, .flat-red-btn, .flat-white-btn {
   -webkit-appearance: none;
   -moz-border-radius: 7px;

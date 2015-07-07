@@ -82,23 +82,27 @@ class OrderController extends BaseController{
 				$request = array(
 					'amount' => Input::get('amount'),
 					'bank' => Input::get('bank'),
-					'payTime' => Input::get('time')
+					'payTime' => Input::get('time'),
+					'pic_url' => Input::get('pic_url')
 				);
 				$rules = array(
 					'amount' => 'required',
 					'bank'   => 'required',
-					'payTime' => 'required'
+					'payTime' => 'required',
+					'pic_url' => 'required'
 				);
 				$messages = array(
 					'amount.required' => 'amount_missing',
 					'bank.required' => 'bank_missing',
-					'payTime.required' => 'payTime_missing'
+					'payTime.required' => 'payTime_missing',
+					'pic_url.required' => 'pic_url_missing'
 				);
 				$validator = Validator::make(
 					array(
 						'amount' => $request['amount'],
 						'bank' => $request['bank'],
-						'payTime' => $request['payTime']
+						'payTime' => $request['payTime'],
+						'pic_url' => $request['pic_url'],
 					),
 					$rules,
 					$messages
@@ -116,6 +120,7 @@ class OrderController extends BaseController{
 					$payInfo->amount = $request['amount'];
 					$payInfo->bank = $request['bank'];
 					$payInfo->time = $request['payTime'];
+					$payInfo->pic_url = $request['pic_url'];
 					$payInfo->save();
 
 					$order->status = $status;
@@ -285,5 +290,25 @@ class OrderController extends BaseController{
 			$order->delete();
 		}
 		else App::abort('401','unauthorized');
+	}
+
+	public function uploadPic(){
+		$order = Order::where('id', Input::get('order_id'))->first();
+		if(!Auth::check() || Auth::user()->id !== $order->user_id)
+			return "fail!";
+
+		$destinationPath = '';
+	    $filename        = '';
+
+	    // return var_dump(Input::get('order_id'));
+	    if (Input::hasFile('file')) {
+	        $file            = Input::file('file');
+	        $destinationPath = public_path().'/upload/';
+			$file_name = Input::get('file_name');
+	        $uploadSuccess   = $file->move($destinationPath, $file_name);
+	    }
+
+	    return "done";
+
 	}
 }
