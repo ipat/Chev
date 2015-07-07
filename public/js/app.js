@@ -1,4 +1,4 @@
-var chevApp = angular.module('chevApp', [ 'ui.router', 'ngResource', 'ui.bootstrap', 'ngFacebook']);
+var chevApp = angular.module('chevApp', [ 'ui.router', 'ngResource', 'ui.bootstrap', 'ngFacebook', 'ngFileUpload']);
 
 chevApp.run(function($rootScope, $location, $resource){
 
@@ -597,6 +597,10 @@ chevApp.controller('signupController', function($scope, $rootScope, Users){
 					$scope.valid.email = "อีเมล์นี้ได้ใช้ไปแล้ว";
 				else if(errorList[i] === "tel_length")
 					$scope.valid.tel = "ความยาวเบอร์โทรศัพท์ไม่ครบ";
+				else if(errorList[i] === "name_found"){
+					$scope.valid.name_first = "ชื่อนามสุกลนี้ใช้แล้ว";
+					$scope.valid.name_last = "ชื่อนามสุกลนี้ใช้แล้ว";
+				}
 
 			};
 			// showMessage($scope, errorMsg, "alertFailed", ".alertBox", 10000);
@@ -1144,7 +1148,7 @@ chevApp.controller('howToTransferController', function($scope, $rootScope ){
 =            Orders Controller            =
 =========================================*/
 
-chevApp.controller('ordersController', function($scope, $rootScope, Orders, $resource){
+chevApp.controller('ordersController', function($scope, $rootScope, Orders, $resource, Upload){
 	$rootScope.navbarClass = "text-dark";
 	var orders;
 	isLogin($resource, $rootScope, function(){
@@ -1174,6 +1178,7 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders, $res
 		$scope.valid = {};
 		$scope.transfer = {};
 		$scope.transfer.bank = 'ธนาคารกสิกรไทย';
+		$scope.upload(undefined);
 	};
 
 	$scope.setCancelItem = function(num){
@@ -1196,8 +1201,49 @@ chevApp.controller('ordersController', function($scope, $rootScope, Orders, $res
 		});
 	}
 
-	$scope.updateTransfer = function(){
+	$scope.$watch('file', function () {
+        $scope.upload($scope.file);
+    });
 
+
+  	$scope.upload = function(file){
+  		$scope.uploadDone = false;
+  		$scope.uploadStatus = "";
+  		$scope.uploadPercentage = 0;
+  		$scope.uploadColor = "";
+
+  		if(file == undefined)
+  			return;
+  		var ext = file[0]['name'].substr(file[0]['name'].lastIndexOf('.') + 1);
+		$scope.transfer.pic_url = currentTransfer + '-' + (new Date().getTime()) + Math.floor((Math.random() * 100) + 1) + "." + ext; 
+  		Upload.upload({
+  			url: 'public/uploadPic',
+  			fields: {
+  				order_id: currentTransfer,
+  				file_name: $scope.transfer.pic_url
+  			},
+  			file: file[0]
+  		}).progress(function(evt){
+  			$scope.uploadStatus = "ดำเนินการได้ " + parseInt(100.0 * evt.loaded / evt.total) + '%';
+  			$scope.uploadPercentage = parseInt(100.0 * evt.loaded / evt.total);
+  			console.log('progress: ' + parseInt(100.0 * evt.loaded / evt.total) + '% file :'+ evt.config.file.name);
+  		}).success(function(data, status, headers, config){
+  			console.log("file " + config.file.name + "successfully uploaded");
+  			$scope.uploadDone = true;
+  			$scope.uploadStatus = "การอัพโหลดสำเร็จ";
+  			$scope.uploadPercentage = 100;
+  		});
+  	}
+
+	$scope.updateTransfer = function(){
+		if($scope.uploadDone == false){
+			$scope.uploadStatus = "กรุณาอัพโหลดภาพให้สมบูรณ์";
+			$scope.uploadColor = "red";
+			return;
+		} else {
+			$scope.uploadColor = "";
+		}
+		
 		$scope.transfer.status = 1;
 		$scope.transfer._token = $rootScope.user_csrf;
 

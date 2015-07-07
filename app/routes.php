@@ -32,6 +32,7 @@ Route::resource('cart','CartController');
 Route::post('logout', 'UserController@logout');
 Route::post('facebook', 'UserController@facebook');
 Route::resource('order','OrderController');
+Route::post('uploadPic','OrderController@uploadPic');
 
 // use for facebook login if you need to ask p'TA later
 //Route::post('facebook', 'UserController@facebook');

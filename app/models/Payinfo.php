@@ -11,6 +11,7 @@ class PayInfo extends Eloquent {
       'amount'   => intval($this->amount),
       'bank'    => $this->bank,
       'payTime'  => $this->time,
+      'pic_url' => $this->pic_url,
       'updated_at' => $this->updated_at,
       'created_at' => $this->created_at
     );
