@@ -17,7 +17,7 @@ class Product extends Eloquent {
  				'product_id' => $this->id,
  				'name' => $this->name,
  				'information' => $this->information,
- 				'amount' => intval($this->amount),
+ 				'price' => intval($this->price),
  				'allprice' => intval($this->allprice),
  				'status' => $this->status,
  				'rewards' => $rewards,

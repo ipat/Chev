@@ -14,7 +14,7 @@ class Cart extends Eloquent {
     $products = $this->products;
     if($products) $products=$products->toArray();
     else $products = array();
-    //return 1;
+    
     return array(
       //'user_id' => $this->user_id,
       'products' => $products,
