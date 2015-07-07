@@ -26,15 +26,6 @@
       .inline {
         display: inline-block;
       }
-      .head-fix {
-        padding: 0;
-        margin: 0;
-        line-height: -20px;
-        position: absolute;
-        top: 6px;
-        left: 145px;
-        color: rgba(0,0,0,0.6);
-      }
       .content {
         font-size: 0.8rem;
         padding-left: 10px;
@@ -49,21 +40,21 @@
     </style>
   </head>
   <body>
-    <div class="box"><a href="http://www.chev-diet.com"><img src="http://www.chev-diet.com/public/img/logo2.png" width="125" class="logo inline"></a>
-      <p class="head-fix"><strong>สมัครสมาชิกเสร็จสิ้น</strong></p>
-      <div class="line top"></div>
+    <div class="box"><a href="http://www.chev-diet.com"><img src="http://www.chev-diet.com/public/img/logo_email.png" width="131" class="logo inline"></a>
+      <p class><strong>สมัครสมาชิกเสร็จสิ้น</strong></p>
       <p class="content">
         ยินดีต้อนรับคุณ {{$name_first}} {{$name_last}} !<br>
         เราเป็นเกียรติอย่างยิ่งที่คุณได้เข้าร่วมเป็นส่วนหนึ่งของพวกเรา
       </p>
       <p class="content">คุณ {{$name_first}} สามารถลงชื่อเข้าใช้งานได้ <a href="http://www.chev-diet.com/login">ที่นี่</a></p>
       <p class="content">
-        หากคุณ {{$name_first}} พบปัญหาหรือมีข้อสงสัยอย่างไร สามารถสอบถามได้ที่ <a href="https://www.facebook.com/kenestore">Facebook Fanpage</a> หรือทาง Email : <a href="mailto:wattanai.chev@gmail.com">wattanai.chev@gmail.com</a>
+        หากคุณ {{$name_first}} พบปัญหาหรือมีข้อสงสัยอย่างไร สามารถสอบถามได้ที่ <a href="https://www.facebook.com/chevdiet">Facebook Fanpage</a> หรือทาง Email : <a href="mailto:order@chev-diet.com">order@chev-diet.com</a>
       </p>
       <p class="content">
         ขอบคุณทุกความเชื่อมั่นและความไว้ใจที่มีให้เรา<br>
         CHEV
       </p>
+      <div>_________________________________________________________________________________________________________________</div>
       <p style="line-height: 2; font-size: 8px;" class="content">CHEV DIETARY SUPPLEMENT</p>
     </div>
   </body>

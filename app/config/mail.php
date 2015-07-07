@@ -28,8 +28,7 @@ return array(
 	|
 	*/
 
-	//'host' => 'smtp.mandrillapp.com',
-	'host' => 'smtp.gmail.com',
+	'host' => 'smtp.mandrillapp.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -55,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'wattanai.chev@gmail.com', 'name' => 'CHEV DIETARY SUPPLEMENT'),
+	'from' => array('address' => 'order@chev-diet.com', 'name' => 'CHEV dietary supplement'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -81,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'wattanai.chev@gmail.com',
+	'username' => 'order@chev-diet.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -94,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'lens27993',
+	'password' => 'fxvOWlTo5IqYmvxq1LgPMA',
 
 	/*
 	|--------------------------------------------------------------------------

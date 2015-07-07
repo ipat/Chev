@@ -194,12 +194,12 @@ class OrderController extends BaseController{
 				$sendInfo->save();
 				
 				$arrival = $sendInfo->arrival_date;
-				//$arrival = $arrival->format('Y-m-d');
-				//return Response::json($status);
+				$arrival = new DateTime($arrival);
+				$arrival = $arrival->format('Y-M-d');
+				
 				$order = Order::where('id',$order_id)->first();
 				$order->status = $status;
 
-				// return  $request['tracking_code'];				
 				$order->save();
 				$order = $order->toArray();
 				
@@ -214,6 +214,7 @@ class OrderController extends BaseController{
 				$user['name_first'] = $order['user']['name_first'];
 				$user['name_last'] = $order['user']['name_last'];
 				Mail::send('emails.shipment-complete', $array, function($message) use ($user){
+					$message->from('order@chev-diet.com', 'CHEV dietary  supplement');
       				$message->to($user['email'], $user['name_first'].' '.$user['name_last'])->subject('ได้ทำการส่งสินค้าเรียบร้อยแล้ว');
     			});
 				
