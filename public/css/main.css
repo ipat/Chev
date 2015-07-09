@@ -762,7 +762,7 @@ hr.gradient {
 */
 .jumbotron {
   background-color: rgba(255, 255, 255, 0);
-  margin-top: 1.7em; }
+  margin-top: 0.7em; }
   @media screen and (max-width: 600px) {
     .jumbotron h2 {
       font-size: 1.5em; }

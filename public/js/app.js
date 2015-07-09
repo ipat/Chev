@@ -266,12 +266,12 @@ chevApp.controller('homeController', function($scope, $rootScope){
 
 	$scope.slides = [
 	    {
-	      image: 'public/img/banner_test.jpg',
-	      url: 'successStory'
-	    },
-	    {
 	      image: 'public/img/NEW_BANNER1_newfont.jpg',
 	      url: 'howitwork'
+	    },
+	    {
+	      image: 'public/img/banner_test.jpg',
+	      url: 'successStory'
 	    },
 	    {
 	      image: 'public/img/ban2.jpg',
