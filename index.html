@@ -77,7 +77,13 @@
             <li><a ng-class="{ active: isActive('/secret') }" ng-click="hideNavbar()" ui-sref="secret">เคล็ดลับความสำเร็จ</a></li>
             <li><a ng-class="{ active: isActive('/ingredients') }" ng-click="hideNavbar()" ui-sref="ingredients">สารอาหาร</a></li>
             <li><a ng-class="{ active: isActive('/howitwork') }" ng-click="hideNavbar()" ui-sref="howitwork">กลไกการทำงาน</a></li>
-            <li><a ng-class="{ active: isActive('/products') }" ng-click="hideNavbar()" ui-sref="products">ร้านค้า</a></li>
+            <li class="dropdown">
+              <a id='userDropdown' href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">ร้านค้า<span class="cart"></span></a>
+              <ul class="dropdown-menu" aria-labledby="userDropdown" role="menu" style="color:black !important">
+                <li><a ng-class="{ active: isActive('/products') }" ng-click="hideNavbar()" ui-sref="products">ร้านค้า</a></li>
+                <li><a ng-class="{ active: isActive('/howToTransfer') }" ng-click="hideNavbar()" ui-sref="howToTransfer">วิธีการซื้อสินค้า</a></li>                
+              </ul>
+            </li>
             <li><a ng-class="{ active: isActive('/login') }" ng-show="!isLogin" ng-click="hideNavbar()" ui-sref="login">เข้าสู่ระบบ</a></li>
             <!-- <li><a ng-class="{ active: isActive('/user') }" ng-show="isLogin" ui-sref="user">คุณ {{userInfo.name_first}}</a></li> -->
             <li class="dropdown" ng-show="isLogin">

@@ -1176,6 +1176,25 @@ ol.progtrckr li.progtrckr-todo:before {
       border-bottom: 2px solid #1d6fa5;
       line-height: 2em; }
 
+.panelGreen {
+  border-color: #bde347; }
+  .panelGreen .panel-heading {
+    background-color: #bde347;
+    background-image: none;
+    color: white; }
+    .panelGreen .panel-heading .panel-title {
+      font-size: 1.4em;
+      line-height: 1.5em; }
+  .panelGreen table {
+    width: 100%; }
+    .panelGreen table thead tr {
+      border-bottom: 4px solid #b5e031;
+      line-height: 2em;
+      font-size: 1.2em; }
+    .panelGreen table tbody tr {
+      border-bottom: 2px solid #bde347;
+      line-height: 2em; }
+
 .tab {
   text-indent: 40px; }
 
