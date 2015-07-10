@@ -10,6 +10,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <META content="Chev Dietary Supplement" name=description>
+        <META content="Chev, Chev Diet, Dietary Supplement" name=Keywords>
+        <META name="robots" content="index,follow">
+
         <link rel="stylesheet" href="public/css/bootstrap.min.css">
         <style>
             body {
@@ -60,18 +64,8 @@
             <img src="public/img/logo2.png" alt="Logo">
             <!-- CHEV  -->
           </a>
-          <!-- <br> <span style="font-size: 0.5em;">Dietary Supplement</span></a> -->
         </div>
         <div class="navbar-collapse collapse" aria-expanded="true">
-          <!-- <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form> -->
           <ul class="nav navbar-nav navbar-right champagne">
             <li><a ng-class="{ active: isActive('/successStory') }" ng-click="hideNavbar()" ui-sref="successStory" >ตัวอย่างความสำเร็จ</a></li>
             <li><a ng-class="{ active: isActive('/secret') }" ng-click="hideNavbar()" ui-sref="secret">เคล็ดลับความสำเร็จ</a></li>
@@ -125,15 +119,12 @@
                       </tbody>
                     </table>
                     <div>
-                      <!-- <button class="red-btn col-md-12 full-width" ng-click="clearCart()"><i class="glyphicon glyphicon-trash"></i> ล้างตะกร้าสินค้า</button> -->
-                      <!-- <div class="col-md-2"></div> -->
                       <button class="default-btn col-md-12 full-width" ng-show="isLogin" ng-click="checkout()"><i class="glyphicon glyphicon-arrow-right"></i> เช็คเอาท์สินค้าเลย</button>
                       <button class="default-btn col-md-12 full-width" ng-show="!isLogin" ng-click="login()"><i class="fa fa-key"></i> เข้าสู่ระบบเพื่อเช็คเอาท์</button>
                       <div class="clear"></div>
                     </div>
                 </div>
 
-              <!-- </div> -->
             </li>
           </ul>
 
@@ -142,42 +133,9 @@
       <div style="height:0.8em;"></div>
     </div>
 
-    <!-- <ng-view></ng-view> -->
     <div data-ui-view autoscroll="false"></div>
 
-    <!-- Cart Modal for Every page -->
-    <!-- <modal title="ตะกร้าสินค้า" visible="showModal">
-
-      <div ng-show="cart===undefined">
-        ยังไม่มีสินค้าในตะกร้าเลย <a href="products" ng-click="viewCart()">เติมเต็ม</a> ตะกร้าคุณสิ
-      </div>
-      <div ng-show="cart">
-        <table class="table table-hover" >
-          <thead>
-            <tr>
-              <th>สินค้า</th>
-              <th>จำนวน</th>
-              <th>ราคา</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="(key, value) in cart">
-              <th>{{key}}</th>
-              <th>{{value.amount}} ชิ้น</th>
-              <th>{{value.amount*chevPrice}} บาท</th>
-            </tr>
-          </tbody>
-        </table>
-        <div>
-          <button class="red-btn col-md-12" ng-click="clearCart()"><i class="glyphicon glyphicon-trash"></i> ล้างตะกร้าสินค้า</button>
-          <button class="default-btn col-md-12" ng-show="isLogin"><i class="glyphicon glyphicon-arrow-right"></i> เช็คเอาท์สินค้าเลย</button>
-          <button class="default-btn col-md-12" ng-show="!isLogin" ng-click="login()"><i class="fa fa-key"></i> เข้าสู่ระบบเพื่อเช็คเอาท์</button>
-          <div class="clear"></div>
-        </div>
-      </div>
-      
-    </modal>
- -->
+ 
     <!-- Footer -->
     <div class="gray-bg" style="height:100%; padding-bottom: 3em;">
       <div style="height:1em;"></div>
@@ -195,21 +153,27 @@
           </ul>
         </div>
         <div class="col-sm-4">
-          <div class="col-xs-4" style="padding: 5px;">
-            <div class="footer-square facebook-square">
-              <span class="fa fa-facebook inside-square"></span>
-            </div>
+          <div class="col-sm-4" style="padding: 5px;">
+            <a href="https://www.facebook.com/chevdiet" target="_blank">
+              <div class="footer-square facebook-square">
+                <span class="fa fa-facebook inside-square"></span>
+              </div>
+            </a>
           </div>
-          <div class="col-xs-4" style="padding: 5px;">            
-            <div class="footer-square instagram-square">
-              <span class="fa fa-instagram inside-square"></span>
-            </div>
+          <div class="col-sm-4" style="padding: 5px;">            
+            <a href="https://instagram.com/chev_dietarysupplement" target="_blank">
+              <div class="footer-square instagram-square">
+                <span class="fa fa-instagram inside-square"></span>
+              </div>
+            </a>
           </div><!-- 
           <div class="clear"></div> -->
-          <div class="col-xs-4" style="padding: 5px;">            
-            <div class="footer-square youtube-square">
-              <span class="fa fa-youtube-play inside-square"></span>
-            </div>
+          <div class="col-sm-4" style="padding: 5px;">            
+            <a href="https://www.youtube.com/channel/UC81f7u9C0cs5VP1NEoejPQA" target="_blank">
+              <div class="footer-square youtube-square">
+                <span class="fa fa-youtube-play inside-square"></span>
+              </div>
+            </a>
           </div>
 
           <div class="clear"></div>
@@ -223,15 +187,6 @@
       </div>
 
         <div class="clear"></div>
-        <!-- <footer class="center">
-          <div class="hr">
-            <hr>
-            <a href=""><i class="fa fa-facebook social-icon"></i></a>
-            <a href=""><i class="fa fa-twitter social-icon"></i></a>
-            <a href=""><i class="fa fa-youtube-play social-icon"></i></a>
-          </div>      
-            <p>&copy; Chev 2014</p>
-        </footer> -->
       </div> <!-- /container -->   
     </div>         
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
