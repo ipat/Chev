@@ -111,6 +111,11 @@ chevApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$f
 			templateUrl: 'public/pages/chooseAdd.html',
 			controller: 'chooseAddController'
 		}).
+		state('finishOrder', {
+			url: '/finishOrder',
+			templateUrl: 'public/pages/finishOrder.html',
+			controller: 'finishOrderController'
+		}).
 		state('howToTransfer', {
 			url: '/howToTransfer',
 			templateUrl: 'public/pages/howtotransfer.html',
@@ -1039,7 +1044,7 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 				$("#warningModal").modal("show");
 			}
 			Order.store(add, function(){
-				$location.path('howToTransfer');
+				$location.path('finishOrder');
 			});
 		} else {
 			$("#emailModal").modal('show');
@@ -1064,7 +1069,7 @@ chevApp.controller('chooseAddController', function($scope, $rootScope, $location
 				$("#warningModal").modal("show");
 			}
 			Order.store(add, function(){
-				$location.path('howToTransfer');
+				$location.path('finishOrder');
 			});
 			$("#emailModal").modal('hide');
 			// $("#editAddress").modal('hide');
@@ -1140,6 +1145,15 @@ chevApp.controller('forgetController', function($scope, $rootScope, $resource ){
 ================================================*/
 
 chevApp.controller('howToTransferController', function($scope, $rootScope ){
+	$rootScope.navbarClass = "text-dark";
+	
+});
+
+/*================================================
+=             finishOrder Controller             =
+================================================*/
+
+chevApp.controller('finishOrderController', function($scope, $rootScope ){
 	$rootScope.navbarClass = "text-dark";
 	
 });

@@ -19,7 +19,7 @@
       </carousel>
 
       <!-- Carousel for Large Screen -->
-      <carousel interval="myInterval1" class="auto-show-mobile-small" >
+      <carousel interval="myInterval1" class="auto-show-mobile-small" style="margin-top: 2em;">
         <slide ng-repeat="slide in slides1" active="slide.active" style="overflow: hidden;">
           <a href="{{slide.url}}"><img class="carousel-img" ng-src="{{slide.image}}"></a>
           <div class="carousel-caption right">
@@ -97,8 +97,12 @@
         <div class="panel panel-default panelGreen">
           <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="cursor:pointer;">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  <h1 class="center">คำแนะนำการรับประทานผลิตภัณฑ์เสริมอาหาร CHEV</h1>
+                <a data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapseOne">
+                  <h1 class="center">
+                    คำแนะนำการรับประทานผลิตภัณฑ์เสริมอาหาร CHEV
+                    <br>
+                    <i class="fa fa-chevron-circle-down" style="font-size: 1.2em; padding-top:0.2em;"></i>
+                  </h1>
                 </a>
               </h4>
             </div>
