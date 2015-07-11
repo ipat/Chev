@@ -360,6 +360,20 @@ hr.gradient {
     top: 0.1em;
     box-shadow: 0px 0.1em 2px #aad621; }
 
+.headline{
+  color: white;
+  background-color: #333;
+  height: 1.5em;
+  width: 100%;
+  margin-top: 2em;
+  display: table; 
+
+}
+  .headline-text{
+    display: table-cell;
+    vertical-align: middle;  
+  }
+
 .white-btn, .spiner-btn-left, .spiner-btn-right {
   background-color: #F5F5F5;
   color: black !important;
