@@ -188,7 +188,7 @@ chevApp.controller('navbarController', function($scope, $location, $rootScope, $
 	//     $(".navbar-collapse").collapse('hide');
 	// });
 
-	$scope.hideNavbar = function(){
+	$rootScope.hideNavbar = function(){
 
 		if($(window).width() <= 990)
 			$(".navbar-toggle").click();
@@ -624,6 +624,23 @@ chevApp.controller('productsController', function($scope, $rootScope, $resource,
 	$rootScope.navbarClass = "text-dark";
 	$scope.amount1 = 1;
 	$scope.amount2 = 1;
+	
+	$(".show-more a").on("click", function() {
+	    var $this = $(this); 
+	    var $content = $this.parent().prev("p.content");
+	    var linkText = $this.text().toUpperCase();    
+	    console.log($content);
+	    
+	    if(linkText === "SHOW MORE"){
+	        linkText = "Show less";
+	        $content.switchClass("hideContent", "showContent", 400);
+	    } else {
+	        linkText = "Show more";
+	        $content.switchClass("showContent", "hideContent", 400);
+	    };
+
+	    $this.text(linkText);
+	});
 	$scope.addToCart = function(product_id){
 		// if($scope.amount === undefined)
 		// 	showMessage($scope, "กรุณาระบุจำนวนสินค้า", "alertFailed", ".alertBox");
@@ -649,6 +666,7 @@ chevApp.controller('productsController', function($scope, $rootScope, $resource,
 		// console.log(addedItem);
 		// console.log(addedItem);
 		Cart.store(addedItem, function(){
+			$rootScope.hideNavbar();
 			$rootScope.showCart();
 			// isLogin($resource, $rootScope);
 			// console.log("Finish");
