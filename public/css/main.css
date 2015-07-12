@@ -589,7 +589,14 @@ hr.gradient {
   @media screen and (max-width: 768px) {
     .hideContent {
       overflow: hidden;
-      height: 7em; } }
+      height: 5em; } }
+
+.hideContent2 {
+  height: auto; }
+  @media screen and (max-width: 768px) {
+    .hideContent2 {
+      overflow: hidden;
+      height: 3em; } }
 
 .more-btn {
   display: none;
