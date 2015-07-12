@@ -700,7 +700,7 @@ class UserController extends BaseController {
 
 
 
-		if( strlen($password_old)<=0 && !Hash::check($password_old, $user->password))
+		if( strlen($password_old)<=0 || !Hash::check($password_old, $user->password))
 	        App::abort('400', json_encode(array(
 	        		'because' => 'validate_fail',
 					'messages' => array('password_not_match')
