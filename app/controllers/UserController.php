@@ -585,17 +585,22 @@ class UserController extends BaseController {
 		{
 			App::abort('400', json_encode([
 				'because' => 'validate_fail',
-				'messages' => $validator->messages()->all() ]));
+				'messages' => $validator->messages()->all()]));
 		}
 
 		// If Validation passes then process the form data
 		//Grab the user record by the email address provided by the input form
 		$user = User::where('email', '=', Input::get('email'));
+		
 		// If the user record exists then grab the first returned result
 		if($user->count())
 		{
 			$user = $user->first();
-
+			if($user->facebook){
+			App::abort('400', json_encode([
+				'because' => 'validate_fail',
+				'messages' => 'facebook account']));
+			}
 			// Generate a reset code and the temp password
 			$resetcode = str_random(60);
 			$passwd = str_random(15);
@@ -615,10 +620,10 @@ class UserController extends BaseController {
 					'link' => URL::to('resetpassword', $resetcode),
 					'password' => $passwd
 				);
-				//return 1111122;
+		
 				// Send a mail to the user. This will plug the datavalues into the reminder email template and mail the user.
 				Mail::send('emails.reset-complete', $data, function($message) use ($user) {
-					$message->from('order@chev-diet.com', 'CHEV dietary  supplement');
+					$message->from('order@chev-diet.com', 'CHEV dietary supplement');
 					$message->to($user->email, $user->name_first . ' ' . $user->name_last)->subject('รีเซ็ตรหัสผ่านเสร็จสิ้น');
 				});
 			}
