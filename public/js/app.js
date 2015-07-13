@@ -275,7 +275,7 @@ chevApp.controller('homeController', function($scope, $rootScope){
 	      url: 'howitwork'
 	    },
 	    {
-	      image: 'public/img/banner_test.jpg',
+	      image: 'public/img/testimonial.jpg',
 	      url: 'successStory'
 	    },
 	    {
