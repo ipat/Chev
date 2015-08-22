@@ -44,7 +44,7 @@
       <p><strong>จัดส่งสินค้าเรียบร้อย !</strong></p>
       <p class="content">เลขพัสดุ EMS ของออเดอร์คือ <strong>{{$tracking_code}}</strong></p>
       <p class="content">สินค้าจะถึงประมาณวันที่ <strong>{{$arrival_date}}</strong></p>
-      <p class="content">เราเป็นเกียรติอย่างยิ่งที่คุณ {{$name_first}} {{$name_last}} ได้มอบโอกาศให้เราได้ดูแลสุขภาพผิวของคุณ</p>
+      <p class="content">เราเป็นเกียรติอย่างยิ่งที่คุณ {{$name_first}} {{$name_last}} ได้มอบโอกาสให้เราได้ดูแลรูปร่างของคุณ</p>
        <p class="content">
         หากคุณ {{$name_first}} พบปัญหาหรือมีข้อสงสัยอย่างไร สามารถสอบถามได้ที่ <a href="https://www.facebook.com/chevdiet">Facebook Fanpage</a> หรือทาง Email : <a href="mailto:order@chev-diet.com">order@chev-diet.com</a>
       </p>
