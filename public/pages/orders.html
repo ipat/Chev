@@ -194,7 +194,7 @@
             <tbody>
               <tr ng-repeat="(key, value) in currentOrder.products">
                 <th>{{value.product.name}}</th>
-                <th>{{value.setAmount}} ชิ้น</th>
+                <th>{{value.setAmount}} <span ng-show="value.product.status==1">ชิ้น</span><span ng-show="value.product.status==2">ชุด</span></th>
                 <th>{{value.product.allprice * value.setAmount}} บาท</th>
               </tr>
             </tbody>
