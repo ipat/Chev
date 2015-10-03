@@ -466,9 +466,11 @@ chevApp.controller('secretController', function($scope, $rootScope, $sce){
 
 	$scope.calculateCal = function(){
 		if($scope.gender == "male") {
-			$scope.cal = 10 * $scope.weight + 6.25 * $scope.height - 5 * $scope.age + 5 + 200;
+			$scope.cal = 10 * $scope.weight + 6.25 * $scope.height - 5 * $scope.age + 5;
+			$scope.cal = $scope.cal*$scope.exercise + 70;
 		} else {
-			$scope.cal = 10 * $scope.weight + 6.25 * $scope.height - 5 * $scope.age - 161 + 200;
+			$scope.cal = 10 * $scope.weight + 6.25 * $scope.height - 5 * $scope.age - 161;
+			$scope.cal = $scope.cal*$scope.exercise + 70;
 		}
 
 		if(!isNaN($scope.cal)){
