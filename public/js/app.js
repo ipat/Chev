@@ -419,6 +419,7 @@ chevApp.controller('successStoryController', function($scope, $rootScope){
 chevApp.controller('secretController', function($scope, $rootScope, $sce){
 	$rootScope.navbarClass = "text-dark";
 	$scope.gender = "male";
+	$scope.exercise = 1.1;
 	$scope.cal = 400;
 	$scope.bar1 = 0;
 	$scope.bar2 = 0;
