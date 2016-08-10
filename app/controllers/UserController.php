@@ -110,10 +110,10 @@ class UserController extends BaseController {
 		$buildCart->user_id = $user->id;
 		$buildCart->save();
 
-		Mail::send('emails.register-complete', $array, function($message) use ($user) {
-			$message->from('order@chev-diet.com', 'CHEV dietary  supplement');
-		 	$message->to($user->email, $user->name_first.' '.$user->name_last)->subject('สมัครสมาชิก CHEV-DIET เสร็จสิ้น');
-		});
+		// Mail::send('emails.register-complete', $array, function($message) use ($user) {
+		// 	$message->from('order@chev-diet.com', 'CHEV dietary  supplement');
+		//  	$message->to($user->email, $user->name_first.' '.$user->name_last)->subject('สมัครสมาชิก CHEV-DIET เสร็จสิ้น');
+		// });
 
 		// $cart = $this->cartToDatabase();
 		return Response::json(array(
@@ -432,20 +432,6 @@ class UserController extends BaseController {
 	}
 
 	public function isLogin () {
-		// a user's cart
-		// $cart = Cart::where('user_id', Auth::user()->id)->first();
-		// if($cart) {
-		// 	// existing cart
-		// 	$cart = $cart->toArray();
-		// } else {
-  //     // empty cart
-		// 	$cart = array(
-		// 		'items' => array(),
-		// 		'rewards' => array(),
-		// 		'discount' => 0
-		// 		);
-		// }
-
 		if(Auth::user()){
 			return Response::json(array(
 				'user' => Auth::user()->toArray(),
@@ -458,9 +444,7 @@ class UserController extends BaseController {
 				'csrf_token' => csrf_token(),
 				// 'cart' => $cart
 				));
-		}
-
-		
+		}		
 	}
 
 	public function hasEmail() {
@@ -622,10 +606,10 @@ class UserController extends BaseController {
 				);
 		
 				// Send a mail to the user. This will plug the datavalues into the reminder email template and mail the user.
-				Mail::send('emails.reset-complete', $data, function($message) use ($user) {
-					$message->from('order@chev-diet.com', 'CHEV dietary supplement');
-					$message->to($user->email, $user->name_first . ' ' . $user->name_last)->subject('รีเซ็ตรหัสผ่านเสร็จสิ้น');
-				});
+				// Mail::send('emails.reset-complete', $data, function($message) use ($user) {
+				// 	$message->from('order@chev-diet.com', 'CHEV dietary supplement');
+				// 	$message->to($user->email, $user->name_first . ' ' . $user->name_last)->subject('รีเซ็ตรหัสผ่านเสร็จสิ้น');
+				// });
 			}
 		}
 
