@@ -344,17 +344,16 @@ chevApp.controller('ingredientController', function($scope, $rootScope){
 	$(window).scroll(function(){
 		if(isScrolledIntoView($('#chart1'))){
 			$('.chart1').fadeIn();
-			console.log("1");
+			// console.log("1");
 		}
 		if(isScrolledIntoView($('#chart2'))){
 			$('.chart2').fadeIn();
-			console.log("2");
+			// console.log("2");
 		}
 		if(isScrolledIntoView($('#chart3'))){
 			$('.chart3').fadeIn();
-			console.log("3");
+			// console.log("3");
 		}
-		console.log("Hello");
 	});
 
 	function isScrolledIntoView(elem)
