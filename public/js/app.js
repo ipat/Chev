@@ -626,8 +626,8 @@ chevApp.controller('signupController', function($scope, $rootScope, Users){
 
 chevApp.controller('productsController', function($scope, $rootScope, $resource, Cart){
 	$rootScope.navbarClass = "text-dark";
-	$scope.amount1 = 1;
-	$scope.amount4 = 1;
+	$scope.amount2 = 1;
+	$scope.amount3 = 1;
 	
 	$(".show-more a").on("click", function() {
 	    var $this = $(this); 
